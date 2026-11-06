@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>國小數學提問共備入口｜AI 小幫手</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@700&display=swap">
+<style>
+/* Layout: 沿用 PBL 小幫手的結構 — 黏頂頁首 → VLM 轉譯工具（可收合）→ 使用說明 → 五張小幫手卡片 → 引用聲明 → 頁尾 */
+:root{
+  --bg:#f5faff; --surface:#ffffff; --surface-2:#eef6fc;
+  --line:#d7e9f6; --text:#2c3e50; --muted:#5c6b73;
+  --primary:#00529b; --secondary:#0088c2; --accent:#ffc107;
+  --on-fill:#ffffff; --code-bg:#f3f7fa; --code-text:#24323d;
+  --c1:#2b7fc2; --c2:#c0392b; --c3:#d9800b; --c4:#8e44ad; --c5:#13866f; --c6:#3f51b5; --c7:#b5175a; --c8:#00798a;
+  --glow1:rgba(0,168,232,.10); --glow2:rgba(0,82,155,.07);
+  --shadow:0 10px 30px -12px rgba(0,82,155,.18);
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,"Noto Sans TC",monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1822; --surface:#15222f; --surface-2:#1b2b3a;
+  --line:#26394b; --text:#dfe8ef; --muted:#9fb1bf;
+  --primary:#7cc0f5; --secondary:#4fc3f7; --accent:#ffd54f;
+  --on-fill:#ffffff; --code-bg:#0f1a25; --code-text:#d6e2ea;
+  --c1:#2a6fa8; --c2:#a93a2e; --c3:#b46a0a; --c4:#7a3f96; --c5:#127562; --c6:#3a4aa3; --c7:#9c1a52; --c8:#0b6b79;
+  --glow1:rgba(79,195,247,.08); --glow2:rgba(124,192,245,.05);
+  --shadow:0 10px 30px -12px rgba(0,0,0,.6);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1822; --surface:#15222f; --surface-2:#1b2b3a;
+  --line:#26394b; --text:#dfe8ef; --muted:#9fb1bf;
+  --primary:#7cc0f5; --secondary:#4fc3f7; --accent:#ffd54f;
+  --on-fill:#ffffff; --code-bg:#0f1a25; --code-text:#d6e2ea;
+  --c1:#2a6fa8; --c2:#a93a2e; --c3:#b46a0a; --c4:#7a3f96; --c5:#127562; --c6:#3a4aa3; --c7:#9c1a52; --c8:#0b6b79;
+  --glow1:rgba(79,195,247,.08); --glow2:rgba(124,192,245,.05);
+  --shadow:0 10px 30px -12px rgba(0,0,0,.6);
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{
+  font-family:var(--sans); color:var(--text); background:var(--bg);
+  background-image:radial-gradient(at 0% 0%,var(--glow1) 0,transparent 50%),radial-gradient(at 100% 100%,var(--glow2) 0,transparent 50%);
+  background-attachment:fixed; line-height:1.7; font-size:16px; min-height:100vh;
+  display:flex; flex-direction:column;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--surface)}
+.wrap{max-width:1080px;margin:0 auto;width:100%;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{text-wrap:balance;margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+
+/* Header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--surface) 94%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);box-shadow:0 1px 4px rgba(0,0,0,.04)}
+header .wrap.top{display:flex;align-items:center;gap:16px;padding-block:14px 8px}
+.mark{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--secondary),var(--primary));color:var(--on-fill);
+  font-family:var(--serif);font-size:24px;font-weight:700;animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+header h1{font-size:clamp(20px,3.4vw,26px);color:var(--primary);letter-spacing:.04em;font-weight:900}
+header p{margin:2px 0 0;font-size:14px;color:var(--secondary);font-weight:500;letter-spacing:.06em}
+
+main{flex:1;padding-block:40px 56px;display:flex;flex-direction:column;gap:44px}
+
+/* Glass card */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);
+  padding:clamp(20px,4vw,40px);position:relative;overflow:hidden;min-width:0}
+.card::after{content:"";position:absolute;top:-60px;right:-60px;width:170px;height:170px;border-radius:50%;
+  background:var(--secondary);opacity:.08;filter:blur(30px);pointer-events:none}
+.sec-title{display:flex;align-items:center;gap:14px;font-size:clamp(21px,3vw,28px);color:var(--primary);font-weight:700;letter-spacing:.03em}
+.sec-icon{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:22px;
+  background:var(--surface-2);border:1px solid var(--line)}
+
+/* VLM tool */
+.vlm{border-top:5px solid var(--secondary)}
+.vlm-head{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.vlm-head > div{min-width:0;flex:1 1 360px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--secondary);margin-bottom:6px}
+.credit{margin:12px 0 0;color:var(--muted);font-size:15px}
+.credit strong{color:var(--text)}
+.purpose{margin:18px 0 0;padding:14px 18px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);font-weight:500}
+.purpose b{color:var(--primary)}
+
+.btn{appearance:none;border:0;cursor:pointer;font:inherit;font-weight:700;letter-spacing:.04em;
+  display:inline-flex;align-items:center;gap:8px;border-radius:12px;padding:12px 20px;transition:transform .15s,box-shadow .2s,background .2s}
+.btn-copy{background:var(--primary);color:var(--on-fill);box-shadow:0 6px 16px -6px rgba(0,82,155,.5)}
+.btn-copy:hover{transform:translateY(-2px)}
+.btn-copy.done{background:var(--c5)}
+.btn-ghost{background:transparent;color:var(--primary);border:1.5px solid var(--line);padding:9px 16px;font-size:15px}
+.btn-ghost:hover{background:var(--surface-2)}
+.btn svg{width:18px;height:18px}
+.chev{transition:transform .25s}
+.collapsed .chev{transform:rotate(-90deg)}
+
+.steps{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.steps li{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:14px;border:1px solid var(--line);background:var(--surface);min-width:0}
+.steps .n{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:15px;
+  background:var(--accent);color:#3b2f00}
+.steps b{display:block;color:var(--primary);margin-bottom:2px}
+.steps span{font-size:15px;color:var(--muted)}
+
+.prompt-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:28px;
+  padding:12px 14px;border:1px solid var(--line);border-bottom:0;border-radius:14px 14px 0 0;background:var(--surface-2)}
+.prompt-bar .label{font-weight:700;color:var(--primary);display:flex;align-items:center;gap:8px}
+.prompt-bar .tools{display:flex;flex-wrap:wrap;gap:10px}
+.prompt-box{border:1px solid var(--line);border-radius:0 0 14px 14px;background:var(--code-bg);overflow:hidden;
+  transition:max-height .35s ease;max-height:1600px}
+.collapsed .prompt-box{max-height:0;border-top-width:0}
+.collapsed .prompt-bar{border-bottom:1px solid var(--line);border-radius:14px}
+.prompt-box pre{margin:0;padding:22px clamp(14px,3vw,26px);font-family:var(--mono);font-size:14.5px;line-height:1.85;
+  color:var(--code-text);white-space:pre-wrap;word-break:break-word;overflow-x:auto}
+.toast{font-size:var(--fs-body);color:var(--c5);font-weight:700;margin:12px 0 0}
+.toast:empty{display:none}
+
+/* Guide */
+.guide p.lead{font-size:17px;color:var(--muted);font-weight:500;margin:18px 0 26px;padding:14px 18px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px}
+.grid2 h3{font-size:19px;color:var(--secondary);margin-bottom:12px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:14px}
+table{width:100%;border-collapse:collapse;font-size:15px}
+th{background:var(--surface-2);color:var(--primary);text-align:left;font-weight:700;padding:11px 14px}
+td{padding:11px 14px;border-top:1px solid var(--line);vertical-align:top}
+tr:hover td{background:color-mix(in srgb,var(--secondary) 5%,transparent)}
+td.k{font-weight:700;white-space:nowrap}
+
+/* Helpers */
+.center-title{text-align:center}
+.center-title h2{display:inline-block;position:relative;font-size:clamp(23px,3.4vw,30px);color:var(--primary);font-weight:700;padding-bottom:12px}
+.center-title h2::after{content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:96px;height:4px;border-radius:4px;background:var(--accent)}
+.center-title p{margin:12px auto 0;max-width:640px;color:var(--muted)}
+.helpers{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:30px}
+.helper{position:relative;overflow:hidden;display:flex;flex-direction:column;gap:8px;text-decoration:none;
+  padding:24px 22px 20px;border-radius:18px;color:var(--on-fill);background:var(--fill);
+  box-shadow:0 8px 20px -10px rgba(0,0,0,.35);transition:transform .3s ease-out,box-shadow .3s;min-width:0}
+.helper::before{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);transition:left .6s}
+.helper:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 16px 28px -8px rgba(0,0,0,.35)}
+.helper:hover::before{left:100%}
+.helper .ic{font-size:30px;line-height:1}
+.helper .t{font-size:13px;letter-spacing:.14em;opacity:.9;font-weight:500}
+.helper .name{font-size:21px;font-weight:900;letter-spacing:.05em;text-shadow:0 1px 3px rgba(0,0,0,.25)}
+.helper .d{font-size:14.5px;line-height:1.65;opacity:.95}
+.helper .go{margin-top:auto;padding-top:10px;font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px;
+  border-top:1px solid rgba(255,255,255,.3)}
+.f1{--fill:var(--c1)} .f2{--fill:var(--c2)} .f3{--fill:var(--c3)} .f4{--fill:var(--c4)} .f5{--fill:var(--c5)} .f6{--fill:var(--c6)} .f7{--fill:var(--c7)} .f8{--fill:var(--c8)}
+@media (max-width:900px){.helpers{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.helpers{grid-template-columns:1fr}}
+
+/* Citation */
+.cite{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,34px);position:relative;overflow:hidden}
+.cite::after{content:"”";position:absolute;right:-6px;bottom:-70px;font-family:var(--serif);font-size:220px;color:var(--primary);opacity:.06}
+.cite h3{font-size:19px;color:var(--primary);display:flex;gap:10px;align-items:center;margin-bottom:20px}
+.cite-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:18px;position:relative;z-index:1}
+.cite-grid > div{padding:20px;border-radius:14px;border:1px solid var(--line);background:var(--surface);transition:border-color .3s,box-shadow .3s}
+.cite-grid > div:hover{border-color:var(--secondary);box-shadow:var(--shadow)}
+.cite-grid .eyebrow{margin-bottom:6px}
+.cite-grid b{display:block;color:var(--primary);margin-bottom:4px}
+.cite-grid p{margin:0;font-size:14.5px;color:var(--muted)}
+
+/* Intro */
+.intro{border-top:5px solid var(--accent)}
+.intro h2.big{font-family:var(--serif);font-size:clamp(24px,4vw,34px);color:var(--primary);line-height:1.35;margin-top:4px}
+.intro .lede{margin:16px 0 0;font-size:17px;max-width:62em}
+.intro h3.sub{font-size:19px;color:var(--secondary);margin:34px 0 14px;display:flex;align-items:center;gap:10px}
+.intro h3.sub::after{content:"";flex:1;height:2px;background:var(--line)}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:14px}
+.why > div{padding:18px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line);min-width:0}
+.why b{display:block;color:var(--primary);margin-bottom:4px}
+.why p{margin:0;font-size:15px;color:var(--muted)}
+.rel{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px}
+.rel > div{padding:18px;border-radius:14px;border:1px solid var(--line);min-width:0}
+.rel b{display:block;color:var(--primary);margin-bottom:8px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chips li{font-size:14px;padding:4px 12px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);color:var(--text)}
+.rel p{margin:10px 0 0;font-size:15px;color:var(--muted)}
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.skill{padding:16px;border-radius:14px;border:1px solid var(--line);background:var(--surface);border-top:4px solid var(--fill);display:flex;flex-direction:column;gap:6px;min-width:0}
+.skill .hd{display:flex;align-items:center;gap:8px;font-weight:900;font-size:17px;color:var(--text)}
+.skill .by{font-size:12.5px;color:var(--muted);letter-spacing:.04em}
+.skill p{margin:0;font-size:14.5px;line-height:1.65}
+.skill .chips{margin-top:auto;padding-top:6px}
+.skill .chips li{font-size:13px;padding:2px 10px}
+@media (max-width:900px){.skills{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.skills{grid-template-columns:1fr}}
+.plan{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px}
+.plan li{display:flex;gap:12px;align-items:flex-start;padding:16px;border-radius:14px;border:1px solid var(--line);min-width:0}
+.plan .n{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:900;background:var(--primary);color:var(--on-fill)}
+.plan b{display:block;color:var(--primary)}
+.plan span{font-size:14.5px;color:var(--muted)}
+.goal{margin:26px 0 0;padding:20px 22px;border-radius:14px;background:var(--surface-2);border-left:5px solid var(--accent);font-family:var(--serif);font-size:clamp(17px,2.4vw,20px);color:var(--primary);line-height:1.7}
+.goal small{display:block;font-family:var(--sans);font-size:13px;color:var(--muted);margin-top:6px}
+.pill{display:inline-block;font-size:13px;font-weight:700;padding:2px 10px;border-radius:999px;white-space:nowrap}
+.pill.on{background:color-mix(in srgb,var(--c5) 16%,transparent);color:var(--c5)}
+.pill.wip{background:var(--surface-2);color:var(--muted);border:1px dashed var(--muted)}
+.helper.pending{background:var(--surface-2);color:var(--muted);border:2px dashed var(--line);box-shadow:none;cursor:default}
+.helper.pending:hover{transform:none;box-shadow:none}
+.helper.pending::before{display:none}
+.helper.pending .name{text-shadow:none;color:var(--text)}
+.helper.pending .go{border-top-color:var(--line)}
+
+/* Tabs */
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:0}
+.tabs::-webkit-scrollbar{display:none}
+.tab{appearance:none;border:0;background:transparent;font:inherit;font-weight:700;font-size:15.5px;color:var(--muted);
+  padding:10px 16px 12px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;border-radius:10px 10px 0 0;transition:color .2s,background .2s,border-color .2s}
+.tab:hover{color:var(--primary);background:var(--surface-2)}
+.tab[aria-selected="true"]{color:var(--primary);border-bottom-color:var(--accent);background:var(--surface-2)}
+.panel{display:flex;flex-direction:column;gap:44px}
+.panel[hidden]{display:none}
+.pager{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+.pager button{appearance:none;font:inherit;font-weight:700;cursor:pointer;border-radius:12px;padding:12px 20px;border:1.5px solid var(--line);background:var(--surface);color:var(--primary)}
+.pager button:hover{background:var(--surface-2)}
+.pager .next{margin-left:auto;background:var(--primary);color:var(--on-fill);border-color:var(--primary)}
+.pager .next:hover{background:var(--secondary);border-color:var(--secondary)}
+
+/* Guide redesign */
+.guide .lead strong{color:var(--primary)}
+.principles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px}
+.principles > div{padding:16px 18px;border-radius:14px;border:1px solid var(--line);background:var(--surface);min-width:0}
+.principles .pi{font-size:24px;display:block;margin-bottom:4px}
+.principles b{display:block;color:var(--primary);margin-bottom:2px}
+.principles p{margin:0;font-size:14.5px;color:var(--muted)}
+.gsub{display:flex;align-items:center;gap:12px;font-size:20px;color:var(--primary);margin:36px 0 16px}
+.gsub::after{content:"";flex:1;height:2px;background:var(--line);order:1}
+.zoom-btn.inline{position:static;order:2;flex:none;--mc:var(--primary);width:40px;height:40px}
+.gnum.gicon{background:color-mix(in srgb,var(--primary) 14%,var(--surface));border:1.5px solid var(--primary);font-family:inherit;font-size:19px}
+.gnum{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--primary);color:var(--on-fill);font-family:var(--serif);font-size:17px}
+.focus-scale{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;font-weight:700;color:var(--muted)}
+.focus-scale i{flex:1;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--c5),var(--accent),var(--c2));opacity:.75}
+.focus-scale span{white-space:nowrap}
+@media (max-width:860px) and (min-width:441px){.focus-scale{font-size:12px;gap:6px}}
+@media (max-width:440px){.focus-scale > *{display:none}.focus-scale::before{content:"⬇ 由上往下：範圍由小到大，越上面回答越聚焦";font-size:13px;color:var(--muted)}}
+.mats > div:nth-child(1){border-top:4px solid var(--c5)}
+.mats > div:nth-child(2){border-top:4px solid color-mix(in srgb,var(--c5) 50%,var(--accent))}
+.mats > div:nth-child(3){border-top:4px solid color-mix(in srgb,var(--accent) 60%,var(--c2))}
+.mats > div:nth-child(4){border-top:4px solid var(--c2)}
+.focus-tip{margin-top:12px;display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:14px;border:2px solid var(--c5);background:color-mix(in srgb,var(--c5) 10%,var(--surface))}
+.ft-ic{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-size:20px;background:var(--surface);border:2px solid var(--c5)}
+.focus-tip b{display:block;font-size:16.5px;color:color-mix(in srgb,var(--c5) 70%,var(--text))}
+.focus-tip p{margin:2px 0 0;font-size:15px}
+.focus-tip strong{color:#3b2f00;background:var(--accent);padding:0 5px;border-radius:5px}
+.zwrap .focus-tip p{font-size:.95em}
+.mats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.mats > div{padding:14px 16px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}
+.mats span{font-size:22px}
+.mats b{display:block;color:var(--text);margin:4px 0 2px}
+.mats p{margin:0;font-size:14px;color:var(--muted)}
+@media (max-width:860px){.mats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.mats{grid-template-columns:1fr}}
+.info-fold{margin-top:18px;border:2px solid var(--accent);border-radius:18px;overflow:hidden;background:var(--surface);box-shadow:0 10px 24px -14px rgba(217,128,11,.55)}
+.info-fold summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;
+  background:linear-gradient(100deg,color-mix(in srgb,var(--accent) 38%,var(--surface)),color-mix(in srgb,var(--accent) 12%,var(--surface)))}
+.if-title{display:flex;align-items:center;gap:14px;min-width:0}
+.if-ic{flex:none;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:26px;background:var(--accent);box-shadow:0 4px 10px -4px rgba(0,0,0,.3);animation:float 3s ease-in-out infinite}
+.if-title b{display:block;font-size:clamp(18px,2.4vw,22px);font-weight:900;color:var(--primary);letter-spacing:.02em}
+.if-title small{display:block;font-size:14.5px;color:var(--text);margin-top:2px}
+.ctx{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;padding:18px}
+@media (max-width:900px){.ctx{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.ctx{grid-template-columns:1fr}}
+.ctx-card{--cc:var(--c1);border-radius:14px;padding:14px;background:color-mix(in srgb,var(--cc) 8%,var(--surface));border:1.5px solid color-mix(in srgb,var(--cc) 30%,var(--line));border-top:5px solid var(--cc);display:flex;flex-direction:column;gap:6px;min-width:0}
+.ctx-card.i1{--cc:var(--c1)} .ctx-card.i2{--cc:var(--c5)} .ctx-card.i3{--cc:var(--c3)} .ctx-card.i4{--cc:var(--c4)}
+.ctx-h{display:flex;align-items:center;gap:8px}
+.ctx-h span{font-size:22px}
+.ctx-h b{font-size:17px;color:var(--text)}
+.ctx-h em{margin-left:auto;font-style:normal;font-size:12px;font-weight:700;padding:2px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:var(--surface)}
+.ctx-h em.need{background:var(--cc);border-color:var(--cc);color:var(--on-fill)}
+.ctx-card p{margin:0;font-size:14.5px;color:var(--muted)}
+.ex{margin-top:auto;font-size:15px;font-weight:700;padding:9px 12px;border-radius:10px;background:var(--surface);border:1.5px dashed var(--cc);color:var(--text)}
+.ctx-all{margin:0 18px 18px;padding:14px 16px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}
+.ctx-all-h{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;font-weight:700;color:var(--primary);margin-bottom:8px}
+.ctx-copy{padding:6px 14px;font-size:14px}
+.ctx-all p{margin:0;font-size:16px;line-height:2}
+.ctx-all mark{color:var(--text);font-weight:700;padding:2px 6px;border-radius:6px}
+.ctx-all mark.t1{background:color-mix(in srgb,var(--c1) 22%,transparent)}
+.ctx-all mark.t2{background:color-mix(in srgb,var(--c5) 22%,transparent)}
+.ctx-all mark.t3{background:color-mix(in srgb,var(--c3) 25%,transparent)}
+.ctx-all mark.t4{background:color-mix(in srgb,var(--c4) 22%,transparent)}
+.info-fold summary::-webkit-details-marker{display:none}
+.fold-btn{flex:none;display:inline-flex;align-items:center;gap:6px;font-size:14.5px;padding:7px 14px;border-radius:10px;border:1.5px solid var(--line);color:var(--primary);background:var(--surface)}
+.fold-btn::before{content:"展開"}
+.info-fold[open] .fold-btn::before{content:"收合"}
+.gfold[open] .fold-btn::before{content:"收合"}
+.gfold[open] .fold-btn svg{transform:rotate(180deg)}
+.gfold{margin-top:18px;border:1px solid var(--line);border-radius:16px;background:var(--surface)}
+.gfold summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px}
+.gfold summary::-webkit-details-marker{display:none}
+.gf-t{font-weight:700;color:var(--primary);font-size:16px}
+.gfold summary:hover .fold-btn{background:var(--surface-2)}
+.gf-body{padding:0 16px 16px;display:flex;flex-direction:column;gap:14px}
+.gf-body .lead{margin:0!important}
+.fold-btn svg{width:16px;height:16px;transition:transform .25s}
+.info-fold[open] .fold-btn svg{transform:rotate(180deg)}
+.info-fold summary:hover .fold-btn{background:var(--surface-2)}
+.modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media (max-width:980px){.modes{grid-template-columns:1fr}}
+.mode{--mc:var(--c1);position:relative;padding:18px 18px 64px;border-radius:16px;border:1.5px solid color-mix(in srgb,var(--mc) 35%,var(--line));background:color-mix(in srgb,var(--mc) 9%,var(--surface));display:flex;flex-direction:column;gap:12px;min-width:0}
+.mode-h{display:flex;gap:12px;align-items:center}
+.m1{--mc:var(--c1)} .m2{--mc:var(--c5)} .m3{--mc:var(--c3)}
+.mode-h b{display:block;color:color-mix(in srgb,var(--mc) 65%,var(--text));font-size:17px}
+.mode-h small{color:var(--muted)}
+.mk{flex:none;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;font-weight:900;background:var(--mc);color:var(--on-fill)}
+.say{font-size:14.5px;padding:10px 12px;border-radius:10px;background:var(--surface);border-left:4px solid var(--mc);color:var(--text)}
+.mode .qtypes li{background:var(--surface)}
+.out{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:14.5px;line-height:1.65}
+.out b{color:var(--text)}
+.qtypes li{font-size:13px;padding:2px 10px}
+.mode-note{margin:0 0 14px;display:flex;align-items:center;justify-content:center;gap:10px;padding:12px 16px;border-radius:12px;border:2px dashed var(--accent);background:color-mix(in srgb,var(--accent) 14%,var(--surface));font-size:16px;font-weight:700;color:var(--text);text-align:center}
+.mn-ic{font-size:20px}
+.mode-note strong{color:#3b2f00;background:var(--accent);padding:0 6px;border-radius:5px}
+.stages{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;position:relative}
+.stage{position:relative;padding:18px;border-radius:16px;border:1.5px solid var(--line);background:var(--surface);display:flex;flex-direction:column;gap:10px;min-width:0}
+.stage:not(:last-child)::after{content:"➜";position:absolute;right:-26px;top:50%;transform:translateY(-50%);font-size:20px;color:var(--secondary)}
+.st-h{display:flex;gap:10px;align-items:center}
+.st-h .sn{font-size:26px;line-height:1}
+.st-h b{display:block;color:var(--primary);font-size:17px}
+.st-h small{color:var(--muted)}
+.stage p{margin:0;font-size:14.5px}
+.handoff{margin-top:auto;font-size:14px;padding:8px 12px;border-radius:10px;background:color-mix(in srgb,var(--secondary) 10%,var(--surface));border:1px dashed var(--secondary);color:var(--text)}
+.handoff.done{background:color-mix(in srgb,var(--c5) 10%,var(--surface));border-color:var(--c5)}
+@media (max-width:980px){.stages{grid-template-columns:1fr;gap:28px}.stage:not(:last-child)::after{content:"⬇";right:auto;left:50%;top:auto;bottom:-26px;transform:translateX(-50%)}}
+.clue{margin-top:28px;border-radius:20px;border:2px solid var(--primary);overflow:hidden;background:var(--surface);box-shadow:0 14px 30px -16px rgba(0,82,155,.55)}
+.clue-h{display:flex;align-items:center;gap:14px;padding:16px 20px;background:linear-gradient(100deg,#00529b,#0088c2);color:#ffffff}
+.clue-ic{flex:none;width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:26px;background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.4)}
+.clue-h b{display:block;font-size:clamp(18px,2.4vw,22px);font-weight:900;letter-spacing:.03em}
+.clue-h small{display:block;font-size:14.5px;opacity:.95;margin-top:2px}
+.clue-body{padding:18px 22px;background:var(--code-bg);font-size:15.5px;line-height:2.1;color:var(--code-text)}
+.clue-line.lead-l{font-weight:900;color:var(--primary);font-size:17px;margin-bottom:4px}
+.clue-sub{margin:2px 0 0;padding-left:22px;list-style:none;display:flex;flex-direction:column;gap:2px}
+.clue-sub li{position:relative}
+.clue-sub li::before{content:"";position:absolute;left:-16px;top:.95em;width:8px;height:8px;border-radius:50%;background:var(--secondary)}
+.fill{display:inline;font-weight:700;color:#3b2f00;background:var(--accent);padding:2px 6px;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.fill.sm{padding:0 5px;font-size:.95em}
+.clue-h .fill.sm{color:#3b2f00}
+.clue-legend{margin-top:12px;font-size:13.5px;color:var(--muted);line-height:1.6}
+.clue-tip{display:flex;gap:14px;align-items:flex-start;padding:16px 20px;border-top:2px dashed var(--accent);background:color-mix(in srgb,var(--accent) 18%,var(--surface))}
+.tip-ic{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-size:22px;background:var(--accent);box-shadow:0 4px 10px -4px rgba(0,0,0,.3)}
+.clue-tip b{display:block;font-size:18px;color:color-mix(in srgb,var(--c2) 70%,var(--text))}
+.clue-tip p{margin:2px 0 0;font-size:16px}
+.clue-tip small{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
+.edit-demo{border-top:2px solid var(--line);padding:18px 20px 20px;background:var(--surface)}
+.ed-h{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.ed-ic{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:color-mix(in srgb,var(--c5) 18%,var(--surface));border:1.5px solid var(--c5)}
+.ed-h b{display:block;font-size:19px;color:var(--primary)}
+.ed-h small{color:var(--muted);font-size:14px}
+.ed-ways{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:900px){.ed-ways{grid-template-columns:1fr}}
+.way{--wc:var(--c1);padding:14px;border-radius:14px;border:1.5px solid color-mix(in srgb,var(--wc) 35%,var(--line));background:color-mix(in srgb,var(--wc) 7%,var(--surface));display:flex;flex-direction:column;gap:6px;min-width:0}
+.way.w1{--wc:var(--c1)} .way.w2{--wc:var(--c2)} .way.w3{--wc:var(--c4)}
+.way-h{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.wn{flex:none;width:28px;height:28px;border-radius:8px;display:grid;place-items:center;font-weight:900;background:var(--wc);color:var(--on-fill)}
+.way-h b{color:var(--text);font-size:16px}
+.ba{font-size:14.5px;line-height:1.9;padding:8px 10px;border-radius:10px;background:var(--surface);border:1px solid var(--line)}
+.lbl{display:inline-block;font-size:12px;font-weight:700;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:0 6px;margin-right:6px}
+.arrow{text-align:center;color:var(--wc);font-size:16px;line-height:1}
+.del{text-decoration:line-through;text-decoration-color:var(--c2);text-decoration-thickness:2px;opacity:.75}
+.gone{font-weight:700;color:color-mix(in srgb,var(--c2) 75%,var(--text))}
+.mine{font-weight:700;color:#0b3d2e;background:#7fe0b9;padding:2px 6px;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.mine.sm,.fill.sm{padding:0 5px;font-size:.92em}
+.why{margin:4px 0 0;font-size:13.5px;color:var(--muted)}
+.ed-result{margin-top:16px;padding:16px 18px;border-radius:14px;border:2px solid var(--c5);background:var(--code-bg);font-size:15.5px;line-height:2.1;color:var(--code-text)}
+.res-h{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin-bottom:6px;line-height:1.6}
+.res-h b{font-size:17px;color:color-mix(in srgb,var(--c5) 75%,var(--text))}
+.legend{font-size:13px;color:var(--muted)}
+.res-out{margin:10px 0 0;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--c5) 12%,var(--surface));font-size:15px;line-height:1.7;color:var(--text)}
+.sub-note{margin:0 0 14px;font-size:15px;color:var(--muted)}
+.sub-note strong{color:var(--primary)}
+
+.zoom-btn{position:absolute;right:14px;bottom:14px;width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;
+  background:var(--mc);color:var(--on-fill);box-shadow:0 4px 10px -4px rgba(0,0,0,.4);transition:transform .15s}
+.zoom-btn:hover{transform:scale(1.1)}
+.zoom-btn svg{width:22px;height:22px}
+.zoom-layer{position:fixed;inset:0;z-index:100;display:grid;place-items:center;
+  padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  background:rgba(10,20,30,.6);backdrop-filter:blur(3px)}
+.zoom-layer[hidden]{display:none}
+.zoom-box{position:relative;width:min(860px,100%);max-height:100%;overflow:auto;border-radius:20px}
+.zoom-box .mode{font-size:clamp(17px,2.4vw,22px);padding:clamp(22px,4vw,40px);padding-top:clamp(56px,7vw,64px);gap:18px;border-width:2px}
+.zoom-box .mode .out,.zoom-box .mode .say{font-size:1em}
+.zoom-box .mode-h b{font-size:1.4em}
+.zoom-box .mode-h small{font-size:.85em}
+.zoom-box .mk{width:48px;height:48px;font-size:1.1em}
+.zoom-box .qtypes li{font-size:.85em;padding:4px 14px}
+.zoom-box.wide{width:min(1200px,100%)}
+.zwrap{background:var(--surface);border-radius:20px;padding:clamp(56px,6vw,64px) clamp(18px,3vw,32px) clamp(20px,3vw,32px);font-size:clamp(16px,1.8vw,20px)}
+.zwrap h3{margin:0 0 18px;font-size:1.3em;color:var(--primary)}
+.zwrap .mats > div{padding:20px}
+.zwrap .mats span{font-size:1.6em}
+.zwrap .mats b,.zwrap .stage b{font-size:1.15em}
+.zwrap .mats p,.zwrap .stage p,.zwrap .out,.zwrap .handoff,.zwrap small{font-size:.95em}
+.zwrap .st-h .sn{font-size:1.6em}
+.zwrap .out b,.zwrap .handoff b{font-size:1em}
+.zwrap .stages{gap:36px}
+.zoom-close{position:absolute;top:12px;right:12px;z-index:2;width:42px;height:42px;border-radius:50%;border:0;cursor:pointer;font-size:22px;line-height:1;
+  background:var(--surface);color:var(--text);box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.zoom-close:hover{background:var(--surface-2)}
+
+/* Quick chips */
+.quick{margin-top:22px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.quick-h{font-size:14px;font-weight:700;color:var(--primary);letter-spacing:.06em}
+.qchips{display:grid;grid-template-columns:repeat(4,minmax(0,170px));justify-content:center;gap:10px}
+@media (max-width:760px){.qchips{grid-template-columns:repeat(2,minmax(0,1fr));width:100%}}
+.qchip{display:flex;align-items:center;justify-content:center;white-space:nowrap;gap:6px;padding:7px 14px;border-radius:999px;font-size:14.5px;font-weight:700;text-decoration:none;
+  background:var(--fill);color:var(--on-fill);box-shadow:0 3px 8px -4px rgba(0,0,0,.35);transition:transform .15s,box-shadow .2s}
+.qchip:hover{transform:translateY(-2px);box-shadow:0 6px 12px -4px rgba(0,0,0,.35)}
+.qchip span{font-size:12px;opacity:.85}
+.qchip.off{background:var(--surface);color:var(--muted);border:1.5px dashed var(--line);box-shadow:none;cursor:default}
+.qchip.off:hover{transform:none}
+.qchip small{font-size:11.5px;font-weight:500}
+
+/* How-to hint inside NotebookLM */
+.howto{margin-top:28px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px;align-items:center;
+  padding:clamp(18px,3vw,28px);border-radius:20px;background:var(--surface);border:2px solid var(--accent);box-shadow:var(--shadow)}
+.howto h3{grid-column:1/-1;font-size:19px;color:var(--primary);display:flex;align-items:center;gap:10px}
+.howto h3 .tag{flex:none;white-space:nowrap;font-size:12px;font-weight:700;letter-spacing:.1em;padding:3px 10px;border-radius:999px;background:var(--accent);color:#3b2f00}
+.mock{border-radius:14px;border:1px solid var(--line);background:var(--surface-2);padding:10px;min-width:0}
+.mock-top{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--muted);padding:2px 4px 10px}
+.mock-top i{width:9px;height:9px;border-radius:50%;background:var(--line);display:inline-block}
+.mock-body{display:grid;grid-template-columns:1fr 1.7fr .8fr;gap:8px;min-height:230px}
+.pane{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 9px;position:relative;display:flex;flex-direction:column;gap:7px;min-width:0}
+.pane .ph{font-size:12px;font-weight:700;color:var(--text)}
+.src{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted)}
+.src .bar{flex:1;height:6px;border-radius:3px;background:var(--line)}
+.src .ck{flex:none;width:13px;height:13px;border-radius:3px;background:var(--c2);position:relative}
+.src .ck::after{content:"";position:absolute;left:4px;top:1px;width:3px;height:7px;border:solid var(--on-fill);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.pane.hot{outline:3px solid var(--c2);outline-offset:2px}
+.msg{height:7px;border-radius:4px;background:var(--line)}
+.msg.w1{width:90%}.msg.w2{width:70%}.msg.w3{width:80%}
+.chatbox{margin-top:auto;white-space:nowrap;overflow:hidden;display:flex;align-items:center;gap:6px;padding:7px 8px;border-radius:999px;border:2px solid var(--secondary);background:var(--surface);font-size:11px;color:var(--muted)}
+.chatbox .send{margin-left:auto;width:18px;height:18px;border-radius:50%;background:var(--secondary)}
+.studio{background:var(--surface-2);border-style:dashed}
+.studio .ph,.studio .msg{opacity:.5}
+.fold-ic{position:absolute;top:8px;right:8px;width:16px;height:16px;border:2px solid var(--text);border-radius:4px;box-sizing:border-box}
+.fold-ic::after{content:"";position:absolute;right:2px;top:2px;bottom:2px;width:2px;background:var(--text);border-radius:1px}
+.studio::after{content:"";position:absolute;top:2px;right:2px;width:28px;height:28px;border-radius:50%;border:2.5px solid var(--c3);animation:pulse 2.2s ease-in-out infinite}
+.fold-tip{position:absolute;top:36px;right:4px;font-size:10.5px;font-weight:700;white-space:nowrap;padding:2px 6px;border-radius:6px;background:var(--c3);color:var(--on-fill)}
+.hitem.note{background:color-mix(in srgb,var(--c3) 10%,var(--surface));border-color:color-mix(in srgb,var(--c3) 40%,var(--line))}
+.hitem.note .m{background:var(--c3)}
+.ic-fold{display:inline-block;vertical-align:-2px;width:14px;height:14px;border:2px solid currentColor;border-radius:3px;position:relative;box-sizing:border-box;margin:0 2px}
+.ic-fold::after{content:"";position:absolute;right:1px;top:1px;bottom:1px;width:2px;background:currentColor}
+.badge{position:absolute;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;font-size:14px;font-weight:900;
+  box-shadow:0 3px 8px rgba(0,0,0,.25);animation:pulse 2.2s ease-in-out infinite}
+.badge.heart{top:-12px;left:-10px;background:var(--surface);border:2px solid var(--c2)}
+.badges{position:absolute;right:6px;bottom:44px;display:flex;gap:5px}
+.badges .pick{align-self:center;white-space:nowrap;font-size:11px;font-weight:700;padding:1px 6px;border-radius:999px;background:var(--accent);color:#3b2f00}
+.badges .badge{position:static;width:24px;height:24px;font-size:12px;background:var(--primary);color:var(--on-fill)}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.hsteps{display:flex;flex-direction:column;gap:12px;min-width:0}
+.hitem{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.hitem .m{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:14px;background:var(--primary);color:var(--on-fill)}
+.hitem .m.heart{background:var(--surface);border:2px solid var(--c2)}
+.hitem b{display:block;color:var(--primary)}
+.hitem span{font-size:14.5px;color:var(--muted)}
+.opts{display:flex;flex-direction:column;gap:6px;padding:12px;border-radius:14px;border:2px dashed var(--secondary)}
+.opts-h{font-size:14.5px;font-weight:700;color:var(--secondary);padding:0 2px 4px}
+.opts-h strong{background:var(--accent);color:#3b2f00;padding:0 6px;border-radius:5px}
+.opts .hitem{background:var(--surface)}
+.opts .hitem .m{border-radius:8px}
+.or{align-self:center;font-size:13px;font-weight:700;color:var(--muted);letter-spacing:.1em}
+mark.hl{font-weight:700;color:#3b2f00;background:var(--accent);padding:1px 6px;border-radius:5px}
+.hsteps kbd{font-family:var(--mono);font-size:13px;padding:1px 6px;border-radius:5px;border:1px solid var(--line);border-bottom-width:2px;background:var(--surface);color:var(--text)}
+@media (max-width:820px){.howto{grid-template-columns:1fr}}
+@media (max-width:420px){.mock-body{grid-template-columns:.9fr 1.4fr .75fr}.pane{padding:8px 6px}.fold-tip{font-size:9.5px;padding:1px 4px}.studio .ph{visibility:hidden}.badges{right:4px;gap:3px}.badges .badge{width:20px;height:20px;font-size:11px}}
+
+footer{border-top:1px solid var(--line);background:var(--surface);padding-block:28px 32px;font-size:13.5px;color:var(--muted);line-height:1.75}
+footer .wrap{max-width:1080px}
+.statbar{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 28px;padding:14px 18px;margin-bottom:22px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line);font-size:15px;font-weight:700;color:var(--text)}
+.statbar[hidden]{display:none}
+.sb-item{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}
+.statbar a{color:var(--secondary);text-decoration:none}
+.statbar a:hover{text-decoration:underline}
+.statbar b{color:var(--c2);font-variant-numeric:tabular-nums;font-size:16px}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--c5);box-shadow:0 0 0 3px color-mix(in srgb,var(--c5) 25%,transparent);animation:pulse 2s ease-in-out infinite}
+.sb-copy{appearance:none;font:inherit;font-size:12px;font-weight:700;cursor:pointer;padding:2px 8px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--primary)}
+.theme-sw{margin-left:auto;flex:none;display:inline-flex;padding:4px;gap:4px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line)}
+.theme-sw button{appearance:none;border:0;font:inherit;font-size:14px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;background:transparent;color:var(--muted);transition:background .2s,color .2s}
+.theme-sw button:hover{color:var(--primary)}
+.theme-sw button[aria-pressed="true"]{background:var(--primary);color:var(--surface);box-shadow:0 2px 6px -2px rgba(0,0,0,.35)}
+@media (max-width:560px){.theme-sw .tl{display:none}.theme-sw button{padding:7px 10px}}
+.subtabs{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--hdr-h,150px));z-index:20;margin:30px 0 4px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:8px;border-radius:16px;background:color-mix(in srgb,var(--surface-2) 92%,transparent);backdrop-filter:blur(8px);border:1px solid var(--line)}
+.subtab{appearance:none;border:1.5px solid transparent;font:inherit;font-weight:700;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 8px;border-radius:12px;background:transparent;color:var(--muted);transition:background .2s,color .2s}
+.subtab:hover{color:var(--primary);background:var(--surface)}
+.subtab .sg{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-size:18px;background:var(--line)}
+.subtab[aria-selected="true"]{background:var(--surface);color:var(--primary);border-color:var(--primary);box-shadow:0 4px 12px -6px rgba(0,82,155,.45)}
+.subtab[aria-selected="true"] .sg{background:color-mix(in srgb,var(--primary) 18%,var(--surface));box-shadow:inset 0 0 0 2px var(--primary)}
+@keyframes iconBlink{0%,100%{transform:scale(1) rotate(0);box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 0%,transparent)}25%{transform:scale(1.18) rotate(-8deg)}50%{transform:scale(1) rotate(6deg);box-shadow:0 0 0 7px color-mix(in srgb,var(--accent) 45%,transparent)}75%{transform:scale(1.1) rotate(0)}}
+@keyframes iconGlow{0%,100%{filter:brightness(1);box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 0%,transparent)}50%{filter:brightness(1.25);box-shadow:0 0 0 6px color-mix(in srgb,var(--accent) 40%,transparent)}}
+.subtab .sg{animation:iconGlow 1.8s ease-in-out infinite}
+.subtab:nth-child(2) .sg{animation-delay:.3s}
+.subtab:nth-child(3) .sg{animation-delay:.6s}
+.subtab[aria-selected="true"] .sg{animation:iconBlink 1.6s ease-in-out infinite}
+.subtab:hover .sg{animation:iconBlink .9s ease-in-out infinite}
+.gnum.gicon{animation:iconBlink 2s ease-in-out infinite}
+@media (max-width:760px){.subtab{font-size:14px;gap:6px;padding:9px 4px}.subtab .sg{width:28px;height:28px;font-size:16px}}
+.subpanel[hidden]{display:none}
+.overview{margin-top:40px;padding:22px clamp(16px,3vw,26px);border-radius:18px;background:var(--surface-2);border:1px solid var(--line)}
+.overview .gsub.plain{margin:0 0 12px}
+.gico{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:var(--surface);border:1.5px solid var(--line)}
+.overview .tbl{background:var(--surface)}
+.subpanel > .gsub:first-child{margin-top:22px}
+.subpager{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:10px;margin-top:26px;padding-top:18px;border-top:1px dashed var(--line)}
+.subpager button{appearance:none;font:inherit;font-weight:700;font-size:14.5px;cursor:pointer;border-radius:10px;padding:9px 16px;border:1.5px solid var(--line);background:var(--surface);color:var(--primary)}
+.subpager button:hover{background:var(--surface-2)}
+.sp-l{font-size:14px;color:var(--muted);font-weight:700}
+.ft-h{font-weight:700;color:var(--primary);font-size:15px;margin-bottom:12px;letter-spacing:.04em}
+.ft-list{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 28px}
+@media (max-width:760px){.ft-list{grid-template-columns:1fr}}
+.ft-list > div{padding-left:12px;border-left:3px solid var(--line);min-width:0}
+.ft-list dt{font-weight:700;color:var(--text);font-size:13.5px}
+.ft-list dd{margin:2px 0 0}
+.ft-note{margin:18px 0 0;padding-top:14px;border-top:1px dashed var(--line);text-align:center}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ===== Type scale (unified hierarchy) ===== */
+:root{--fs-l1:clamp(23px,3vw,28px);--fs-l2:20px;--fs-l3:18px;--fs-l4:16.5px;--fs-lead:16.5px;--fs-body:15px;--fs-meta:13.5px;--fs-chip:13.5px}
+/* L1: tab title */
+.intro h2.big,.sec-title,.center-title h2{font-family:var(--sans);font-size:var(--fs-l1);font-weight:700;line-height:1.35;letter-spacing:.03em;color:var(--primary)}
+/* L2: section heading */
+.intro h3.sub,.gsub,.howto h3,.cite h3{font-size:var(--fs-l2);font-weight:700;color:var(--primary);letter-spacing:.02em}
+/* L3: block / banner title */
+.gf-t,.if-title b,.clue-h b,.ed-h b,.res-h b,.focus-tip b,.clue-tip b,.prompt-bar .label{font-size:var(--fs-l3);font-weight:700;letter-spacing:.02em}
+/* L4: card title */
+.why b,.rel b,.skill .hd,.plan b,.principles b,.mats b,.steps b,.cite-grid b,.hitem b,.way-h b,.ctx-h b,.st-h b,.mode-h b{font-size:var(--fs-l4);font-weight:700}
+.why b,.rel b,.skill .hd,.plan b,.principles b,.mats b,.steps b,.cite-grid b,.hitem b,.way-h b,.ctx-h b,.st-h b{color:var(--primary)}
+/* lead paragraphs */
+.intro .lede,.guide p.lead,.purpose,.center-title p,.mode-note{font-size:var(--fs-lead)}
+.intro .lede,.guide p.lead,.purpose,.center-title p{font-weight:400}
+.clue-tip p{font-size:var(--fs-body)}
+.ctx-all p{font-size:15.5px}
+/* body text in cards */
+.why p,.rel p,.skill p,.plan span,.principles p,.mats p,.steps span,.cite-grid p,.hitem span,.ctx-card p,.say,.out,.stage p,.ba,.helper .d,.credit,.sub-note,.res-out,.focus-tip p,.opts-h,.handoff,.ex{font-size:var(--fs-body)}
+.clue-line,.clue-sub li{font-size:15.5px}
+/* meta / subtitles under titles */
+.mode-h small,.st-h small,.ed-h small,.if-title small,.clue-h small,.why,.legend,.helper .t,.way .why{font-size:var(--fs-meta)}
+.clue-tip small{font-size:var(--fs-meta)}
+.goal small{font-size:13px}
+.intro h3.sub,.gsub{margin:36px 0 16px}
+.subpanel > .gsub:first-child{margin-top:22px}
+.overview .gsub.plain{margin:0 0 12px}
+/* chips */
+.chips li,.qtypes li,.skill .chips li{font-size:var(--fs-chip)}
+/* ===== 共備入口（新增） ===== */
+.fv{--fill:var(--secondary)}
+.hero{border-top:5px solid var(--accent)}
+.hero .lede{font-size:var(--fs-lead);color:var(--muted);margin:16px 0 0;max-width:820px}
+.hero .lede strong{color:var(--text)}
+.hero-tools{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 0;padding:0;list-style:none}
+.hero-tools li{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);font-weight:700;font-size:var(--fs-meta);color:var(--text)}
+.hero-tools li i{width:10px;height:10px;border-radius:50%;background:var(--fill);font-style:normal}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.hero-actions .btn{font-size:16px}
+.btn-soft{background:var(--surface-2);color:var(--primary);border:1.5px solid var(--line)}
+.btn-soft:hover{background:var(--surface);transform:translateY(-2px)}
+.sec-note{margin:10px 0 0;color:var(--muted);font-size:var(--fs-body)}
+
+.route{list-style:none;margin:24px 0 0;padding:0;display:grid;gap:14px;counter-reset:r}
+.route li{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:18px 20px;border-radius:16px;
+  border:1px solid var(--line);border-left:6px solid var(--fill);background:var(--surface);position:relative}
+.route li:not(:last-child)::after{content:"";position:absolute;left:41px;bottom:-15px;width:2px;height:14px;background:var(--line)}
+.route .rn{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--fill);color:#fff;font-weight:900;font-size:20px;box-shadow:0 6px 14px -6px var(--fill)}
+.route .rb b{display:block;color:var(--primary);font-size:var(--fs-l3)}
+.route .rb p{margin:4px 0 0;color:var(--muted);font-size:var(--fs-body)}
+.route .rb small{display:inline-block;margin-top:8px;padding:2px 10px;border-radius:999px;font-size:var(--fs-meta);font-weight:700;
+  color:var(--fill);border:1.5px solid color-mix(in srgb,var(--fill) 45%,transparent);background:color-mix(in srgb,var(--fill) 8%,transparent)}
+:root[data-theme="dark"] .route .rb small{color:var(--text)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .route .rb small{color:var(--text)}}
+.route .rgo{appearance:none;font:inherit;font-weight:700;cursor:pointer;border-radius:12px;padding:10px 16px;border:0;background:var(--fill);color:#fff;white-space:nowrap}
+.route .rgo:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.route .rgo.ghost{background:transparent;color:var(--primary);border:1.5px solid var(--line)}
+@media (max-width:640px){.route li{grid-template-columns:auto 1fr}.route .rgo{grid-column:1/-1;justify-self:start}.route li:not(:last-child)::after{display:none}}
+
+.who td:first-child{white-space:nowrap;font-weight:700}
+.who td:first-child span{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--fill);margin-right:8px}
+.callout{display:flex;gap:14px;align-items:flex-start;margin-top:18px;padding:16px 18px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}
+.callout .ci{font-size:22px;line-height:1.3}
+.callout b{color:var(--primary)}
+.callout p{margin:2px 0 0;color:var(--muted);font-size:var(--fs-body)}
+.callout .btn{margin-top:10px}
+
+/* 工具頁 */
+.tool{border-top:5px solid var(--fill)}
+.tool .sec-icon{background:color-mix(in srgb,var(--fill) 12%,var(--surface));border-color:color-mix(in srgb,var(--fill) 35%,var(--line))}
+.btn-open{background:var(--fill);color:#fff;text-decoration:none;box-shadow:0 8px 18px -8px var(--fill)}
+.btn-open:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.tool-head{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;justify-content:space-between}
+.tool-head > div{flex:1 1 380px;min-width:0}
+.chk{list-style:none;margin:20px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px}
+.chk > li{padding:18px;border-radius:14px;border:1px solid var(--line);background:var(--surface);min-width:0}
+.chk .ch{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.chk .ch .n{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:900;background:var(--accent);color:#3b2f00}
+.chk .ch b{color:var(--primary);font-size:var(--fs-l4)}
+.chk .where{display:inline-block;font-size:var(--fs-meta);font-weight:700;color:var(--muted);padding:1px 10px;border-radius:999px;background:var(--surface-2);border:1px solid var(--line);margin-bottom:8px}
+.chk label{display:flex;gap:10px;align-items:flex-start;padding:7px 8px;border-radius:10px;cursor:pointer;font-size:var(--fs-body)}
+.chk label:hover{background:var(--surface-2)}
+.chk input[type=checkbox]{flex:none;width:20px;height:20px;margin-top:3px;accent-color:var(--fill)}
+.chk input:checked + span{color:var(--muted);text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--fill) 60%,transparent)}
+.chk .plain{margin:0;padding:7px 8px;font-size:var(--fs-body);color:var(--muted)}
+.chk-done{margin:12px 0 0;font-weight:700;color:var(--c5);font-size:var(--fs-body)}
+.chk-done:empty{display:none}
+
+.duo{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px;margin-top:16px}
+.duo > div{padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--surface-2)}
+.duo .dh{display:flex;gap:10px;align-items:center;font-weight:700;color:var(--primary);font-size:var(--fs-l4)}
+.duo .dh em{font-style:normal;font-size:var(--fs-meta);color:var(--muted);font-weight:500}
+.duo .say{margin:12px 0 0;padding:10px 14px;border-radius:10px;background:var(--surface);border:1px dashed var(--line);font-size:var(--fs-body)}
+.duo .arr{display:block;margin:10px 0 0;color:var(--muted);font-size:var(--fs-body)}
+.duo .arr b{color:var(--text)}
+.tool h3.gsub{margin-top:30px}
+
+/* 提示詞產生器 */
+.gen{border-top:5px solid var(--accent)}
+.gen-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
+.gen-form .wide{grid-column:1/-1}
+@media (max-width:700px){.gen-form{grid-template-columns:1fr}}
+.fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fld > span{font-weight:700;color:var(--primary);font-size:var(--fs-body);display:flex;gap:8px;align-items:center}
+.fld > span em{font-style:normal;font-size:12px;font-weight:700;padding:1px 8px;border-radius:999px;background:var(--surface-2);color:var(--muted);border:1px solid var(--line)}
+.fld > span em.need{background:var(--accent);color:#3b2f00;border-color:transparent}
+.fld input,.fld select,.fld textarea,.gcard textarea{font:inherit;font-size:15.5px;color:var(--text);background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:10px 12px;width:100%}
+.fld input:focus,.fld select:focus,.fld textarea:focus,.gcard textarea:focus{outline:none;border-color:var(--secondary);box-shadow:0 0 0 3px color-mix(in srgb,var(--secondary) 20%,transparent)}
+.fld textarea{min-height:64px;resize:vertical}
+.gen-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.gcards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:8px}
+@media (max-width:1020px){.gcards{grid-template-columns:1fr}}
+.gcard{display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:18px;border:1px solid var(--line);border-top:5px solid var(--fill);background:var(--surface);box-shadow:var(--shadow);min-width:0}
+.gcard .gh{display:flex;align-items:center;gap:10px}
+.gcard .gh .rn{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--fill);color:#fff;font-weight:900}
+.gcard .gh b{color:var(--primary);font-size:var(--fs-l4);line-height:1.35}
+.gcard .opt{display:flex;flex-direction:column;gap:8px;padding:12px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.gcard .opt .ol{font-size:var(--fs-meta);font-weight:700;color:var(--muted)}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg label{cursor:pointer}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:inline-block;padding:6px 12px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);font-size:14px;font-weight:700;color:var(--muted)}
+.seg input:checked + span{background:var(--fill);border-color:var(--fill);color:#fff}
+.seg input:focus-visible + span{outline:3px solid var(--accent);outline-offset:2px}
+.gcard .opt input[type=text],.gcard .opt select,.gcard .opt textarea{font:inherit;font-size:15px;color:var(--text);background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:8px 10px;width:100%}
+.gcard .opt textarea{min-height:60px;resize:vertical}
+.gcard .src-tip{font-size:var(--fs-meta);color:var(--muted);margin:0}
+.gcard .src-tip b{color:var(--text)}
+.gcard textarea.out-p{font-family:var(--mono);font-size:14px;line-height:1.75;min-height:220px;background:var(--code-bg);color:var(--code-text);resize:vertical;flex:1}
+.gcard .gact{display:flex;flex-wrap:wrap;gap:8px}
+.gcard .gact .btn{padding:10px 14px;font-size:15px}
+.gcard .btn-copy{background:var(--fill);box-shadow:none}
+.gen-note{margin:16px 0 0;font-size:var(--fs-meta);color:var(--muted)}
+.tab{font-size:14.5px;padding:10px 11px 12px}
+.tabs{gap:2px}
+.plan.five{grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr))}
+@media (max-width:640px){
+  .who table,.who tbody,.who tr,.who td{display:block}
+  .who thead{display:none}
+  .who tr{padding:12px 14px;border-top:1px solid var(--line)}
+  .who tr:first-child{border-top:0}
+  .who td{border:0;padding:4px 0}
+  .who td:first-child{font-size:var(--fs-l4);color:var(--primary)}
+  .who td[data-l]::before{content:attr(data-l);display:block;font-size:var(--fs-meta);font-weight:700;color:var(--muted)}
+  .who tr:hover td{background:none}
+}
+.gcard .gact a.btn{text-decoration:none}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap top">
+    <div class="mark" aria-hidden="true">數</div>
+    <div>
+      <h1>國小數學提問共備入口</h1>
+      <p>有效提問 × 概念為本探究 × 八大思考素養｜AI 小幫手陪你共備</p>
+    </div>
+    <div class="theme-sw" role="group" aria-label="背景顏色">
+      <button type="button" data-theme-set="light" aria-pressed="false"><span aria-hidden="true">☀️</span><span class="tl">淡色</span></button>
+      <button type="button" data-theme-set="dark" aria-pressed="false"><span aria-hidden="true">🌙</span><span class="tl">深色</span></button>
+    </div>
+  </div>
+  <div class="wrap">
+    <nav class="tabs" role="tablist" aria-label="頁面分頁">
+      <button class="tab" role="tab" id="t-home" aria-controls="p-home" data-tab="home" type="button">🏠 共備路線</button>
+      <button class="tab" role="tab" id="t-gen" aria-controls="p-gen" data-tab="gen" type="button">✍️ 提示詞產生器</button>
+      <button class="tab" role="tab" id="t-vlm" aria-controls="p-vlm" data-tab="vlm" type="button">① 素材轉譯</button>
+      <button class="tab" role="tab" id="t-ask" aria-controls="p-ask" data-tab="ask" type="button">② 有效提問</button>
+      <button class="tab" role="tab" id="t-inq" aria-controls="p-inq" data-tab="inq" type="button">③ 探究策略</button>
+      <button class="tab" role="tab" id="t-intro" aria-controls="p-intro" data-tab="intro" type="button">④ 素養・引言</button>
+      <button class="tab" role="tab" id="t-guide" aria-controls="p-guide" data-tab="guide" type="button">④ 素養・說明</button>
+      <button class="tab" role="tab" id="t-helpers" aria-controls="p-helpers" data-tab="helpers" type="button">④ 素養・小幫手</button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="panel" id="p-home" role="tabpanel" aria-labelledby="t-home">
+  <!-- 共備路線（首頁） -->
+  <section class="card hero" aria-labelledby="home-title">
+    <div class="eyebrow">共備入口 · Math Questioning Co-planning</div>
+    <h2 class="sec-title" id="home-title"><span class="sec-icon">🗺️</span>一個入口，三種 AI 小幫手，陪你把數學課的提問想得更深</h2>
+    <p class="lede">這個入口整合 <strong>有效提問</strong>、<strong>概念為本探究教學策略</strong> 與 <strong>八大思考素養</strong> 三種 AI 小幫手，以及把課本、教案轉成文字的 <strong>VLM 轉譯工具</strong>。依照下面的共備路線，從準備素材、設計提問、規劃探究，到深化思考素養，一步一步完成國小數學單元的提問設計。個人備課或社群共備都適用。</p>
+    <ul class="hero-tools" aria-label="整合的工具">
+      <li class="fv"><i></i>VLM 轉譯工具</li>
+      <li class="f6"><i></i>有效提問小幫手</li>
+      <li class="f8"><i></i>概念為本探究教學策略小幫手</li>
+      <li class="f3"><i></i>八大思考素養小幫手</li>
+    </ul>
+    <div class="hero-actions">
+      <button type="button" class="btn btn-copy" data-go="gen">✍️ 先填備課資料，一次產生提示詞</button>
+      <button type="button" class="btn btn-soft" data-go="vlm">從 ① 準備素材開始 →</button>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="route-title">
+    <div class="eyebrow">共備路線 · 5 Steps</div>
+    <h2 class="sec-title" id="route-title"><span class="sec-icon">🧭</span>五個步驟，從素材走到課堂</h2>
+    <p class="sec-note">不一定每一步都要走：可以從任何一步進入，也可以只用其中一種小幫手。</p>
+    <ol class="route">
+      <li class="fv"><span class="rn">1</span><div class="rb"><b>🧩 準備素材</b><p>把課本、習作、教案或學生作答拍照或截圖，轉成乾淨的 md 文字，方便貼進小幫手。</p><small>VLM 轉譯工具</small></div><button type="button" class="rgo" data-go="vlm">前往 ① →</button></li>
+      <li class="f6"><span class="rn">2</span><div class="rb"><b>❓ 設計好提問</b><p>輸入單元主題或概念，得到四個層次的提問；輸入一個問題，看看四位不同利害關係人會怎麼回答。</p><small>有效提問 AI 小幫手</small></div><button type="button" class="rgo" data-go="ask">前往 ② →</button></li>
+      <li class="f8"><span class="rn">3</span><div class="rb"><b>🔍 規劃探究策略</b><p>依年級、領域和學生特色，找出適合的概念為本探究教學策略，安排學生探究概念的歷程。</p><small>概念為本探究教學策略小幫手</small></div><button type="button" class="rgo" data-go="inq">前往 ③ →</button></li>
+      <li class="f3"><span class="rn">4</span><div class="rb"><b>🌱 深化思考素養</b><p>挑 1～2 項思考素養，用三個階段把提問與任務做得更細，也更貼近自己的班級。</p><small>八大思考素養小幫手</small></div><button type="button" class="rgo" data-go="intro">前往 ④ →</button></li>
+      <li class="f5"><span class="rn">5</span><div class="rb"><b>🤝 社群共備、回到課堂</b><p>一起觀課或看教學影片，討論設計中可刪、可改、可補、可接之處；實際試教後，再帶著課堂觀察回來和小幫手對話。</p><small>教師社群</small></div><button type="button" class="rgo ghost" data-go="gen">✍️ 提示詞產生器</button></li>
+    </ol>
+  </section>
+
+  <section class="card" aria-labelledby="who-title">
+    <div class="eyebrow">怎麼分工 · Which Helper</div>
+    <h2 class="sec-title" id="who-title"><span class="sec-icon">🤖</span>三種小幫手，各自擅長什麼</h2>
+    <div class="tbl who" style="margin-top:20px">
+      <table>
+        <thead><tr><th>小幫手</th><th>什麼時候用</th><th>你要輸入</th><th>你會得到</th></tr></thead>
+        <tbody>
+          <tr class="f6"><td><span></span>② 有效提問</td><td data-l="什麼時候用">想替一個概念設計有層次的提問；或想看一個問題能從哪些角度回答</td><td data-l="你要輸入">科目、學生年級、想探究的主題或概念（或直接輸入一個問題）</td><td data-l="你會得到">🅰️ 主題或概念 → 四個層次的提問<br>🅱️ 問題 → 先回答，再模擬四位利害關係人的觀點與回答</td></tr>
+          <tr class="f8"><td><span></span>③ 概念為本探究</td><td data-l="什麼時候用">想讓學生透過探究理解概念，需要可用的教學策略</td><td data-l="你要輸入">學生年級、探究的領域／科目、學生特色</td><td data-l="你會得到">適合這個單元與學生的概念為本探究策略建議</td></tr>
+          <tr class="f3"><td><span></span>④ 八大思考素養</td><td data-l="什麼時候用">想朝某項思考素養設計提問、任務與評量</td><td data-l="你要輸入">年級、單元、學生特性、特定方向；再加上一個問題、一段意見或一份教材</td><td data-l="你會得到">三個階段的提問靈感與步驟化建議，每段回覆都附「下一步提示詞」</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <span class="ci">❤️</span>
+      <div><b>三種小幫手都在 NotebookLM 上，用法一樣：先勾選左側「來源」，再到中間對話區輸入。</b>
+      <p>AI 不認識你的學生。哪些提問適合這個班、要怎麼依學生程度調整，判斷權始終留在老師手上。</p>
+      <button type="button" class="btn btn-ghost" data-go="gen">✍️ 用提示詞產生器，一次備好三種開場輸入</button></div>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="demo-title">
+    <div class="eyebrow">走一遍 · Example</div>
+    <h2 class="sec-title" id="demo-title"><span class="sec-icon">📒</span>以五年級「分數的加減」為例</h2>
+    <ol class="plan five" style="margin-top:20px">
+      <li><span class="n">1</span><div><b>準備素材</b><span>拍下課本頁面，用 VLM 轉譯提示詞轉成 md。</span></div></li>
+      <li><span class="n">2</span><div><b>設計好提問</b><span>對有效提問小幫手輸入「數學、國小五年級、異分母分數的加減」，從四個層次的提問中挑出 2～3 題。</span></div></li>
+      <li><span class="n">3</span><div><b>規劃探究</b><span>對探究策略小幫手輸入「國小五年級、數學、通分概念不穩固、喜歡動手操作」，選一個策略安排活動。</span></div></li>
+      <li><span class="n">4</span><div><b>深化素養</b><span>把挑好的提問貼給「研究與探究」小幫手，往「提想法、做試驗、下結論」發展。</span></div></li>
+      <li><span class="n">5</span><div><b>回到課堂</b><span>社群一起看設計、觀課，討論可刪、可改、可補、可接之處，再修一次。</span></div></li>
+    </ol>
+  </section>
+    <nav class="pager"><button type="button" class="next" data-go="gen">下一頁：✍️ 提示詞產生器 →</button></nav>
+  </div>
+
+  <div class="panel" id="p-gen" role="tabpanel" aria-labelledby="t-gen">
+  <!-- 提示詞產生器 -->
+  <section class="card gen" aria-labelledby="gen-title">
+    <div class="eyebrow">提示詞產生器 · Prompt Builder</div>
+    <h2 class="sec-title" id="gen-title"><span class="sec-icon">✍️</span>填一次備課資料，三種小幫手的開場輸入一次備好</h2>
+    <p class="sec-note">資料只在你的瀏覽器裡組成文字，不會上傳到任何地方。產生後請先檢視、修改，再貼到小幫手的對話框。</p>
+    <form class="gen-form" id="gen-form" autocomplete="off" onsubmit="return false">
+      <label class="fld"><span>👩‍🎓 學生年級 <em class="need">必填</em></span>
+        <select id="g-grade">
+          <option>國小一年級</option><option>國小二年級</option><option>國小三年級</option>
+          <option>國小四年級</option><option selected>國小五年級</option><option>國小六年級</option>
+        </select></label>
+      <label class="fld"><span>📘 科目／領域 <em class="need">必填</em></span><input id="g-subj" type="text" value="數學"></label>
+      <label class="fld wide"><span>📝 單元、主題或概念 <em class="need">必填</em></span><input id="g-unit" type="text" placeholder="例：分數的加減"></label>
+      <label class="fld"><span>🌱 學生特色 <em>選填</em></span><textarea id="g-trait" placeholder="例：通分概念不穩固，喜歡動手操作"></textarea></label>
+      <label class="fld"><span>🎯 特定方向 <em>選填</em></span><textarea id="g-dir" placeholder="例：多用生活情境題，加入小組討論提問"></textarea></label>
+    </form>
+    <div class="gen-actions">
+      <button type="button" class="btn btn-ghost" id="g-sample">📋 填入範例</button>
+      <button type="button" class="btn btn-ghost" id="g-clear">🧹 清除</button>
+    </div>
+  </section>
+
+  <div class="gcards" aria-live="polite">
+    <div class="gcard f6">
+      <div class="gh"><span class="rn">2</span><b>有效提問 AI 小幫手</b></div>
+      <div class="opt" role="group" aria-label="輸入類型">
+        <span class="ol">你要輸入的類型</span>
+        <div class="seg">
+          <label><input type="radio" name="g-askt" value="A" checked><span>🅰️ 主題或概念</span></label>
+          <label><input type="radio" name="g-askt" value="B"><span>🅱️ 問題</span></label>
+        </div>
+        <input type="text" id="g-askq" placeholder="例：異分母分數加法，為什麼一定要先通分？" hidden aria-label="你的問題">
+      </div>
+      <p class="src-tip">先勾選來源：<b>您要備課的單元</b>、<b>🔴數學提問知識庫</b></p>
+      <textarea class="out-p" id="o-ask" aria-label="有效提問小幫手的提示詞"></textarea>
+      <div class="gact"><button type="button" class="btn btn-copy" data-copy="o-ask">複製</button><a class="btn btn-ghost" href="https://notebook.google.com/notebook/6a68de13-1286-40a3-99a9-56ffe67b7eda" target="_blank" rel="noopener">開啟小幫手 ↗</a></div>
+    </div>
+
+    <div class="gcard f8">
+      <div class="gh"><span class="rn">3</span><b>概念為本探究教學策略小幫手</b></div>
+      <div class="opt"><span class="ol">小幫手會依年級、領域和學生特色，建議概念為本的探究策略。學生特色寫得越具體，建議越貼近班級。</span></div>
+      <p class="src-tip">先勾選來源：<b>策略55的說明</b>、<b>策略概述.pptx</b>、<b>您要備課的單元</b></p>
+      <textarea class="out-p" id="o-inq" aria-label="概念為本探究教學策略小幫手的提示詞"></textarea>
+      <div class="gact"><button type="button" class="btn btn-copy" data-copy="o-inq">複製</button><a class="btn btn-ghost" href="https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e" target="_blank" rel="noopener">開啟小幫手 ↗</a></div>
+    </div>
+
+    <div class="gcard f3">
+      <div class="gh"><span class="rn">4</span><b>八大思考素養小幫手</b></div>
+      <div class="opt">
+        <label class="ol" for="g-skill">選擇思考素養</label>
+        <select id="g-skill">
+          <option value="https://notebook.google.com/notebook/2fd7d20a-ca0c-4f11-8e36-6b0dfa325dec">🔍 批判性思考</option>
+          <option value="https://notebook.google.com/notebook/383b9153-71fa-41ff-8f28-9260fbddd1f8">💡 創造力</option>
+          <option value="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" selected>🔬 研究與探究</option>
+          <option value="https://notebook.google.com/notebook/4548f6b1-6681-4281-8e8d-4f2b8308f9de">🧭 系統性思維</option>
+          <option value="https://notebook.google.com/notebook/af062042-58d7-4944-bcf0-1dfa4ee52266">🪞 反思</option>
+        </select>
+        <span class="ol">輸入方式（任選）</span>
+        <div class="seg">
+          <label><input type="radio" name="g-skm" value="q" checked><span>1 問題</span></label>
+          <label><input type="radio" name="g-skm" value="s"><span>2 直述意見</span></label>
+          <label><input type="radio" name="g-skm" value="m"><span>3 貼上資料</span></label>
+        </div>
+        <textarea id="g-skc" aria-label="問題、意見或資料內容" placeholder="例：異分母分數加法，為什麼一定要先通分？"></textarea>
+      </div>
+      <p class="src-tip">先勾選來源：<b>來源區資料至少 1 項</b></p>
+      <textarea class="out-p" id="o-skill" aria-label="思考素養小幫手的提示詞"></textarea>
+      <div class="gact"><button type="button" class="btn btn-copy" data-copy="o-skill">複製</button><a class="btn btn-ghost" id="g-skill-go" href="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" target="_blank" rel="noopener">開啟小幫手 ↗</a></div>
+    </div>
+  </div>
+  <p class="gen-note">💡 修改上方的備課資料，下面三段提示詞會重新產生；在框內直接修改的文字，複製時也會一起帶走。【 】表示還沒填寫的地方。</p>
+    <nav class="pager"><button type="button" data-go="home">← 🏠 共備路線</button><button type="button" class="next" data-go="vlm">下一頁：① 素材轉譯 →</button></nav>
+  </div>
+
+  <div class="panel" id="p-ask" role="tabpanel" aria-labelledby="t-ask">
+  <!-- 有效提問 -->
+  <section class="card tool f6" aria-labelledby="ask-title">
+    <div class="tool-head">
+      <div>
+        <div class="eyebrow">② 設計好提問 · Good Questioner</div>
+        <h2 class="sec-title" id="ask-title"><span class="sec-icon">❓</span>有效提問 AI 小幫手</h2>
+        <p class="credit">由 <strong>臺師大教創中心陳佩英教授</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
+      </div>
+      <a class="btn btn-open" href="https://notebook.google.com/notebook/6a68de13-1286-40a3-99a9-56ffe67b7eda" target="_blank" rel="noopener">開啟有效提問小幫手 ↗</a>
+    </div>
+    <p class="purpose">🎯 輸入<b>主題或概念</b>，小幫手設計<b>四個層次的提問</b>；輸入<b>一個問題</b>，小幫手先回答，再模擬<b>四位不同利害關係人</b>的觀點與回答。</p>
+
+    <h3 class="gsub">三個步驟（可以邊做邊勾）</h3>
+    <ol class="chk" data-chk>
+      <li><div class="ch"><span class="n">1</span><b>選擇備課單元</b></div><span class="where">左側「來源」區</span>
+        <label><input type="checkbox"><span>✅ 勾選您要備課的單元</span></label></li>
+      <li><div class="ch"><span class="n">2</span><b>勾選知識庫</b></div><span class="where">左側「來源」區</span>
+        <label><input type="checkbox"><span>✅ 勾選 🔴數學提問知識庫</span></label></li>
+      <li><div class="ch"><span class="n">3</span><b>說明需求</b></div><span class="where">中間「人機互動」區</span>
+        <label><input type="checkbox"><span>輸入科目、學生年級，以及想探究的主題或概念</span></label></li>
+    </ol>
+    <p class="chk-done" role="status"></p>
+
+    <h3 class="gsub">兩種輸入，兩種回應</h3>
+    <div class="duo">
+      <div><div class="dh">🅰️ 主題或概念</div>
+        <p class="say">數學，國小五年級，想探究「異分母分數的加減」。</p>
+        <span class="arr">➡️ 小幫手會根據內容<b>設計四個層次的提問</b>。</span></div>
+      <div><div class="dh">🅱️ 問題</div>
+        <p class="say">異分母分數加法，為什麼一定要先通分？</p>
+        <span class="arr">➡️ 小幫手會<b>先回答問題</b>，再<b>模擬四位不同利害關係人</b>的觀點與回答。</span></div>
+    </div>
+    <div class="callout">
+      <span class="ci">✍️</span>
+      <div><b>不想自己組句子？</b><p>在提示詞產生器填一次年級、單元和學生特色，就能複製兩種類型的輸入。</p>
+      <button type="button" class="btn btn-ghost" data-go="gen">前往提示詞產生器</button></div>
+    </div>
+    <div class="callout">
+      <span class="ci">➡️</span>
+      <div><b>挑好提問之後</b><p>帶到 ③ 規劃探究策略，安排學生探究的活動；或貼給 ④ 思考素養小幫手，往特定素養發展得更深。</p></div>
+    </div>
+  </section>
+  <section class="cite" aria-labelledby="ask-cite">
+    <h3 id="ask-cite"><span>😄</span>公開介紹本機器人或發表使用成果時，請註明來源。</h3>
+    <div class="cite-grid">
+      <div><div class="eyebrow">Reference</div><b>📌 引用來源</b><p>臺師大教創中心與優履團隊設計 AI 機器人小幫手 good questioner</p></div>
+      <div><div class="eyebrow">Educational</div><b>🌸 教育使用</b><p>本機器人由熱忱教育的教師團隊開發，免費提供教育使用者使用。</p></div>
+      <div><div class="eyebrow">Copyright</div><b>🤝 智慧財產</b><p>請共同維護創作者的智慧財產。</p></div>
+    </div>
+  </section>
+    <nav class="pager"><button type="button" data-go="vlm">← ① 素材轉譯</button><button type="button" class="next" data-go="inq">下一頁：③ 探究策略 →</button></nav>
+  </div>
+
+  <div class="panel" id="p-inq" role="tabpanel" aria-labelledby="t-inq">
+  <!-- 概念為本探究教學策略 -->
+  <section class="card tool f8" aria-labelledby="inq-title">
+    <div class="tool-head">
+      <div>
+        <div class="eyebrow">③ 規劃探究策略 · Inquiry Strategy</div>
+        <h2 class="sec-title" id="inq-title"><span class="sec-icon">🔍</span>概念為本探究教學策略小幫手</h2>
+        <p class="credit">由 <strong>臺師大教創中心陳佩英教授</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
+      </div>
+      <a class="btn btn-open" href="https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e" target="_blank" rel="noopener">開啟探究策略小幫手 ↗</a>
+    </div>
+    <p class="purpose">🎯 告訴小幫手<b>學生年級</b>、<b>探究的領域／科目</b>和<b>學生特色</b>，它會建議適合的<b>概念為本探究教學策略</b>，幫你安排學生探究概念的歷程。</p>
+
+    <h3 class="gsub">三個步驟（可以邊做邊勾）</h3>
+    <ol class="chk" data-chk>
+      <li><div class="ch"><span class="n">1</span><b>勾選來源</b></div><span class="where">左側「來源」</span>
+        <label><input type="checkbox"><span>✅ 勾選「策略55的說明」</span></label>
+        <label><input type="checkbox"><span>✅ 勾選「策略概述.pptx」</span></label>
+        <label><input type="checkbox"><span>✅ 勾選您要備課的單元</span></label></li>
+      <li><div class="ch"><span class="n">2</span><b>輸入需求</b></div><span class="where">中間互動區下方</span>
+        <label><input type="checkbox"><span>輸入學生年級</span></label>
+        <label><input type="checkbox"><span>輸入探究的領域／科目</span></label>
+        <label><input type="checkbox"><span>輸入學生特色</span></label></li>
+      <li><div class="ch"><span class="n">3</span><b>取得建議</b></div><span class="where">中間互動區</span>
+        <label><input type="checkbox"><span>查看概念為本探究策略</span></label></li>
+    </ol>
+    <p class="chk-done" role="status"></p>
+
+    <h3 class="gsub">可以這樣輸入</h3>
+    <div class="duo">
+      <div><div class="dh">✍️ 輸入範例</div>
+        <p class="say">學生年級：國小五年級<br>探究的領域／科目：數學（單元：分數的加減）<br>學生特色：通分概念不穩固，喜歡動手操作</p>
+        <span class="arr">➡️ 小幫手會依這些條件，<b>建議概念為本的探究策略</b>。</span></div>
+      <div><div class="dh">💡 讓建議更貼近班級</div>
+        <p class="say">學生特色寫得越具體越好，例如先備能力、常見迷思、喜歡的學習方式、分組情況。</p>
+        <span class="arr">➡️ 也可以先在 ② 挑好提問，再請小幫手<b>用策略把提問串成探究活動</b>。</span></div>
+    </div>
+    <div class="callout">
+      <span class="ci">✍️</span>
+      <div><b>不想自己組句子？</b><p>在提示詞產生器填一次備課資料，就能直接複製給這個小幫手的輸入。</p>
+      <button type="button" class="btn btn-ghost" data-go="gen">前往提示詞產生器</button></div>
+    </div>
+  </section>
+  <section class="cite" aria-labelledby="inq-cite">
+    <h3 id="inq-cite"><span>😄</span>公開介紹或發表成果時，請註明下方引用來源。</h3>
+    <div class="cite-grid">
+      <div><div class="eyebrow">Reference</div><b>📌 引用來源</b><p>臺師大教創中心與優履設計 AI 機器人小幫手 inquiry Strategy</p></div>
+      <div><div class="eyebrow">Educational</div><b>🌸🤖 教育使用</b><p>教師團隊開發，免費提供教育使用者使用。</p></div>
+      <div><div class="eyebrow">Copyright</div><b>🤝 智慧財產</b><p>請一起維護創作者的智慧財產。</p></div>
+    </div>
+  </section>
+    <nav class="pager"><button type="button" data-go="ask">← ② 有效提問</button><button type="button" class="next" data-go="intro">下一頁：④ 素養・引言 →</button></nav>
+  </div>
+
+
+
+  <div class="panel" id="p-intro" role="tabpanel" aria-labelledby="t-intro">
+  <!-- 引言 -->
+  <section class="card intro" aria-labelledby="intro-title">
+    <div class="eyebrow">④ 深化思考素養 · 引言 · 21st Century Skills</div>
+    <h2 class="big" id="intro-title">以 21 世紀八大思考素養，帶動數學單元備課</h2>
+    <p class="lede">數學領域中央輔導團與「就是要學好數學（JDM）」計畫，將 <strong>21 世紀技能</strong>定調為數學素養教學與評量的指標。這個網頁協助國中小數學老師在單元或主題備課時，朝八大思考素養的方向設計提問、任務與評量，並借助 AI 小幫手提供的靈感，讓個人或共備社群持續精進。</p>
+
+    <h3 class="sub">為什麼是八大思考素養</h3>
+    <div class="why">
+      <div><b>🇹🇼 臺灣公民的核心素養</b><p>科技研發需要研究與探究、創造力、系統性思維、資訊使用與自主堅毅；自由民主社會需要理性溝通、批判性思考與反思。</p></div>
+      <div><b>🌐 PISA 2022 的評量指標</b><p>PISA 2022 主測數學素養，評量設計就以 21 世紀技能為指標，有成熟的評量方法論可以參考。</p></div>
+      <div><b>📘 完備 108 課綱「五觀、六標」</b><p>能帶出課綱倡導的素養教學，還補上課綱沒有明示的<strong>創造力</strong>與<strong>反思</strong>。</p></div>
+    </div>
+
+    <h3 class="sub">和數學老師的關係</h3>
+    <div class="rel">
+      <div>
+        <b>「五觀、六標」的素養教學啟示</b>
+        <ul class="chips"><li>引導數學語言的演化</li><li>認同探究式學習</li><li>跨領域問題解決為本的統整教學</li><li>隱性提倡反思的學習歷程</li><li>重視情意</li></ul>
+        <p>數學是日常生活、學習其他領域，以及思考問題的工具。素養就是「以數學觀點看世界，與世界互動」。</p>
+      </div>
+      <div>
+        <b>JDM 進階奠基式素養教學原則</b>
+        <ul class="chips"><li>激發思考</li><li>診斷學習</li><li>情緒分享</li><li>語言演化</li></ul>
+        <p>關鍵策略是<strong>精進教師的提問</strong>（遠近 × 閉開的 2×2 提問架構），用最少的調整，更有效地促進學生的素養表現。</p>
+      </div>
+    </div>
+
+    <h3 class="sub">八大思考素養與思考技能元素</h3>
+    <div class="skills">
+      <div class="skill f2"><div class="hd">🔍 批判性思考</div><div class="by">楊凱琳 教授</div><p>在情境中形成數學問題、運用知識與詮釋結果時，察覺、說理並判斷數學資訊的邏輯性與有效性。</p><ul class="chips"><li>察覺矛盾</li><li>說理反駁</li><li>判斷有效性</li></ul></div>
+      <div class="skill f3"><div class="hd">💡 創造力</div><div class="by">謝豐瑞 教授</div><p>產生新數學思考、過程、結果的能力，例如新解法、新定義。「新」是針對學生個人而言。</p><ul class="chips"><li>流暢性</li><li>變通性</li><li>獨創性</li></ul></div>
+      <div class="skill f5"><div class="hd">🔬 研究與探究</div><div class="by">陳建誠 教授</div><p>形成問題與解決問題的歷程，也是追求知識的歷程：提出臆測、找正例反例，再用數學證據說服他人。</p><ul class="chips"><li>提想法</li><li>做試驗</li><li>下結論</li></ul></div>
+      <div class="skill f7"><div class="hd">🧗 自主與堅持</div><div class="by">鄭英豪 教授、許慧玉 教授</div><p>自己做決定、主動採取行動，遇到困難時能調整做法並持續下去。</p><ul class="chips"><li>自主導向</li><li>自動自發</li><li>堅持不懈</li></ul></div>
+      <div class="skill f6"><div class="hd">💻 資訊使用</div><div class="by">左台益 教授（科技融入數學學習）</div><p>善用科技工具的計算、儲存與表徵功能，把它當成數學學習的認知工具。</p><ul class="chips"><li>模擬操作</li><li>探究實驗</li><li>反思溝通</li></ul></div>
+      <div class="skill f1"><div class="hd">🧭 系統性思維</div><div class="by">王婷瑩 教授</div><p>以任務目標為導向，辨識元素與元素間的關係，再整合成一個整體。</p><ul class="chips"><li>找元素</li><li>找關係</li><li>建系統</li></ul></div>
+      <div class="skill f8"><div class="hd">💬 溝通</div><div class="by">謝佳叡 教授</div><p>聚焦「想法」的理解與表達：說出想法、受他人啟發而調整，最後統整形成共識。</p><ul class="chips"><li>表徵想法</li><li>調適想法</li><li>統整想法</li></ul></div>
+      <div class="skill f4"><div class="hd">🪞 反思</div><div class="by">李源順 教授</div><p>見證並評估自己的認知、情感與行為歷程，可用「你有想過……嗎？」來引發。</p><ul class="chips"><li>事件描述</li><li>詮釋了解</li><li>批判評鑑</li></ul></div>
+    </div>
+
+    <h3 class="sub">備課方向：個人與社群怎麼做</h3>
+    <ol class="plan">
+      <li><span class="n">1</span><div><b>定目標</b><span>確認單元學習目標與子目標，分析現行教材與可能的教學進路。</span></div></li>
+      <li><span class="n">2</span><div><b>選素養</b><span>挑 1～2 項最適合本單元的思考素養，對照它的元素安排學習機會。</span></div></li>
+      <li><span class="n">3</span><div><b>精進提問</b><span>請小幫手發想能引出素養表現的提問、任務與課堂形成性評量。</span></div></li>
+      <li><span class="n">4</span><div><b>社群共備</b><span>一起觀課或看教學影片，討論可刪、可改、可補、可接之處，再帶回自己的課堂。</span></div></li>
+    </ol>
+    <p class="goal">讓學生「有趣，有感，有自己想法，有機會表達，遇到問題習慣用數學角度去看，用數學跟世界互動」。<small>—— 林福來〈二十一世紀技能：數學素養教學與評量的指標〉</small></p>
+  </section>
+    <nav class="pager"><button type="button" data-go="inq">← ③ 探究策略</button><button type="button" class="next" data-go="guide">下一頁：④ 素養・說明 →</button></nav>
+  </div>
+
+  <div class="panel" id="p-guide" role="tabpanel" aria-labelledby="t-guide">
+  <!-- 使用說明 -->
+  <section class="card guide" aria-labelledby="guide-title">
+    <div class="eyebrow">④ 深化思考素養 · 使用說明</div>
+    <h2 class="sec-title" id="guide-title"><span class="sec-icon">📚</span>小幫手不給標準答案，給你下一步的線索</h2>
+    <details class="gfold" open>
+      <summary><span class="gf-t">🧭 小幫手的陪伴方式與三個原則</span><span class="fold-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+      <div class="gf-body">
+    <p class="lead">每位小幫手聚焦一項思考素養（目前開放 5 項，另外 3 項整理中）。你輸入不同的素材、用不同的方式提問，它會依你所在的階段，<strong>一步一步提供線索</strong>，並把「下一步要問什麼」交回你手上。你負責評估與選擇，思考留在自己腦中，<strong>不會大腦外包</strong>。</p>
+    <div class="principles">
+      <div><span class="pi">🚫</span><b>不直接給答案</b><p>不給現成答案，改用<mark class="hl">波利亞解題策略、提問引導、拆解步驟</mark>，陪你把問題想清楚。</p></div>
+      <div><span class="pi">🧭</span><b>每段回覆都附「下一步提示詞」</b><p>小幫手依你前面的選擇，先幫你填好提示詞裡的【某】，你<mark class="hl">檢視修改後再送出</mark>，一步一步往下想。</p></div>
+      <div><span class="pi">✅</span><b>老師評估與選擇，專業做主</b><p>大量提問靈感任你挑選，<mark class="hl">減輕設計提問的壓力</mark>。但 AI 不認識你的學生：哪些提問適合這個班、怎麼依<mark class="hl">學生的程度與學習差異</mark>調整，仍要靠<mark class="hl">老師的專業判斷</mark>。判斷權始終留在老師手上。</p></div>
+    </div>
+      </div>
+    </details>
+
+    <div class="subtabs" role="tablist" aria-label="使用說明分段">
+      <button type="button" role="tab" class="subtab" id="st-s1" aria-controls="sp-s1" data-sub="s1"><span class="sg" aria-hidden="true">📥</span>輸入素材</button>
+      <button type="button" role="tab" class="subtab" id="st-s2" aria-controls="sp-s2" data-sub="s2"><span class="sg" aria-hidden="true">🔀</span>輸入方式</button>
+      <button type="button" role="tab" class="subtab" id="st-s3" aria-controls="sp-s3" data-sub="s3"><span class="sg" aria-hidden="true">🪜</span>三個階段</button>
+    </div>
+    <div class="subpanel" id="sp-s1" role="tabpanel" aria-labelledby="st-s1">
+    <h3 class="gsub"><span class="gnum gicon" aria-hidden="true">📥</span>你可以輸入的素材<button type="button" class="zoom-btn inline" data-zoom="mats" aria-label="放大「你可以輸入的素材」" title="放大內容"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M10.5 7.5v6M7.5 10.5h6"/></svg></button></h3>
+    <div id="z-mats">
+      <div class="focus-scale" aria-hidden="true"><span>🎯 範圍小・回答聚焦深入</span><i></i><span>範圍大・回答容易分散 🌫️</span></div>
+      <div class="mats">
+        <div><span>💭</span><b>你自己的想法</b><p>寫下你對某個概念或教法的理解，讓小幫手幫你檢驗。</p></div>
+        <div><span>🧮</span><b>一道題目、學生作答</b><p>找出題目背後的知識節點，或診斷學生的迷思。</p></div>
+        <div><span>📝</span><b>教案、學習單</b><p>讓小幫手對準你的教學設計，給出扣合內容的建議。</p></div>
+        <div><span>📸</span><b>課本、習作頁面</b><p>拍照或截圖後上傳「來源」；無法上傳時，用 VLM 轉譯工具轉成 md 貼上。</p></div>
+      </div>
+      <div class="focus-tip"><span class="ft-ic">🔍</span><div><b>一次聚焦一件事，回答才會深入</b><p>輸入的範圍太大，AI 的回答容易分散、流於淺碟。建議每次只聚焦<strong>一個概念、一個提問或一個想法</strong>；素材較多時，先圈出這次要討論的那一頁、那一題或那一段。</p></div></div>
+    </div>
+    <details class="info-fold" open>
+      <summary><span class="if-title"><span class="if-ic">💡</span><span><b>想讓回覆更貼近你的班級？</b><small>一併提供這些資訊，小幫手的建議會更精準</small></span></span><span class="fold-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+      <div class="ctx">
+        <div class="ctx-card i1"><div class="ctx-h"><span>👩‍🎓</span><b>學生對象</b><em class="need">建議提供</em></div><p>授課年級</p><div class="ex">例：國小五年級</div></div>
+        <div class="ctx-card i2"><div class="ctx-h"><span>📝</span><b>單元主題</b><em class="need">建議提供</em></div><p>想要設計的數學單元</p><div class="ex">例：分數的加減</div></div>
+        <div class="ctx-card i3"><div class="ctx-h"><span>🌱</span><b>學生特性</b><em>選填</em></div><p>學習樣態、先備能力或常見迷思</p><div class="ex">例：通分概念不穩固，喜歡動手操作</div></div>
+        <div class="ctx-card i4"><div class="ctx-h"><span>🎯</span><b>特定方向</b><em>選填</em></div><p>希望小幫手特別著重的方向</p><div class="ex">例：多用生活情境題，加入小組討論提問</div></div>
+      </div>
+      <div class="ctx-all">
+        <div class="ctx-all-h"><span>✍️ 合起來，可以這樣寫</span><button type="button" class="btn btn-ghost ctx-copy" id="ctx-copy">複製範例</button></div>
+        <p id="ctx-text">我教<mark class="t1">國小五年級</mark>，單元是<mark class="t2">分數的加減</mark>。學生<mark class="t3">通分概念不穩固，喜歡動手操作</mark>，希望<mark class="t4">多用生活情境題，加入小組討論提問</mark>。</p>
+      </div>
+    </details>
+      <nav class="subpager"><span class="sp-l">切換到</span><button type="button" data-subgo="s2">🔀 輸入方式</button><button type="button" data-subgo="s3">🪜 三個階段</button></nav>
+    </div>
+    <div class="subpanel" id="sp-s2" role="tabpanel" aria-labelledby="st-s2" hidden>
+    <h3 class="gsub"><span class="gnum gicon" aria-hidden="true">🔀</span>不同的輸入方式，得到不同的回應</h3>
+    <p class="mode-note"><span class="mn-ic">🔀</span><span>以下三種方式<strong>任選、不分先後</strong>，同一次對話中可以交替使用。</span></p>
+    <div class="modes">
+      <div class="mode m1">
+        <div class="mode-h"><span class="mk">1</span><div><b>上傳「問題」</b><small>以問號為結尾的句構</small></div></div>
+        <div class="say">例：「異分母分數加法，為什麼一定要先通分？」</div>
+        <ul class="out">
+          <li>📚 <b>學習脈絡</b>：學生之前學過、現在學、未來要學的內容</li>
+          <li>🔄 <b>多重表徵</b>：用 Lesh 表徵理論，在實物、操作、圖像、語言、符號之間舉例轉化</li>
+          <li>🧩 <b>三種層次的提問靈感</b>：每個層次多達 15 個提問，依該素養的三個元素分層</li>
+          <li>🤔 <b>促進思考的問題</b>：檢驗真實理解或表層認知、數學家會進一步思考的問題、模型的假設與限制</li>
+        </ul>
+        <button type="button" class="zoom-btn" aria-label="放大這個框的內容" title="放大內容"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M10.5 7.5v6M7.5 10.5h6"/></svg></button>
+      </div>
+      <div class="mode m2">
+        <div class="mode-h"><span class="mk">2</span><div><b>發表「直述意見」</b><small>以第一人稱發言的句構</small></div></div>
+        <div class="say">例：「我認為通分就是把分母變成一樣。」</div>
+        <ul class="out">
+          <li>📊 <b>比對表格</b>：把你的理解分成吻合的正例、不吻合的反例或非例、有爭議待釐清的點</li>
+          <li>🔍 <b>後設與批判思考提問</b>，例如：</li>
+        </ul>
+        <ul class="chips qtypes"><li>極端反差</li><li>臨界點</li><li>網絡式</li><li>知數能學</li><li>情緒分享</li><li>語言演化</li><li>流派與歷史演進</li><li>模型與理論缺口</li></ul>
+        <button type="button" class="zoom-btn" aria-label="放大這個框的內容" title="放大內容"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M10.5 7.5v6M7.5 10.5h6"/></svg></button>
+      </div>
+      <div class="mode m3">
+        <div class="mode-h"><span class="mk">3</span><div><b>輸入／貼上（文字）資料</b><small>課文、教案、題目或 md 內容</small></div></div>
+        <div class="say">例：貼上 <mark class="hl">VLM 轉譯工具產出的 md 內容</mark></div>
+        <ul class="out">
+          <li>🗂️ <b>知識節點</b>：依素材的主題脈絡，整理出相關的知識節點與關鍵技能</li>
+          <li>🧱 <b>系列性的教師提問</b>：從生活、操作語言，逐步轉到數學語言</li>
+          <li>🌱 <b>延伸連結</b>：與國小、國中其他單元的連結，以及未來可以擴展的方向</li>
+        </ul>
+        <button type="button" class="zoom-btn" aria-label="放大這個框的內容" title="放大內容"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M10.5 7.5v6M7.5 10.5h6"/></svg></button>
+      </div>
+    </div>
+      <nav class="subpager"><span class="sp-l">切換到</span><button type="button" data-subgo="s1">📥 輸入素材</button><button type="button" data-subgo="s3">🪜 三個階段</button></nav>
+    </div>
+    <div class="subpanel" id="sp-s3" role="tabpanel" aria-labelledby="st-s3" hidden>
+    <h3 class="gsub"><span class="gnum gicon" aria-hidden="true">🪜</span>三個階段，一步一步往下想<button type="button" class="zoom-btn inline" data-zoom="stages" aria-label="放大「三個階段」" title="放大內容"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M10.5 7.5v6M7.5 10.5h6"/></svg></button></h3>
+    <ol class="stages" id="z-stages">
+      <li class="stage">
+        <div class="st-h"><span class="sn">1️⃣</span><div><b>基本回覆</b><small>從你的提問、意見或素材開始</small></div></div>
+        <p>小幫手依你的輸入方式回應（見「輸入方式」），並把概念拆成該素養的三個層次，提供提問靈感讓你挑選。</p>
+        <div class="handoff">文末附上：<b>進入第二階段的提示詞</b></div>
+      </li>
+      <li class="stage">
+        <div class="st-h"><span class="sn">2️⃣</span><div><b>進階提問</b><small>貼上提示詞，說出你挑中的方向</small></div></div>
+        <p>小幫手先詮釋你的設計想法，再從三個面向給出具體、步驟化的建議，每個面向各有 ❶❷❸ 三種安排：</p>
+        <ul class="out">
+          <li>🌸 啟動<b>有趣有感學習</b>，讓學習更有層次</li>
+          <li>🌸 教師化身<b>引導師</b>，學生變身<b>思考探險家</b></li>
+          <li>🌸 建構系統性<b>脈絡引導</b>，實現深度素養養成</li>
+        </ul>
+        <div class="handoff">文末附上：<b>進入第三階段的提示詞</b></div>
+      </li>
+      <li class="stage">
+        <div class="st-h"><span class="sn">3️⃣</span><div><b>教學深入探究</b><small>選一個面向，往下挖深</small></div></div>
+        <p>針對你選的面向，提供 5 個可以更上一層的具體教學細節，例如：</p>
+        <ul class="out">
+          <li>🩺 <b>迷思診斷</b>：預測學生最可能出現的 1～2 個概念斷點（不只是計算錯誤）</li>
+          <li>🪜 <b>提問鷹架</b>：對應迷思的探究型提問與引導語，讓學生自我修正</li>
+        </ul>
+        <div class="handoff done">回到課堂：實際試教，再帶著觀察回來對話</div>
+      </li>
+    </ol>
+
+    <div class="clue">
+      <div class="clue-h">
+        <span class="clue-ic">📋</span>
+        <div><b>下一步提示詞長這樣</b><small>小幫手會依你前面的選擇，先填好 <span class="fill sm">【 】</span> 裡的內容</small></div>
+      </div>
+      <div class="clue-body">
+        <div class="clue-line lead-l">➡️ 我要進入第二階段——進階提問</div>
+        <div class="clue-line">我想針對的數學內容是 <span class="fill">【異分母分數加法的結構與關聯】</span>，數學表徵是 <span class="fill">【圖像表徵與符號表徵的轉化】</span>，</div>
+        <div class="clue-line">提問層次是 <span class="fill">【精緻性】</span>，提問靈感是 <span class="fill">【探討分子加倍對通分後分子的乘數影響與分配律拆解】</span></div>
+        <div class="clue-line">促進思考的面向是</div>
+        <ul class="clue-sub">
+          <li><span class="fill">【真實理解的檢驗】</span> ⟪能用圖示解釋為什麼不能直接分子加分子、分母加分母⟫</li>
+          <li><span class="fill">【數學家進一步思考】</span> ⟪探討異分母分數加法在代數一般化下的結構規律⟫</li>
+          <li><span class="fill">【模型假設與限制】</span> ⟪探討當兩個分數的單位 1（基準量）不相同時，加法運算是否仍具備此關聯性⟫……</li>
+        </ul>
+        <div class="clue-legend"><span class="fill sm">【 】</span> = 小幫手幫你預填的選擇，你可以改</div>
+      </div>
+      <div class="clue-tip">
+        <span class="tip-ic">✏️</span>
+        <div><b>送出前先想一想</b><p>【 】裡的選擇是你要的嗎？把它改成你自己的判斷再送出，<mark class="hl">這一步就是思考不外包的關鍵</mark>。</p><small>範例取自「創造力」小幫手的實際回覆</small></div>
+      </div>
+      <div class="edit-demo">
+        <div class="ed-h"><span class="ed-ic">🛠️</span><div><b>怎麼改？三種常見的改法</b><small>以「國小五年級、學生通分概念不穩固」的班級為例</small></div></div>
+        <div class="ed-ways">
+          <div class="way w1">
+            <div class="way-h"><span class="wn">A</span><b>換成適合班級的選項</b></div>
+            <div class="ba"><span class="lbl">原本</span><span class="fill">【精緻性】</span></div>
+            <div class="arrow">⬇</div>
+            <div class="ba"><span class="lbl">改成</span><span class="mine">【流暢性】</span></div>
+            <p class="why">💬 學生剛接觸通分，先讓他們想出多種做法，再談精緻化。</p>
+          </div>
+          <div class="way w2">
+            <div class="way-h"><span class="wn">B</span><b>刪掉現在用不到的面向</b></div>
+            <div class="ba"><span class="lbl">原本</span><span class="del"><span class="fill">【數學家進一步思考】</span> ⟪代數一般化下的結構規律⟫</span></div>
+            <div class="arrow">⬇</div>
+            <div class="ba"><span class="lbl">改成</span><span class="gone">整行刪掉</span></div>
+            <p class="why">💬 代數一般化是國中的內容，對五年級太遠。</p>
+          </div>
+          <div class="way w3">
+            <div class="way-h"><span class="wn">C</span><b>寫進自己的課堂點子</b></div>
+            <div class="ba"><span class="lbl">原本</span>⟪單位 1 不相同時，加法是否仍具備此關聯性⟫</div>
+            <div class="arrow">⬇</div>
+            <div class="ba"><span class="lbl">改成</span><span class="mine">⟪大披薩的 1/3 加小披薩的 1/4，能直接相加嗎？⟫</span></div>
+            <p class="why">💬 用學生熟悉的披薩情境，討論「單位 1 要一樣大」。</p>
+          </div>
+        </div>
+        <div class="ed-result">
+          <div class="res-h"><b>✅ 改好之後送出</b><span class="legend"><span class="fill sm">黃底</span> 小幫手預填　<span class="mine sm">綠底</span> 你改的</span></div>
+          <div class="clue-line lead-l">➡️ 我要進入第二階段——進階提問</div>
+          <div class="clue-line">我想針對的數學內容是 <span class="fill">【異分母分數加法的結構與關聯】</span>，數學表徵是 <span class="fill">【圖像表徵與符號表徵的轉化】</span>，</div>
+          <div class="clue-line">提問層次是 <span class="mine">【流暢性】</span>，提問靈感是 <span class="fill">【探討分子加倍對通分後分子的乘數影響與分配律拆解】</span></div>
+          <div class="clue-line">促進思考的面向是</div>
+          <ul class="clue-sub">
+            <li><span class="fill">【真實理解的檢驗】</span> ⟪能用圖示解釋為什麼不能直接分子加分子、分母加分母⟫</li>
+            <li><span class="fill">【模型假設與限制】</span> <span class="mine">⟪大披薩的 1/3 加小披薩的 1/4，能直接相加嗎？⟫</span></li>
+          </ul>
+          <p class="res-out">🎯 <b>結果</b>：小幫手的第二階段建議，會依你改過的層次與情境展開，對準你的班級，而不是沿用它原本的猜測。</p>
+        </div>
+      </div>
+    </div>
+      <nav class="subpager"><span class="sp-l">切換到</span><button type="button" data-subgo="s1">📥 輸入素材</button><button type="button" data-subgo="s2">🔀 輸入方式</button></nav>
+    </div>
+    <div class="overview">
+    <h3 class="gsub plain"><span class="gico" aria-hidden="true">🤖</span>八大思考素養小幫手一覽</h3>
+    <p class="sub-note">各小幫手的引導流程相同，但第一階段的<strong>三種提問層次</strong>，會換成該素養的三個思考技能元素。例如系統性思維小幫手會依「找元素 → 找關係 → 建系統」提供提問靈感。</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>素養</th><th>三種提問層次（思考技能元素）</th><th>小幫手</th></tr></thead>
+        <tbody>
+              <tr><td class="k">🔍 批判性思考</td><td>察覺矛盾、說理反駁、判斷有效性</td><td><span class="pill on">可使用</span></td></tr>
+              <tr><td class="k">💡 創造力</td><td>流暢性、變通性、獨創性</td><td><span class="pill on">可使用</span></td></tr>
+              <tr><td class="k">🔬 研究與探究</td><td>提想法、做試驗、下結論</td><td><span class="pill on">可使用</span></td></tr>
+              <tr><td class="k">🧗 自主與堅持</td><td>自主導向、自動自發、堅持不懈</td><td><span class="pill wip">整理中</span></td></tr>
+              <tr><td class="k">💻 資訊使用</td><td>模擬操作、探究實驗、反思溝通</td><td><span class="pill wip">整理中</span></td></tr>
+              <tr><td class="k">🧭 系統性思維</td><td>找元素、找關係、建系統</td><td><span class="pill on">可使用</span></td></tr>
+              <tr><td class="k">💬 溝通</td><td>表徵想法、調適想法、統整想法</td><td><span class="pill wip">整理中</span></td></tr>
+              <tr><td class="k">🪞 反思</td><td>事件描述、詮釋了解、批判評鑑</td><td><span class="pill on">可使用</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+  </section>
+    <nav class="pager"><button type="button" data-go="intro">← ④ 素養・引言</button><button type="button" class="next" data-go="helpers">下一頁：④ 素養・小幫手 →</button></nav>
+  </div>
+
+  <div class="panel" id="p-vlm" role="tabpanel" aria-labelledby="t-vlm">
+  <!-- 一鍵複製：VLM 轉譯工具 -->
+  <section class="card vlm" aria-labelledby="vlm-title">
+    <div class="vlm-head">
+      <div>
+        <div class="eyebrow">① 準備素材 · VLM 轉譯工具</div>
+        <h2 class="sec-title" id="vlm-title"><span class="sec-icon">🧩</span>VLM 轉譯工具</h2>
+        <p class="credit">提示詞內容引自 <strong>臺師大教創中心</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
+      </div>
+    </div>
+    <p class="purpose">🎯 目的：<b>優雅建構高質量、低 Token 消耗的 AI 結構化知識庫。</b>把簡報、教案、講義、課文或照片截圖，轉成乾淨的 Markdown（.md）。當小幫手的「來源」區無法上傳素材時，就把 md 內容貼到中間的對話框。</p>
+
+    <ol class="steps">
+      <li><span class="n">1</span><div><b>複製提示詞</b><span>按下「一鍵複製 Prompt」。</span></div></li>
+      <li><span class="n">2</span><div><b>開啟任一款 AI</b><span>在對話框貼上提示詞，並附上要轉化的素材（文件、照片、截圖…）。</span></div></li>
+      <li><span class="n">3</span><div><b>帶入小幫手</b><span>將 AI 產出的 md 內容，貼到 ② 有效提問、③ 探究策略或 ④ 思考素養任一位小幫手的對話框，當作對話輸入來源。</span></div></li>
+    </ol>
+
+    <div id="prompt-wrap">
+      <div class="prompt-bar">
+        <span class="label">📋 VLM 轉譯提示詞</span>
+        <div class="tools">
+          <button class="btn btn-ghost" id="toggle" type="button" aria-expanded="true" aria-controls="prompt-box">
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            <span id="toggle-text">收合內容</span>
+          </button>
+          <button class="btn btn-copy" id="copy" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+            <span id="copy-text">一鍵複製 Prompt</span>
+          </button>
+        </div>
+      </div>
+      <div class="prompt-box" id="prompt-box">
+<pre id="prompt">請完整閱讀我所上傳的教學檔案（簡報 / 教案 / 講義 / 課文），將所有內容轉換為排版清晰、語義完整且高度結構化的 **Markdown (.md)** 格式。
+
+此轉換目的是建立乾淨、完整且能在後續 AI 處理中最大化節省 Token 的結構化知識庫，請遵循以下轉譯規範：
+
+### 1. 結構與內文原則
+- **保留層次結構**：請精準還原原本的大綱層級（使用 # H1, ## H2, ### H3），並保留講義或投影片的頁次 / 主題標示。
+- **資訊無損**：不要隨意濃縮、概括或刪減教學重點、範例、題目、重要名詞定義與解釋。
+- **條列清晰**：善用無序清單（-）與有序清單（1. 2. 3.），將視覺化重點整理為易讀的條列。
+
+### 2. 數學學科本質圖表與符號解構規範
+- **公式與代數符號**：所有公式、方程式、幾何符號一律使用標準 LaTeX（行內使用 `$f(x) = ax^2 + bx + c$`，獨立行使用 `$$\int_{a}^{b} f(x)dx$$`）。
+- **坐標幾何與函數圖形**：
+  &gt; **【函數 / 幾何圖形解構】**
+  &gt; - **定義域與坐標系**：X 軸、Y 軸範圍，原點與漸近線。
+  &gt; - **幾何條件與特徵點**：頂點、交點、切點、法線、已知線段長度與角度。
+  &gt; - **圖形走勢與凹凸性**：單調區間、極大/極小值點、反曲點。
+  &gt; - **輔助線與幾何標記**：題目繪製的輔助線、虛線、垂直符號、陰影封閉面積。
+- **題目與證明無損**：題幹條件、已知假設、證明步驟（Given / Prove / Steps）完整保留，勿跳步。
+
+### 3. 輸出規範
+- 請直接輸出純 Markdown 程式碼區塊（```markdown ... ```），不要有多餘的寒暄、前言或總結。</pre>
+      </div>
+      <p class="toast" id="toast" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+    <nav class="pager"><button type="button" data-go="gen">← ✍️ 提示詞產生器</button><button type="button" class="next" data-go="ask">下一頁：② 有效提問 →</button></nav>
+  </div>
+
+  <div class="panel" id="p-helpers" role="tabpanel" aria-labelledby="t-helpers">
+  <!-- 小幫手連結 -->
+  <section aria-labelledby="helpers-title">
+    <div class="center-title">
+      <h2 id="helpers-title">啟動您的八大思考素養小幫手</h2>
+      <p>點選標籤或卡片開啟 NotebookLM 小幫手。虛線的小幫手正在整理中。</p>
+    </div>
+    <div class="quick" aria-label="快速開啟小幫手">
+      <span class="quick-h">⚡ 快速開啟</span>
+      <div class="qchips">
+        <a class="qchip f2" href="https://notebook.google.com/notebook/2fd7d20a-ca0c-4f11-8e36-6b0dfa325dec" target="_blank" rel="noopener">🔍 批判性思考 <span aria-hidden="true">↗</span></a>
+        <a class="qchip f3" href="https://notebook.google.com/notebook/383b9153-71fa-41ff-8f28-9260fbddd1f8" target="_blank" rel="noopener">💡 創造力 <span aria-hidden="true">↗</span></a>
+        <a class="qchip f5" href="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" target="_blank" rel="noopener">🔬 研究與探究 <span aria-hidden="true">↗</span></a>
+        <span class="qchip off" aria-disabled="true">🧗 自主與堅持 <small>整理中</small></span>
+        <span class="qchip off" aria-disabled="true">💻 資訊使用 <small>整理中</small></span>
+        <a class="qchip f1" href="https://notebook.google.com/notebook/4548f6b1-6681-4281-8e8d-4f2b8308f9de" target="_blank" rel="noopener">🧭 系統性思維 <span aria-hidden="true">↗</span></a>
+        <span class="qchip off" aria-disabled="true">💬 溝通 <small>整理中</small></span>
+        <a class="qchip f4" href="https://notebook.google.com/notebook/af062042-58d7-4944-bcf0-1dfa4ee52266" target="_blank" rel="noopener">🪞 反思 <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+    <div class="howto" role="note" aria-labelledby="howto-title">
+      <h3 id="howto-title"><span class="tag">提示</span>進入小幫手後，請依畫面中間的引導語開始</h3>
+      <div class="mock" aria-hidden="true">
+        <div class="mock-top"><i></i><i></i><i></i>&nbsp;🤖 促進『○○』思考素養的共備</div>
+        <div class="mock-body">
+          <div class="pane hot">
+            <span class="badge heart">❤️</span>
+            <span class="ph">來源</span>
+            <div class="src"><span class="bar"></span><span class="ck"></span></div>
+            <div class="src"><span class="bar"></span><span class="ck"></span></div>
+            <div class="src"><span class="bar"></span><span class="ck"></span></div>
+          </div>
+          <div class="pane">
+            <span class="ph">對話</span>
+            <div class="msg w1"></div><div class="msg w2"></div><div class="msg w3"></div>
+            <div class="badges"><span class="badge">1</span><span class="badge">2</span><span class="badge">3</span><span class="pick">任選</span></div>
+            <div class="chatbox">提問或創作內容<span class="send"></span></div>
+          </div>
+          <div class="pane studio"><span class="ph">工作室</span><span class="fold-ic"></span><div class="msg w2"></div><span class="fold-tip">按這裡收合</span></div>
+        </div>
+      </div>
+      <div class="hsteps">
+        <div class="hitem"><span class="m heart">❤️</span><div><b>先勾選來源區資料（至少 1 項）</b><span>接著使用中間對話區互動。</span></div></div>
+        <div class="opts">
+          <div class="opts-h">接著依需要<strong>任選</strong>一種方式互動（不分先後，可交替使用）</div>
+          <div class="hitem"><span class="m">1</span><div><b>上傳「問題」</b><span>以問號為結尾的句構。</span></div></div>
+          <div class="or">或</div>
+          <div class="hitem"><span class="m">2</span><div><b>發表「直述意見」</b><span>以第一人稱發言的句構。</span></div></div>
+          <div class="or">或</div>
+          <div class="hitem"><span class="m">3</span><div><b>輸入／貼上（文字）資料</b><span>使用 <kbd>Ctrl</kbd>+<kbd>V</kbd>（Mac 為 <kbd>⌘</kbd>+<kbd>V</kbd>）貼上，例如 <mark class="hl">VLM 轉譯工具產出的 md 內容</mark>。</span></div></div>
+        </div>
+        <div class="hitem note"><span class="m">💡</span><div><b>本場不會使用到右方「工作室」</b><span>可按「工作室」右上角的 <span class="ic-fold" aria-hidden="true"></span> 圖示（收合「工作室」面板），讓可視畫面更大。</span></div></div>
+      </div>
+    </div>
+    <div class="helpers">
+      <a class="helper f2" href="https://notebook.google.com/notebook/2fd7d20a-ca0c-4f11-8e36-6b0dfa325dec" target="_blank" rel="noopener">
+        <span class="ic">🔍</span><span class="t">促進思考素養</span><span class="name">批判性思考</span>
+        <span class="d">引導學生察覺矛盾、說理反駁、判斷推論是否有效。</span>
+        <span class="go">開啟小幫手 →</span>
+      </a>
+      <a class="helper f3" href="https://notebook.google.com/notebook/383b9153-71fa-41ff-8f28-9260fbddd1f8" target="_blank" rel="noopener">
+        <span class="ic">💡</span><span class="t">促進思考素養</span><span class="name">創造力</span>
+        <span class="d">設計開放任務，鼓勵流暢、變通又獨創的數學想法。</span>
+        <span class="go">開啟小幫手 →</span>
+      </a>
+      <a class="helper f5" href="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" target="_blank" rel="noopener">
+        <span class="ic">🔬</span><span class="t">促進思考素養</span><span class="name">研究與探究</span>
+        <span class="d">從提想法、做試驗到下結論，帶出完整的探究循環。</span>
+        <span class="go">開啟小幫手 →</span>
+      </a>
+      <div class="helper pending f7" aria-disabled="true">
+        <span class="ic">🧗</span><span class="t">促進思考素養</span><span class="name">自主與堅持</span>
+        <span class="d">讓學生自己規劃解題，遇到困難時能調整並堅持。</span>
+        <span class="go">⏳ 小幫手整理中</span>
+      </div>
+      <div class="helper pending f6" aria-disabled="true">
+        <span class="ic">💻</span><span class="t">促進思考素養</span><span class="name">資訊使用</span>
+        <span class="d">善用科技工具模擬操作、探究實驗與反思溝通。</span>
+        <span class="go">⏳ 小幫手整理中</span>
+      </div>
+      <a class="helper f1" href="https://notebook.google.com/notebook/4548f6b1-6681-4281-8e8d-4f2b8308f9de" target="_blank" rel="noopener">
+        <span class="ic">🧭</span><span class="t">促進思考素養</span><span class="name">系統性思維</span>
+        <span class="d">把零散知識串成脈絡，找元素、找關係、建系統。</span>
+        <span class="go">開啟小幫手 →</span>
+      </a>
+      <div class="helper pending f8" aria-disabled="true">
+        <span class="ic">💬</span><span class="t">促進思考素養</span><span class="name">溝通</span>
+        <span class="d">讓學生表徵、調適並統整彼此的數學想法。</span>
+        <span class="go">⏳ 小幫手整理中</span>
+      </div>
+      <a class="helper f4" href="https://notebook.google.com/notebook/af062042-58d7-4944-bcf0-1dfa4ee52266" target="_blank" rel="noopener">
+        <span class="ic">🪞</span><span class="t">促進思考素養</span><span class="name">反思</span>
+        <span class="d">用「你有想過……嗎？」帶學生回看自己的學習歷程。</span>
+        <span class="go">開啟小幫手 →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- 引用聲明 -->
+  <section class="cite" aria-labelledby="cite-title">
+    <h3 id="cite-title"><span>😄</span>公開介紹本工具，或發表使用成果時，請註明引用來源。</h3>
+    <div class="cite-grid">
+      <div><div class="eyebrow">Reference</div><b>📌 引用來源</b><p>VLM 轉譯工具提示詞：臺師大教創中心與優履團隊（UNI）設計</p></div>
+      <div><div class="eyebrow">Introduction</div><b>📖 引言整理自</b><p>林福來〈二十一世紀技能：數學素養教學與評量的指標〉；〈21 世紀技能的說明與操作型定義〉</p></div>
+      <div><div class="eyebrow">Educational</div><b>🌸 教育使用</b><p>免費提供所有教育使用者，智慧財產需要您一起共同維護喔～</p></div>
+      <div><div class="eyebrow">Purpose</div><b>🤖 設計目的</b><p>優雅建構高質量、低 Token 消耗的 AI 結構化知識庫，支援八大思考素養教學。</p></div>
+    </div>
+  </section>
+    <nav class="pager"><button type="button" data-go="guide">← ④ 素養・說明</button><button type="button" class="next" data-go="home">回到 🏠 共備路線</button></nav>
+  </div>
+
+</main>
+
+<footer><div class="wrap">
+  <div class="statbar" id="statbar" hidden>
+    <span class="sb-item">✉️ 問題反應信箱：<a href="mailto:qekepv@gmail.com" id="mail-addr">qekepv@gmail.com</a><button type="button" class="sb-copy" id="mail-copy">複製</button></span>
+    <span class="sb-item"><i class="dot" aria-hidden="true"></i>線上人數 <b id="st-online">—</b> 人</span>
+    <span class="sb-item">👁️ 累計 <b id="st-total">—</b> 人次</span>
+  </div>
+  <div class="ft-h">📖 資料來源與引述</div>
+  <dl class="ft-list">
+    <div><dt>21 世紀八大思考素養</dt><dd>林福來（臺師大名譽教授、中央輔導團數學領域召集人）〈二十一世紀技能：數學素養教學與評量的指標〉。數學領域中央輔導團與「就是要學好數學（JDM）」計畫將 21 世紀技能定為數學素養教學與評量的指標。</dd></div>
+    <div><dt>思考技能元素</dt><dd>〈21 世紀技能的說明與操作型定義〉：批判性思考（楊凱琳）、研究與探究（陳建誠）、自主與堅持（鄭英豪、許慧玉）、資訊使用／科技融入（左台益）、系統性思維（王婷瑩）、溝通（謝佳叡）、反思（李源順）、創造力（謝豐瑞）教授。</dd></div>
+    <div><dt>思考素養共備小幫手</dt><dd>優履工作室研發「促進○○思考素養共備」應用指南（Aibot），使用請引註。</dd></div>
+    <div><dt>VLM 轉譯工具提示詞</dt><dd>© 臺師大教創中心與優履團隊（UNI）。</dd></div>
+    <div><dt>有效提問 AI 小幫手</dt><dd>臺師大教創中心陳佩英教授與優履團隊（UNI）設計。引用請註明：臺師大教創中心與優履團隊設計 AI 機器人小幫手 good questioner。</dd></div>
+    <div><dt>概念為本探究教學策略小幫手</dt><dd>臺師大教創中心陳佩英教授與優履團隊（UNI）設計。引用請註明：臺師大教創中心與優履設計 AI 機器人小幫手 inquiry Strategy。</dd></div>
+  </dl>
+  <p class="ft-note">🌸 本網頁供教育使用。公開介紹或發表使用成果時，請註明以上引用來源。</p>
+</div></footer>
+
+<script>
+(function(){
+  var b=document.getElementById('ctx-copy'),t=document.getElementById('ctx-text');
+  if(!b) return;
+  function ok(){b.textContent='已複製！';setTimeout(function(){b.textContent='複製範例';},1800);}
+  b.addEventListener('click',function(){
+    var txt=t.textContent;
+    function fb(){var r=document.createRange();r.selectNodeContents(t);var s=getSelection();s.removeAllRanges();s.addRange(r);
+      var d=false;try{d=document.execCommand('copy')}catch(e){} if(d) ok(); else b.textContent='已選取，請按 Ctrl+C';}
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok,fb); else fb();
+  });
+})();
+</script>
+<script>
+(function(){
+  var mb=document.getElementById('mail-copy'),ma=document.getElementById('mail-addr');
+  mb.addEventListener('click',function(){
+    function ok(){mb.textContent='已複製';setTimeout(function(){mb.textContent='複製';},1600);}
+    function fb(){var r=document.createRange();r.selectNodeContents(ma);var s=getSelection();s.removeAllRanges();s.addRange(r);var d=false;try{d=document.execCommand('copy')}catch(e){} if(d)ok();}
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(ma.textContent).then(ok,fb); else fb();
+  });
+  var on=document.getElementById('st-online'),tot=document.getElementById('st-total');
+  if(!window.claude||!window.claude.use) return;
+  claude.use('room').then(function(room){
+    if(!room) return;
+    function upd(){ on.textContent=String(room.peers().filter(function(p){return p.kind==='viewer';}).length||1); }
+    room.onPeers(upd);
+  });
+  Promise.all([claude.use('db'),claude.use('user')]).then(function(r){
+    var db=r[0],user=r[1]; if(!db||!user) return;
+    var col=db.collection('visits');
+    col.onSnapshot(function(snap){
+      var sum=0; snap.docs.forEach(function(d){var v=d.data(); sum+=(v&&typeof v.n==='number')?v.n:0;});
+      tot.textContent=sum.toLocaleString('en-US');
+    },function(){});
+    var counted=false; try{counted=sessionStorage.getItem('visit-counted')==='1';}catch(e){}
+    if(counted) return;
+    user.id().then(function(id){
+      if(!id) return;
+      var ref=col.doc(id);
+      return ref.get().then(function(d){
+        var n=(d.exists&&d.data()&&typeof d.data().n==='number')?d.data().n:0;
+        return ref.set({n:n+1});
+      }).then(function(){ try{sessionStorage.setItem('visit-counted','1');}catch(e){} });
+    }).catch(function(){});
+  });
+})();
+</script>
+<script>
+(function(){
+  var root=document.documentElement,btns=document.querySelectorAll('[data-theme-set]');
+  function current(){
+    var t=root.getAttribute('data-theme');
+    if(t==='dark'||t==='light') return t;
+    return (window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light';
+  }
+  function paint(){ var c=current(); btns.forEach(function(b){ b.setAttribute('aria-pressed',String(b.dataset.themeSet===c)); }); }
+  function apply(t){ root.setAttribute('data-theme',t); try{localStorage.setItem('page-theme',t);}catch(e){} paint(); }
+  try{ var saved=localStorage.getItem('page-theme'); if(saved==='dark'||saved==='light') root.setAttribute('data-theme',saved); }catch(e){}
+  paint();
+  btns.forEach(function(b){ b.addEventListener('click',function(){ apply(b.dataset.themeSet); }); });
+  if(window.matchMedia){ var mq=matchMedia('(prefers-color-scheme: dark)'); if(mq.addEventListener) mq.addEventListener('change',paint); }
+})();
+</script>
+<script>
+(function(){
+  var keys=['s1','s2','s3'],bar=document.querySelector('.subtabs');
+  if(!bar) return;
+  var hdr=document.querySelector('header');
+  function setH(){ if(hdr) document.documentElement.style.setProperty('--hdr-h',hdr.offsetHeight+'px'); }
+  setH(); window.addEventListener('resize',setH);
+  function show(k,scroll){
+    keys.forEach(function(x){
+      document.getElementById('sp-'+x).hidden=(x!==k);
+      var b=document.getElementById('st-'+x); b.setAttribute('aria-selected',String(x===k)); b.tabIndex=(x===k)?0:-1;
+    });
+    if(scroll){ var y=bar.getBoundingClientRect().top+window.scrollY-(hdr?hdr.offsetHeight:0)-12; if(window.scrollY>y) window.scrollTo(0,y); }
+  }
+  bar.addEventListener('click',function(e){ var b=e.target.closest('[data-sub]'); if(b) show(b.dataset.sub,true); });
+  document.querySelectorAll('[data-subgo]').forEach(function(b){ b.addEventListener('click',function(){ show(b.dataset.subgo,true); }); });
+  bar.addEventListener('keydown',function(e){
+    var cur=keys.indexOf((document.activeElement.dataset||{}).sub); if(cur<0) return;
+    var i=e.key==='ArrowRight'?(cur+1)%3:e.key==='ArrowLeft'?(cur+2)%3:-1; if(i<0) return;
+    e.preventDefault(); show(keys[i],false); document.getElementById('st-'+keys[i]).focus();
+  });
+  show('s1',false);
+})();
+</script>
+<div class="zoom-layer" id="zoom-layer" hidden>
+  <div class="zoom-box" id="zoom-box" role="dialog" aria-modal="true" aria-label="放大檢視">
+    <button type="button" class="zoom-close" id="zoom-close" aria-label="關閉放大">✕</button>
+    <div id="zoom-content"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var layer=document.getElementById('zoom-layer'),content=document.getElementById('zoom-content'),closeBtn=document.getElementById('zoom-close'),last=null;
+  var zbox=document.getElementById('zoom-box');
+  function open(btn){
+    var box;
+    if(btn.dataset.zoom){
+      var src=document.getElementById('z-'+btn.dataset.zoom);
+      box=document.createElement('div'); box.className='zwrap';
+      var h=document.createElement('h3'); h.textContent=btn.closest('h3').textContent.replace(/^[一二三四]/,'').trim(); box.appendChild(h);
+      var c=src.cloneNode(true); c.removeAttribute('id'); box.appendChild(c);
+      zbox.classList.add('wide');
+    } else {
+      box=btn.closest('.mode').cloneNode(true);
+      var z=box.querySelector('.zoom-btn'); if(z) z.remove();
+      zbox.classList.remove('wide');
+    }
+    content.innerHTML=''; content.appendChild(box);
+    last=btn; layer.hidden=false; document.body.style.overflow='hidden'; closeBtn.focus();
+  }
+  function close(){ layer.hidden=true; content.innerHTML=''; document.body.style.overflow=''; if(last) last.focus(); }
+  document.querySelectorAll('.zoom-btn').forEach(function(b){ b.addEventListener('click',function(){ open(b); }); });
+  closeBtn.addEventListener('click',close);
+  layer.addEventListener('click',function(e){ if(e.target===layer) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!layer.hidden) close(); });
+})();
+</script>
+<script>
+(function(){
+  var names=['home','gen','vlm','ask','inq','intro','guide','helpers'];
+  function show(n,scroll){
+    if(names.indexOf(n)<0) n='home';
+    names.forEach(function(k){
+      document.getElementById('p-'+k).hidden=(k!==n);
+      var t=document.getElementById('t-'+k);
+      t.setAttribute('aria-selected',String(k===n)); t.tabIndex=(k===n)?0:-1;
+    });
+    var cur=document.getElementById('t-'+n);
+    var bar=cur.parentNode; var l=cur.offsetLeft-bar.offsetLeft;
+    if(l<bar.scrollLeft||l+cur.offsetWidth>bar.scrollLeft+bar.clientWidth) bar.scrollLeft=l-16;
+    var sb=document.getElementById('statbar'); if(sb) sb.hidden=(n!=='home'&&n!=='helpers');
+    if(scroll) window.scrollTo(0,0);
+  }
+  function go(n){ if(location.hash!=='#'+n){ location.hash=n; } else { show(n,true); } }
+  document.querySelectorAll('[data-tab]').forEach(function(b){ b.addEventListener('click',function(){ go(b.dataset.tab); }); });
+  document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ go(b.dataset.go); }); });
+  document.querySelector('.tabs').addEventListener('keydown',function(e){
+    var i=names.indexOf(location.hash.slice(1)); if(i<0)i=0;
+    var L=names.length; if(e.key==='ArrowRight'){i=(i+1)%L}else if(e.key==='ArrowLeft'){i=(i+L-1)%L}else return;
+    e.preventDefault(); go(names[i]); document.getElementById('t-'+names[i]).focus();
+  });
+  window.addEventListener('hashchange',function(){ show(location.hash.slice(1),true); });
+  show(location.hash.slice(1),false);
+})();
+</script>
+<script>
+(function(){
+  var wrap=document.getElementById('prompt-wrap'),
+      tog=document.getElementById('toggle'),
+      togText=document.getElementById('toggle-text'),
+      btn=document.getElementById('copy'),
+      btnText=document.getElementById('copy-text'),
+      toast=document.getElementById('toast'),
+      pre=document.getElementById('prompt');
+
+  function setCollapsed(c){
+    wrap.classList.toggle('collapsed',c);
+    tog.setAttribute('aria-expanded',String(!c));
+    togText.textContent=c?'展開內容':'收合內容';
+    try{localStorage.setItem('vlm-collapsed',c?'1':'0')}catch(e){}
+  }
+  try{ if(localStorage.getItem('vlm-collapsed')==='1') setCollapsed(true); }catch(e){}
+  tog.addEventListener('click',function(){ setCollapsed(!wrap.classList.contains('collapsed')); });
+
+  function selectText(){
+    if(wrap.classList.contains('collapsed')) setCollapsed(false);
+    var r=document.createRange(); r.selectNodeContents(pre);
+    var s=window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  function ok(){
+    btn.classList.add('done'); btnText.textContent='已複製！';
+    toast.textContent='✅ 提示詞已複製，請貼到任一款 AI 的對話框，並附上要轉化的素材。';
+    setTimeout(function(){btn.classList.remove('done');btnText.textContent='一鍵複製 Prompt';},2200);
+  }
+  function fallback(){
+    selectText();
+    var done=false; try{done=document.execCommand('copy')}catch(e){}
+    if(done){ok()} else {toast.textContent='已幫您選取全文，請按 Ctrl+C（Mac 為 ⌘+C）複製。';}
+  }
+  btn.addEventListener('click',function(){
+    var text=pre.textContent;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(ok,fallback);
+    } else fallback();
+  });
+})();
+</script>
+<script>
+/* 提示詞產生器 */
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var form=$('gen-form'); if(!form) return;
+  var KEY='gen-fields', F=['g-grade','g-subj','g-unit','g-trait','g-dir'];
+  var EMPTY='【請填寫】';
+  function v(id){ return ($(id).value||'').trim(); }
+  function radio(n){ var r=document.querySelector('input[name="'+n+'"]:checked'); return r?r.value:''; }
+  function trimEnd(t){ return t.replace(/[。．.，,\s]+$/,''); }
+
+  function build(){
+    var g=v('g-grade'), sj=v('g-subj')||'數學', u=v('g-unit'), tr=v('g-trait'), dr=v('g-dir');
+    var U=u||EMPTY;
+    // ② 有效提問
+    var a;
+    if(radio('g-askt')==='B'){
+      var q=v('g-askq')||'【請輸入你的問題，以問號結尾】？';
+      a='科目：'+sj+'\n學生年級：'+g+'\n單元：'+U+'\n我的問題：'+q;
+    } else {
+      a='科目：'+sj+'\n學生年級：'+g+'\n想探究的主題或概念：'+U;
+      if(tr) a+='\n學生特色：'+tr;
+      if(dr) a+='\n特定方向：'+dr;
+      a+='\n請針對這個主題或概念，設計四個層次的提問。';
+    }
+    $('o-ask').value=a;
+    // ③ 概念為本
+    var b='學生年級：'+g+'\n探究的領域／科目：'+sj+'（單元：'+U+'）\n學生特色：'+(tr||EMPTY);
+    if(dr) b+='\n特定方向：'+dr;
+    b+='\n請根據我勾選的來源，建議適合這個單元與學生的概念為本探究教學策略。';
+    $('o-inq').value=b;
+    // ④ 素養
+    var c='我教'+g+'，單元是'+U+'。';
+    if(tr) c+='學生'+trimEnd(tr)+'，';
+    if(dr) c+='希望'+trimEnd(dr)+'。'; else if(tr) c=c.replace(/，$/,'。');
+    var m=radio('g-skm'), t=v('g-skc');
+    if(m==='q') c+='\n'+(t||'【請輸入你的問題，以問號結尾】？');
+    else if(m==='s') c+='\n'+(t||'我認為【請寫下你的想法】。');
+    else c+='\n以下是我的教材內容：\n'+(t||'【請貼上 VLM 轉譯工具產出的 md 內容】');
+    $('o-skill').value=c;
+  }
+  function save(){ var o={}; F.forEach(function(id){o[id]=$(id).value;}); try{localStorage.setItem(KEY,JSON.stringify(o));}catch(e){} }
+  try{ var o=JSON.parse(localStorage.getItem(KEY)||'null'); if(o) F.forEach(function(id){ if(typeof o[id]==='string') $(id).value=o[id]; }); }catch(e){}
+
+  var PH={q:'例：異分母分數加法，為什麼一定要先通分？',s:'例：我認為通分就是把分母變成一樣。',m:'在這裡貼上 VLM 轉譯工具產出的 md 內容'};
+  function sync(){
+    $('g-askq').hidden=radio('g-askt')!=='B';
+    $('g-skc').placeholder=PH[radio('g-skm')]||'';
+    $('g-skill-go').href=$('g-skill').value;
+    build();
+  }
+  document.querySelectorAll('#gen-form input,#gen-form select,#gen-form textarea').forEach(function(el){
+    el.addEventListener('input',function(){ save(); build(); });
+  });
+  ['g-askq','g-skc'].forEach(function(id){ $(id).addEventListener('input',build); });
+  document.querySelectorAll('input[name="g-askt"],input[name="g-skm"],#g-skill').forEach(function(el){ el.addEventListener('change',sync); });
+
+  $('g-sample').addEventListener('click',function(){
+    $('g-grade').value='國小五年級'; $('g-subj').value='數學'; $('g-unit').value='分數的加減';
+    $('g-trait').value='通分概念不穩固，喜歡動手操作'; $('g-dir').value='多用生活情境題，加入小組討論提問';
+    save(); build();
+  });
+  $('g-clear').addEventListener('click',function(){
+    $('g-unit').value=''; $('g-trait').value=''; $('g-dir').value=''; $('g-askq').value=''; $('g-skc').value='';
+    save(); build();
+  });
+
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    var label=btn.textContent;
+    btn.addEventListener('click',function(){
+      var ta=$(btn.dataset.copy);
+      function ok(){ btn.textContent='已複製！'; setTimeout(function(){btn.textContent=label;},1800); }
+      function fb(){ ta.focus(); ta.select(); var d=false; try{d=document.execCommand('copy')}catch(e){} if(d) ok(); else btn.textContent='已選取，請按 Ctrl+C'; }
+      if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(ok,fb); else fb();
+    });
+  });
+  sync();
+})();
+</script>
+<script>
+/* 步驟勾選清單 */
+(function(){
+  document.querySelectorAll('[data-chk]').forEach(function(list){
+    var boxes=list.querySelectorAll('input[type=checkbox]'), out=list.nextElementSibling;
+    function upd(){
+      var n=0; boxes.forEach(function(b){ if(b.checked) n++; });
+      out.textContent = n===boxes.length ? '🎉 都準備好了！可以開始和小幫手對話。' : '';
+    }
+    boxes.forEach(function(b){ b.addEventListener('change',upd); });
+  });
+})();
+</script>
+
+</body>
+</html>
