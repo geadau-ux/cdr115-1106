@@ -857,6 +857,85 @@ footer .wrap{max-width:1080px}
 @media (max-width:760px){.ft-two{grid-template-columns:1fr}}
 .ft-two b{color:var(--primary);font-size:15px}
 .ft-two ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:14px;line-height:1.7}
+.lin{margin:18px 0 0;padding:16px 20px;border-left:5px solid var(--accent);border-radius:0;background:color-mix(in srgb,var(--accent) 10%,var(--surface));font-family:var(--serif);font-size:19px;line-height:1.7;color:var(--text)}
+.lin cite{display:block;margin-top:6px;font-family:var(--sans);font-style:normal;font-size:var(--fs-meta);color:var(--muted)}
+.why3 .chips{margin:10px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.why3 .chips li{padding:2px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--text)}
+.why3 .src{display:block;margin-top:6px;font-size:12px;color:var(--muted)}
+.why-ai{margin:18px 0 0;padding:12px 16px;border-radius:12px;background:var(--surface-2);border:1px dashed var(--line);font-size:var(--fs-body);color:var(--muted)}
+.why-ai strong{color:var(--text)}
+.keys4{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.keys4{grid-template-columns:1fr 1fr}}
+.keys4 li{padding:12px 14px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line);border-top:4px solid var(--accent)}
+.keys4 b{display:block;color:var(--primary);font-size:var(--fs-l4)}
+.keys4 span{font-size:var(--fs-meta);color:var(--muted)}
+.hero .lede + .keys4 + .lede{margin-top:14px}
+/* 翻面卡 */
+.flips li{perspective:900px}
+.flips .flip{display:grid;padding:0;border:0;background:none;transform-style:preserve-3d;transition:transform .5s ease;min-height:92px}
+.flips .flip:hover{transform:none;box-shadow:none}
+.flips .flip.on{transform:rotateY(180deg)}
+.flips .face{grid-area:1/1;display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:10px;padding:12px 16px;border-radius:14px;border:1px solid var(--line);border-left:6px solid var(--fill);background:var(--surface);backface-visibility:hidden;-webkit-backface-visibility:hidden;text-align:left}
+.flips .face.front:hover{box-shadow:var(--shadow)}
+.flips .back{transform:rotateY(180deg);grid-template-columns:1fr;background:color-mix(in srgb,var(--fill) 8%,var(--surface))}
+.flips .back b{font-size:15px}
+.flips .back span{font-size:14px;color:var(--text);line-height:1.6;margin-top:2px}
+.flips .back small{margin-top:4px;font-size:12px;font-weight:700;color:var(--muted)}
+.flip-hint{margin:12px 0 0;font-size:var(--fs-meta);color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.flips .flip{transition:none}}
+.flips .flip{min-height:132px;width:100%}
+.flips .face{align-content:center}
+.flips .flip.on:hover{transform:rotateY(180deg)}
+.flips .flip{align-items:stretch;justify-items:stretch}
+.flips .face{height:100%;width:100%}
+/* 2D 翻面（取代 3D） */
+.flips li{perspective:none}
+.flips .flip,.flips .flip.on,.flips .flip.on:hover{transform:none;transform-style:flat}
+.flips .back{transform:none;visibility:hidden}
+.flips .flip.on .front{visibility:hidden}
+.flips .flip.on .back{visibility:visible}
+@keyframes flipx{0%{transform:scaleX(1)}50%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+.flips .flip.anim{animation:flipx .4s ease-in-out}
+@media (prefers-reduced-motion:reduce){.flips .flip.anim{animation:none}}
+.flips .back .ml{display:block;font-size:13px;line-height:1.55;margin-top:2px}
+.flips .back .ml i{font-style:normal;font-weight:700;color:var(--primary);margin-right:4px}
+.flips .back .ml.step{margin-top:5px;color:var(--muted)}
+.flips .flip{min-height:168px}
+.five{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:12px}
+@media (max-width:900px){.five{grid-template-columns:1fr 1fr}}
+.five > div{padding:14px;border-radius:14px;border:1px solid var(--line);border-top:4px solid var(--fill);background:var(--surface-2)}
+.five b{color:var(--primary);font-size:15px}
+.five p{margin:4px 0 0;font-size:13.5px;color:var(--muted)}
+/* 成對對齊 */
+.what2.flips{display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;align-items:stretch}
+.what2.flips h3{margin:0}
+.what2.flips .cell{display:flex;perspective:none}
+.what2.flips .cell .flip{flex:1;min-height:0}
+.flips .face{align-content:start}
+.flips .face.front{align-content:center}
+@media (max-width:760px){.what2.flips{grid-template-columns:1fr}.what2.flips h3:nth-of-type(2){display:none}}
+@media (max-width:760px){
+  .what2.flips h3:nth-of-type(2){display:block}
+  .what2.flips > :nth-child(1){order:0}
+  .what2.flips > :nth-child(3),.what2.flips > :nth-child(5),.what2.flips > :nth-child(7){order:1}
+  .what2.flips > :nth-child(2){order:2;margin-top:10px}
+  .what2.flips > :nth-child(4),.what2.flips > :nth-child(6),.what2.flips > :nth-child(8){order:3}
+}
+/* HOW 翻面卡 */
+.journey.flips li{display:flex}
+.journey.flips .flip{flex:1;display:grid;width:100%;height:auto;min-height:0;padding:0;border:0;background:none;border-radius:16px}
+.journey.flips .flip:hover{transform:none;box-shadow:none}
+.journey.flips .face{display:flex;flex-direction:column;gap:3px;grid-template-columns:none;align-content:start;padding:16px;border-radius:16px;
+  border:1.5px solid color-mix(in srgb,var(--p) 35%,var(--line));border-top:6px solid var(--p);border-left-width:1.5px;background:color-mix(in srgb,var(--p) 5%,var(--surface))}
+.journey.flips .face.front:hover{box-shadow:0 12px 22px -14px var(--p)}
+.journey.flips .back{background:color-mix(in srgb,var(--p) 10%,var(--surface))}
+.journey.flips .back b{font-size:var(--fs-l4);margin-bottom:2px}
+.journey.flips .back .ml{font-size:13px}
+.journey.flips .back .ml i{color:var(--p)}
+.journey.flips .face{text-align:left;align-items:flex-start}
+.journey.flips .face.front{justify-content:center}
+.journey.flips .back .pk{font-size:12px;margin:0}
+.sb-demo{font-size:11px;font-weight:700;color:var(--muted);padding:1px 8px;border-radius:999px;border:1px dashed var(--line)}
 
 </style>
 </head>
@@ -867,7 +946,7 @@ footer .wrap{max-width:1080px}
     <div class="mark" aria-hidden="true">數</div>
     <div>
       <h1>國小數學提問共備入口</h1>
-      <p>ENGAGE → CREATE → MANAGE → SHAPE｜和 AI 一起把提問想得更深</p>
+      <p>和 AI 一起，把數學課的提問想得更深</p>
     </div>
     <div class="theme-sw" role="group" aria-label="背景顏色">
       <button type="button" data-theme-set="light" aria-pressed="false"><span aria-hidden="true">☀️</span><span class="tl">淡色</span></button>
@@ -893,58 +972,64 @@ footer .wrap{max-width:1080px}
   <div class="panel" id="p-home" role="tabpanel" aria-labelledby="t-home">
   <section class="card hero" aria-labelledby="home-title">
     <div class="eyebrow">引言 · 國小數學提問共備入口</div>
-    <h2 class="sec-title" id="home-title"><span class="sec-icon">🗺️</span>好的提問，讓學生用數學的眼光看世界</h2>
-    <p class="lede">這是國小數學老師與共備社群的<strong>備課起點</strong>：不替你寫教案，而是帶你一步步進入和 AI 共備，把一個單元的提問想得更清楚。依「為什麼 → 是什麼 → 怎麼走」三段說明。</p>
+    <h2 class="sec-title" id="home-title"><span class="sec-icon">🗺️</span>以數學觀點看世界，與世界互動</h2>
+    <blockquote class="lin">讓學生「有趣，有感，有自己想法，有機會表達，遇到問題習慣用數學角度去看，用數學跟世界互動」。<cite>—— 林福來〈二十一世紀技能：數學素養教學與評量的指標〉</cite></blockquote>
+    <p class="lede">要實現這個期待，備課時要抓住四個關鍵：</p>
+    <ul class="keys4">
+      <li><b>❓ 提問</b><span>用有層次的提問引發思考</span></li>
+      <li><b>💡 概念</b><span>以概念為本，組織學生的探究</span></li>
+      <li><b>🧠 思考技能</b><span>對準 21 世紀八大思考素養</span></li>
+      <li><b>🤝 共備</b><span>和夥伴一起討論、試教、修正</span></li>
+    </ul>
+    <p class="lede">這個入口網把三位 AI 小幫手和三個備課工具串成一條<strong>共備歷程</strong>：陪老師理清單元概念、設計有層次的提問、對準思考技能，再帶回社群共備。AI 提供靈感，老師做專業判斷。下面依「為什麼 → 是什麼 → 怎麼走」說明。</p>
     <div class="gc">
-      <button type="button" class="gc-i gw" data-scroll="why-title"><span class="gk">WHY</span><b>為什麼</b><span>從提問開始共備</span><em>↓</em></button>
-      <button type="button" class="gc-i gwh" data-scroll="what-title"><span class="gk">WHAT</span><b>是什麼</b><span>3 位小幫手 ＋ 3 個工具</span><em>↓</em></button>
-      <button type="button" class="gc-i gh2" data-scroll="how-title"><span class="gk">HOW</span><b>怎麼走</b><span>四階段共備歷程</span><em>↓</em></button>
+      <button type="button" class="gc-i gw" data-scroll="why-title"><span class="gk">WHY</span><b>為什麼</b><span>從提問開始</span><em>↓</em></button>
+      <button type="button" class="gc-i gwh" data-scroll="what-title"><span class="gk">WHAT</span><b>是什麼</b><span>三位小幫手，三個工具</span><em>↓</em></button>
+      <button type="button" class="gc-i gh2" data-scroll="how-title"><span class="gk">HOW</span><b>怎麼走</b><span>四階段共備</span><em>↓</em></button>
     </div>
   </section>
 
   <section class="card gsec gw" aria-labelledby="why-title">
     <div class="eyebrow"><span class="gtag">WHY</span>為什麼</div>
-    <h2 class="sec-title" id="why-title"><span class="sec-icon">💡</span>從「提問」開始共備</h2>
+    <h2 class="sec-title" id="why-title"><span class="sec-icon">💡</span>為什麼從提問開始共備</h2>
     <div class="why3">
-      <div><span class="wi">🎯</span><b>提問是最省力的槓桿</b><p>精進教師的提問，用最少的調整，帶出學生的素養表現。</p></div>
-      <div><span class="wi">🧠</span><b>思考素養靠提問引發</b><p>批判、創造、探究、反思……都要靠有層次的提問一步步帶出來。</p></div>
-      <div><span class="wi">🤝</span><b>AI 給靈感，老師做判斷</b><p>AI 不認識你的學生；選哪些提問、怎麼調整，判斷權留在老師手上。</p></div>
+      <div><span class="wi">🌏</span><b>目標｜用數學看世界</b><p>素養就是「以數學觀點看世界，與世界互動」。數學是日常生活、學習其他領域，以及思考問題的工具。</p>
+        <ul class="chips"><li>數學語言的演化</li><li>探究式學習</li><li>問題解決為本的統整</li><li>反思的學習歷程</li><li>重視情意</li></ul><small class="src">108 課綱「五觀、六標」的素養教學啟示</small></div>
+      <div><span class="wi">🧠</span><b>指標｜八大思考素養</b><p>它是臺灣公民需要的核心素養、PISA 2022 的評量指標，也完備了 108 課綱，補上課綱沒有明示的<strong>創造力</strong>與<strong>反思</strong>。</p>
+        <ul class="chips"><li>批判性思考</li><li>創造力</li><li>研究與探究</li><li>系統性思維</li><li>反思</li><li>溝通</li><li>自主與堅持</li><li>資訊使用</li></ul></div>
+      <div><span class="wi">🎯</span><b>策略｜精進提問</b><p>JDM 進階奠基式素養教學的關鍵策略，是精進教師的提問（遠近 × 閉開的 2×2 提問架構）：用最少的調整，更有效地促進學生的素養表現。</p>
+        <ul class="chips"><li>激發思考</li><li>診斷學習</li><li>情緒分享</li><li>語言演化</li></ul><small class="src">JDM 進階奠基式素養教學四原則</small></div>
     </div>
+    <p class="why-ai">🤝 AI 小幫手在這裡的角色：提供大量提問靈感，<strong>減輕設計提問的壓力</strong>；但它不認識你的學生，選哪些提問、怎麼調整，<strong>判斷權始終留在老師手上</strong>。</p>
   </section>
 
   <section class="card gsec gwh" aria-labelledby="what-title">
     <div class="eyebrow"><span class="gtag">WHAT</span>是什麼</div>
-    <h2 class="sec-title" id="what-title"><span class="sec-icon">🧭</span>三位 AI 小幫手 ＋ 三個備課工具</h2>
-    <div class="what2">
-      <div>
-        <h3>🤖 AI 小幫手 <small>在 NotebookLM 上對話</small></h3>
-        <ul class="rl">
-          <li class="f8"><button type="button" data-go="create-inq"><b>🔍 概念為本探究</b><span>① 替各探究階段選活動策略</span><i class="pt pc">CREATE</i></button></li>
-          <li class="f6"><button type="button" data-go="create-ask"><b>❓ 有效提問</b><span>② 替各階段放入有層次的提問</span><i class="pt pc">CREATE</i></button></li>
-          <li class="f3"><button type="button" data-go="create-skill"><b>🌱 八大思考素養</b><span>③ 朝思考素養深化</span><i class="pt pc">CREATE</i></button></li>
-        </ul>
-      </div>
-      <div>
-        <h3>🧰 備課工具 <small>在這個網頁直接用</small></h3>
-        <ul class="rl">
-          <li class="fg"><button type="button" data-go="engage-try"><b>✍️ 提示詞產生器</b><span>一次備好給小幫手的輸入</span><i class="pt pe">ENGAGE</i></button></li>
-          <li class="fv"><button type="button" data-go="engage-vlm"><b>🧩 素材轉譯</b><span>課本照片轉成 md 文字</span><i class="pt pe">ENGAGE</i></button></li>
-          <li class="fx"><button type="button" data-go="manage-html"><b>🧪 HTML 試板</b><span>預覽、修改 AI 做的網頁</span><i class="pt pm">MANAGE</i></button></li>
-        </ul>
-      </div>
+    <h2 class="sec-title" id="what-title"><span class="sec-icon">🧭</span>三位小幫手，三個工具</h2>
+    <div class="what2 flips rl">
+      <h3>🤖 AI 小幫手 <small>在 NotebookLM 上對話</small></h3>
+      <h3>🧰 備課工具 <small>在這個網頁直接用</small></h3>
+      <div class="cell f8"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>🔍 概念為本探究</b><span>① 輸入年級、學生特色，得到各階段探究策略</span><i class="pt pc">CREATE</i></span><span class="face back"><b>🔍 概念為本探究</b><span class="ml"><i>👩‍🎓 年級</i>→ 適合學生程度的探究策略</span><span class="ml"><i>📘 領域／科目</i>→ 扣合學科的探究活動</span><span class="ml"><i>🌱 學生特色</i>→ 依班級特性調整的做法</span><span class="ml step">之後組成骨架：從策略55挑選，排出投入 → 聚焦 → 組織 → 通則 → 遷移・反思</span><small>📍 CREATE › ① 活動骨架</small></span></button></div>
+      <div class="cell fg"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>✍️ 提示詞產生器</b><span>輸入年級、單元，得到三位小幫手的開場提示詞</span><i class="pt pe">ENGAGE</i></span><span class="face back"><b>✍️ 提示詞產生器</b><span class="ml"><i>👩‍🎓 年級、單元</i>→ 三位小幫手的開場提示詞</span><span class="ml"><i>🌱 學生特色</i>→ 更貼近班級的輸入</span><span class="ml step">之後：按「複製並開啟」，貼到小幫手送出</span><small>📍 ENGAGE › 引導體驗</small></span></button></div>
+      <div class="cell f6"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>❓ 有效提問</b><span>② 輸入主題或問題，得到四個層次的提問</span><i class="pt pc">CREATE</i></span><span class="face back"><b>❓ 有效提問</b><span class="ml"><i>📌 主題或概念</i>→ 設計四個層次的提問</span><span class="ml"><i>❓ 一個問題</i>→ 先回答，再模擬四位利害關係人的觀點</span><span class="ml step">之後再追問：加入元素、素養能力、6C 能力、議題或人物觀點</span><small>📍 CREATE › ② 放入提問</small></span></button></div>
+      <div class="cell fv"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>🧩 素材轉譯</b><span>輸入課本、教案照片，得到 md 文字</span><i class="pt pe">ENGAGE</i></span><span class="face back"><b>🧩 素材轉譯</b><span class="ml"><i>📄 課本、教案</i>→ 結構清楚的 md 文字</span><span class="ml"><i>📸 照片、截圖</i>→ 保留公式與圖形說明</span><span class="ml step">之後：把 md 貼給任一位小幫手</span><small>📍 ENGAGE › 準備素材</small></span></button></div>
+      <div class="cell f3"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>🌱 八大思考素養</b><span>③ 輸入問題、想法或教材，得到素養提問靈感</span><i class="pt pc">CREATE</i></span><span class="face back"><b>🌱 八大思考素養</b><span class="ml"><i>❓ 提問</i>→ 學習脈絡、多重表徵、分層提問靈感</span><span class="ml"><i>💬 想法或看法</i>→ 正例、反例、待釐清的比對與追問</span><span class="ml"><i>📄 教材</i>→ 知識節點、系列提問、延伸連結</span><span class="ml step">之後三步深入：提問靈感 → 教學建議 → 迷思診斷與提問鷹架</span><small>📍 CREATE › ③ 深化素養</small></span></button></div>
+      <div class="cell fx"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>🧪 HTML 試板</b><span>輸入 HTML 程式碼，得到即時預覽與修改</span><i class="pt pm">MANAGE</i></span><span class="face back"><b>🧪 HTML 試板</b><span class="ml"><i>💻 HTML 程式碼</i>→ 即時預覽、手機版預覽</span><span class="ml"><i>✏️ 預覽中改字</i>→ 直接修改成果</span><span class="ml step">之後帶走：複製程式碼、下載預覽圖</span><small>📍 MANAGE › HTML 試板</small></span></button></div>
     </div>
+    <p class="flip-hint">👆 點卡片翻面看簡介，再點一次翻回來。</p>
   </section>
 
   <section class="card gsec gh2" aria-labelledby="how-title">
     <div class="eyebrow"><span class="gtag">HOW</span>怎麼走</div>
-    <h2 class="sec-title" id="how-title"><span class="sec-icon">🛤️</span>四階段共備歷程：上方分頁就是這條路</h2>
+    <h2 class="sec-title" id="how-title"><span class="sec-icon">🛤️</span>四階段共備歷程</h2>
     <p class="sec-note">參考 OECD 與歐盟執委會的 AI 素養架構（AILit Framework, 2026）：老師由認識、共創、判斷，走到共同形塑。CREATE 裡再以策略55的學生探究歷程（投入 → 聚焦 → 組織 → 通則 → 遷移・反思）為單元骨架。</p>
-    <ol class="journey">
-      <li class="pe"><button type="button" data-go="engage"><span class="pk">ENGAGE</span><b>認識與體驗</b><small>說明・示範・體驗・準備素材</small></button></li>
-      <li class="pc"><button type="button" data-go="create"><span class="pk">CREATE</span><b>共創與發想</b><small>探究地圖：骨架 → 提問 → 素養</small></button></li>
-      <li class="pm"><button type="button" data-go="manage"><span class="pk">MANAGE</span><b>判斷與取捨</b><small>分工・檢核 AI 產出</small></button></li>
-      <li class="ps"><button type="button" data-go="shape"><span class="pk">SHAPE</span><b>共備與形塑</b><small>共備討論・回饋</small></button></li>
+    <ol class="journey flips">
+      <li class="pe"><button type="button" class="flip" aria-pressed="false"><span class="face front"><span class="pk">ENGAGE</span><b>認識與體驗</b><small>說明・示範・體驗・準備素材</small></span><span class="face back"><span class="pk">ENGAGE</span><b>認識與體驗</b><span class="ml"><i>📖 說明</i>→ 認識小幫手與工具</span><span class="ml"><i>🎬 示範</i>→ 看一次完整對話</span><span class="ml"><i>🧭 體驗</i>→ 10 分鐘照著做</span><span class="ml"><i>🧩 準備素材</i>→ 照片轉成 md</span><span class="ml step">之後：帶著一題好提問，進入 CREATE</span></span></button></li>
+      <li class="pc"><button type="button" class="flip" aria-pressed="false"><span class="face front"><span class="pk">CREATE</span><b>共創與發想</b><small>探究地圖：骨架 → 提問 → 素養</small></span><span class="face back"><span class="pk">CREATE</span><b>共創與發想</b><span class="ml"><i>🗺️ 探究地圖</i>→ 投入到遷移・反思</span><span class="ml"><i>① 活動骨架</i>→ 概念為本探究</span><span class="ml"><i>② 放入提問</i>→ 有效提問</span><span class="ml"><i>③ 深化素養</i>→ 八大思考素養</span><span class="ml step">之後：帶著單元設計，進入 MANAGE</span></span></button></li>
+      <li class="pm"><button type="button" class="flip" aria-pressed="false"><span class="face front"><span class="pk">MANAGE</span><b>判斷與取捨</b><small>分工・檢核 AI 產出</small></span><span class="face back"><span class="pk">MANAGE</span><b>判斷與取捨</b><span class="ml"><i>⚖️ 分工</i>→ AI 做什麼、老師做什麼</span><span class="ml"><i>✅ 檢核表</i>→ 正確、對準、隱私</span><span class="ml"><i>🔍 JDM 四原則</i>→ 檢視提問品質</span><span class="ml"><i>🧪 HTML 試板</i>→ 修改 AI 做的學習單</span><span class="ml step">之後：帶著檢核過的設計，進入 SHAPE</span></span></button></li>
+      <li class="ps"><button type="button" class="flip" aria-pressed="false"><span class="face front"><span class="pk">SHAPE</span><b>共備與形塑</b><small>共備討論・回饋</small></span><span class="face back"><span class="pk">SHAPE</span><b>共備與形塑</b><span class="ml"><i>🗣️ 討論四問</i>→ 可刪、可改、可補、可接</span><span class="ml"><i>⏱️ 40 分鐘共備</i>→ 說明 → 試做 → 討論</span><span class="ml"><i>🔁 回饋</i>→ 帶回課堂觀察</span><span class="ml step">之後：開始下一輪 ENGAGE</span></span></button></li>
     </ol>
+    <p class="flip-hint">👆 點卡片翻面看各階段內容；要開始，請點上方的分頁。</p>
   </section>
     <nav class="pager"><button type="button" class="next" data-go="engage">開始：ENGAGE 認識與體驗 →</button></nav>
   </div>
@@ -952,8 +1037,6 @@ footer .wrap{max-width:1080px}
   <!-- ================= ENGAGE ================= -->
   <div class="panel" id="p-engage" role="tabpanel" aria-labelledby="t-engage">
   <section class="card phead pe" aria-labelledby="engage-title">
-    <ol class="pbar" aria-hidden="true"><li class="on">ENGAGE</li><li>CREATE</li><li>MANAGE</li><li>SHAPE</li></ol>
-    <div class="eyebrow"><span class="ptag">ENGAGE</span>階段一 · 認識與體驗</div>
     <h2 class="sec-title" id="engage-title"><span class="sec-icon">👀</span>先認識，再看一次，然後自己試</h2>
     <div class="subnav" role="tablist">
       <button type="button" role="tab" data-sub="engage-explain">📖 說明</button>
@@ -1013,7 +1096,7 @@ footer .wrap{max-width:1080px}
   </section>
   <!-- 提示詞產生器 -->
   <section class="card gen" aria-labelledby="gen-title">
-    <div class="eyebrow">ENGAGE › 提示詞產生器</div>
+    <div class="eyebrow">提示詞產生器</div>
     <h2 class="sec-title" id="gen-title"><span class="sec-icon">✍️</span>填一次備課資料，三種小幫手的開場輸入一次備好</h2>
     <p class="sec-note">資料只在你的瀏覽器裡組成文字，不會上傳到任何地方。</p>
     <ol class="stepper" aria-label="使用步驟">
@@ -1101,7 +1184,7 @@ footer .wrap{max-width:1080px}
   <section class="card vlm tool fv" aria-labelledby="vlm-title">
     <div class="vlm-head">
       <div>
-        <div class="eyebrow">ENGAGE › 準備素材（VLM 轉譯工具）</div>
+        <div class="eyebrow">VLM 轉譯工具</div>
         <h2 class="sec-title" id="vlm-title"><span class="sec-icon">🧩</span>素材轉譯：把課本、教案轉成文字</h2>
         <p class="credit">提示詞內容引自 <strong>臺師大教創中心</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
       </div>
@@ -1162,8 +1245,6 @@ footer .wrap{max-width:1080px}
   <!-- ================= CREATE ================= -->
   <div class="panel" id="p-create" role="tabpanel" aria-labelledby="t-create">
   <section class="card phead pc" aria-labelledby="create-title">
-    <ol class="pbar" aria-hidden="true"><li class="done">ENGAGE</li><li class="on">CREATE</li><li>MANAGE</li><li>SHAPE</li></ol>
-    <div class="eyebrow"><span class="ptag">CREATE</span>階段二 · 共創與發想</div>
     <h2 class="sec-title" id="create-title"><span class="sec-icon">💡</span>用探究地圖設計單元：先骨架，再提問，後深化</h2>
     <p class="sec-note">學生的探究歷程是單元的骨架（投入 → 聚焦 → 組織 → 通則 → 遷移，反思貫穿全程）。三位小幫手依序替骨架加上活動、提問與思考素養。</p>
     <div class="subnav flowsub" role="tablist">
@@ -1191,7 +1272,7 @@ footer .wrap{max-width:1080px}
   <section class="card tool f8" aria-labelledby="inq-title">
     <div class="tool-head">
       <div>
-        <div class="eyebrow">CREATE › ① 活動骨架 · 概念為本探究教學策略小幫手</div>
+        <div class="eyebrow">① 活動骨架</div>
         <h2 class="sec-title" id="inq-title"><span class="sec-icon">🔍</span>概念為本探究教學策略小幫手</h2>
         <p class="credit">由 <strong>臺師大教創中心陳佩英教授</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
       </div>
@@ -1232,7 +1313,7 @@ footer .wrap{max-width:1080px}
   <section class="card tool f6" aria-labelledby="ask-title">
     <div class="tool-head">
       <div>
-        <div class="eyebrow">CREATE › ② 放入提問 · 有效提問 AI 小幫手</div>
+        <div class="eyebrow">② 放入提問</div>
         <h2 class="sec-title" id="ask-title"><span class="sec-icon">❓</span>有效提問 AI 小幫手</h2>
         <p class="credit">由 <strong>臺師大教創中心陳佩英教授</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
       </div>
@@ -1260,6 +1341,15 @@ footer .wrap{max-width:1080px}
         <p class="say">異分母分數加法，為什麼一定要先通分？</p>
         <span class="arr">➡️ 小幫手會<b>先回答問題</b>，再<b>模擬四位不同利害關係人</b>的觀點與回答。</span></div>
     </div>
+    <h3 class="gsub">繼續追問，讓提問更好</h3>
+    <p class="sec-note">拿到提問後，小幫手會附上追問範例。挑一個方向，請它把原本的提問再加強：</p>
+    <div class="five">
+      <div><b>🧱 加入元素</b><p>例：加入具體操作教具與圖像表徵</p></div>
+      <div><b>🌱 加入素養能力</b><p>例：加入數感與符號轉換</p></div>
+      <div><b>🧠 加入 6C 能力</b><p>例：加入批判性思考、協作溝通</p></div>
+      <div><b>🌏 加入議題</b><p>例：融入環境教育、資源不浪費</p></div>
+      <div><b>👥 加入人物觀點</b><p>例：老闆與顧客的不同立場</p></div>
+    </div>
     <p class="related">✍️ 輸入可用 <button type="button" class="linkbtn" data-go="gen">提示詞產生器</button> 備好　·　提問放好後，接著到 <button type="button" class="linkbtn" data-go="create-skill">③ 深化素養</button></p>
     <p class="cite1">📌 引用請註明：臺師大教創中心與優履團隊設計 AI 機器人小幫手 good questioner。本機器人由教師團隊開發，免費提供教育使用，請共同維護創作者的智慧財產。</p>
   </section>
@@ -1267,7 +1357,7 @@ footer .wrap{max-width:1080px}
   </div>
   <div class="ssec" id="x-create-skill">
   <section class="card tool f3" aria-labelledby="skill-title">
-    <div class="eyebrow">CREATE › ③ 深化素養 · 八大思考素養小幫手</div>
+    <div class="eyebrow">③ 深化素養</div>
     <h2 class="sec-title" id="skill-title"><span class="sec-icon">🌱</span>八大思考素養小幫手</h2>
     <p class="credit">優履工作室研發「促進○○思考素養共備」應用指南（Aibot），使用請引註。</p>
     <p class="purpose">🎯 每位小幫手聚焦一項 <b>21 世紀思考素養</b>（目前開放 5 項）。挑 1～2 項適合本單元的素養，小幫手會用<b>三個階段</b>提供提問靈感與步驟化建議。</p>
@@ -1635,8 +1725,6 @@ footer .wrap{max-width:1080px}
   <!-- ================= MANAGE ================= -->
   <div class="panel" id="p-manage" role="tabpanel" aria-labelledby="t-manage">
   <section class="card phead pm" aria-labelledby="manage-title">
-    <ol class="pbar" aria-hidden="true"><li class="done">ENGAGE</li><li class="done">CREATE</li><li class="on">MANAGE</li><li>SHAPE</li></ol>
-    <div class="eyebrow"><span class="ptag">MANAGE</span>階段三 · 判斷與取捨</div>
     <h2 class="sec-title" id="manage-title"><span class="sec-icon">⚖️</span>AI 是助手，老師是作者</h2>
     <div class="subnav" role="tablist">
       <button type="button" role="tab" data-sub="manage-judge">✅ 分工與檢核</button>
@@ -1661,6 +1749,13 @@ footer .wrap{max-width:1080px}
       <li><label><input type="checkbox"><span><b>註明來源</b>：公開分享時註明小幫手與工具的引用來源</span></label></li>
     </ol>
     <p class="chk-done" role="status"></p>
+    <h3 class="gsub">🔍 用 JDM 四原則檢視提問</h3>
+    <div class="four">
+      <div><b>💭 激發思考</b><p>這個提問能讓學生有自己的想法，而不只是回想答案嗎？</p></div>
+      <div><b>🩺 診斷學習</b><p>從學生的回答，看得出他理解到哪裡、卡在哪裡嗎？</p></div>
+      <div><b>💗 情緒分享</b><p>有沒有留空間，讓學生說出「有趣、有感」的感受？</p></div>
+      <div><b>🗣️ 語言演化</b><p>能不能引導學生從生活語言，逐步走向數學語言？</p></div>
+    </div>
     <p class="related">🧪 AI 做出學習單或活動頁的 HTML？到 <button type="button" class="linkbtn" data-go="manage-html">HTML 試板</button> 預覽、直接改字再帶走。</p>
   </section>
   </div>
@@ -1669,7 +1764,7 @@ footer .wrap{max-width:1080px}
   <section class="card tool fx" aria-labelledby="html-title">
     <div class="tool-head">
       <div>
-        <div class="eyebrow">MANAGE › HTML 試板</div>
+        <div class="eyebrow">優履團隊研發設計</div>
         <h2 class="sec-title" id="html-title"><span class="sec-icon">🧪</span>HTML 試板：把 AI 做好的網頁貼進來看</h2>
         <p class="credit"><strong>優履團隊</strong>研發設計 2026 ©，使用請引註。</p>
       </div>
@@ -1694,8 +1789,6 @@ footer .wrap{max-width:1080px}
   <!-- ================= SHAPE ================= -->
   <div class="panel" id="p-shape" role="tabpanel" aria-labelledby="t-shape">
   <section class="card phead ps" aria-labelledby="shape-title">
-    <ol class="pbar" aria-hidden="true"><li class="done">ENGAGE</li><li class="done">CREATE</li><li class="done">MANAGE</li><li class="on">SHAPE</li></ol>
-    <div class="eyebrow"><span class="ptag">SHAPE</span>階段四 · 共備與形塑</div>
     <h2 class="sec-title" id="shape-title"><span class="sec-icon">🤝</span>一起討論、試教，讓設計越來越貼近學生</h2>
     <h3 class="gsub">🗣️ 共備討論四問</h3>
     <div class="four">
@@ -1728,7 +1821,7 @@ footer .wrap{max-width:1080px}
   <div class="statbar" id="statbar" hidden>
     <span class="sb-item">✉️ 問題反應信箱：<a href="mailto:qekepv@gmail.com" id="mail-addr">qekepv@gmail.com</a><button type="button" class="sb-copy" id="mail-copy">複製</button></span>
     <span class="sb-item"><i class="dot" aria-hidden="true"></i>線上人數 <b id="st-online">—</b> 人</span>
-    <span class="sb-item">👁️ 累計 <b id="st-total">—</b> 人次</span>
+    <span class="sb-item">👁️ 累計 <b id="st-total">—</b> 人次</span><span class="sb-demo" id="st-demo" hidden>示意數字</span>
   </div>
   <div class="ft-h">📖 資料來源與引述</div>
   <div class="ft-two">
@@ -1766,7 +1859,16 @@ footer .wrap{max-width:1080px}
     if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(ma.textContent).then(ok,fb); else fb();
   });
   var on=document.getElementById('st-online'),tot=document.getElementById('st-total');
-  if(!window.claude||!window.claude.use) return;
+  if(!window.claude||!window.claude.use){
+    var base=new Date('2026-11-01T00:00:00+08:00').getTime(), days=Math.max(0,(Date.now()-base)/864e5);
+    var total=2860+Math.floor(days*37), extra=0;
+    try{ extra=+(localStorage.getItem('demo-visits')||0)||0; if(!sessionStorage.getItem('demo-counted')){ extra++; localStorage.setItem('demo-visits',extra); sessionStorage.setItem('demo-counted','1'); } }catch(e){}
+    tot.textContent=(total+extra).toLocaleString('en-US');
+    function tick(){ on.textContent=String(9+Math.floor(Math.random()*14)); }
+    tick(); setInterval(tick,20000);
+    var tag=document.getElementById('st-demo'); if(tag) tag.hidden=false;
+    return;
+  }
   claude.use('room').then(function(room){
     if(!room) return;
     function upd(){ on.textContent=String(room.peers().filter(function(p){return p.kind==='viewer';}).length||1); }
@@ -2148,6 +2250,9 @@ footer .wrap{max-width:1080px}
   window.addEventListener('hashchange',function(){ if(location.hash.indexOf('create')>-1) detail(); });
   render();
 })();
+</script>
+<script>
+document.querySelectorAll('.flips .flip').forEach(function(b){ b.addEventListener('click',function(){ var on=!b.classList.contains('on'); b.classList.remove('anim'); void b.offsetWidth; b.classList.add('anim'); setTimeout(function(){ b.classList.toggle('on',on); b.setAttribute('aria-pressed',String(on)); },200); }); b.addEventListener('animationend',function(){ b.classList.remove('anim'); }); });
 </script>
 
 </body>
