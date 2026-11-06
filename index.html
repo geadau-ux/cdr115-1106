@@ -1121,6 +1121,71 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
 .cd-3 .f-other{font:inherit;font-size:14px;width:100%;padding:8px 10px;border-radius:10px;border:1.5px solid var(--lc);background:var(--surface);color:var(--text)}
 .cd-3 .f-other:focus{outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--lc) 25%,transparent)}
 .flowsub.free{justify-content:stretch}.flowsub.free button{flex:1 1 0}
+.opt-tag.sm{font-size:12px;padding:1px 9px;margin-left:6px;font-style:normal}
+.prompt-bar .label{flex-wrap:wrap}
+.lbl-note{display:block;width:100%;font-size:13px;font-weight:500;color:var(--muted);margin-top:2px}
+.vlm-sum{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding:12px 16px;border-radius:12px;background:color-mix(in srgb,var(--c4) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--c4) 35%,var(--line));font-size:var(--fs-body);color:var(--text)}
+.vlm-sum b{color:var(--c4)}
+.vlm-sum .chev{display:inline-block;font-weight:900;transition:transform .2s}
+#vlm-sec-tog.open .chev{transform:rotate(90deg)}
+#vlm-body[hidden]{display:none}
+/* 三位小幫手標誌 */
+.hlogo{display:inline-grid;place-items:center;flex:none;width:40px;height:40px;border-radius:12px;font-family:var(--serif);font-weight:900;font-size:22px;line-height:1;color:#fff!important;background:var(--hc);
+  box-shadow:inset 0 -3px 0 rgba(0,0,0,.18),0 4px 10px -4px var(--hc);text-shadow:0 1px 1px rgba(0,0,0,.25)}
+.h-inq{--hc:var(--c8)} .h-ask{--hc:var(--c6)} .h-skill{--hc:var(--c3)}
+.hlogo.sm{width:24px;height:24px;border-radius:7px;font-size:14px;margin-right:6px;vertical-align:-5px;box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
+.sec-icon.hlogo{width:52px;height:52px;border-radius:15px;font-size:28px;border:0}
+.gcard .gh .hlogo{width:40px;height:40px}
+.qb .qi.hlogo{width:28px;height:28px;border-radius:8px;font-size:15px;background:var(--hc)}
+.who td:first-child > span:not(.hlogo){display:none}
+.who td:first-child span.hlogo{width:28px;height:28px;border-radius:8px;font-size:16px;margin:0 8px 0 0;background:var(--hc);vertical-align:-7px}
+.flips .hlogo.sm{width:32px;height:32px;border-radius:9px;font-size:18px;margin-right:8px;vertical-align:-8px}
+.tool .sec-icon.hlogo,.card .sec-icon.hlogo{background:var(--hc);color:#fff;border:0}
+/* 機器人造型標誌 */
+.hlogo{position:relative;overflow:visible;isolation:isolate;border-radius:30%;font-family:var(--sans);
+  background:var(--hc);
+  box-shadow:inset 0 0 0 .16em color-mix(in srgb,var(--hc) 70%,#000),inset 0 -.12em 0 .16em color-mix(in srgb,var(--hc) 55%,#000),0 4px 10px -4px var(--hc)}
+.hlogo::before{content:"";position:absolute;left:50%;top:-34%;width:26%;height:36%;transform:translateX(-50%);z-index:-1;
+  background:radial-gradient(circle at 50% 22%,color-mix(in srgb,var(--hc) 60%,#fff) 0 32%,transparent 34%),linear-gradient(var(--hc),var(--hc)) 50% 100%/24% 62% no-repeat}
+.hlogo::after{content:"";position:absolute;top:32%;left:-13%;right:-13%;height:36%;z-index:-1;border-radius:3px;
+  background:linear-gradient(color-mix(in srgb,var(--hc) 75%,#000),color-mix(in srgb,var(--hc) 75%,#000)) left/13% 100% no-repeat,linear-gradient(color-mix(in srgb,var(--hc) 75%,#000),color-mix(in srgb,var(--hc) 75%,#000)) right/13% 100% no-repeat}
+.hlogo.sm,.who td:first-child span.hlogo,.qb .qi.hlogo{margin-left:4px}
+.qb .qi.hlogo{margin-top:4px}
+.sec-icon.hlogo{margin-top:8px}
+.gcard .gh .hlogo{margin-top:6px}
+/* SVG 機器人標誌（取代 CSS 造型） */
+.hlogo.rbt{display:inline-grid!important;place-items:center;background:none!important;box-shadow:none!important;border:0!important;border-radius:0!important;padding:0!important;text-shadow:none;vertical-align:middle}
+.hlogo.rbt::before,.hlogo.rbt::after{content:none!important}
+.hlogo.rbt svg{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 2px 2px rgba(0,0,0,.12))}
+.hlogo.rbt{width:44px;height:44px;margin:0}
+.gcard .gh .hlogo.rbt{width:46px;height:46px;margin:0}
+.sec-icon.hlogo.rbt{width:58px;height:58px;margin:0}
+.qb .qi.hlogo.rbt{width:30px;height:30px;margin:0}
+.hlogo.sm.rbt{width:30px;height:30px;margin:0 6px 0 0;vertical-align:-9px}
+.flips .hlogo.sm.rbt{width:36px;height:36px;vertical-align:-11px}
+.who td:first-child span.hlogo.rbt{width:32px;height:32px;margin:0 6px 0 0;vertical-align:-10px}
+/* HOW 階段卡插圖 */
+.journey.flips li.pe .front{background-image:url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Ccircle%20cx%3D%2264%22%20cy%3D%2258%22%20r%3D%2250%22%20fill%3D%22%232b7fc2%22%20opacity%3D%22.10%22/%3E%3Cpath%20d%3D%22M22%2084%20L60%2092%20L98%2084%20L98%2040%20L60%2048%20L22%2040%20Z%22%20fill%3D%22%23fff%22%20stroke%3D%22%232b7fc2%22%20stroke-width%3D%222.5%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M60%2048%20V92%22%20stroke%3D%22%232b7fc2%22%20stroke-width%3D%222.5%22/%3E%3Cpath%20d%3D%22M30%2052%20L52%2056%20M30%2062%20L52%2066%20M30%2072%20L46%2075%22%20stroke%3D%22%2385b7eb%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M68%2056%20L90%2052%20M68%2066%20L90%2062%22%20stroke%3D%22%2385b7eb%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2282%22%20cy%3D%2272%22%20r%3D%2211%22%20fill%3D%22%23e6f1fb%22%20stroke%3D%22%232b7fc2%22%20stroke-width%3D%223%22/%3E%3Cpath%20d%3D%22M90%2080%20L100%2090%22%20stroke%3D%22%232b7fc2%22%20stroke-width%3D%224%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M40%2022%20l3%207%207%203%20-7%203%20-3%207%20-3%20-7%20-7%20-3%207%20-3z%22%20fill%3D%22%23f2b632%22/%3E%3Cpath%20d%3D%22M84%2018%20l2%204%204%202%20-4%202%20-2%204%20-2%20-4%20-4%20-2%204%20-2z%22%20fill%3D%22%23f2b632%22/%3E%3C/svg%3E"),linear-gradient(160deg,color-mix(in srgb,var(--p) 14%,var(--surface)) 0%,color-mix(in srgb,var(--p) 4%,var(--surface)) 60%);background-repeat:no-repeat;background-position:right 10px top 12px,0 0;background-size:96px 96px,100% 100%}
+.journey.flips li.pc .front{background-image:url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2250%22%20fill%3D%22%23d9800b%22%20opacity%3D%22.10%22/%3E%3Cpath%20d%3D%22M60%2016%20a20%2020%200%200%201%2012%2036%20v8%20h-24%20v-8%20a20%2020%200%200%201%2012%20-36z%22%20fill%3D%22%23ffd88a%22%20stroke%3D%22%23c26a10%22%20stroke-width%3D%222.5%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M50%2066%20h20%20M52%2072%20h16%22%20stroke%3D%22%23c26a10%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M60%2024%20v-14%20M38%2032%20l-9%20-8%20M82%2032%20l9%20-8%22%20stroke%3D%22%23f29a2e%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M20%2086%20h18%20a5%205%200%201%201%208%200%20h14%20v26%20h-40z%22%20fill%3D%22%23fff%22%20stroke%3D%22%23c26a10%22%20stroke-width%3D%222.5%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M60%2086%20h14%20a5%205%200%201%200%208%200%20h18%20v26%20h-40z%22%20fill%3D%22%23f29a2e%22%20stroke%3D%22%23c26a10%22%20stroke-width%3D%222.5%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M92%2046%20l14%20-14%204%204%20-14%2014%20-6%202z%22%20fill%3D%22%23fff%22%20stroke%3D%22%23c26a10%22%20stroke-width%3D%222.3%22%20stroke-linejoin%3D%22round%22/%3E%3C/svg%3E"),linear-gradient(160deg,color-mix(in srgb,var(--p) 14%,var(--surface)) 0%,color-mix(in srgb,var(--p) 4%,var(--surface)) 60%);background-repeat:no-repeat;background-position:right 10px top 12px,0 0;background-size:96px 96px,100% 100%}
+.journey.flips li.pm .front{background-image:url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2250%22%20fill%3D%22%238e44ad%22%20opacity%3D%22.10%22/%3E%3Cpath%20d%3D%22M60%2020%20V96%20M44%20100%20h32%22%20stroke%3D%22%236b2f86%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M24%2034%20H96%22%20stroke%3D%22%236b2f86%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22/%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2220%22%20r%3D%225%22%20fill%3D%22%23c9a0dc%22%20stroke%3D%22%236b2f86%22%20stroke-width%3D%222%22/%3E%3Cpath%20d%3D%22M24%2034%20L12%2062%20H36%20Z%22%20fill%3D%22none%22%20stroke%3D%22%238e44ad%22%20stroke-width%3D%222%22/%3E%3Cpath%20d%3D%22M96%2034%20L84%2062%20H108%20Z%22%20fill%3D%22none%22%20stroke%3D%22%238e44ad%22%20stroke-width%3D%222%22/%3E%3Cpath%20d%3D%22M10%2062%20a14%207%200%200%200%2028%200z%22%20fill%3D%22%23e3cdee%22%20stroke%3D%22%238e44ad%22%20stroke-width%3D%222.5%22/%3E%3Cpath%20d%3D%22M82%2062%20a14%207%200%200%200%2028%200z%22%20fill%3D%22%23e3cdee%22%20stroke%3D%22%238e44ad%22%20stroke-width%3D%222.5%22/%3E%3Ctext%20x%3D%2224%22%20y%3D%2258%22%20font-size%3D%2212%22%20text-anchor%3D%22middle%22%20font-family%3D%22sans-serif%22%20font-weight%3D%22700%22%20fill%3D%22%236b2f86%22%3EAI%3C/text%3E%3Ccircle%20cx%3D%2296%22%20cy%3D%2253%22%20r%3D%225%22%20fill%3D%22%238e44ad%22/%3E%3Cpath%20d%3D%22M90%2060%20q6%20-5%2012%200%22%20fill%3D%22%238e44ad%22/%3E%3Crect%20x%3D%2272%22%20y%3D%2274%22%20width%3D%2230%22%20height%3D%2226%22%20rx%3D%224%22%20fill%3D%22%23fff%22%20stroke%3D%22%238e44ad%22%20stroke-width%3D%222.3%22/%3E%3Cpath%20d%3D%22M77%2082%20l3%203%205%20-6%20M77%2092%20l3%203%205%20-6%22%20stroke%3D%22%2313866f%22%20stroke-width%3D%222.3%22%20fill%3D%22none%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M89%2083%20h9%20M89%2093%20h9%22%20stroke%3D%22%23c9a0dc%22%20stroke-width%3D%222.3%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E"),linear-gradient(160deg,color-mix(in srgb,var(--p) 14%,var(--surface)) 0%,color-mix(in srgb,var(--p) 4%,var(--surface)) 60%);background-repeat:no-repeat;background-position:right 10px top 12px,0 0;background-size:96px 96px,100% 100%}
+.journey.flips li.ps .front{background-image:url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20120%20120%22%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2260%22%20r%3D%2250%22%20fill%3D%22%2313866f%22%20opacity%3D%22.10%22/%3E%3Cpath%20d%3D%22M34%2022%20a34%2034%200%200%201%2056%206%22%20fill%3D%22none%22%20stroke%3D%22%235dcaa5%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M86%2018%20l5%2010%20-11%201%22%20fill%3D%22none%22%20stroke%3D%22%235dcaa5%22%20stroke-width%3D%223%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22/%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2262%22%20r%3D%229%22%20fill%3D%22%239fe1cb%22%20stroke%3D%22%230f6e56%22%20stroke-width%3D%222.3%22/%3E%3Cpath%20d%3D%22M14%2096%20a16%2016%200%200%201%2032%200z%22%20fill%3D%22%239fe1cb%22%20stroke%3D%22%230f6e56%22%20stroke-width%3D%222.3%22/%3E%3Ccircle%20cx%3D%2260%22%20cy%3D%2256%22%20r%3D%2210%22%20fill%3D%22%2313866f%22%20stroke%3D%22%230f6e56%22%20stroke-width%3D%222.3%22/%3E%3Cpath%20d%3D%22M42%2096%20a18%2018%200%200%201%2036%200z%22%20fill%3D%22%2313866f%22%20stroke%3D%22%230f6e56%22%20stroke-width%3D%222.3%22/%3E%3Ccircle%20cx%3D%2290%22%20cy%3D%2262%22%20r%3D%229%22%20fill%3D%22%239fe1cb%22%20stroke%3D%22%230f6e56%22%20stroke-width%3D%222.3%22/%3E%3Cpath%20d%3D%22M74%2096%20a16%2016%200%200%201%2032%200z%22%20fill%3D%22%239fe1cb%22%20stroke%3D%22%230f6e56%22%20stroke-width%3D%222.3%22/%3E%3Crect%20x%3D%2266%22%20y%3D%2230%22%20width%3D%2234%22%20height%3D%2218%22%20rx%3D%227%22%20fill%3D%22%23fff%22%20stroke%3D%22%230f6e56%22%20stroke-width%3D%222%22/%3E%3Cpath%20d%3D%22M74%2048%20l-2%206%208%20-6%22%20fill%3D%22%23fff%22%20stroke%3D%22%230f6e56%22%20stroke-width%3D%222%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M72%2039%20h22%22%20stroke%3D%22%235dcaa5%22%20stroke-width%3D%222.3%22%20stroke-linecap%3D%22round%22/%3E%3Crect%20x%3D%2218%22%20y%3D%2234%22%20width%3D%2228%22%20height%3D%2215%22%20rx%3D%226%22%20fill%3D%22%23fff%22%20stroke%3D%22%230f6e56%22%20stroke-width%3D%222%22/%3E%3Cpath%20d%3D%22M38%2049%20l2%205%20-7%20-5%22%20fill%3D%22%23fff%22%20stroke%3D%22%230f6e56%22%20stroke-width%3D%222%22%20stroke-linejoin%3D%22round%22/%3E%3Cpath%20d%3D%22M24%2042%20h16%22%20stroke%3D%22%235dcaa5%22%20stroke-width%3D%222.3%22%20stroke-linecap%3D%22round%22/%3E%3C/svg%3E"),linear-gradient(160deg,color-mix(in srgb,var(--p) 14%,var(--surface)) 0%,color-mix(in srgb,var(--p) 4%,var(--surface)) 60%);background-repeat:no-repeat;background-position:right 10px top 12px,0 0;background-size:96px 96px,100% 100%}
+.journey.flips .face.front{justify-content:flex-end;min-height:220px;padding-top:110px}
+.journey.flips .front::after{content:"";position:absolute;left:-30px;bottom:-30px;width:110px;height:110px;border-radius:50%;background:var(--p);opacity:.07;pointer-events:none}
+.journey.flips .face{position:relative;overflow:hidden}
+.journey.flips .flip:hover .front{background-position:right 6px top 6px,0 0}
+.journey.flips .front{transition:background-position .3s ease}
+/* 浮水印卡片 */
+.wm{position:relative;overflow:hidden;isolation:isolate;background-image:linear-gradient(150deg,color-mix(in srgb,var(--wmc,var(--fill,var(--secondary))) 13%,var(--surface)) 0%,var(--surface) 72%)!important}
+.wm::after{content:attr(data-wm);position:absolute;right:-6px;bottom:-16px;font-size:84px;line-height:1;opacity:.14;z-index:-1;pointer-events:none;transform:rotate(-12deg)}
+.wm.wm-ch::after{font-family:var(--sans);font-weight:900;color:var(--fill);opacity:.13;font-size:120px;right:4px;bottom:-30px}
+.flips .face.front.wm{position:relative}
+.keys4 li.wm::after{font-size:62px;bottom:-10px}
+.why3 > div.wm{border-top:4px solid color-mix(in srgb,var(--wmc) 60%,transparent)}
+.four > div.wm,.loop > div.wm{border-top:4px solid color-mix(in srgb,var(--wmc) 55%,transparent)}
+.split > div.wm{border-left:5px solid color-mix(in srgb,var(--wmc) 60%,transparent)}
+.split > div.wm::after{font-size:96px}
+.flowc .fq{display:block;margin-top:4px;padding:6px 8px;border-radius:8px;background:var(--surface);border:1px dashed color-mix(in srgb,var(--fc) 55%,var(--line));font-size:12.5px;line-height:1.5;color:var(--text)}
+.flowc .fn.a{flex-grow:1.35}
 
 </style>
 </head>
@@ -1194,11 +1259,11 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
     <div class="what2 flips rl">
       <h3>🤖 AI 小幫手 <small>在 NotebookLM 上對話</small></h3>
       <h3>🧰 備課工具 <small>在這個網頁直接用</small></h3>
-      <div class="cell f8"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>🔍 概念為本探究</b><span>輸入年級、學生特色，得到各階段探究策略</span><i class="pt pc">CREATE</i></span><span class="face back"><b>🔍 概念為本探究</b><span class="ml"><i>👩‍🎓 年級</i>→ 適合學生程度的探究策略</span><span class="ml"><i>📘 領域／科目</i>→ 扣合學科的探究活動</span><span class="ml"><i>🌱 學生特色</i>→ 依班級特性調整的做法</span><span class="ml step">之後組成骨架：從策略55挑選，排出投入 → 聚焦 → 組織 → 通則 → 遷移・反思</span><small>📍 CREATE › 活動骨架</small></span></button></div>
+      <div class="cell f8"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b><span class="hlogo sm h-inq rbt"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="rb1h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fe3e6"/><stop offset=".45" stop-color="#17a2b0"/><stop offset="1" stop-color="#0b6b78"/></linearGradient><linearGradient id="rb1s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06414a"/><stop offset="1" stop-color="#0b6b78"/></linearGradient><radialGradient id="rb1b" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#8fe3e6"/><stop offset="1" stop-color="#17a2b0"/></radialGradient></defs><ellipse cx="32" cy="60.5" rx="20" ry="2.6" fill="#000" opacity=".16"/><rect x="30.4" y="5" width="3.2" height="9" rx="1.6" fill="#0b6b78"/><circle cx="32" cy="5.6" r="4.4" fill="url(#rb1b)" stroke="#0b6b78" stroke-width="1"/><rect x="2.5" y="27" width="7" height="16" rx="3" fill="#0b6b78"/><rect x="54.5" y="27" width="7" height="16" rx="3" fill="#0b6b78"/><rect x="7" y="13" width="50" height="45" rx="13" fill="url(#rb1h)" stroke="#06414a" stroke-width="1.6"/><path d="M14 19 Q20 15 32 15" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".55"/><rect x="13" y="21" width="38" height="30" rx="9" fill="url(#rb1s)" stroke="#8fe3e6" stroke-width="1.2" stroke-opacity=".7"/><rect x="16" y="24" width="12" height="3" rx="1.5" fill="#fff" opacity=".18"/><text x="32" y="37.5" text-anchor="middle" dominant-baseline="central" font-size="21" font-weight="900" fill="#fff" style="font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;paint-order:stroke;stroke:#06414a;stroke-width:1.2px">探</text><circle cx="18" cy="47" r="1.3" fill="#8fe3e6"/><circle cx="46" cy="47" r="1.3" fill="#8fe3e6"/></svg></span>概念為本探究小幫手</b><span>輸入年級、學生特色，得到各階段探究策略</span><i class="pt pc">CREATE</i></span><span class="face back"><b><span class="hlogo sm h-inq rbt"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="rb2h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fe3e6"/><stop offset=".45" stop-color="#17a2b0"/><stop offset="1" stop-color="#0b6b78"/></linearGradient><linearGradient id="rb2s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06414a"/><stop offset="1" stop-color="#0b6b78"/></linearGradient><radialGradient id="rb2b" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#8fe3e6"/><stop offset="1" stop-color="#17a2b0"/></radialGradient></defs><ellipse cx="32" cy="60.5" rx="20" ry="2.6" fill="#000" opacity=".16"/><rect x="30.4" y="5" width="3.2" height="9" rx="1.6" fill="#0b6b78"/><circle cx="32" cy="5.6" r="4.4" fill="url(#rb2b)" stroke="#0b6b78" stroke-width="1"/><rect x="2.5" y="27" width="7" height="16" rx="3" fill="#0b6b78"/><rect x="54.5" y="27" width="7" height="16" rx="3" fill="#0b6b78"/><rect x="7" y="13" width="50" height="45" rx="13" fill="url(#rb2h)" stroke="#06414a" stroke-width="1.6"/><path d="M14 19 Q20 15 32 15" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".55"/><rect x="13" y="21" width="38" height="30" rx="9" fill="url(#rb2s)" stroke="#8fe3e6" stroke-width="1.2" stroke-opacity=".7"/><rect x="16" y="24" width="12" height="3" rx="1.5" fill="#fff" opacity=".18"/><text x="32" y="37.5" text-anchor="middle" dominant-baseline="central" font-size="21" font-weight="900" fill="#fff" style="font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;paint-order:stroke;stroke:#06414a;stroke-width:1.2px">探</text><circle cx="18" cy="47" r="1.3" fill="#8fe3e6"/><circle cx="46" cy="47" r="1.3" fill="#8fe3e6"/></svg></span>概念為本探究小幫手</b><span class="ml"><i>👩‍🎓 年級</i>→ 適合學生程度的探究策略</span><span class="ml"><i>📘 領域／科目</i>→ 扣合學科的探究活動</span><span class="ml"><i>🌱 學生特色</i>→ 依班級特性調整的做法</span><span class="ml step">之後組成骨架：從策略55挑選，排出投入 → 聚焦 → 組織 → 通則 → 遷移・反思</span><small>📍 CREATE › 活動骨架</small></span></button></div>
       <div class="cell fg"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>✍️ 提示詞產生器</b><span>輸入年級、單元，得到三位小幫手的開場提示詞</span><i class="pt pe">ENGAGE</i></span><span class="face back"><b>✍️ 提示詞產生器</b><span class="ml"><i>👩‍🎓 年級、單元</i>→ 三位小幫手的開場提示詞</span><span class="ml"><i>🌱 學生特色</i>→ 更貼近班級的輸入</span><span class="ml step">之後：按「複製並開啟」，貼到小幫手送出</span><small>📍 ENGAGE › 提示詞產生器</small></span></button></div>
-      <div class="cell f6"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>❓ 有效提問</b><span>輸入主題或問題，得到四個層次的提問</span><i class="pt pc">CREATE</i></span><span class="face back"><b>❓ 有效提問</b><span class="ml"><i>📌 主題或概念</i>→ 設計四個層次的提問</span><span class="ml"><i>❓ 一個問題</i>→ 先回答，再模擬四位利害關係人的觀點</span><span class="ml step">之後再追問：加入元素、素養能力、6C 能力、議題或人物觀點</span><small>📍 CREATE › 放入提問</small></span></button></div>
+      <div class="cell f6"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b><span class="hlogo sm h-ask rbt"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="rb3h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#aab3ff"/><stop offset=".45" stop-color="#4c5fd0"/><stop offset="1" stop-color="#303e9e"/></linearGradient><linearGradient id="rb3s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2463"/><stop offset="1" stop-color="#303e9e"/></linearGradient><radialGradient id="rb3b" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#aab3ff"/><stop offset="1" stop-color="#4c5fd0"/></radialGradient></defs><ellipse cx="32" cy="60.5" rx="20" ry="2.6" fill="#000" opacity=".16"/><rect x="30.4" y="5" width="3.2" height="9" rx="1.6" fill="#303e9e"/><circle cx="32" cy="5.6" r="4.4" fill="url(#rb3b)" stroke="#303e9e" stroke-width="1"/><rect x="2.5" y="27" width="7" height="16" rx="3" fill="#303e9e"/><rect x="54.5" y="27" width="7" height="16" rx="3" fill="#303e9e"/><rect x="7" y="13" width="50" height="45" rx="13" fill="url(#rb3h)" stroke="#1b2463" stroke-width="1.6"/><path d="M14 19 Q20 15 32 15" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".55"/><rect x="13" y="21" width="38" height="30" rx="9" fill="url(#rb3s)" stroke="#aab3ff" stroke-width="1.2" stroke-opacity=".7"/><rect x="16" y="24" width="12" height="3" rx="1.5" fill="#fff" opacity=".18"/><text x="32" y="37.5" text-anchor="middle" dominant-baseline="central" font-size="21" font-weight="900" fill="#fff" style="font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;paint-order:stroke;stroke:#1b2463;stroke-width:1.2px">問</text><circle cx="18" cy="47" r="1.3" fill="#aab3ff"/><circle cx="46" cy="47" r="1.3" fill="#aab3ff"/></svg></span>有效提問小幫手</b><span>輸入主題或問題，得到四個層次的提問</span><i class="pt pc">CREATE</i></span><span class="face back"><b><span class="hlogo sm h-ask rbt"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="rb4h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#aab3ff"/><stop offset=".45" stop-color="#4c5fd0"/><stop offset="1" stop-color="#303e9e"/></linearGradient><linearGradient id="rb4s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2463"/><stop offset="1" stop-color="#303e9e"/></linearGradient><radialGradient id="rb4b" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#aab3ff"/><stop offset="1" stop-color="#4c5fd0"/></radialGradient></defs><ellipse cx="32" cy="60.5" rx="20" ry="2.6" fill="#000" opacity=".16"/><rect x="30.4" y="5" width="3.2" height="9" rx="1.6" fill="#303e9e"/><circle cx="32" cy="5.6" r="4.4" fill="url(#rb4b)" stroke="#303e9e" stroke-width="1"/><rect x="2.5" y="27" width="7" height="16" rx="3" fill="#303e9e"/><rect x="54.5" y="27" width="7" height="16" rx="3" fill="#303e9e"/><rect x="7" y="13" width="50" height="45" rx="13" fill="url(#rb4h)" stroke="#1b2463" stroke-width="1.6"/><path d="M14 19 Q20 15 32 15" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".55"/><rect x="13" y="21" width="38" height="30" rx="9" fill="url(#rb4s)" stroke="#aab3ff" stroke-width="1.2" stroke-opacity=".7"/><rect x="16" y="24" width="12" height="3" rx="1.5" fill="#fff" opacity=".18"/><text x="32" y="37.5" text-anchor="middle" dominant-baseline="central" font-size="21" font-weight="900" fill="#fff" style="font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;paint-order:stroke;stroke:#1b2463;stroke-width:1.2px">問</text><circle cx="18" cy="47" r="1.3" fill="#aab3ff"/><circle cx="46" cy="47" r="1.3" fill="#aab3ff"/></svg></span>有效提問小幫手</b><span class="ml"><i>📌 主題或概念</i>→ 設計四個層次的提問</span><span class="ml"><i>❓ 一個問題</i>→ 先回答，再模擬四位利害關係人的觀點</span><span class="ml step">之後再追問：加入元素、素養能力、6C 能力、議題或人物觀點</span><small>📍 CREATE › 放入提問</small></span></button></div>
       <div class="cell fv"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>🧩 素材轉譯</b><span>輸入課本、教案照片，得到 md 文字</span><i class="pt pe">ENGAGE</i></span><span class="face back"><b>🧩 素材轉譯</b><span class="ml"><i>📄 課本、教案</i>→ 結構清楚的 md 文字</span><span class="ml"><i>📸 照片、截圖</i>→ 保留公式與圖形說明</span><span class="ml step">之後：把 md 貼給任一位小幫手</span><small>📍 ENGAGE › 準備素材</small></span></button></div>
-      <div class="cell f3"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>🌱 八大思考素養</b><span>輸入問題、想法或教材，得到素養提問靈感</span><i class="pt pc">CREATE</i></span><span class="face back"><b>🌱 八大思考素養</b><span class="ml"><i>❓ 提問</i>→ 學習脈絡、多重表徵、分層提問靈感</span><span class="ml"><i>💬 想法或看法</i>→ 正例、反例、待釐清的比對與追問</span><span class="ml"><i>📄 教材</i>→ 知識節點、系列提問、延伸連結</span><span class="ml step">之後三步深入：提問靈感 → 教學建議 → 迷思診斷與提問鷹架</span><small>📍 CREATE › 深化素養</small></span></button></div>
+      <div class="cell f3"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b><span class="hlogo sm h-skill rbt"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="rb5h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd88a"/><stop offset=".45" stop-color="#f29a2e"/><stop offset="1" stop-color="#c26a10"/></linearGradient><linearGradient id="rb5s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a3f04"/><stop offset="1" stop-color="#c26a10"/></linearGradient><radialGradient id="rb5b" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#ffd88a"/><stop offset="1" stop-color="#f29a2e"/></radialGradient></defs><ellipse cx="32" cy="60.5" rx="20" ry="2.6" fill="#000" opacity=".16"/><rect x="30.4" y="5" width="3.2" height="9" rx="1.6" fill="#c26a10"/><circle cx="32" cy="5.6" r="4.4" fill="url(#rb5b)" stroke="#c26a10" stroke-width="1"/><rect x="2.5" y="27" width="7" height="16" rx="3" fill="#c26a10"/><rect x="54.5" y="27" width="7" height="16" rx="3" fill="#c26a10"/><rect x="7" y="13" width="50" height="45" rx="13" fill="url(#rb5h)" stroke="#7a3f04" stroke-width="1.6"/><path d="M14 19 Q20 15 32 15" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".55"/><rect x="13" y="21" width="38" height="30" rx="9" fill="url(#rb5s)" stroke="#ffd88a" stroke-width="1.2" stroke-opacity=".7"/><rect x="16" y="24" width="12" height="3" rx="1.5" fill="#fff" opacity=".18"/><text x="32" y="37.5" text-anchor="middle" dominant-baseline="central" font-size="21" font-weight="900" fill="#fff" style="font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;paint-order:stroke;stroke:#7a3f04;stroke-width:1.2px">素</text><circle cx="18" cy="47" r="1.3" fill="#ffd88a"/><circle cx="46" cy="47" r="1.3" fill="#ffd88a"/></svg></span>八大思考素養小幫手</b><span>輸入問題、想法或教材，得到素養提問靈感</span><i class="pt pc">CREATE</i></span><span class="face back"><b><span class="hlogo sm h-skill rbt"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="rb6h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd88a"/><stop offset=".45" stop-color="#f29a2e"/><stop offset="1" stop-color="#c26a10"/></linearGradient><linearGradient id="rb6s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a3f04"/><stop offset="1" stop-color="#c26a10"/></linearGradient><radialGradient id="rb6b" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#ffd88a"/><stop offset="1" stop-color="#f29a2e"/></radialGradient></defs><ellipse cx="32" cy="60.5" rx="20" ry="2.6" fill="#000" opacity=".16"/><rect x="30.4" y="5" width="3.2" height="9" rx="1.6" fill="#c26a10"/><circle cx="32" cy="5.6" r="4.4" fill="url(#rb6b)" stroke="#c26a10" stroke-width="1"/><rect x="2.5" y="27" width="7" height="16" rx="3" fill="#c26a10"/><rect x="54.5" y="27" width="7" height="16" rx="3" fill="#c26a10"/><rect x="7" y="13" width="50" height="45" rx="13" fill="url(#rb6h)" stroke="#7a3f04" stroke-width="1.6"/><path d="M14 19 Q20 15 32 15" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".55"/><rect x="13" y="21" width="38" height="30" rx="9" fill="url(#rb6s)" stroke="#ffd88a" stroke-width="1.2" stroke-opacity=".7"/><rect x="16" y="24" width="12" height="3" rx="1.5" fill="#fff" opacity=".18"/><text x="32" y="37.5" text-anchor="middle" dominant-baseline="central" font-size="21" font-weight="900" fill="#fff" style="font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;paint-order:stroke;stroke:#7a3f04;stroke-width:1.2px">素</text><circle cx="18" cy="47" r="1.3" fill="#ffd88a"/><circle cx="46" cy="47" r="1.3" fill="#ffd88a"/></svg></span>八大思考素養小幫手</b><span class="ml"><i>❓ 提問</i>→ 學習脈絡、多重表徵、分層提問靈感</span><span class="ml"><i>💬 想法或看法</i>→ 正例、反例、待釐清的比對與追問</span><span class="ml"><i>📄 教材</i>→ 知識節點、系列提問、延伸連結</span><span class="ml step">之後三步深入：提問靈感 → 教學建議 → 迷思診斷與提問鷹架</span><small>📍 CREATE › 深化素養</small></span></button></div>
       <div class="cell fx"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>🧪 HTML 試板</b><span>輸入 HTML 程式碼，得到即時預覽與修改</span><i class="pt pm">MANAGE</i></span><span class="face back"><b>🧪 HTML 試板</b><span class="ml"><i>💻 HTML 程式碼</i>→ 即時預覽、手機版預覽</span><span class="ml"><i>✏️ 預覽中改字</i>→ 直接修改成果</span><span class="ml step">之後帶走：複製程式碼、下載預覽圖</span><small>📍 MANAGE › HTML 試板</small></span></button></div>
     </div>
     <p class="flip-hint">👆 點卡片翻面看簡介，再點一次翻回來。</p>
@@ -1207,9 +1272,9 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
       <table>
         <thead><tr><th>小幫手</th><th>什麼時候用</th><th>你要輸入</th><th>你會得到</th></tr></thead>
         <tbody>
-          <tr class="f8"><td><span></span>🔍 概念為本探究<br></td><td data-l="什麼時候用">想讓學生透過探究理解概念，需要可用的教學策略</td><td data-l="你要輸入">學生年級、探究的領域／科目、學生特色</td><td data-l="你會得到">適合這個單元與學生的概念為本探究策略建議</td></tr>
-          <tr class="f6"><td><span></span>❓ 有效提問<br></td><td data-l="什麼時候用">想替一個概念設計有層次的提問；或想看一個問題能從哪些角度回答</td><td data-l="你要輸入">科目、學生年級、想探究的主題或概念（或直接輸入一個問題）</td><td data-l="你會得到">🅰️ 主題或概念 → 四個層次的提問<br>🅱️ 問題 → 先回答，再模擬四位利害關係人的觀點與回答</td></tr>
-          <tr class="f3"><td><span></span>🌱 八大思考素養<br></td><td data-l="什麼時候用">想朝某項思考素養設計提問、任務與評量</td><td data-l="你要輸入">年級、單元、學生特性、特定方向；再加上一個問題、一段意見或一份教材</td><td data-l="你會得到">三個階段的提問靈感與步驟化建議，每段回覆都附「下一步提示詞」</td></tr>
+          <tr class="f8"><td><span></span><span class="hlogo sm h-inq rbt"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="rb7h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fe3e6"/><stop offset=".45" stop-color="#17a2b0"/><stop offset="1" stop-color="#0b6b78"/></linearGradient><linearGradient id="rb7s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06414a"/><stop offset="1" stop-color="#0b6b78"/></linearGradient><radialGradient id="rb7b" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#8fe3e6"/><stop offset="1" stop-color="#17a2b0"/></radialGradient></defs><ellipse cx="32" cy="60.5" rx="20" ry="2.6" fill="#000" opacity=".16"/><rect x="30.4" y="5" width="3.2" height="9" rx="1.6" fill="#0b6b78"/><circle cx="32" cy="5.6" r="4.4" fill="url(#rb7b)" stroke="#0b6b78" stroke-width="1"/><rect x="2.5" y="27" width="7" height="16" rx="3" fill="#0b6b78"/><rect x="54.5" y="27" width="7" height="16" rx="3" fill="#0b6b78"/><rect x="7" y="13" width="50" height="45" rx="13" fill="url(#rb7h)" stroke="#06414a" stroke-width="1.6"/><path d="M14 19 Q20 15 32 15" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".55"/><rect x="13" y="21" width="38" height="30" rx="9" fill="url(#rb7s)" stroke="#8fe3e6" stroke-width="1.2" stroke-opacity=".7"/><rect x="16" y="24" width="12" height="3" rx="1.5" fill="#fff" opacity=".18"/><text x="32" y="37.5" text-anchor="middle" dominant-baseline="central" font-size="21" font-weight="900" fill="#fff" style="font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;paint-order:stroke;stroke:#06414a;stroke-width:1.2px">探</text><circle cx="18" cy="47" r="1.3" fill="#8fe3e6"/><circle cx="46" cy="47" r="1.3" fill="#8fe3e6"/></svg></span>概念為本探究小幫手<br></td><td data-l="什麼時候用">想讓學生透過探究理解概念，需要可用的教學策略</td><td data-l="你要輸入">學生年級、探究的領域／科目、學生特色</td><td data-l="你會得到">適合這個單元與學生的概念為本探究策略建議</td></tr>
+          <tr class="f6"><td><span></span><span class="hlogo sm h-ask rbt"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="rb8h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#aab3ff"/><stop offset=".45" stop-color="#4c5fd0"/><stop offset="1" stop-color="#303e9e"/></linearGradient><linearGradient id="rb8s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2463"/><stop offset="1" stop-color="#303e9e"/></linearGradient><radialGradient id="rb8b" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#aab3ff"/><stop offset="1" stop-color="#4c5fd0"/></radialGradient></defs><ellipse cx="32" cy="60.5" rx="20" ry="2.6" fill="#000" opacity=".16"/><rect x="30.4" y="5" width="3.2" height="9" rx="1.6" fill="#303e9e"/><circle cx="32" cy="5.6" r="4.4" fill="url(#rb8b)" stroke="#303e9e" stroke-width="1"/><rect x="2.5" y="27" width="7" height="16" rx="3" fill="#303e9e"/><rect x="54.5" y="27" width="7" height="16" rx="3" fill="#303e9e"/><rect x="7" y="13" width="50" height="45" rx="13" fill="url(#rb8h)" stroke="#1b2463" stroke-width="1.6"/><path d="M14 19 Q20 15 32 15" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".55"/><rect x="13" y="21" width="38" height="30" rx="9" fill="url(#rb8s)" stroke="#aab3ff" stroke-width="1.2" stroke-opacity=".7"/><rect x="16" y="24" width="12" height="3" rx="1.5" fill="#fff" opacity=".18"/><text x="32" y="37.5" text-anchor="middle" dominant-baseline="central" font-size="21" font-weight="900" fill="#fff" style="font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;paint-order:stroke;stroke:#1b2463;stroke-width:1.2px">問</text><circle cx="18" cy="47" r="1.3" fill="#aab3ff"/><circle cx="46" cy="47" r="1.3" fill="#aab3ff"/></svg></span>有效提問小幫手<br></td><td data-l="什麼時候用">想替一個概念設計有層次的提問；或想看一個問題能從哪些角度回答</td><td data-l="你要輸入">科目、學生年級、想探究的主題或概念（或直接輸入一個問題）</td><td data-l="你會得到">🅰️ 主題或概念 → 四個層次的提問<br>🅱️ 問題 → 先回答，再模擬四位利害關係人的觀點與回答</td></tr>
+          <tr class="f3"><td><span></span><span class="hlogo sm h-skill rbt"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="rb9h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd88a"/><stop offset=".45" stop-color="#f29a2e"/><stop offset="1" stop-color="#c26a10"/></linearGradient><linearGradient id="rb9s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a3f04"/><stop offset="1" stop-color="#c26a10"/></linearGradient><radialGradient id="rb9b" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#ffd88a"/><stop offset="1" stop-color="#f29a2e"/></radialGradient></defs><ellipse cx="32" cy="60.5" rx="20" ry="2.6" fill="#000" opacity=".16"/><rect x="30.4" y="5" width="3.2" height="9" rx="1.6" fill="#c26a10"/><circle cx="32" cy="5.6" r="4.4" fill="url(#rb9b)" stroke="#c26a10" stroke-width="1"/><rect x="2.5" y="27" width="7" height="16" rx="3" fill="#c26a10"/><rect x="54.5" y="27" width="7" height="16" rx="3" fill="#c26a10"/><rect x="7" y="13" width="50" height="45" rx="13" fill="url(#rb9h)" stroke="#7a3f04" stroke-width="1.6"/><path d="M14 19 Q20 15 32 15" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".55"/><rect x="13" y="21" width="38" height="30" rx="9" fill="url(#rb9s)" stroke="#ffd88a" stroke-width="1.2" stroke-opacity=".7"/><rect x="16" y="24" width="12" height="3" rx="1.5" fill="#fff" opacity=".18"/><text x="32" y="37.5" text-anchor="middle" dominant-baseline="central" font-size="21" font-weight="900" fill="#fff" style="font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;paint-order:stroke;stroke:#7a3f04;stroke-width:1.2px">素</text><circle cx="18" cy="47" r="1.3" fill="#ffd88a"/><circle cx="46" cy="47" r="1.3" fill="#ffd88a"/></svg></span>八大思考素養小幫手<br></td><td data-l="什麼時候用">想朝某項思考素養設計提問、任務與評量</td><td data-l="你要輸入">年級、單元、學生特性、特定方向；再加上一個問題、一段意見或一份教材</td><td data-l="你會得到">三個階段的提問靈感與步驟化建議，每段回覆都附「下一步提示詞」</td></tr>
         </tbody>
       </table>
     </div>
@@ -1227,7 +1292,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
       <span class="fa" aria-hidden="true"></span>
       <div class="fn t" role="listitem"><span class="who">👩‍🏫 老師</span><b>輸入主題</b><small>「數學，國小五年級，想探究異分母分數的加減。」</small></div>
       <span class="fa" aria-hidden="true"></span>
-      <div class="fn a" role="listitem"><span class="who">🤖 小幫手</span><b>四個層次的提問</b><small>並附上追問範例</small></div>
+      <div class="fn a" role="listitem"><span class="who">🤖 小幫手</span><b>四個層次的提問</b><small>並附上追問範例，例如：</small><span class="fq">「我想解決學生『分子加分子、分母加分母』的迷思概念，請加入圖像表徵的提問。」</span><span class="fq">「請加入生活情境，例如分披薩。」</span></div>
       <span class="fa loop" aria-hidden="true"><i>↻ 可反覆</i></span>
       <div class="fn t" role="listitem"><span class="who">👩‍🏫 老師</span><b>挑題、追問</b><small>挑 2～3 題：「這題學生最可能卡在哪裡？」</small></div>
       <span class="fa" aria-hidden="true"></span>
@@ -1237,7 +1302,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
     <h3 class="gsub">🛤️ 四個階段怎麼走</h3>
     <ol class="journey flips">
       <li class="pe"><button type="button" class="flip" aria-pressed="false"><span class="face front"><span class="pk">ENGAGE</span><b>認識與體驗</b><small>提示詞產生器・準備素材</small></span><span class="face back"><span class="pk">ENGAGE</span><b>認識與體驗</b><span class="ml"><i>✍️ 提示詞產生器</i>→ 填一次資料，備好開場輸入</span><span class="ml"><i>🧩 準備素材</i>→ 課本照片轉成 md</span><span class="ml step">之後：帶著一題好提問，進入 CREATE</span></span></button></li>
-      <li class="pc"><button type="button" class="flip" aria-pressed="false"><span class="face front"><span class="pk">CREATE</span><b>共創與發想</b><small>探究地圖：骨架 → 提問 → 素養</small></span><span class="face back"><span class="pk">CREATE</span><b>共創與發想</b><span class="ml"><i>🗺️ 探究地圖</i>→ 投入到遷移・反思</span><span class="ml"><i>活動骨架</i>→ 概念為本探究</span><span class="ml"><i>放入提問</i>→ 有效提問</span><span class="ml"><i>深化素養</i>→ 八大思考素養</span><span class="ml step">之後：帶著單元設計，進入 MANAGE</span></span></button></li>
+      <li class="pc"><button type="button" class="flip" aria-pressed="false"><span class="face front"><span class="pk">CREATE</span><b>共創與發想</b><small>探究地圖：活動・提問・素養</small></span><span class="face back"><span class="pk">CREATE</span><b>共創與發想</b><span class="ml"><i>🗺️ 探究地圖</i>→ 投入到遷移・反思</span><span class="ml"><i>活動骨架</i>→ 概念為本探究</span><span class="ml"><i>放入提問</i>→ 有效提問</span><span class="ml"><i>深化素養</i>→ 八大思考素養</span><span class="ml step">之後：帶著單元設計，進入 MANAGE</span></span></button></li>
       <li class="pm"><button type="button" class="flip" aria-pressed="false"><span class="face front"><span class="pk">MANAGE</span><b>判斷與取捨</b><small>分工・檢核 AI 產出</small></span><span class="face back"><span class="pk">MANAGE</span><b>判斷與取捨</b><span class="ml"><i>⚖️ 分工</i>→ AI 做什麼、老師做什麼</span><span class="ml"><i>✅ 檢核表</i>→ 正確、對準、隱私</span><span class="ml"><i>🔍 JDM 四原則</i>→ 檢視提問品質</span><span class="ml"><i>🧪 HTML 試板</i>→ 修改 AI 做的學習單</span><span class="ml step">之後：帶著檢核過的設計，進入 SHAPE</span></span></button></li>
       <li class="ps"><button type="button" class="flip" aria-pressed="false"><span class="face front"><span class="pk">SHAPE</span><b>共備與形塑</b><small>共備討論・回饋</small></span><span class="face back"><span class="pk">SHAPE</span><b>共備與形塑</b><span class="ml"><i>🗣️ 討論四問</i>→ 可刪、可改、可補、可接</span><span class="ml"><i>⏱️ 40 分鐘共備</i>→ 說明 → 試做 → 討論</span><span class="ml"><i>🔁 回饋</i>→ 帶回課堂觀察</span><span class="ml step">之後：開始下一輪 ENGAGE</span></span></button></li>
     </ol>
@@ -1261,7 +1326,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
       <li class="zg"><b>🚀 貼上開始</b><span>照<em>綠色提示</em>到 NotebookLM 貼上送出</span></li>
     </ol>
     <div class="zone zy">
-      <div class="zband"><b>✏️ 準備提示詞：填你的班級與單元</b><span>只有標「必填」的要填，其他可以留空。不知道怎麼填？按最下方「📋 用範例試試看」。</span></div>
+      <div class="zband"><b>✏️ 準備提示詞：填寫年級與單元，（選填）加上學生特色</b><span>只有標「必填」的要填，其他可以留空。不知道怎麼填？按最下方「📋 用範例試試看」。</span></div>
     <form class="gen-form" id="gen-form" autocomplete="off" onsubmit="return false">
       <label class="fld"><span>👩‍🎓 學生年級 <em class="need">必填</em></span>
         <select id="g-grade">
@@ -1287,16 +1352,16 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
   <div class="zband" id="g-step2"><b>🤖 選用小幫手：挑一位，拿走寫好的提示詞</b><span>三張卡片各是一位小幫手，灰底框裡就是幫它寫好的提示詞：<b class="kw">黃色色塊</b>是你在黃色區填的資料，<b class="kw2">紅色色塊</b>是還沒填的地方。挑這次要用的那一位，確認後按「複製並開啟小幫手」。</span></div>
   <div class="gcards" aria-live="polite">
     <div class="gcard f8" data-pick="🙋 請選我！先排好探究活動骨架">
-      <div class="gh"><span class="rn">🔍</span><b>概念為本探究教學策略小幫手</b></div>
+      <div class="gh"><span class="hlogo h-inq rbt"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="rb10h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fe3e6"/><stop offset=".45" stop-color="#17a2b0"/><stop offset="1" stop-color="#0b6b78"/></linearGradient><linearGradient id="rb10s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#06414a"/><stop offset="1" stop-color="#0b6b78"/></linearGradient><radialGradient id="rb10b" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#8fe3e6"/><stop offset="1" stop-color="#17a2b0"/></radialGradient></defs><ellipse cx="32" cy="60.5" rx="20" ry="2.6" fill="#000" opacity=".16"/><rect x="30.4" y="5" width="3.2" height="9" rx="1.6" fill="#0b6b78"/><circle cx="32" cy="5.6" r="4.4" fill="url(#rb10b)" stroke="#0b6b78" stroke-width="1"/><rect x="2.5" y="27" width="7" height="16" rx="3" fill="#0b6b78"/><rect x="54.5" y="27" width="7" height="16" rx="3" fill="#0b6b78"/><rect x="7" y="13" width="50" height="45" rx="13" fill="url(#rb10h)" stroke="#06414a" stroke-width="1.6"/><path d="M14 19 Q20 15 32 15" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".55"/><rect x="13" y="21" width="38" height="30" rx="9" fill="url(#rb10s)" stroke="#8fe3e6" stroke-width="1.2" stroke-opacity=".7"/><rect x="16" y="24" width="12" height="3" rx="1.5" fill="#fff" opacity=".18"/><text x="32" y="37.5" text-anchor="middle" dominant-baseline="central" font-size="21" font-weight="900" fill="#fff" style="font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;paint-order:stroke;stroke:#06414a;stroke-width:1.2px">探</text><circle cx="18" cy="47" r="1.3" fill="#8fe3e6"/><circle cx="46" cy="47" r="1.3" fill="#8fe3e6"/></svg></span><b>概念為本探究小幫手</b></div>
       <div class="opt"><span class="ol">小幫手會依年級、領域和學生特色，建議概念為本的探究策略。學生特色寫得越具體，建議越貼近班級。</span></div>
 
       <span class="out-l">👇 寫好的提示詞（可直接修改）</span>
-      <textarea class="out-p" id="o-inq" aria-label="概念為本探究教學策略小幫手的提示詞"></textarea>
+      <textarea class="out-p" id="o-inq" aria-label="概念為本探究小幫手的提示詞"></textarea>
       <div class="s3"><p class="how1"><b>🚀 貼上開始：</b>按下方按鈕，小幫手會在新分頁開啟。先在左側勾選 <b>策略55的說明</b>、<b>策略概述.pptx</b>、<b>您要備課的單元</b>，再在中間對話框按 Ctrl+V（Mac ⌘+V）貼上送出。</p><div class="gact"><a class="btn btn-copy btn-go" data-copygo="o-inq" href="https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e" target="_blank" rel="noopener">📋 複製並開啟小幫手 ↗</a><button type="button" class="btn btn-ghost" data-copy="o-inq">只複製</button></div><p class="g-ok" role="status"></p></div>
     </div>
 
     <div class="gcard f6" data-pick="🙋 請選我！幫你設計四層次提問">
-      <div class="gh"><span class="rn">❓</span><b>有效提問 AI 小幫手</b></div>
+      <div class="gh"><span class="hlogo h-ask rbt"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="rb11h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#aab3ff"/><stop offset=".45" stop-color="#4c5fd0"/><stop offset="1" stop-color="#303e9e"/></linearGradient><linearGradient id="rb11s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2463"/><stop offset="1" stop-color="#303e9e"/></linearGradient><radialGradient id="rb11b" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#aab3ff"/><stop offset="1" stop-color="#4c5fd0"/></radialGradient></defs><ellipse cx="32" cy="60.5" rx="20" ry="2.6" fill="#000" opacity=".16"/><rect x="30.4" y="5" width="3.2" height="9" rx="1.6" fill="#303e9e"/><circle cx="32" cy="5.6" r="4.4" fill="url(#rb11b)" stroke="#303e9e" stroke-width="1"/><rect x="2.5" y="27" width="7" height="16" rx="3" fill="#303e9e"/><rect x="54.5" y="27" width="7" height="16" rx="3" fill="#303e9e"/><rect x="7" y="13" width="50" height="45" rx="13" fill="url(#rb11h)" stroke="#1b2463" stroke-width="1.6"/><path d="M14 19 Q20 15 32 15" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".55"/><rect x="13" y="21" width="38" height="30" rx="9" fill="url(#rb11s)" stroke="#aab3ff" stroke-width="1.2" stroke-opacity=".7"/><rect x="16" y="24" width="12" height="3" rx="1.5" fill="#fff" opacity=".18"/><text x="32" y="37.5" text-anchor="middle" dominant-baseline="central" font-size="21" font-weight="900" fill="#fff" style="font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;paint-order:stroke;stroke:#1b2463;stroke-width:1.2px">問</text><circle cx="18" cy="47" r="1.3" fill="#aab3ff"/><circle cx="46" cy="47" r="1.3" fill="#aab3ff"/></svg></span><b>有效提問小幫手</b></div>
       <div class="opt" role="group" aria-label="輸入類型">
         <span class="ol strong">你要輸入的類型（請選擇）</span>
         <div class="seg">
@@ -1312,7 +1377,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
     </div>
 
     <div class="gcard f3" data-pick="🙋 請選我！帶出學生的思考素養">
-      <div class="gh"><span class="rn">🌱</span><b>八大思考素養小幫手</b></div>
+      <div class="gh"><span class="hlogo h-skill rbt"><svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="rb12h" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd88a"/><stop offset=".45" stop-color="#f29a2e"/><stop offset="1" stop-color="#c26a10"/></linearGradient><linearGradient id="rb12s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a3f04"/><stop offset="1" stop-color="#c26a10"/></linearGradient><radialGradient id="rb12b" cx=".35" cy=".35" r=".7"><stop offset="0" stop-color="#fff"/><stop offset=".45" stop-color="#ffd88a"/><stop offset="1" stop-color="#f29a2e"/></radialGradient></defs><ellipse cx="32" cy="60.5" rx="20" ry="2.6" fill="#000" opacity=".16"/><rect x="30.4" y="5" width="3.2" height="9" rx="1.6" fill="#c26a10"/><circle cx="32" cy="5.6" r="4.4" fill="url(#rb12b)" stroke="#c26a10" stroke-width="1"/><rect x="2.5" y="27" width="7" height="16" rx="3" fill="#c26a10"/><rect x="54.5" y="27" width="7" height="16" rx="3" fill="#c26a10"/><rect x="7" y="13" width="50" height="45" rx="13" fill="url(#rb12h)" stroke="#7a3f04" stroke-width="1.6"/><path d="M14 19 Q20 15 32 15" stroke="#fff" stroke-width="2.6" stroke-linecap="round" fill="none" opacity=".55"/><rect x="13" y="21" width="38" height="30" rx="9" fill="url(#rb12s)" stroke="#ffd88a" stroke-width="1.2" stroke-opacity=".7"/><rect x="16" y="24" width="12" height="3" rx="1.5" fill="#fff" opacity=".18"/><text x="32" y="37.5" text-anchor="middle" dominant-baseline="central" font-size="21" font-weight="900" fill="#fff" style="font-family:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;paint-order:stroke;stroke:#7a3f04;stroke-width:1.2px">素</text><circle cx="18" cy="47" r="1.3" fill="#ffd88a"/><circle cx="46" cy="47" r="1.3" fill="#ffd88a"/></svg></span><b>八大思考素養小幫手</b></div>
       <div class="opt">
         <span class="ol strong">選擇思考素養（請選擇）</span>
         <div class="seg sk-seg" role="radiogroup" aria-label="選擇思考素養"><label><input type="radio" name="g-skr" value="https://notebook.google.com/notebook/2fd7d20a-ca0c-4f11-8e36-6b0dfa325dec"><span>🔍 批判性思考</span></label><label><input type="radio" name="g-skr" value="https://notebook.google.com/notebook/383b9153-71fa-41ff-8f28-9260fbddd1f8"><span>💡 創造力</span></label><label><input type="radio" name="g-skr" value="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" checked><span>🔬 研究與探究</span></label><label><input type="radio" name="g-skr" value="https://notebook.google.com/notebook/4548f6b1-6681-4281-8e8d-4f2b8308f9de"><span>🧭 系統性思維</span></label><label><input type="radio" name="g-skr" value="https://notebook.google.com/notebook/af062042-58d7-4944-bcf0-1dfa4ee52266"><span>🪞 反思</span></label></div>
@@ -1351,8 +1416,10 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
         <p class="credit">提示詞內容引自 <strong>臺師大教創中心</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
       </div>
     </div>
-    <p class="opt-note">📎 <b>什麼時候用？</b>想給小幫手的素材是 <b>PDF 或照片</b>，無法直接上傳時，先用這段提示詞請任一款 AI 轉成 md 文字，再把轉好的內容貼進小幫手<b>中間的對話框</b>。素材已經是文字，就可以跳過這一步。</p>
-    <p class="purpose">🎯 目的：<b>優雅建構高質量、低 Token 消耗的 AI 結構化知識庫。</b>把簡報、教案、講義、課文或照片截圖，轉成乾淨的 Markdown（.md）。當小幫手的「來源」區無法上傳素材時，就把 md 內容貼到中間的對話框。</p>
+
+    <div class="vlm-sum"><span>素材是 <b>PDF 或照片</b>、無法直接上傳時才需要；素材已是文字就可以跳過。</span>
+      <button type="button" class="btn btn-ghost" id="vlm-sec-tog" aria-expanded="false" aria-controls="vlm-body"><span class="chev">›</span> <span id="vlm-sec-txt">展開內容</span></button></div>
+    <div id="vlm-body" hidden>    <p class="purpose">🎯 目的：<b>優雅建構高質量、低 Token 消耗的 AI 結構化知識庫。</b>把簡報、教案、講義、課文或照片截圖，轉成乾淨的 Markdown（.md）。當小幫手的「來源」區無法上傳素材時，就把 md 內容貼到中間的對話框。</p>
 
     <ol class="steps">
       <li><span class="n">1</span><div><b>複製提示詞</b><span>按下「一鍵複製 Prompt」。</span></div></li>
@@ -1360,13 +1427,13 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
       <li><span class="n">3</span><div><b>帶入小幫手</b><span>將 AI 產出的 md 內容，貼到任一位 AI 小幫手的對話框，當作對話輸入來源。</span></div></li>
     </ol>
 
-    <div id="prompt-wrap">
+    <div id="prompt-wrap" class="collapsed">
       <div class="prompt-bar">
-        <span class="label">📋 VLM 轉譯提示詞</span>
+        <span class="label">📋 VLM 轉譯提示詞 <em class="opt-tag sm">選用</em><small class="lbl-note">素材是 PDF 或照片、無法直接上傳時才需要</small></span>
         <div class="tools">
-          <button class="btn btn-ghost" id="toggle" type="button" aria-expanded="true" aria-controls="prompt-box">
+          <button class="btn btn-ghost" id="toggle" type="button" aria-expanded="false" aria-controls="prompt-box">
             <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-            <span id="toggle-text">收合內容</span>
+            <span id="toggle-text">展開內容</span>
           </button>
           <button class="btn btn-copy" id="copy" type="button">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
@@ -1399,6 +1466,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
       </div>
       <p class="toast" id="toast" role="status" aria-live="polite"></p>
     </div>
+    </div>
   </section>
 
   </div>
@@ -1428,15 +1496,15 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
   </section>
   </div>
   <div class="ssec" id="x-create-inq">
-  <!-- 概念為本探究教學策略 -->
+  <!-- 概念為本探究 -->
   <section class="card tool f8" aria-labelledby="inq-title">
     <div class="tool-head">
       <div>
         <div class="eyebrow">活動骨架</div>
-        <h2 class="sec-title" id="inq-title"><span class="sec-icon">🔍</span>概念為本探究教學策略小幫手</h2>
+        <h2 class="sec-title" id="inq-title"><span class="sec-icon hlogo h-inq">探</span>概念為本探究小幫手</h2>
         <p class="credit">由 <strong>臺師大教創中心陳佩英教授</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
       </div>
-      <a class="btn btn-open" href="https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e" target="_blank" rel="noopener">開啟探究策略小幫手 ↗</a>
+      <a class="btn btn-open" href="https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e" target="_blank" rel="noopener">開啟概念為本探究小幫手 ↗</a>
     </div>
     <p class="purpose">🎯 告訴小幫手<b>學生年級</b>、<b>探究的領域／科目</b>和<b>學生特色</b>，它會建議適合的<b>概念為本探究教學策略</b>，幫你安排學生探究概念的歷程。</p>
 
@@ -1474,7 +1542,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
     <div class="tool-head">
       <div>
         <div class="eyebrow">放入提問</div>
-        <h2 class="sec-title" id="ask-title"><span class="sec-icon">❓</span>有效提問 AI 小幫手</h2>
+        <h2 class="sec-title" id="ask-title"><span class="sec-icon hlogo h-ask">問</span>有效提問小幫手</h2>
         <p class="credit">由 <strong>臺師大教創中心陳佩英教授</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
       </div>
       <a class="btn btn-open" href="https://notebook.google.com/notebook/6a68de13-1286-40a3-99a9-56ffe67b7eda" target="_blank" rel="noopener">開啟有效提問小幫手 ↗</a>
@@ -1518,7 +1586,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
   <div class="ssec" id="x-create-skill">
   <section class="card tool f3" aria-labelledby="skill-title">
     <div class="eyebrow">深化素養</div>
-    <h2 class="sec-title" id="skill-title"><span class="sec-icon">🌱</span>八大思考素養小幫手</h2>
+    <h2 class="sec-title" id="skill-title"><span class="sec-icon hlogo h-skill">素</span>八大思考素養小幫手</h2>
     <p class="credit">優履工作室研發「促進○○思考素養共備」應用指南（Aibot），使用請引註。</p>
     <p class="purpose">🎯 每位小幫手聚焦一項 <b>21 世紀思考素養</b>（目前開放 5 項）。挑 1～2 項適合本單元的素養，小幫手會用<b>三個階段</b>提供提問靈感與步驟化建議。</p>
     <div class="secnav" role="tablist">
@@ -1960,9 +2028,9 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
     </ol>
     <h3 class="gsub">🔁 讓回饋形塑下一輪</h3>
     <div class="loop">
-      <div><b>帶回課堂觀察</b><p>把學生真實的回答與卡點，帶回小幫手對話，請它重新設計。</p></div>
-      <div><b>分享好用的提示詞</b><p>把社群驗證過的提示詞、靈感卡記錄下來，留給下一位老師。</p></div>
-      <div><b>回饋給開發團隊</b><p>小幫手哪裡好用、哪裡可以更好，寫信告訴我們：<a href="mailto:qekepv@gmail.com">qekepv@gmail.com</a></p></div>
+      <div><b>🏫 帶回課堂觀察</b><p>把學生真實的回答與卡點，帶回小幫手對話，請它重新設計。</p></div>
+      <div><b>💡 分享好用的提示詞</b><p>把社群驗證過的提示詞、靈感卡記錄下來，留給下一位老師。</p></div>
+      <div><b>✉️ 回饋給開發團隊</b><p>小幫手哪裡好用、哪裡可以更好，寫信告訴我們：<a href="mailto:qekepv@gmail.com">qekepv@gmail.com</a></p></div>
     </div>
   </section>
     <nav class="pager"><button type="button" data-go="manage">← MANAGE</button><button type="button" class="next" data-go="engage">開始下一輪：ENGAGE ↺</button></nav>
@@ -1972,9 +2040,9 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
 
 <nav class="qbar" aria-label="快速開啟"><div class="wrap qb-in">
   <span class="qb-h">⚡ 快速開啟</span>
-  <a class="qb f8" href="https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e" target="_blank" rel="noopener"><span class="qi">🔍</span><span>概念為本探究</span></a>
-  <a class="qb f6" href="https://notebook.google.com/notebook/6a68de13-1286-40a3-99a9-56ffe67b7eda" target="_blank" rel="noopener"><span class="qi">❓</span><span>有效提問</span></a>
-  <details class="qb-dd" id="qb-skill"><summary class="qb f3"><span class="qi">🌱</span><span>八大思考素養 ▾</span></summary>
+  <a class="qb f8" href="https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e" target="_blank" rel="noopener"><span class="qi hlogo h-inq">探</span><span>概念為本探究</span></a>
+  <a class="qb f6" href="https://notebook.google.com/notebook/6a68de13-1286-40a3-99a9-56ffe67b7eda" target="_blank" rel="noopener"><span class="qi hlogo h-ask">問</span><span>有效提問</span></a>
+  <details class="qb-dd" id="qb-skill"><summary class="qb f3"><span class="qi hlogo h-skill">素</span><span>八大思考素養 ▾</span></summary>
     <div class="qb-menu">
       <a href="https://notebook.google.com/notebook/2fd7d20a-ca0c-4f11-8e36-6b0dfa325dec" target="_blank" rel="noopener">🔍 批判性思考</a>
       <a href="https://notebook.google.com/notebook/383b9153-71fa-41ff-8f28-9260fbddd1f8" target="_blank" rel="noopener">💡 創造力</a>
@@ -2209,7 +2277,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
     togText.textContent=c?'展開內容':'收合內容';
     try{localStorage.setItem('vlm-collapsed',c?'1':'0')}catch(e){}
   }
-  try{ if(localStorage.getItem('vlm-collapsed')==='1') setCollapsed(true); }catch(e){}
+  var _c=true; try{ _c=localStorage.getItem('vlm-collapsed')!=='0'; }catch(e){} setCollapsed(_c);
   tog.addEventListener('click',function(){ setCollapsed(!wrap.classList.contains('collapsed')); });
 
   function selectText(){
@@ -2625,6 +2693,28 @@ document.querySelectorAll('input[name="g-skr"]').forEach(function(r){ r.addEvent
     t=setTimeout(stop,12000);
   });
   cards.forEach(function(c){ c.addEventListener('pointerdown',stop); c.addEventListener('focusin',stop); });
+})();
+</script>
+<script>
+(function(){
+  var t=document.getElementById('vlm-sec-tog'), body=document.getElementById('vlm-body'), tx=document.getElementById('vlm-sec-txt'); if(!t) return;
+  function set(open){ body.hidden=!open; t.setAttribute('aria-expanded',String(open)); tx.textContent=open?'收合內容':'展開內容'; t.classList.toggle('open',open); try{localStorage.setItem('vlm-sec-open',open?'1':'0');}catch(e){} }
+  var o=false; try{ o=localStorage.getItem('vlm-sec-open')==='1'; }catch(e){} set(o);
+  t.addEventListener('click',function(){ set(body.hidden); });
+})();
+</script>
+<script>
+/* 卡片浮水印圖示：讓素色卡片更有層次 */
+(function(){
+  var re=/\p{Extended_Pictographic}/u;
+  var groups=[['.keys4 > li','var(--accent)'],['.why3 > div','var(--c2)'],['#p-manage .four > div','var(--c4)'],['#p-shape .four > div','var(--c5)'],['.loop > div','var(--c5)'],['.split > div:first-child','var(--c6)'],['.split > div:last-child','var(--c3)']];
+  groups.forEach(function(g){ document.querySelectorAll(g[0]).forEach(function(el){
+    var m=el.textContent.match(re); if(!m) return; el.classList.add('wm'); el.setAttribute('data-wm',m[0]); el.style.setProperty('--wmc',g[1]); }); });
+  document.querySelectorAll('.what2 .face.front').forEach(function(el){
+    var cell=el.closest('.cell'), lg=el.querySelector('.hlogo');
+    if(lg){ var t=lg.textContent.trim(); el.classList.add('wm','wm-ch'); el.setAttribute('data-wm',t.charAt(t.length-1)); }
+    else { var m=el.textContent.match(re); if(m){ el.classList.add('wm'); el.setAttribute('data-wm',m[0]); } }
+  });
 })();
 </script>
 
