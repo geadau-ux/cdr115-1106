@@ -1004,6 +1004,108 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
 @keyframes brkPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .brk-act{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
 @media (prefers-reduced-motion:reduce){.brk.show .brk-card,.brk-fig .b1,.brk-fig span,.brk-joke p.pop{animation:none}}
+.gen-hint{margin:16px 0 0;padding:12px 16px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);font-size:var(--fs-body);color:var(--muted);line-height:1.8}
+.gen-hint b{color:var(--text)}
+.g-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:12px;padding:10px 14px;border-radius:12px;background:color-mix(in srgb,var(--accent) 12%,var(--surface));border:1px solid color-mix(in srgb,var(--accent) 45%,var(--line));font-size:var(--fs-body);font-weight:700;color:var(--text)}
+.g-bar[hidden]{display:none}
+.g-bar .btn.sm{padding:6px 12px;font-size:14px}
+/* 示範流程圖 */
+.flowc{display:flex;align-items:stretch;gap:0;margin-top:20px}
+.flowc .fn{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:4px;padding:14px 12px;border-radius:16px;border:1.5px solid var(--fc);background:color-mix(in srgb,var(--fc) 8%,var(--surface))}
+.flowc .fn.t{--fc:var(--c1)} .flowc .fn.a{--fc:var(--c3)}
+.flowc .fn.end{border-style:dashed}
+.flowc .who{align-self:flex-start;font-size:12px;font-weight:900;color:#fff;background:var(--fc);padding:1px 9px;border-radius:999px}
+.flowc .fn b{color:var(--primary);font-size:16px;line-height:1.35}
+.flowc .fn small{font-size:13px;color:var(--muted);line-height:1.55}
+.flowc .fa{flex:0 0 30px;position:relative;align-self:center;height:2px;background:var(--line)}
+.flowc .fa::after{content:"";position:absolute;right:-1px;top:-5px;border:6px solid transparent;border-left:8px solid var(--line);border-right:0}
+.flowc .fa.loop i{position:absolute;left:50%;top:-24px;transform:translateX(-50%);font-style:normal;font-size:11px;font-weight:900;color:var(--c3);white-space:nowrap}
+.flow-legend{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0 0;font-size:var(--fs-meta);color:var(--muted)}
+.flow-legend .lg{font-size:12px;font-weight:900;color:#fff;padding:1px 9px;border-radius:999px}
+.flow-legend .lg.t{background:var(--c1)} .flow-legend .lg.a{background:var(--c3)}
+@media (max-width:860px){
+  .flowc{flex-direction:column}
+  .flowc .fa{flex:0 0 26px;width:2px;height:26px;align-self:center}
+  .flowc .fa::after{right:auto;left:-5px;top:auto;bottom:-1px;border:6px solid transparent;border-top:8px solid var(--line);border-bottom:0}
+  .flowc .fa.loop i{top:50%;left:14px;transform:translateY(-50%)}
+}
+@media (min-width:861px){.flowc .fa.loop{flex-basis:56px}.flowc .fa.loop i{top:-22px}}
+/* 選用區塊：素材轉譯 */
+.card.optional{--fill:var(--c4);border:2px dashed color-mix(in srgb,var(--c4) 55%,var(--line));border-top:6px solid var(--c4);background:color-mix(in srgb,var(--c4) 5%,var(--surface))}
+.card.optional::after{background:var(--c4)}
+.opt-tag{display:inline-block;margin-left:10px;padding:2px 12px;border-radius:999px;background:var(--c4);color:#fff;font-size:14px;font-weight:900;letter-spacing:.1em;vertical-align:middle}
+.opt-note{margin:16px 0 0;padding:14px 18px;border-radius:12px;background:color-mix(in srgb,var(--c4) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--c4) 35%,var(--line));font-size:var(--fs-body);color:var(--text);line-height:1.8}
+.opt-note b{color:var(--c4)}
+.card.optional .eyebrow{color:var(--c4)}
+.card.optional .sec-title{color:var(--primary)}
+.card.optional .steps .n{background:var(--c4);color:#fff}
+.card.optional .prompt-bar{background:color-mix(in srgb,var(--c4) 10%,var(--surface));border-color:color-mix(in srgb,var(--c4) 30%,var(--line))}
+.card.optional .prompt-box{border-color:color-mix(in srgb,var(--c4) 30%,var(--line));background:color-mix(in srgb,var(--c4) 4%,var(--code-bg))}
+.card.optional .btn-copy{background:var(--c4);box-shadow:0 6px 16px -6px var(--c4)}
+.card.optional .prompt-bar .label{color:var(--c4)}
+.card.optional .purpose{background:color-mix(in srgb,var(--c4) 6%,var(--surface));border-color:color-mix(in srgb,var(--c4) 25%,var(--line))}
+.card.optional .purpose b{color:var(--c4)}
+.how-line{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;padding:12px 14px;border-radius:14px;background:var(--surface-2);border:1px solid var(--line)}
+.how-line span{padding:6px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:14.5px;font-weight:700;color:var(--text)}
+.how-line i{font-style:normal;font-weight:900;color:var(--muted)}
+.gen-tip{margin:12px 0 0;font-size:var(--fs-body);color:var(--muted)}
+.step2-h b{font-size:var(--fs-l3);color:var(--primary)}
+.s3{display:block}
+.how1{margin:0;font-size:13.5px;line-height:1.7;color:var(--muted)}
+.how1 b{color:var(--text)}
+/* 提示詞產生器：三色對應 */
+.zy{--z:#e0a800;--zl:color-mix(in srgb,var(--accent) 14%,var(--surface))}
+.zb{--z:var(--c1);--zl:color-mix(in srgb,var(--c1) 8%,var(--surface))}
+.zg{--z:var(--c5);--zl:color-mix(in srgb,var(--c5) 10%,var(--surface))}
+.gen-intro{margin:14px 0 0;font-size:16.5px;line-height:1.85;color:var(--text)}
+.gen-intro b{color:var(--primary)}
+.zmap{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:760px){.zmap{grid-template-columns:1fr}}
+.zmap li{padding:12px 14px;border-radius:14px;background:var(--zl);border:1.5px solid var(--z);border-left-width:6px}
+.zmap b{display:block;font-size:16px;color:var(--text)}
+.zmap span{font-size:14px;color:var(--muted)}
+.zmap em{font-style:normal;font-weight:900;color:var(--z)}
+.zone{margin-top:22px;border-radius:18px;border:2px solid var(--z);background:var(--zl);padding:0 18px 18px}
+.zone .zband{display:flex;flex-direction:column;gap:2px;margin:0 -18px 16px;padding:12px 18px;border-radius:16px 16px 0 0;background:var(--z);color:#fff}
+.zone .zband b{font-size:17px}
+.zone .zband span{font-size:14px;opacity:.95}
+.zy .zband{color:#3b2f00}
+.zone .gen-form{margin-top:0}
+.zone.zone-out{background:var(--zl)}
+.zone-out .gcards{margin-top:0}
+.btn-next{background:var(--c1)!important;box-shadow:0 6px 16px -6px var(--c1)}
+.out-l{font-size:13px;font-weight:900;color:var(--c1)}
+.gcard .s3{padding:12px 14px;border-radius:12px;border:1.5px solid var(--c5);background:color-mix(in srgb,var(--c5) 10%,var(--surface))}
+.gcard .how1{color:var(--text);font-size:13.5px;margin-bottom:10px}
+.gcard .how1 b{color:var(--c5)}
+.gen-note{margin:14px 0 0}
+.gcard .opt .ol.strong{font-size:15px;font-weight:900;color:var(--text)}
+/* 提示詞框關鍵字色塊 */
+.hl-wrap{position:relative;flex:1;display:flex;border-radius:12px;background:var(--code-bg)}
+.hl-back,.gcard .hl-wrap textarea.out-p{font-family:var(--mono);font-size:14px;line-height:1.75;padding:10px 12px;border:1.5px solid transparent;border-radius:12px;white-space:pre-wrap;overflow-wrap:break-word;word-break:break-word;letter-spacing:normal;tab-size:4}
+.hl-back{position:absolute;inset:0;overflow:hidden;color:transparent;pointer-events:none}
+.gcard .hl-wrap textarea.out-p{position:relative;z-index:1;flex:1;width:100%;background:transparent;border-color:var(--line);overflow:hidden;resize:none;min-height:150px}
+.hl-back mark{color:transparent;border-radius:4px;padding:0}
+.hl-back mark.k{background:color-mix(in srgb,var(--accent) 45%,transparent);box-shadow:0 0 0 1px color-mix(in srgb,var(--accent) 70%,transparent)}
+.hl-back mark.o{background:color-mix(in srgb,var(--fill) 25%,transparent);box-shadow:0 0 0 1px color-mix(in srgb,var(--fill) 50%,transparent)}
+.hl-back mark.todo{background:color-mix(in srgb,var(--c2) 18%,transparent);box-shadow:0 0 0 1px color-mix(in srgb,var(--c2) 45%,transparent)}
+.hl-legend{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:12.5px;color:var(--muted);margin-top:-4px}
+.hl-legend i{display:inline-block;width:14px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.hl-legend .k{background:color-mix(in srgb,var(--accent) 45%,transparent)}
+.hl-legend .t{background:color-mix(in srgb,var(--c2) 22%,transparent)}
+.zband .kw{background:var(--accent);color:#3b2f00;padding:0 6px;border-radius:4px}
+.zband .kw2{background:#fde2e2;color:#a3261b;padding:0 6px;border-radius:4px}
+/* 請選我 */
+.gcard{position:relative}
+.gcard.pick{animation:pickPulse 1.1s ease-in-out infinite;border-color:var(--fill)}
+@keyframes pickPulse{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--fill) 55%,transparent),var(--shadow)}50%{box-shadow:0 0 0 8px color-mix(in srgb,var(--fill) 0%,transparent),0 0 0 3px var(--fill)}}
+.gcard.pick::before{content:attr(data-pick);position:absolute;top:-16px;left:50%;transform:translateX(-50%);z-index:5;white-space:nowrap;
+  padding:5px 14px;border-radius:999px;background:var(--fill);color:#fff;font-size:14px;font-weight:900;box-shadow:0 6px 14px -6px var(--fill);animation:pickHop .9s ease-in-out infinite}
+.gcard.pick::after{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);border:7px solid transparent;border-top-color:var(--fill);z-index:5;animation:pickHop .9s ease-in-out infinite}
+@keyframes pickHop{0%,100%{translate:0 0}50%{translate:0 -5px}}
+.zone-out .gcards{padding-top:18px}
+@media (prefers-reduced-motion:reduce){.gcard.pick,.gcard.pick::before,.gcard.pick::after{animation:none}.gcard.pick{box-shadow:0 0 0 3px var(--fill)}}
+.gcards.flash .gcard{animation:none}.gcards.flash .gcard.pick{animation:pickPulse 1.1s ease-in-out infinite}
 
 </style>
 </head>
@@ -1078,21 +1180,48 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
       <h3>🤖 AI 小幫手 <small>在 NotebookLM 上對話</small></h3>
       <h3>🧰 備課工具 <small>在這個網頁直接用</small></h3>
       <div class="cell f8"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>🔍 概念為本探究</b><span>① 輸入年級、學生特色，得到各階段探究策略</span><i class="pt pc">CREATE</i></span><span class="face back"><b>🔍 概念為本探究</b><span class="ml"><i>👩‍🎓 年級</i>→ 適合學生程度的探究策略</span><span class="ml"><i>📘 領域／科目</i>→ 扣合學科的探究活動</span><span class="ml"><i>🌱 學生特色</i>→ 依班級特性調整的做法</span><span class="ml step">之後組成骨架：從策略55挑選，排出投入 → 聚焦 → 組織 → 通則 → 遷移・反思</span><small>📍 CREATE › ① 活動骨架</small></span></button></div>
-      <div class="cell fg"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>✍️ 提示詞產生器</b><span>輸入年級、單元，得到三位小幫手的開場提示詞</span><i class="pt pe">ENGAGE</i></span><span class="face back"><b>✍️ 提示詞產生器</b><span class="ml"><i>👩‍🎓 年級、單元</i>→ 三位小幫手的開場提示詞</span><span class="ml"><i>🌱 學生特色</i>→ 更貼近班級的輸入</span><span class="ml step">之後：按「複製並開啟」，貼到小幫手送出</span><small>📍 ENGAGE › 引導體驗</small></span></button></div>
+      <div class="cell fg"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>✍️ 提示詞產生器</b><span>輸入年級、單元，得到三位小幫手的開場提示詞</span><i class="pt pe">ENGAGE</i></span><span class="face back"><b>✍️ 提示詞產生器</b><span class="ml"><i>👩‍🎓 年級、單元</i>→ 三位小幫手的開場提示詞</span><span class="ml"><i>🌱 學生特色</i>→ 更貼近班級的輸入</span><span class="ml step">之後：按「複製並開啟」，貼到小幫手送出</span><small>📍 ENGAGE › 提示詞產生器</small></span></button></div>
       <div class="cell f6"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>❓ 有效提問</b><span>② 輸入主題或問題，得到四個層次的提問</span><i class="pt pc">CREATE</i></span><span class="face back"><b>❓ 有效提問</b><span class="ml"><i>📌 主題或概念</i>→ 設計四個層次的提問</span><span class="ml"><i>❓ 一個問題</i>→ 先回答，再模擬四位利害關係人的觀點</span><span class="ml step">之後再追問：加入元素、素養能力、6C 能力、議題或人物觀點</span><small>📍 CREATE › ② 放入提問</small></span></button></div>
       <div class="cell fv"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>🧩 素材轉譯</b><span>輸入課本、教案照片，得到 md 文字</span><i class="pt pe">ENGAGE</i></span><span class="face back"><b>🧩 素材轉譯</b><span class="ml"><i>📄 課本、教案</i>→ 結構清楚的 md 文字</span><span class="ml"><i>📸 照片、截圖</i>→ 保留公式與圖形說明</span><span class="ml step">之後：把 md 貼給任一位小幫手</span><small>📍 ENGAGE › 準備素材</small></span></button></div>
       <div class="cell f3"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>🌱 八大思考素養</b><span>③ 輸入問題、想法或教材，得到素養提問靈感</span><i class="pt pc">CREATE</i></span><span class="face back"><b>🌱 八大思考素養</b><span class="ml"><i>❓ 提問</i>→ 學習脈絡、多重表徵、分層提問靈感</span><span class="ml"><i>💬 想法或看法</i>→ 正例、反例、待釐清的比對與追問</span><span class="ml"><i>📄 教材</i>→ 知識節點、系列提問、延伸連結</span><span class="ml step">之後三步深入：提問靈感 → 教學建議 → 迷思診斷與提問鷹架</span><small>📍 CREATE › ③ 深化素養</small></span></button></div>
       <div class="cell fx"><button type="button" class="flip" aria-pressed="false"><span class="face front"><b>🧪 HTML 試板</b><span>輸入 HTML 程式碼，得到即時預覽與修改</span><i class="pt pm">MANAGE</i></span><span class="face back"><b>🧪 HTML 試板</b><span class="ml"><i>💻 HTML 程式碼</i>→ 即時預覽、手機版預覽</span><span class="ml"><i>✏️ 預覽中改字</i>→ 直接修改成果</span><span class="ml step">之後帶走：複製程式碼、下載預覽圖</span><small>📍 MANAGE › HTML 試板</small></span></button></div>
     </div>
     <p class="flip-hint">👆 點卡片翻面看簡介，再點一次翻回來。</p>
+    <h3 class="gsub">🤖 三位小幫手怎麼分工</h3>
+    <div class="tbl who" style="margin-top:20px">
+      <table>
+        <thead><tr><th>小幫手</th><th>什麼時候用</th><th>你要輸入</th><th>你會得到</th></tr></thead>
+        <tbody>
+          <tr class="f8"><td><span></span>① 🔍 概念為本探究<br></td><td data-l="什麼時候用">想讓學生透過探究理解概念，需要可用的教學策略</td><td data-l="你要輸入">學生年級、探究的領域／科目、學生特色</td><td data-l="你會得到">適合這個單元與學生的概念為本探究策略建議</td></tr>
+          <tr class="f6"><td><span></span>② ❓ 有效提問<br></td><td data-l="什麼時候用">想替一個概念設計有層次的提問；或想看一個問題能從哪些角度回答</td><td data-l="你要輸入">科目、學生年級、想探究的主題或概念（或直接輸入一個問題）</td><td data-l="你會得到">🅰️ 主題或概念 → 四個層次的提問<br>🅱️ 問題 → 先回答，再模擬四位利害關係人的觀點與回答</td></tr>
+          <tr class="f3"><td><span></span>③ 🌱 八大思考素養<br></td><td data-l="什麼時候用">想朝某項思考素養設計提問、任務與評量</td><td data-l="你要輸入">年級、單元、學生特性、特定方向；再加上一個問題、一段意見或一份教材</td><td data-l="你會得到">三個階段的提問靈感與步驟化建議，每段回覆都附「下一步提示詞」</td></tr>
+        </tbody>
+      </table>
+    </div>
+
   </section>
 
   <section class="card gsec gh2" aria-labelledby="how-title">
     <div class="eyebrow"><span class="gtag">HOW</span>怎麼走</div>
-    <h2 class="sec-title" id="how-title"><span class="sec-icon">🛤️</span>四階段共備歷程</h2>
+    <h2 class="sec-title" id="how-title"><span class="sec-icon">🛤️</span>從一次對話，到四階段共備</h2>
     <p class="sec-note">參考 OECD 與歐盟執委會的 AI 素養架構（AILit Framework, 2026）：老師由認識、共創、判斷，走到共同形塑。CREATE 裡再以策略55的學生探究歷程（投入 → 聚焦 → 組織 → 通則 → 遷移・反思）為單元骨架。</p>
+    <h3 class="gsub">💬 一次對話怎麼走</h3>
+    <p class="sec-note">以「有效提問」小幫手、五年級「分數的加減」為例。</p>
+    <div class="flowc" role="list">
+      <div class="fn t" role="listitem"><span class="who">👩‍🏫 老師</span><b>勾選來源</b><small>「分數的加減」單元<br>＋🔴數學提問知識庫</small></div>
+      <span class="fa" aria-hidden="true"></span>
+      <div class="fn t" role="listitem"><span class="who">👩‍🏫 老師</span><b>輸入主題</b><small>「數學，國小五年級，想探究異分母分數的加減。」</small></div>
+      <span class="fa" aria-hidden="true"></span>
+      <div class="fn a" role="listitem"><span class="who">🤖 小幫手</span><b>四個層次的提問</b><small>並附上追問範例</small></div>
+      <span class="fa loop" aria-hidden="true"><i>↻ 可反覆</i></span>
+      <div class="fn t" role="listitem"><span class="who">👩‍🏫 老師</span><b>挑題、追問</b><small>挑 2～3 題：「這題學生最可能卡在哪裡？」</small></div>
+      <span class="fa" aria-hidden="true"></span>
+      <div class="fn t end" role="listitem"><span class="who">👩‍🏫 老師</span><b>帶到下一位小幫手</b><small>繼續深化，或進入 CREATE</small></div>
+    </div>
+    <p class="flow-legend"><span class="lg t">老師</span><span class="lg a">小幫手</span>藍色是老師的動作，橘色是小幫手的回應。</p>
+    <h3 class="gsub">🛤️ 四個階段怎麼走</h3>
     <ol class="journey flips">
-      <li class="pe"><button type="button" class="flip" aria-pressed="false"><span class="face front"><span class="pk">ENGAGE</span><b>認識與體驗</b><small>說明・示範・體驗・準備素材</small></span><span class="face back"><span class="pk">ENGAGE</span><b>認識與體驗</b><span class="ml"><i>📖 說明</i>→ 認識小幫手與工具</span><span class="ml"><i>🎬 示範</i>→ 看一次完整對話</span><span class="ml"><i>🧭 體驗</i>→ 10 分鐘照著做</span><span class="ml"><i>🧩 準備素材</i>→ 照片轉成 md</span><span class="ml step">之後：帶著一題好提問，進入 CREATE</span></span></button></li>
+      <li class="pe"><button type="button" class="flip" aria-pressed="false"><span class="face front"><span class="pk">ENGAGE</span><b>認識與體驗</b><small>提示詞產生器・準備素材</small></span><span class="face back"><span class="pk">ENGAGE</span><b>認識與體驗</b><span class="ml"><i>✍️ 提示詞產生器</i>→ 填一次資料，備好開場輸入</span><span class="ml"><i>🧩 準備素材</i>→ 課本照片轉成 md</span><span class="ml step">之後：帶著一題好提問，進入 CREATE</span></span></button></li>
       <li class="pc"><button type="button" class="flip" aria-pressed="false"><span class="face front"><span class="pk">CREATE</span><b>共創與發想</b><small>探究地圖：骨架 → 提問 → 素養</small></span><span class="face back"><span class="pk">CREATE</span><b>共創與發想</b><span class="ml"><i>🗺️ 探究地圖</i>→ 投入到遷移・反思</span><span class="ml"><i>① 活動骨架</i>→ 概念為本探究</span><span class="ml"><i>② 放入提問</i>→ 有效提問</span><span class="ml"><i>③ 深化素養</i>→ 八大思考素養</span><span class="ml step">之後：帶著單元設計，進入 MANAGE</span></span></button></li>
       <li class="pm"><button type="button" class="flip" aria-pressed="false"><span class="face front"><span class="pk">MANAGE</span><b>判斷與取捨</b><small>分工・檢核 AI 產出</small></span><span class="face back"><span class="pk">MANAGE</span><b>判斷與取捨</b><span class="ml"><i>⚖️ 分工</i>→ AI 做什麼、老師做什麼</span><span class="ml"><i>✅ 檢核表</i>→ 正確、對準、隱私</span><span class="ml"><i>🔍 JDM 四原則</i>→ 檢視提問品質</span><span class="ml"><i>🧪 HTML 試板</i>→ 修改 AI 做的學習單</span><span class="ml step">之後：帶著檢核過的設計，進入 SHAPE</span></span></button></li>
       <li class="ps"><button type="button" class="flip" aria-pressed="false"><span class="face front"><span class="pk">SHAPE</span><b>共備與形塑</b><small>共備討論・回饋</small></span><span class="face back"><span class="pk">SHAPE</span><b>共備與形塑</b><span class="ml"><i>🗣️ 討論四問</i>→ 可刪、可改、可補、可接</span><span class="ml"><i>⏱️ 40 分鐘共備</i>→ 說明 → 試做 → 討論</span><span class="ml"><i>🔁 回饋</i>→ 帶回課堂觀察</span><span class="ml step">之後：開始下一輪 ENGAGE</span></span></button></li>
@@ -1104,74 +1233,20 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
 
   <!-- ================= ENGAGE ================= -->
   <div class="panel" id="p-engage" role="tabpanel" aria-labelledby="t-engage">
-  <section class="card phead pe" aria-labelledby="engage-title">
-    <h2 class="sec-title" id="engage-title"><span class="sec-icon">👀</span>先認識，再看一次，然後自己試</h2>
-    <div class="subnav" role="tablist">
-      <button type="button" role="tab" data-sub="engage-explain">📖 說明</button>
-      <button type="button" role="tab" data-sub="engage-demo">🎬 示範</button>
-      <button type="button" role="tab" data-sub="engage-try">✍️ 引導體驗・提示詞產生器</button>
-      <button type="button" role="tab" data-sub="engage-vlm">🧩 準備素材</button>
-    </div>
-  </section>
-
-  <div class="ssec" id="x-engage-explain">
-  <section class="card" aria-labelledby="ex-title">
-    <h2 class="sec-title" id="ex-title"><span class="sec-icon">🤖</span>三位 AI 小幫手，各自擅長什麼</h2>
-    <div class="tbl who" style="margin-top:20px">
-      <table>
-        <thead><tr><th>小幫手</th><th>什麼時候用</th><th>你要輸入</th><th>你會得到</th></tr></thead>
-        <tbody>
-          <tr class="f8"><td><span></span>① 🔍 概念為本探究<br><button type="button" class="linkbtn" data-go="create-inq">前往 →</button></td><td data-l="什麼時候用">想讓學生透過探究理解概念，需要可用的教學策略</td><td data-l="你要輸入">學生年級、探究的領域／科目、學生特色</td><td data-l="你會得到">適合這個單元與學生的概念為本探究策略建議</td></tr>
-          <tr class="f6"><td><span></span>② ❓ 有效提問<br><button type="button" class="linkbtn" data-go="create-ask">前往 →</button></td><td data-l="什麼時候用">想替一個概念設計有層次的提問；或想看一個問題能從哪些角度回答</td><td data-l="你要輸入">科目、學生年級、想探究的主題或概念（或直接輸入一個問題）</td><td data-l="你會得到">🅰️ 主題或概念 → 四個層次的提問<br>🅱️ 問題 → 先回答，再模擬四位利害關係人的觀點與回答</td></tr>
-          <tr class="f3"><td><span></span>③ 🌱 八大思考素養<br><button type="button" class="linkbtn" data-go="create-skill">前往 →</button></td><td data-l="什麼時候用">想朝某項思考素養設計提問、任務與評量</td><td data-l="你要輸入">年級、單元、學生特性、特定方向；再加上一個問題、一段意見或一份教材</td><td data-l="你會得到">三個階段的提問靈感與步驟化建議，每段回覆都附「下一步提示詞」</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="callout">
-      <span class="ci">❤️</span>
-      <div><b>用法都一樣：先勾選左側「來源」，再在中間對話框輸入。</b>
-      <p>小幫手不直接給標準答案，而是一步步提供線索；你負責評估與選擇，思考不外包。</p></div>
-    </div>
-  </section>
-  </div>
-
-  <div class="ssec" id="x-engage-demo">
-  <section class="card" aria-labelledby="demo-title">
-    <h2 class="sec-title" id="demo-title"><span class="sec-icon">🎬</span>看一次完整的對話怎麼走</h2>
-    <p class="sec-note">以「有效提問」小幫手、五年級「分數的加減」為例。</p>
-    <ol class="demo">
-      <li><em>老師</em>勾選「分數的加減」單元與 🔴數學提問知識庫，輸入：<q>數學，國小五年級，想探究「異分母分數的加減」。</q></li>
-      <li><em class="ai">小幫手</em>依內容設計<b>四個層次的提問</b>。</li>
-      <li><em>老師</em>挑出 2～3 題，追問：<q>這題學生最可能卡在哪裡？</q></li>
-      <li><em>老師</em>把選好的提問帶到下一位小幫手，繼續深化。</li>
-    </ol>
-    <p class="related">📌 想看小幫手真實回覆的樣子：<button type="button" class="linkbtn" data-go="create-skill-guide">八大思考素養 › 使用說明 › 三個階段</button> 有創造力小幫手的實際回覆範例。</p>
-  </section>
-  </div>
 
   <div class="ssec" id="x-engage-try">
-  <section class="card" aria-labelledby="try-title">
-    <h2 class="sec-title" id="try-title"><span class="sec-icon">🧭</span>10 分鐘引導體驗</h2>
-    <p class="sec-note">用下方的提示詞產生器，照著做一次（邊做邊勾）。</p>
-    <ol class="chk tick" data-chk data-done="🎉 完成第一次體驗！帶著你圈出的那一題，進入 CREATE。">
-      <li><label><input type="checkbox"><span>在下方按「📋 填入範例」</span></label></li>
-      <li><label><input type="checkbox"><span>在「有效提問」卡片按「複製並開啟小幫手」</span></label></li>
-      <li><label><input type="checkbox"><span>在 NotebookLM 勾選來源，按 Ctrl+V 貼上送出</span></label></li>
-      <li><label><input type="checkbox"><span>從回覆中圈出一題你會用在課堂的提問，寫下它好在哪裡</span></label></li>
-    </ol>
-    <p class="chk-done" role="status"></p>
-  </section>
   <!-- 提示詞產生器 -->
   <section class="card gen" aria-labelledby="gen-title">
-    <div class="eyebrow">提示詞產生器</div>
-    <h2 class="sec-title" id="gen-title"><span class="sec-icon">✍️</span>填一次備課資料，三種小幫手的開場輸入一次備好</h2>
-    <p class="sec-note">資料只在你的瀏覽器裡組成文字，不會上傳到任何地方。</p>
-    <ol class="stepper" aria-label="使用步驟">
-      <li class="on"><span class="sn">1</span><div><b>填備課資料</b><small>就在下面這張表</small></div></li>
-      <li><span class="sn">2</span><div><b>選一種小幫手，檢查提示詞</b><small>在表單下方，三張卡片</small></div></li>
-      <li><span class="sn">3</span><div><b>複製並開啟 → 勾選來源 → 貼上送出</b><small>在 NotebookLM 裡完成</small></div></li>
+    <div class="eyebrow">✍️ 提示詞產生器</div>
+    <h2 class="sec-title" id="gen-title"><span class="sec-icon">🚩</span>起手式：準備好提示詞，選好小幫手</h2>
+    <p class="gen-intro">和 AI 小幫手對話前，先做好兩件事：<b>準備好提示詞</b>（要貼給小幫手的那段話），<b>選好要用的小幫手</b>。你只要填好班級和單元，這裡會幫三位小幫手各寫好一段提示詞，挑一位複製、貼上，就能開始對話。</p>
+    <ol class="zmap" aria-label="使用方式">
+      <li class="zy"><b>✏️ 準備提示詞</b><span>在<em>黃色區</em>填年級、單元，提示詞自動寫好</span></li>
+      <li class="zb"><b>🤖 選用小幫手</b><span>到<em>藍色區</em>挑一位，複製它的提示詞</span></li>
+      <li class="zg"><b>🚀 貼上開始</b><span>照<em>綠色提示</em>到 NotebookLM 貼上送出</span></li>
     </ol>
+    <div class="zone zy">
+      <div class="zband"><b>✏️ 準備提示詞：填你的班級與單元</b><span>只有標「必填」的要填，其他可以留空。不知道怎麼填？按最下方「📋 用範例試試看」。</span></div>
     <form class="gen-form" id="gen-form" autocomplete="off" onsubmit="return false">
       <label class="fld"><span>👩‍🎓 學生年級 <em class="need">必填</em></span>
         <select id="g-grade">
@@ -1184,31 +1259,31 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
       <label class="fld"><span>🎯 特定方向 <em>選填</em></span><textarea id="g-dir" placeholder="例：多用生活情境題，加入小組討論提問"></textarea></label>
     </form>
     <div class="gen-actions">
-      <button type="button" class="btn btn-copy btn-next" id="g-next">下一步：看產生的提示詞 ↓</button>
-      <button type="button" class="btn btn-ghost" id="g-sample">📋 填入範例</button>
-      <button type="button" class="btn btn-ghost" id="g-clear">🧹 清除</button>
+      <button type="button" class="btn btn-copy btn-next" id="g-next">✅ 準備好了，往下選小幫手 ↓</button>
+      <button type="button" class="btn btn-ghost" id="g-sample" title="用「五年級・分數的加減」範例填入欄位">📋 用範例試試看</button>
+      <button type="button" class="btn btn-ghost" id="g-clear" title="清空單元、學生特色、特定方向等欄位">🧹 清空欄位</button>
       <span class="g-miss" id="g-miss" role="status"></span>
+    </div>
+    <div class="g-bar" id="g-bar" role="status" hidden></div>
     </div>
   </section>
 
-  <div class="step2-h" id="g-step2">
-    <span class="sn">2</span>
-    <div><b>選一種小幫手，檢查提示詞</b>
-    <p>三張卡片的提示詞已依你填的資料自動組好。挑這次要用的小幫手，調整卡片上方的選項；框內的文字也可以直接修改。</p></div>
-  </div>
+  <div class="zone zb zone-out">
+  <div class="zband" id="g-step2"><b>🤖 選用小幫手：挑一位，拿走寫好的提示詞</b><span>三張卡片各是一位小幫手，灰底框裡就是幫它寫好的提示詞：<b class="kw">黃色色塊</b>是你在黃色區填的資料，<b class="kw2">紅色色塊</b>是還沒填的地方。挑這次要用的那一位，確認後按「複製並開啟小幫手」。</span></div>
   <div class="gcards" aria-live="polite">
-    <div class="gcard f8">
+    <div class="gcard f8" data-pick="🙋 請選我！先排好探究活動骨架">
       <div class="gh"><span class="rn">🔍</span><b>概念為本探究教學策略小幫手</b></div>
       <div class="opt"><span class="ol">小幫手會依年級、領域和學生特色，建議概念為本的探究策略。學生特色寫得越具體，建議越貼近班級。</span></div>
 
+      <span class="out-l">👇 寫好的提示詞（可直接修改）</span>
       <textarea class="out-p" id="o-inq" aria-label="概念為本探究教學策略小幫手的提示詞"></textarea>
-      <div class="s3"><span class="sn">3</span><ol class="how3"><li><b>按「複製並開啟小幫手」</b></li><li>在 NotebookLM 左側<b>勾選來源</b>：<b>策略55的說明</b>、<b>策略概述.pptx</b>、<b>您要備課的單元</b></li><li>在中間對話框按 <kbd>Ctrl</kbd>+<kbd>V</kbd>（Mac 為 <kbd>⌘</kbd>+<kbd>V</kbd>）<b>貼上並送出</b></li></ol><div class="gact"><a class="btn btn-copy btn-go" data-copygo="o-inq" href="https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e" target="_blank" rel="noopener">📋 複製並開啟小幫手 ↗</a><button type="button" class="btn btn-ghost" data-copy="o-inq">只複製</button></div><p class="g-ok" role="status"></p></div>
+      <div class="s3"><p class="how1"><b>🚀 貼上開始：</b>按下方按鈕，小幫手會在新分頁開啟。先在左側勾選 <b>策略55的說明</b>、<b>策略概述.pptx</b>、<b>您要備課的單元</b>，再在中間對話框按 Ctrl+V（Mac ⌘+V）貼上送出。</p><div class="gact"><a class="btn btn-copy btn-go" data-copygo="o-inq" href="https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e" target="_blank" rel="noopener">📋 複製並開啟小幫手 ↗</a><button type="button" class="btn btn-ghost" data-copy="o-inq">只複製</button></div><p class="g-ok" role="status"></p></div>
     </div>
 
-    <div class="gcard f6">
+    <div class="gcard f6" data-pick="🙋 請選我！幫你設計四層次提問">
       <div class="gh"><span class="rn">❓</span><b>有效提問 AI 小幫手</b></div>
       <div class="opt" role="group" aria-label="輸入類型">
-        <span class="ol">你要輸入的類型</span>
+        <span class="ol strong">你要輸入的類型（請選擇）</span>
         <div class="seg">
           <label><input type="radio" name="g-askt" value="A" checked><span>🅰️ 主題或概念</span></label>
           <label><input type="radio" name="g-askt" value="B"><span>🅱️ 問題</span></label>
@@ -1216,47 +1291,52 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
         <input type="text" id="g-askq" placeholder="例：異分母分數加法，為什麼一定要先通分？" hidden aria-label="你的問題">
       </div>
 
+      <span class="out-l">👇 寫好的提示詞（可直接修改）</span>
       <textarea class="out-p" id="o-ask" aria-label="有效提問小幫手的提示詞"></textarea>
-      <div class="s3"><span class="sn">3</span><ol class="how3"><li><b>按「複製並開啟小幫手」</b></li><li>在 NotebookLM 左側<b>勾選來源</b>：<b>您要備課的單元</b>、<b>🔴數學提問知識庫</b></li><li>在中間對話框按 <kbd>Ctrl</kbd>+<kbd>V</kbd>（Mac 為 <kbd>⌘</kbd>+<kbd>V</kbd>）<b>貼上並送出</b></li></ol><div class="gact"><a class="btn btn-copy btn-go" data-copygo="o-ask" href="https://notebook.google.com/notebook/6a68de13-1286-40a3-99a9-56ffe67b7eda" target="_blank" rel="noopener">📋 複製並開啟小幫手 ↗</a><button type="button" class="btn btn-ghost" data-copy="o-ask">只複製</button></div><p class="g-ok" role="status"></p></div>
+      <div class="s3"><p class="how1"><b>🚀 貼上開始：</b>按下方按鈕，小幫手會在新分頁開啟。先在左側勾選 <b>您要備課的單元</b>、<b>🔴數學提問知識庫</b>，再在中間對話框按 Ctrl+V（Mac ⌘+V）貼上送出。</p><div class="gact"><a class="btn btn-copy btn-go" data-copygo="o-ask" href="https://notebook.google.com/notebook/6a68de13-1286-40a3-99a9-56ffe67b7eda" target="_blank" rel="noopener">📋 複製並開啟小幫手 ↗</a><button type="button" class="btn btn-ghost" data-copy="o-ask">只複製</button></div><p class="g-ok" role="status"></p></div>
     </div>
 
-    <div class="gcard f3">
+    <div class="gcard f3" data-pick="🙋 請選我！帶出學生的思考素養">
       <div class="gh"><span class="rn">🌱</span><b>八大思考素養小幫手</b></div>
       <div class="opt">
-        <label class="ol" for="g-skill">選擇思考素養</label>
-        <select id="g-skill">
+        <span class="ol strong">選擇思考素養（請選擇）</span>
+        <div class="seg sk-seg" role="radiogroup" aria-label="選擇思考素養"><label><input type="radio" name="g-skr" value="https://notebook.google.com/notebook/2fd7d20a-ca0c-4f11-8e36-6b0dfa325dec"><span>🔍 批判性思考</span></label><label><input type="radio" name="g-skr" value="https://notebook.google.com/notebook/383b9153-71fa-41ff-8f28-9260fbddd1f8"><span>💡 創造力</span></label><label><input type="radio" name="g-skr" value="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" checked><span>🔬 研究與探究</span></label><label><input type="radio" name="g-skr" value="https://notebook.google.com/notebook/4548f6b1-6681-4281-8e8d-4f2b8308f9de"><span>🧭 系統性思維</span></label><label><input type="radio" name="g-skr" value="https://notebook.google.com/notebook/af062042-58d7-4944-bcf0-1dfa4ee52266"><span>🪞 反思</span></label></div>
+        <select id="g-skill" hidden tabindex="-1" aria-hidden="true">
           <option value="https://notebook.google.com/notebook/2fd7d20a-ca0c-4f11-8e36-6b0dfa325dec">🔍 批判性思考</option>
           <option value="https://notebook.google.com/notebook/383b9153-71fa-41ff-8f28-9260fbddd1f8">💡 創造力</option>
           <option value="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" selected>🔬 研究與探究</option>
           <option value="https://notebook.google.com/notebook/4548f6b1-6681-4281-8e8d-4f2b8308f9de">🧭 系統性思維</option>
           <option value="https://notebook.google.com/notebook/af062042-58d7-4944-bcf0-1dfa4ee52266">🪞 反思</option>
         </select>
-        <span class="ol">輸入方式（任選）</span>
+        <span class="ol strong">你想輸入的是（請選擇）</span>
         <div class="seg">
-          <label><input type="radio" name="g-skm" value="q" checked><span>1 問題</span></label>
-          <label><input type="radio" name="g-skm" value="s"><span>2 直述意見</span></label>
-          <label><input type="radio" name="g-skm" value="m"><span>3 貼上資料</span></label>
+          <label><input type="radio" name="g-skm" value="q" checked><span>❓ 問題</span></label>
+          <label><input type="radio" name="g-skm" value="s"><span>💬 想法或看法</span></label>
+          <label><input type="radio" name="g-skm" value="m"><span>📄 貼上教材</span></label>
         </div>
         <textarea id="g-skc" aria-label="問題、意見或資料內容" placeholder="例：異分母分數加法，為什麼一定要先通分？"></textarea>
       </div>
 
+      <span class="out-l">👇 寫好的提示詞（可直接修改）</span>
       <textarea class="out-p" id="o-skill" aria-label="思考素養小幫手的提示詞"></textarea>
-      <div class="s3"><span class="sn">3</span><ol class="how3"><li><b>按「複製並開啟小幫手」</b></li><li>在 NotebookLM 左側<b>勾選來源</b>：<b>來源區資料至少 1 項</b></li><li>在中間對話框按 <kbd>Ctrl</kbd>+<kbd>V</kbd>（Mac 為 <kbd>⌘</kbd>+<kbd>V</kbd>）<b>貼上並送出</b></li></ol><div class="gact"><a class="btn btn-copy btn-go" data-copygo="o-skill" href="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" target="_blank" rel="noopener" id="g-skill-go">📋 複製並開啟小幫手 ↗</a><button type="button" class="btn btn-ghost" data-copy="o-skill">只複製</button></div><p class="g-ok" role="status"></p></div>
+      <div class="s3"><p class="how1"><b>🚀 貼上開始：</b>按下方按鈕，小幫手會在新分頁開啟。先在左側勾選 <b>來源區資料至少 1 項</b>，再在中間對話框按 Ctrl+V（Mac ⌘+V）貼上送出。</p><div class="gact"><a class="btn btn-copy btn-go" data-copygo="o-skill" href="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" target="_blank" rel="noopener" id="g-skill-go">📋 複製並開啟小幫手 ↗</a><button type="button" class="btn btn-ghost" data-copy="o-skill">只複製</button></div><p class="g-ok" role="status"></p></div>
     </div>
   </div>
-  <p class="gen-note">💡 修改上方的備課資料，三段提示詞會重新產生；在框內直接修改的文字，複製時也會一起帶走。【 】表示還沒填寫的地方。</p>
+  <p class="gen-note">💡 回到黃色區修改資料，提示詞會自動更新；直接在灰底框裡改字也可以，複製時會一起帶走。看到【 】，代表那裡還沒填。</p>
+  </div>
 
   </div>
   <div class="ssec" id="x-engage-vlm">
   <!-- 一鍵複製：VLM 轉譯工具 -->
-  <section class="card vlm tool fv" aria-labelledby="vlm-title">
+  <section class="card vlm tool fv optional" aria-labelledby="vlm-title">
     <div class="vlm-head">
       <div>
         <div class="eyebrow">VLM 轉譯工具</div>
-        <h2 class="sec-title" id="vlm-title"><span class="sec-icon">🧩</span>素材轉譯：把課本、教案轉成文字</h2>
+        <h2 class="sec-title" id="vlm-title"><span class="sec-icon">🧩</span>素材轉譯：把課本、教案轉成文字<span class="opt-tag">選用</span></h2>
         <p class="credit">提示詞內容引自 <strong>臺師大教創中心</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
       </div>
     </div>
+    <p class="opt-note">📎 <b>什麼時候用？</b>想給小幫手的素材是 <b>PDF 或照片</b>，無法直接上傳時，先用這段提示詞請任一款 AI 轉成 md 文字，再把轉好的內容貼進小幫手<b>中間的對話框</b>。素材已經是文字，就可以跳過這一步。</p>
     <p class="purpose">🎯 目的：<b>優雅建構高質量、低 Token 消耗的 AI 結構化知識庫。</b>把簡報、教案、講義、課文或照片截圖，轉成乾淨的 Markdown（.md）。當小幫手的「來源」區無法上傳素材時，就把 md 內容貼到中間的對話框。</p>
 
     <ol class="steps">
@@ -1792,13 +1872,6 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
 
   <!-- ================= MANAGE ================= -->
   <div class="panel" id="p-manage" role="tabpanel" aria-labelledby="t-manage">
-  <section class="card phead pm" aria-labelledby="manage-title">
-    <h2 class="sec-title" id="manage-title"><span class="sec-icon">⚖️</span>AI 是助手，老師是作者</h2>
-    <div class="subnav" role="tablist">
-      <button type="button" role="tab" data-sub="manage-judge">✅ 分工與檢核</button>
-      <button type="button" role="tab" data-sub="manage-html">🧪 HTML 試板</button>
-    </div>
-  </section>
   <div class="ssec" id="x-manage-judge">
   <section class="card" aria-labelledby="judge-title">
     <h2 class="sec-title" id="judge-title"><span class="sec-icon">⚖️</span>哪些交給 AI，哪些留給自己</h2>
@@ -2074,8 +2147,9 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
       var t=$('t-'+k); t.setAttribute('aria-selected',String(k===r.page)); t.tabIndex=(k===r.page)?0:-1;
     });
     var panel=$('p-'+r.page);
-    var secs=panel.querySelectorAll(':scope > .ssec');
-    if(secs.length){
+    var secs=panel.querySelectorAll(':scope > .ssec'), STACK={engage:1,manage:1}, target=null;
+    if(STACK[r.page]){ secs.forEach(function(e){ e.hidden=false; }); if(r.sub) target=$('x-'+r.page+'-'+r.sub); }
+    else if(secs.length){
       var sub=r.sub; if(!sub||!$('x-'+r.page+'-'+sub)) sub=defSub[r.page];
       secs.forEach(function(e){ e.hidden=(e.id!=='x-'+r.page+'-'+sub); });
       panel.querySelectorAll('.subnav [data-sub]').forEach(function(b){ var on=b.dataset.sub===r.page+'-'+sub; b.setAttribute('aria-selected',String(on)); });
@@ -2088,7 +2162,8 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
     var cur=$('t-'+r.page), bar=cur.parentNode, l=cur.offsetLeft-bar.offsetLeft;
     if(l<bar.scrollLeft||l+cur.offsetWidth>bar.scrollLeft+bar.clientWidth) bar.scrollLeft=l-16;
     var sb=$('statbar'); if(sb) sb.hidden=(r.page!=='home');
-    if(scroll) window.scrollTo(0,0);
+    if(target){ var hd=document.querySelector('header'); setTimeout(function(){ window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-(hd?hd.offsetHeight:0)-16}); },0); }
+    else if(scroll) window.scrollTo(0,0);
   }
   function go(n){ if(location.hash!=='#'+n){ location.hash=n; } else { show(n,true); } }
   document.querySelectorAll('[data-tab]').forEach(function(b){ b.addEventListener('click',function(){ go(b.dataset.tab); }); });
@@ -2189,6 +2264,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
     else if(m==='s') c+='\n'+(t||'我認為【請寫下你的想法】。');
     else c+='\n以下是我的教材內容：\n'+(t||'【請貼上 VLM 轉譯工具產出的 md 內容】');
     $('o-skill').value=c;
+    if(window.paintAll) window.paintAll();
   }
   function save(){ var o={}; F.forEach(function(id){o[id]=$(id).value;}); try{localStorage.setItem(KEY,JSON.stringify(o));}catch(e){} }
   try{ var o=JSON.parse(localStorage.getItem(KEY)||'null'); if(o) F.forEach(function(id){ if(typeof o[id]==='string') $(id).value=o[id]; }); }catch(e){}
@@ -2206,15 +2282,28 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
   ['g-askq','g-skc'].forEach(function(id){ $(id).addEventListener('input',build); });
   document.querySelectorAll('input[name="g-askt"],input[name="g-skm"],#g-skill').forEach(function(el){ el.addEventListener('change',sync); });
 
+  var KEEP=['g-grade','g-subj','g-unit','g-trait','g-dir','g-askq','g-skc'], backup=null, bar=$('g-bar');
+  var SAMPLE={'g-grade':'國小五年級','g-subj':'數學','g-unit':'分數的加減','g-trait':'通分概念不穩固，喜歡動手操作','g-dir':'多用生活情境題，加入小組討論提問'};
+  function snap(){ var o={}; KEEP.forEach(function(id){o[id]=$(id).value;}); return o; }
+  function hasOwn(){ return ['g-unit','g-trait','g-dir','g-askq','g-skc'].some(function(id){ var v=$(id).value.trim(); return v && v!==SAMPLE[id]; }); }
+  function msg(html){ bar.innerHTML=html; bar.hidden=false; }
+  function hide(){ bar.hidden=true; bar.innerHTML=''; }
+  function doSample(){ backup=snap(); Object.keys(SAMPLE).forEach(function(id){$(id).value=SAMPLE[id];}); save(); sync();
+    msg('✅ 已填入範例（五年級・分數的加減）。<button type="button" class="linkbtn" data-g="undo">↩ 復原我剛才的內容</button>'); }
+  function doClear(){ backup=snap(); ['g-unit','g-trait','g-dir','g-askq','g-skc'].forEach(function(id){$(id).value='';}); save(); sync();
+    msg('🧹 已清空欄位。<button type="button" class="linkbtn" data-g="undo">↩ 復原</button>'); }
   $('g-sample').addEventListener('click',function(){
-    $('g-grade').value='國小五年級'; $('g-subj').value='數學'; $('g-unit').value='分數的加減';
-    $('g-trait').value='通分概念不穩固，喜歡動手操作'; $('g-dir').value='多用生活情境題，加入小組討論提問';
-    save(); build();
+    if(hasOwn()) msg('⚠️ 欄位裡有你寫的內容，填入範例會取代它們。<button type="button" class="btn btn-copy sm" data-g="yes">確定填入範例</button><button type="button" class="btn btn-ghost sm" data-g="no">取消</button>');
+    else doSample();
   });
   $('g-clear').addEventListener('click',function(){
-    $('g-unit').value=''; $('g-trait').value=''; $('g-dir').value=''; $('g-askq').value=''; $('g-skc').value='';
-    save(); build();
+    if(hasOwn()) msg('⚠️ 確定要清空你寫的內容嗎？<button type="button" class="btn btn-copy sm" data-g="clr">確定清空</button><button type="button" class="btn btn-ghost sm" data-g="no">取消</button>');
+    else doClear();
   });
+  bar.addEventListener('click',function(e){ var b=e.target.closest('[data-g]'); if(!b) return; var g=b.dataset.g;
+    if(g==='yes') doSample(); else if(g==='clr') doClear(); else if(g==='no') hide();
+    else if(g==='undo'&&backup){ KEEP.forEach(function(id){$(id).value=backup[id];}); backup=null; save(); sync(); msg('↩ 已復原你的內容。'); setTimeout(hide,2500); } });
+  document.querySelectorAll('#gen-form input,#gen-form select,#gen-form textarea').forEach(function(el){ el.addEventListener('input',function(){ if(!bar.hidden && !bar.querySelector('[data-g="yes"],[data-g="clr"]')) hide(); }); });
 
   function copyText(txt,ok,fb){
     if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok,fb); else fb();
@@ -2439,6 +2528,61 @@ document.querySelectorAll('.home-link').forEach(function(a){ a.addEventListener(
   box.addEventListener('click',function(e){ if(e.target===box) close(); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!box.hidden) close(); });
   var s=0; setInterval(function(){ if(document.visibilityState!=='visible'||!box.hidden) return; s++; if(s%900===0) showBreak(s/60); },1000);
+})();
+</script>
+<script>
+document.querySelectorAll('input[name="g-skr"]').forEach(function(r){ r.addEventListener('change',function(){ var s=document.getElementById('g-skill'); s.value=r.value; s.dispatchEvent(new Event('change')); }); });
+</script>
+<script>
+/* 提示詞框：把上方填入的關鍵字加上色塊 */
+(function(){
+  var tas=[].slice.call(document.querySelectorAll('textarea.out-p'));
+  tas.forEach(function(ta){
+    var w=document.createElement('div'); w.className='hl-wrap'; ta.parentNode.insertBefore(w,ta);
+    var bk=document.createElement('div'); bk.className='hl-back'; bk.setAttribute('aria-hidden','true'); w.appendChild(bk); w.appendChild(ta); ta._bk=bk;
+    ta.addEventListener('input',function(){ paint(ta); });
+    ta.addEventListener('scroll',function(){ bk.scrollTop=ta.scrollTop; });
+  });
+  function esc(t){ return t.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}); }
+  function rx(t){ return t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+  function vals(){
+    var top=[],own=[];
+    ['g-grade','g-subj','g-unit','g-trait','g-dir'].forEach(function(id){ var e=document.getElementById(id); if(!e) return; var v=(e.value||'').trim(); if(v){ top.push(v); var t=v.replace(/[。．.，,\s]+$/,''); if(t&&t!==v) top.push(t); } });
+    ['g-askq','g-skc'].forEach(function(id){ var e=document.getElementById(id); if(e&&!e.hidden){ var v=(e.value||'').trim(); if(v) own.push(v); } });
+    return {top:top,own:own};
+  }
+  function paint(ta){
+    var v=vals(), list=[];
+    v.top.forEach(function(s){ list.push(s); }); v.own.forEach(function(s){ list.push(s); });
+    list.sort(function(a,b){ return b.length-a.length; });
+    var parts=list.map(rx); parts.push('【[^】]*】');
+    var re=new RegExp(parts.join('|'),'g'), t=ta.value, out='', last=0, m;
+    while((m=re.exec(t))){ if(!m[0]){ re.lastIndex++; continue; }
+      var cls=/^【/.test(m[0])?'todo':(v.own.indexOf(m[0])>-1?'o':'k');
+      out+=esc(t.slice(last,m.index))+'<mark class="'+cls+'">'+esc(m[0])+'</mark>'; last=m.index+m[0].length; }
+    out+=esc(t.slice(last))+'\n';
+    ta._bk.innerHTML=out;
+    ta.style.minHeight='0'; ta.style.minHeight=Math.max(150,ta.scrollHeight+3)+'px';
+  }
+  window.paintAll=function(){ tas.forEach(paint); };
+  window.addEventListener('resize',window.paintAll);
+  window.addEventListener('hashchange',function(){ setTimeout(window.paintAll,50); });
+  setTimeout(window.paintAll,0);
+})();
+</script>
+<script>
+/* 按「準備好了」後，三張小幫手卡片閃動招手 */
+(function(){
+  var btn=document.getElementById('g-next'), cards=[].slice.call(document.querySelectorAll('.gcard[data-pick]')), t=null;
+  if(!btn) return;
+  function stop(){ cards.forEach(function(c){ c.classList.remove('pick'); }); clearTimeout(t); }
+  btn.addEventListener('click',function(){
+    if(!(document.getElementById('g-unit').value||'').trim()) return;
+    stop();
+    setTimeout(function(){ cards.forEach(function(c,i){ setTimeout(function(){ c.classList.add('pick'); }, i*250); }); }, 450);
+    t=setTimeout(stop,12000);
+  });
+  cards.forEach(function(c){ c.addEventListener('pointerdown',stop); c.addEventListener('focusin',stop); });
 })();
 </script>
 
