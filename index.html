@@ -1186,6 +1186,32 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
 .split > div.wm::after{font-size:96px}
 .flowc .fq{display:block;margin-top:4px;padding:6px 8px;border-radius:8px;background:var(--surface);border:1px dashed color-mix(in srgb,var(--fc) 55%,var(--line));font-size:12.5px;line-height:1.5;color:var(--text)}
 .flowc .fn.a{flex-grow:1.35}
+/* ===== 關鍵字突顯系統 =====
+   1. 螢光底線：核心概念（strong / b）
+   2. 色塊膠囊：小幫手、階段名稱（.pn / .pp）
+   3. 引號強調：關鍵主張（.kq）            */
+.lede strong,.sec-note strong,.purpose b,.gen-intro b,.gen-intro strong,.why3 strong,.why-ai strong,.callout b,.related b,.how1 b,.vlm-sum b,.duo .arr b{
+  color:var(--primary);font-weight:800;background:linear-gradient(transparent 60%,color-mix(in srgb,var(--accent) 50%,transparent) 60%);padding:0 2px;border-radius:2px}
+.pn{display:inline-block;padding:0 9px;margin:0 2px;border-radius:999px;font-weight:800;font-size:.95em;color:#fff;background:var(--hc);line-height:1.6}
+.pp{display:inline-block;padding:0 8px;margin:0 1px;border-radius:6px;font-weight:800;font-size:.95em;color:var(--p);background:color-mix(in srgb,var(--p) 14%,var(--surface));border:1px solid color-mix(in srgb,var(--p) 40%,transparent);line-height:1.55}
+.kq{font-style:normal;font-weight:800;color:var(--c2);border-bottom:2px dotted color-mix(in srgb,var(--c2) 60%,transparent)}
+:root[data-theme="dark"] .lede strong,:root[data-theme="dark"] .sec-note strong,:root[data-theme="dark"] .purpose b,:root[data-theme="dark"] .gen-intro b,:root[data-theme="dark"] .gen-intro strong{background:linear-gradient(transparent 60%,color-mix(in srgb,var(--accent) 35%,transparent) 60%)}
+:root[data-theme="dark"] .kq{color:#ff9b8f}
+/* 手機版修正 */
+@media (max-width:560px){
+  header .wrap.top{gap:10px;padding-block:10px 6px}
+  header .mark{width:44px;height:44px;flex:none}
+  header h1{font-size:20px;white-space:nowrap}
+  header p{font-size:12px;letter-spacing:.02em}
+  .theme-sw{flex:none}
+  .flips .face.front{grid-template-columns:1fr;row-gap:4px}
+  .flips .face.front i.pt{grid-row:auto;grid-column:1;justify-self:start;order:-1;margin-bottom:2px}
+  .flips .face.front > b{font-size:15.5px}
+  .journey.flips .face.front{min-height:170px;padding-top:88px}
+  .journey.flips li .front{background-size:76px 76px,100% 100%!important}
+}
+.cmap thead button[aria-pressed="true"]{color:#fff}
+:root[data-theme="dark"] .cmap thead button[aria-pressed="true"]{color:#0e1822}
 
 </style>
 </head>
@@ -1231,7 +1257,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
       <li><b>🧠 思考技能</b><span>對準 21 世紀八大思考素養</span></li>
       <li><b>🤝 共備</b><span>和夥伴一起討論、試教、修正</span></li>
     </ul>
-    <p class="lede">這個入口網把三位 AI 小幫手和三個備課工具串成一條<strong>共備歷程</strong>：陪老師理清單元概念、設計有層次的提問、對準思考技能，再帶回社群共備。AI 提供靈感，老師做專業判斷。下面依「為什麼 → 是什麼 → 怎麼走」說明。</p>
+    <p class="lede">這個入口網把三位 AI 小幫手和三個備課工具串成一條<strong>共備歷程</strong>：陪老師<strong>理清單元概念</strong>、<strong>設計有層次的提問</strong>、<strong>對準思考技能</strong>，再<strong>帶回社群共備</strong>。<em class="kq">AI 提供靈感，老師做專業判斷。</em>下面依「為什麼 → 是什麼 → 怎麼走」說明。</p>
     <div class="gc">
       <button type="button" class="gc-i gw" data-scroll="why-title"><span class="gk">WHY</span><b>為什麼</b><span>從提問開始</span><em>↓</em></button>
       <button type="button" class="gc-i gwh" data-scroll="what-title"><span class="gk">WHAT</span><b>是什麼</b><span>三位小幫手，三個工具</span><em>↓</em></button>
@@ -1284,9 +1310,9 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
   <section class="card gsec gh2" aria-labelledby="how-title">
     <div class="eyebrow"><span class="gtag">HOW</span>怎麼走</div>
     <h2 class="sec-title" id="how-title"><span class="sec-icon">🛤️</span>從一次對話，到四階段共備</h2>
-    <p class="sec-note">參考 OECD 與歐盟執委會的 AI 素養架構（AILit Framework, 2026）：老師由認識、共創、判斷，走到共同形塑。CREATE 裡再以策略55的學生探究歷程（投入 → 聚焦 → 組織 → 通則 → 遷移・反思）為單元骨架。</p>
+    <p class="sec-note">參考 OECD 與歐盟執委會的 AI 素養架構（AILit Framework, 2026）：老師由<span class="pp pe">認識</span>、<span class="pp pc">共創</span>、<span class="pp pm">判斷</span>，走到<span class="pp ps">共同形塑</span>。CREATE 裡再以<strong>策略55的學生探究歷程</strong>（投入 → 聚焦 → 組織 → 通則 → 遷移・反思）為單元骨架。</p>
     <h3 class="gsub">💬 一次對話怎麼走</h3>
-    <p class="sec-note">以「有效提問」小幫手、五年級「分數的加減」為例。</p>
+    <p class="sec-note">以<span class="pn h-ask">有效提問小幫手</span>、五年級<strong>「分數的加減」</strong>為例。</p>
     <div class="flowc" role="list">
       <div class="fn t" role="listitem"><span class="who">👩‍🏫 老師</span><b>勾選來源</b><small>「分數的加減」單元<br>＋🔴數學提問知識庫</small></div>
       <span class="fa" aria-hidden="true"></span>
@@ -1319,7 +1345,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
   <section class="card gen" aria-labelledby="gen-title">
     <div class="eyebrow">✍️ 提示詞產生器</div>
     <h2 class="sec-title" id="gen-title"><span class="sec-icon">🚩</span>起手式：準備好提示詞，選好小幫手</h2>
-    <p class="gen-intro">和 AI 小幫手對話前，先做好兩件事：<b>準備好提示詞</b>（要貼給小幫手的那段話），<b>選好要用的小幫手</b>。你只要填好班級和單元，這裡會幫三位小幫手各寫好一段提示詞，挑一位複製、貼上，就能開始對話。</p>
+    <p class="gen-intro">和 AI 小幫手對話前，先做好兩件事：<b>準備好提示詞</b>（要貼給小幫手的那段話），<b>選好要用的小幫手</b>。你只要填好<strong>年級與單元</strong>（可再加上學生特色），這裡會幫三位小幫手<strong>各寫好一段提示詞</strong>，<em class="kq">挑一位複製、貼上，就能開始對話。</em></p>
     <ol class="zmap" aria-label="使用方式">
       <li class="zy"><b>✏️ 準備提示詞</b><span>在<em>黃色區</em>填年級、單元，提示詞自動寫好</span></li>
       <li class="zb"><b>🤖 選用小幫手</b><span>到<em>藍色區</em>挑一位，複製它的提示詞</span></li>
@@ -1477,7 +1503,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
   <div class="panel" id="p-create" role="tabpanel" aria-labelledby="t-create">
   <section class="card phead pc" aria-labelledby="create-title">
     <h2 class="sec-title" id="create-title"><span class="sec-icon">💡</span>用探究地圖設計單元：活動、提問、素養，自由搭配</h2>
-    <p class="sec-note">學生的探究歷程是單元的骨架（投入 → 聚焦 → 組織 → 通則 → 遷移，反思貫穿全程）。三位小幫手分別幫你設計活動、提問與思考素養，可以從任何一位開始，也可以只用其中一位。</p>
+    <p class="sec-note"><strong>學生的探究歷程是單元的骨架</strong>（投入 → 聚焦 → 組織 → 通則 → 遷移，反思貫穿全程）。三位小幫手分別幫你設計<span class="pn h-inq">活動</span>、<span class="pn h-ask">提問</span>與<span class="pn h-skill">思考素養</span>，<em class="kq">可以從任何一位開始，也可以只用其中一位。</em></p>
     <div class="subnav flowsub free" role="tablist">
       <button type="button" role="tab" data-sub="create-map"><b>🗺️ 探究地圖</b><small>總覽與各階段</small></button>
       <button type="button" role="tab" data-sub="create-inq"><b>活動骨架</b><small>概念為本探究</small></button>
@@ -1489,7 +1515,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
   <div class="ssec" id="x-create-map">
   <section class="card" aria-labelledby="map-title">
     <h2 class="sec-title" id="map-title"><span class="sec-icon">🗺️</span>探究地圖：點一個階段，看三層怎麼設計</h2>
-    <p class="sec-note">橫向是學生的探究歷程（策略55，共 55 個策略），縱向是三位小幫手，可以自由搭配。</p>
+    <p class="sec-note"><strong>橫向</strong>是學生的探究歷程（策略55，共 55 個策略），<strong>縱向</strong>是三位小幫手，<em class="kq">可以自由搭配。</em></p>
     <div class="tbl cmap-wrap"><table class="cmap" id="cmap"></table></div>
     <div class="cdetail" id="cdetail" aria-live="polite"></div>
     <p class="gen-note">💡 追問句會帶入你在 <button type="button" class="linkbtn" data-go="engage-try">提示詞產生器</button> 填的年級與單元；也可以直接在框內修改。</p>
@@ -1570,7 +1596,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
         <span class="arr">➡️ 小幫手會<b>先回答問題</b>，再<b>模擬四位不同利害關係人</b>的觀點與回答。</span></div>
     </div>
     <h3 class="gsub">繼續追問，讓提問更好</h3>
-    <p class="sec-note">拿到提問後，小幫手會附上追問範例。挑一個方向，請它把原本的提問再加強：</p>
+    <p class="sec-note">拿到提問後，小幫手會附上<strong>追問範例</strong>。挑一個方向，請它把原本的提問<strong>再加強</strong>：</p>
     <div class="five">
       <div><b>🧱 加入元素</b><p>例：加入具體操作教具與圖像表徵</p></div>
       <div><b>🌱 加入素養能力</b><p>例：加入數感與符號轉換</p></div>
@@ -1588,7 +1614,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
     <div class="eyebrow">深化素養</div>
     <h2 class="sec-title" id="skill-title"><span class="sec-icon hlogo h-skill">素</span>八大思考素養小幫手</h2>
     <p class="credit">優履工作室研發「促進○○思考素養共備」應用指南（Aibot），使用請引註。</p>
-    <p class="purpose">🎯 每位小幫手聚焦一項 <b>21 世紀思考素養</b>（目前開放 5 項）。挑 1～2 項適合本單元的素養，小幫手會用<b>三個階段</b>提供提問靈感與步驟化建議。</p>
+    <p class="purpose">🎯 每位小幫手聚焦一項 <b>21 世紀思考素養</b>。挑 1～2 項適合本單元的素養，小幫手會用<b>三個階段</b>提供提問靈感與步驟化建議。</p>
     <div class="secnav" role="tablist">
       <button type="button" role="tab" data-sub="create-skill-helpers"><span>🚀</span>開啟小幫手</button>
       <button type="button" role="tab" data-sub="create-skill-guide"><span>📚</span>使用說明</button>
@@ -1955,7 +1981,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
   <div class="ssec" id="x-manage-judge">
   <section class="card" aria-labelledby="judge-title">
     <h2 class="sec-title" id="judge-title"><span class="sec-icon">⚖️</span>哪些交給 AI，哪些留給自己</h2>
-    <p class="sec-note">每一份 AI 產出，都要經過老師檢核才進教室。不使用 AI，也是一種專業選擇。</p>
+    <p class="sec-note">每一份 AI 產出，都要<strong>經過老師檢核</strong>才進教室。<em class="kq">不使用 AI，也是一種專業選擇。</em></p>
     <div class="split">
       <div><h3>🤖 適合交給 AI</h3><ul><li>大量發想提問與情境</li><li>整理知識節點與學習脈絡</li><li>轉譯素材、排出學習單版面</li></ul></div>
       <div><h3>👩‍🏫 留給老師</h3><ul><li>判斷學生程度與學習差異</li><li>決定學習目標與取捨</li><li>課堂即時回應與評量判斷</li></ul></div>
