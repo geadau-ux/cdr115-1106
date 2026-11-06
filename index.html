@@ -659,6 +659,34 @@ footer .wrap{max-width:1080px}
   .who tr:hover td{background:none}
 }
 .gcard .gact a.btn{text-decoration:none}
+/* 產生器步驟引導 */
+.stepper{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;counter-reset:s}
+.stepper li{display:flex;gap:10px;align-items:center;padding:12px 14px;border-radius:14px;border:1.5px solid var(--line);background:var(--surface-2);position:relative}
+.stepper li:not(:last-child)::after{content:"→";position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:var(--muted);font-weight:900;z-index:1}
+.stepper li.on{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--surface))}
+.stepper .sn,.step2-h .sn,.s3 .sn{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:900;background:var(--accent);color:#3b2f00}
+.stepper b{display:block;color:var(--primary);font-size:15px;line-height:1.4}
+.stepper small{color:var(--muted);font-size:var(--fs-meta)}
+@media (max-width:760px){.stepper{grid-template-columns:1fr}.stepper li:not(:last-child)::after{content:"↓";right:auto;left:26px;top:auto;bottom:-14px;transform:none}}
+.btn-next{font-size:16px}
+.g-miss{align-self:center;color:var(--c2);font-weight:700;font-size:var(--fs-body)}
+.step2-h{display:flex;gap:12px;align-items:flex-start;padding:4px 4px 0;scroll-margin-top:140px}
+.step2-h b{color:var(--primary);font-size:var(--fs-l3)}
+.step2-h p{margin:2px 0 0;color:var(--muted);font-size:var(--fs-body)}
+.s3{display:grid;grid-template-columns:auto 1fr;gap:6px 10px;padding:14px;border-radius:14px;border:1.5px dashed color-mix(in srgb,var(--fill) 50%,var(--line));background:color-mix(in srgb,var(--fill) 5%,var(--surface))}
+.s3 .sn{width:28px;height:28px;font-size:14px}
+.how3{margin:0;padding-left:20px;font-size:14px;color:var(--muted);display:flex;flex-direction:column;gap:4px}
+.how3 b{color:var(--text)}
+.how3 kbd{font-family:var(--mono);font-size:12px;padding:0 5px;border-radius:5px;border:1px solid var(--line);background:var(--surface)}
+.s3 .gact,.s3 .g-ok{grid-column:1/-1}
+.gcard .btn-go{background:var(--fill);color:#fff;text-decoration:none;box-shadow:0 6px 14px -6px var(--fill)}
+.gcard .btn-go:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.g-ok{margin:0;font-size:14px;font-weight:700;color:var(--c5)}
+.g-ok:empty{display:none}
+@keyframes flashc{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 70%,transparent)}100%{box-shadow:0 0 0 14px transparent}}
+.gcards.flash .gcard{animation:flashc 1.1s ease-out 2}
+.gcard textarea.out-p{min-height:150px}
+.gcard .gh .rn{background:color-mix(in srgb,var(--fill) 14%,var(--surface));font-size:18px}
 
 </style>
 </head>
@@ -762,7 +790,12 @@ footer .wrap{max-width:1080px}
   <section class="card gen" aria-labelledby="gen-title">
     <div class="eyebrow">提示詞產生器 · Prompt Builder</div>
     <h2 class="sec-title" id="gen-title"><span class="sec-icon">✍️</span>填一次備課資料，三種小幫手的開場輸入一次備好</h2>
-    <p class="sec-note">資料只在你的瀏覽器裡組成文字，不會上傳到任何地方。產生後請先檢視、修改，再貼到小幫手的對話框。</p>
+    <p class="sec-note">資料只在你的瀏覽器裡組成文字，不會上傳到任何地方。</p>
+    <ol class="stepper" aria-label="使用步驟">
+      <li class="on"><span class="sn">1</span><div><b>填備課資料</b><small>就在下面這張表</small></div></li>
+      <li><span class="sn">2</span><div><b>選一種小幫手，檢查提示詞</b><small>在表單下方，三張卡片</small></div></li>
+      <li><span class="sn">3</span><div><b>複製並開啟 → 勾選來源 → 貼上送出</b><small>在 NotebookLM 裡完成</small></div></li>
+    </ol>
     <form class="gen-form" id="gen-form" autocomplete="off" onsubmit="return false">
       <label class="fld"><span>👩‍🎓 學生年級 <em class="need">必填</em></span>
         <select id="g-grade">
@@ -775,14 +808,21 @@ footer .wrap{max-width:1080px}
       <label class="fld"><span>🎯 特定方向 <em>選填</em></span><textarea id="g-dir" placeholder="例：多用生活情境題，加入小組討論提問"></textarea></label>
     </form>
     <div class="gen-actions">
+      <button type="button" class="btn btn-copy btn-next" id="g-next">下一步：看產生的提示詞 ↓</button>
       <button type="button" class="btn btn-ghost" id="g-sample">📋 填入範例</button>
       <button type="button" class="btn btn-ghost" id="g-clear">🧹 清除</button>
+      <span class="g-miss" id="g-miss" role="status"></span>
     </div>
   </section>
 
+  <div class="step2-h" id="g-step2">
+    <span class="sn">2</span>
+    <div><b>選一種小幫手，檢查提示詞</b>
+    <p>三張卡片的提示詞已依你填的資料自動組好。挑這次要用的小幫手，調整卡片上方的選項；框內的文字也可以直接修改。</p></div>
+  </div>
   <div class="gcards" aria-live="polite">
     <div class="gcard f6">
-      <div class="gh"><span class="rn">2</span><b>有效提問 AI 小幫手</b></div>
+      <div class="gh"><span class="rn">❓</span><b>有效提問 AI 小幫手</b></div>
       <div class="opt" role="group" aria-label="輸入類型">
         <span class="ol">你要輸入的類型</span>
         <div class="seg">
@@ -791,21 +831,21 @@ footer .wrap{max-width:1080px}
         </div>
         <input type="text" id="g-askq" placeholder="例：異分母分數加法，為什麼一定要先通分？" hidden aria-label="你的問題">
       </div>
-      <p class="src-tip">先勾選來源：<b>您要備課的單元</b>、<b>🔴數學提問知識庫</b></p>
+
       <textarea class="out-p" id="o-ask" aria-label="有效提問小幫手的提示詞"></textarea>
-      <div class="gact"><button type="button" class="btn btn-copy" data-copy="o-ask">複製</button><a class="btn btn-ghost" href="https://notebook.google.com/notebook/6a68de13-1286-40a3-99a9-56ffe67b7eda" target="_blank" rel="noopener">開啟小幫手 ↗</a></div>
+      <div class="s3"><span class="sn">3</span><ol class="how3"><li><b>按「複製並開啟小幫手」</b></li><li>在 NotebookLM 左側<b>勾選來源</b>：<b>您要備課的單元</b>、<b>🔴數學提問知識庫</b></li><li>在中間對話框按 <kbd>Ctrl</kbd>+<kbd>V</kbd>（Mac 為 <kbd>⌘</kbd>+<kbd>V</kbd>）<b>貼上並送出</b></li></ol><div class="gact"><a class="btn btn-copy btn-go" data-copygo="o-ask" href="https://notebook.google.com/notebook/6a68de13-1286-40a3-99a9-56ffe67b7eda" target="_blank" rel="noopener">📋 複製並開啟小幫手 ↗</a><button type="button" class="btn btn-ghost" data-copy="o-ask">只複製</button></div><p class="g-ok" role="status"></p></div>
     </div>
 
     <div class="gcard f8">
-      <div class="gh"><span class="rn">3</span><b>概念為本探究教學策略小幫手</b></div>
+      <div class="gh"><span class="rn">🔍</span><b>概念為本探究教學策略小幫手</b></div>
       <div class="opt"><span class="ol">小幫手會依年級、領域和學生特色，建議概念為本的探究策略。學生特色寫得越具體，建議越貼近班級。</span></div>
-      <p class="src-tip">先勾選來源：<b>策略55的說明</b>、<b>策略概述.pptx</b>、<b>您要備課的單元</b></p>
+
       <textarea class="out-p" id="o-inq" aria-label="概念為本探究教學策略小幫手的提示詞"></textarea>
-      <div class="gact"><button type="button" class="btn btn-copy" data-copy="o-inq">複製</button><a class="btn btn-ghost" href="https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e" target="_blank" rel="noopener">開啟小幫手 ↗</a></div>
+      <div class="s3"><span class="sn">3</span><ol class="how3"><li><b>按「複製並開啟小幫手」</b></li><li>在 NotebookLM 左側<b>勾選來源</b>：<b>策略55的說明</b>、<b>策略概述.pptx</b>、<b>您要備課的單元</b></li><li>在中間對話框按 <kbd>Ctrl</kbd>+<kbd>V</kbd>（Mac 為 <kbd>⌘</kbd>+<kbd>V</kbd>）<b>貼上並送出</b></li></ol><div class="gact"><a class="btn btn-copy btn-go" data-copygo="o-inq" href="https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e" target="_blank" rel="noopener">📋 複製並開啟小幫手 ↗</a><button type="button" class="btn btn-ghost" data-copy="o-inq">只複製</button></div><p class="g-ok" role="status"></p></div>
     </div>
 
     <div class="gcard f3">
-      <div class="gh"><span class="rn">4</span><b>八大思考素養小幫手</b></div>
+      <div class="gh"><span class="rn">🌱</span><b>八大思考素養小幫手</b></div>
       <div class="opt">
         <label class="ol" for="g-skill">選擇思考素養</label>
         <select id="g-skill">
@@ -823,12 +863,12 @@ footer .wrap{max-width:1080px}
         </div>
         <textarea id="g-skc" aria-label="問題、意見或資料內容" placeholder="例：異分母分數加法，為什麼一定要先通分？"></textarea>
       </div>
-      <p class="src-tip">先勾選來源：<b>來源區資料至少 1 項</b></p>
+
       <textarea class="out-p" id="o-skill" aria-label="思考素養小幫手的提示詞"></textarea>
-      <div class="gact"><button type="button" class="btn btn-copy" data-copy="o-skill">複製</button><a class="btn btn-ghost" id="g-skill-go" href="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" target="_blank" rel="noopener">開啟小幫手 ↗</a></div>
+      <div class="s3"><span class="sn">3</span><ol class="how3"><li><b>按「複製並開啟小幫手」</b></li><li>在 NotebookLM 左側<b>勾選來源</b>：<b>來源區資料至少 1 項</b></li><li>在中間對話框按 <kbd>Ctrl</kbd>+<kbd>V</kbd>（Mac 為 <kbd>⌘</kbd>+<kbd>V</kbd>）<b>貼上並送出</b></li></ol><div class="gact"><a class="btn btn-copy btn-go" data-copygo="o-skill" href="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" target="_blank" rel="noopener" id="g-skill-go">📋 複製並開啟小幫手 ↗</a><button type="button" class="btn btn-ghost" data-copy="o-skill">只複製</button></div><p class="g-ok" role="status"></p></div>
     </div>
   </div>
-  <p class="gen-note">💡 修改上方的備課資料，下面三段提示詞會重新產生；在框內直接修改的文字，複製時也會一起帶走。【 】表示還沒填寫的地方。</p>
+  <p class="gen-note">💡 修改上方的備課資料，三段提示詞會重新產生；在框內直接修改的文字，複製時也會一起帶走。【 】表示還沒填寫的地方。</p>
     <nav class="pager"><button type="button" data-go="home">← 🏠 共備路線</button><button type="button" class="next" data-go="vlm">下一頁：① 素材轉譯 →</button></nav>
   </div>
 
@@ -1646,15 +1686,41 @@ footer .wrap{max-width:1080px}
     save(); build();
   });
 
+  function copyText(txt,ok,fb){
+    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok,fb); else fb();
+  }
+  function selectCopy(ta){ ta.focus(); ta.select(); var d=false; try{d=document.execCommand('copy')}catch(e){} return d; }
+  function okMsg(el,opened){
+    var card=el.closest('.gcard'), m=card.querySelector('.g-ok');
+    m.textContent = opened
+      ? '✅ 已複製，小幫手已在新分頁開啟。到那裡先勾選來源，再在對話框按 Ctrl+V（Mac ⌘+V）貼上送出。'
+      : '✅ 已複製。開啟小幫手後先勾選來源，再在對話框按 Ctrl+V（Mac ⌘+V）貼上送出。';
+  }
   document.querySelectorAll('[data-copy]').forEach(function(btn){
     var label=btn.textContent;
     btn.addEventListener('click',function(){
       var ta=$(btn.dataset.copy);
-      function ok(){ btn.textContent='已複製！'; setTimeout(function(){btn.textContent=label;},1800); }
-      function fb(){ ta.focus(); ta.select(); var d=false; try{d=document.execCommand('copy')}catch(e){} if(d) ok(); else btn.textContent='已選取，請按 Ctrl+C'; }
-      if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(ok,fb); else fb();
+      function ok(){ btn.textContent='已複製！'; okMsg(btn,false); setTimeout(function(){btn.textContent=label;},1800); }
+      copyText(ta.value,ok,function(){ if(selectCopy(ta)) ok(); else btn.textContent='已選取，請按 Ctrl+C'; });
     });
   });
+  // 複製並開啟：連結本身照常在新分頁開啟，點擊時同步複製
+  document.querySelectorAll('[data-copygo]').forEach(function(a){
+    a.addEventListener('click',function(){
+      var ta=$(a.dataset.copygo);
+      copyText(ta.value,function(){ okMsg(a,true); },function(){ if(selectCopy(ta)) okMsg(a,true); });
+    });
+  });
+  // 下一步
+  $('g-next').addEventListener('click',function(){
+    var miss=$('g-miss');
+    if(!v('g-unit')){ miss.textContent='請先填「單元、主題或概念」'; $('g-unit').focus(); return; }
+    miss.textContent='';
+    var t=$('g-step2'), hdr=document.querySelector('header');
+    window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-(hdr?hdr.offsetHeight:0)-12,behavior:'smooth'});
+    var cards=document.querySelector('.gcards'); cards.classList.remove('flash'); void cards.offsetWidth; cards.classList.add('flash');
+  });
+  $('g-unit').addEventListener('input',function(){ if(v('g-unit')) $('g-miss').textContent=''; });
   sync();
 })();
 </script>
