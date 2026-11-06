@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>國小數學提問共備入口｜AI 小幫手</title>
+<title>國小數學提問共備入口｜和 AI 一起共備</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@700&display=swap">
 <style>
 /* Layout: 沿用 PBL 小幫手的結構 — 黏頂頁首 → VLM 轉譯工具（可收合）→ 使用說明 → 五張小幫手卡片 → 引用聲明 → 頁尾 */
@@ -687,6 +687,127 @@ footer .wrap{max-width:1080px}
 .gcards.flash .gcard{animation:flashc 1.1s ease-out 2}
 .gcard textarea.out-p{min-height:150px}
 .gcard .gh .rn{background:color-mix(in srgb,var(--fill) 14%,var(--surface));font-size:18px}
+/* HTML 試板 */
+.fx{--fill:var(--c7)}
+.ht-frame-wrap{position:relative;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow);
+  height:calc(100vh - var(--hdr-h,140px) - 32px);min-height:640px}
+.ht-frame-wrap iframe{display:block;width:100%;height:100%;border:0;background:var(--surface)}
+.ht-loading{position:absolute;inset:0;display:grid;place-items:center;margin:0;color:var(--muted);font-weight:700;pointer-events:none}
+.ht-loading[hidden]{display:none}
+@media (max-width:760px){.ht-frame-wrap{min-height:720px;height:85vh}}
+.kit{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin-top:20px}
+.kit > div{display:flex;gap:14px;align-items:flex-start;padding:18px;border-radius:16px;border:1px solid var(--line);border-left:6px solid var(--fill);background:var(--surface)}
+.kit .ki{flex:none;font-size:26px;line-height:1.2}
+.kit b{display:block;color:var(--primary);font-size:var(--fs-l4)}
+.kit p{margin:4px 0 10px;color:var(--muted);font-size:var(--fs-body)}
+/* 分組導覽 */
+.tgrp{flex:none;display:flex;align-items:center;padding:0 4px 0 14px;margin-left:6px;border-left:1.5px solid var(--line)}
+.tgrp span{font-size:12px;font-weight:900;letter-spacing:.08em;color:var(--secondary);white-space:nowrap;padding:3px 8px;border-radius:999px;background:var(--surface-2)}
+.linkbtn{appearance:none;border:0;background:none;padding:0;font:inherit;font-weight:700;color:var(--primary);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.who td:first-child .linkbtn{font-size:var(--fs-meta);margin-left:18px}
+.kit small.when{display:inline-block;margin-top:4px;font-size:12px;font-weight:700;padding:1px 9px;border-radius:999px;background:color-mix(in srgb,var(--fill) 12%,var(--surface));color:var(--text);border:1px solid color-mix(in srgb,var(--fill) 40%,var(--line))}
+.fg{--fill:var(--accent)}
+.hero-tools .grp{background:none;border:0;padding-left:4px;color:var(--secondary);font-weight:900}
+/* 八大素養頁內切換 */
+.secnav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:22px;padding:8px;border-radius:16px;background:var(--surface-2);border:1px solid var(--line)}
+.secnav button{appearance:none;border:1.5px solid transparent;font:inherit;font-weight:700;font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;padding:10px 8px;border-radius:12px;background:transparent;color:var(--muted)}
+.secnav button:hover{color:var(--primary);background:var(--surface)}
+.secnav button[aria-selected="true"]{background:var(--surface);color:var(--primary);border-color:var(--fill);box-shadow:0 4px 12px -6px var(--fill)}
+@media (max-width:600px){.secnav{grid-template-columns:1fr}}
+.ssec{display:flex;flex-direction:column;gap:44px}
+.ssec[hidden]{display:none}
+/* 黃金圈 */
+.gw{--g:var(--c2)} .gwh{--g:var(--c6)} .gh2{--g:var(--c5)}
+.gc{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px}
+@media (max-width:760px){.gc{grid-template-columns:1fr}}
+.gc-i{appearance:none;font:inherit;text-align:left;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;column-gap:12px;align-items:center;
+  padding:16px 18px;border-radius:16px;border:1.5px solid color-mix(in srgb,var(--g) 35%,var(--line));background:color-mix(in srgb,var(--g) 6%,var(--surface));color:var(--text);transition:transform .15s,box-shadow .2s}
+.gc-i:hover{transform:translateY(-2px);box-shadow:0 10px 20px -12px var(--g)}
+.gc-i .gk{grid-row:1/3;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:13px;letter-spacing:.06em;color:#fff;background:var(--g)}
+.gc-i b{color:var(--primary);font-size:var(--fs-l3)}
+.gc-i span:not(.gk){font-size:var(--fs-meta);color:var(--muted)}
+.gc-i em{grid-row:1/3;grid-column:3;font-style:normal;font-weight:900;color:var(--g)}
+.gsec{border-top:5px solid var(--g)}
+.gtag{display:inline-block;margin-right:8px;padding:1px 9px;border-radius:999px;background:var(--g);color:#fff;letter-spacing:.1em}
+.gsec h3.gsub{margin-top:30px}
+.why3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px;margin-top:22px}
+.why3 > div{padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--surface-2)}
+.why3 .wi{font-size:26px}
+.why3 b{display:block;margin:6px 0 4px;color:var(--primary);font-size:var(--fs-l4)}
+.why3 p{margin:0;color:var(--muted);font-size:var(--fs-body)}
+.why3 strong{color:var(--text)}
+.gsec .goal{margin-top:22px}
+.what2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:20px}
+@media (max-width:760px){.what2{grid-template-columns:1fr}}
+.what2 h3{font-size:var(--fs-l3);color:var(--primary);margin-bottom:10px}
+.what2 h3 small{font-size:var(--fs-meta);color:var(--muted);font-weight:500;margin-left:6px}
+.rl{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.rl button{appearance:none;width:100%;font:inherit;cursor:pointer;text-align:left;display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:10px;
+  padding:12px 16px;border-radius:14px;border:1px solid var(--line);border-left:6px solid var(--fill);background:var(--surface);color:var(--text);transition:transform .15s,box-shadow .2s}
+.rl button:hover{transform:translateX(3px);box-shadow:var(--shadow)}
+.rl b{color:var(--primary);font-size:var(--fs-l4)}
+.rl span{grid-column:1;font-size:var(--fs-meta);color:var(--muted)}
+.rl i{grid-row:1/3;grid-column:2;font-style:normal;font-weight:900;color:var(--fill)}
+.route .rgo{min-width:150px}
+.related{margin:20px 0 0;font-size:var(--fs-body);color:var(--muted)}
+.cite1{margin:14px 0 0;padding:12px 16px;border-radius:12px;background:var(--surface-2);border:1px dashed var(--line);font-size:var(--fs-meta);color:var(--muted)}
+
+/* ===== 四階段（AILit） ===== */
+.pe{--p:var(--c1)} .pc{--p:var(--c3)} .pm{--p:var(--c4)} .ps{--p:var(--c5)}
+.tsep{flex:none;align-self:center;color:var(--line);font-weight:900;font-size:18px;padding:0 1px}
+.ptab{display:flex;flex-direction:column;align-items:flex-start;line-height:1.25;padding-top:6px}
+.ptab i{font-style:normal;font-size:10.5px;font-weight:900;letter-spacing:.12em;color:var(--p)}
+.tab.ptab[aria-selected="true"]{border-bottom-color:var(--p)}
+.phead{border-top:5px solid var(--p)}
+.ptag{display:inline-block;margin-right:8px;padding:1px 9px;border-radius:999px;background:var(--p);color:#fff;letter-spacing:.1em}
+.pbar{list-style:none;margin:0 0 16px;padding:0;display:flex;gap:6px}
+.pbar li{flex:1;text-align:center;font-size:11px;font-weight:900;letter-spacing:.1em;padding:4px 0 6px;color:var(--muted);border-bottom:4px solid var(--line)}
+.pbar li.done{color:var(--text);border-bottom-color:color-mix(in srgb,var(--p) 40%,var(--line))}
+.pbar li.on{color:var(--p);border-bottom-color:var(--p)}
+.subnav{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;padding:8px;border-radius:16px;background:var(--surface-2);border:1px solid var(--line)}
+.subnav button{appearance:none;flex:1 1 140px;border:1.5px solid transparent;font:inherit;font-weight:700;font-size:15px;cursor:pointer;padding:10px 12px;border-radius:12px;background:transparent;color:var(--muted)}
+.subnav button:hover{color:var(--primary);background:var(--surface)}
+.subnav button[aria-selected="true"]{background:var(--surface);color:var(--primary);border-color:var(--p);box-shadow:0 4px 12px -6px var(--p)}
+.ssec2{display:flex;flex-direction:column;gap:44px}
+.ssec2[hidden]{display:none}
+.journey{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;position:relative}
+@media (max-width:860px){.journey{grid-template-columns:1fr 1fr}}
+@media (max-width:460px){.journey{grid-template-columns:1fr}}
+.journey button{appearance:none;width:100%;height:100%;font:inherit;cursor:pointer;text-align:left;display:flex;flex-direction:column;gap:4px;padding:16px;border-radius:16px;
+  border:1.5px solid color-mix(in srgb,var(--p) 35%,var(--line));border-top:6px solid var(--p);background:color-mix(in srgb,var(--p) 5%,var(--surface));color:var(--text);transition:transform .15s,box-shadow .2s}
+.journey button:hover{transform:translateY(-3px);box-shadow:0 12px 22px -14px var(--p)}
+.journey .pk{font-size:12px;font-weight:900;letter-spacing:.14em;color:var(--p)}
+.journey b{color:var(--primary);font-size:var(--fs-l3)}
+.journey small{color:var(--muted);font-size:var(--fs-meta)}
+.rl i.pt{font-size:10.5px;font-weight:900;letter-spacing:.1em;padding:2px 8px;border-radius:999px;background:var(--p);color:#fff}
+.demo{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px;counter-reset:d}
+.demo li{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:12px;background:var(--surface-2);border:1px solid var(--line);font-size:var(--fs-body)}
+.demo em{flex:none;font-style:normal;font-weight:900;font-size:13px;padding:2px 10px;border-radius:999px;background:var(--primary);color:#fff}
+.demo em.ai{background:var(--c3)}
+.demo q{display:block;margin-top:6px;padding:8px 12px;border-radius:8px;background:var(--surface);border:1px dashed var(--line);quotes:none}
+.chk.tick{grid-template-columns:1fr;gap:6px;margin-top:16px}
+.chk.tick > li{padding:4px 8px;border-radius:12px}
+.chk.tick b{color:var(--primary)}
+.cards6{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px;margin-top:18px}
+.cards6 > div{display:flex;flex-direction:column;gap:8px;padding:18px;border-radius:16px;border:1px solid var(--line);border-top:5px solid var(--c3);background:var(--surface)}
+.cards6 b{color:var(--primary);font-size:var(--fs-l4)}
+.cards6 p{margin:0;flex:1;font-size:var(--fs-body);color:var(--text);padding:10px 12px;border-radius:10px;background:var(--surface-2)}
+.cards6 .btn{align-self:flex-start;padding:7px 14px;font-size:14px}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}
+@media (max-width:640px){.split{grid-template-columns:1fr}}
+.split > div{padding:18px;border-radius:16px;background:var(--surface-2);border:1px solid var(--line)}
+.split h3{font-size:var(--fs-l4);color:var(--primary);margin-bottom:6px}
+.split ul{margin:0;padding-left:20px;color:var(--text);font-size:var(--fs-body)}
+.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:14px}
+@media (max-width:860px){.four{grid-template-columns:1fr 1fr}}
+.four > div,.loop > div{padding:16px;border-radius:14px;border:1px solid var(--line);background:var(--surface-2)}
+.four b,.loop b{color:var(--primary);font-size:var(--fs-l4)}
+.four p,.loop p{margin:4px 0 0;color:var(--muted);font-size:var(--fs-body)}
+.agenda{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px}
+.agenda li{display:flex;gap:12px;align-items:center;padding:10px 14px;border-radius:12px;border:1px solid var(--line);font-size:var(--fs-body)}
+.agenda span{flex:none;width:44px;text-align:center;font-weight:900;color:#fff;background:var(--c5);border-radius:8px;padding:2px 0}
+.loop{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;margin-top:14px}
+.phead h3.gsub{margin-top:28px}
 
 </style>
 </head>
@@ -697,7 +818,7 @@ footer .wrap{max-width:1080px}
     <div class="mark" aria-hidden="true">數</div>
     <div>
       <h1>國小數學提問共備入口</h1>
-      <p>有效提問 × 概念為本探究 × 八大思考素養｜AI 小幫手陪你共備</p>
+      <p>ENGAGE → CREATE → MANAGE → SHAPE｜和 AI 一起把提問想得更深</p>
     </div>
     <div class="theme-sw" role="group" aria-label="背景顏色">
       <button type="button" data-theme-set="light" aria-pressed="false"><span aria-hidden="true">☀️</span><span class="tl">淡色</span></button>
@@ -706,89 +827,143 @@ footer .wrap{max-width:1080px}
   </div>
   <div class="wrap">
     <nav class="tabs" role="tablist" aria-label="頁面分頁">
-      <button class="tab" role="tab" id="t-home" aria-controls="p-home" data-tab="home" type="button">🏠 共備路線</button>
-      <button class="tab" role="tab" id="t-gen" aria-controls="p-gen" data-tab="gen" type="button">✍️ 提示詞產生器</button>
-      <button class="tab" role="tab" id="t-vlm" aria-controls="p-vlm" data-tab="vlm" type="button">① 素材轉譯</button>
-      <button class="tab" role="tab" id="t-ask" aria-controls="p-ask" data-tab="ask" type="button">② 有效提問</button>
-      <button class="tab" role="tab" id="t-inq" aria-controls="p-inq" data-tab="inq" type="button">③ 探究策略</button>
-      <button class="tab" role="tab" id="t-intro" aria-controls="p-intro" data-tab="intro" type="button">④ 素養・引言</button>
-      <button class="tab" role="tab" id="t-guide" aria-controls="p-guide" data-tab="guide" type="button">④ 素養・說明</button>
-      <button class="tab" role="tab" id="t-helpers" aria-controls="p-helpers" data-tab="helpers" type="button">④ 素養・小幫手</button>
+      <button class="tab" role="tab" id="t-home" aria-controls="p-home" data-tab="home" type="button">🏠 引言</button>
+      <button class="tab ptab pe" role="tab" id="t-engage" aria-controls="p-engage" data-tab="engage" type="button"><i>ENGAGE</i>認識與體驗</button>
+      <span class="tsep" aria-hidden="true">›</span>
+      <button class="tab ptab pc" role="tab" id="t-create" aria-controls="p-create" data-tab="create" type="button"><i>CREATE</i>共創與發想</button>
+      <span class="tsep" aria-hidden="true">›</span>
+      <button class="tab ptab pm" role="tab" id="t-manage" aria-controls="p-manage" data-tab="manage" type="button"><i>MANAGE</i>判斷與取捨</button>
+      <span class="tsep" aria-hidden="true">›</span>
+      <button class="tab ptab ps" role="tab" id="t-shape" aria-controls="p-shape" data-tab="shape" type="button"><i>SHAPE</i>共備與形塑</button>
     </nav>
   </div>
 </header>
 
 <main class="wrap">
+  <!-- ================= 引言 ================= -->
   <div class="panel" id="p-home" role="tabpanel" aria-labelledby="t-home">
-  <!-- 共備路線（首頁） -->
   <section class="card hero" aria-labelledby="home-title">
-    <div class="eyebrow">共備入口 · Math Questioning Co-planning</div>
-    <h2 class="sec-title" id="home-title"><span class="sec-icon">🗺️</span>一個入口，三種 AI 小幫手，陪你把數學課的提問想得更深</h2>
-    <p class="lede">這個入口整合 <strong>有效提問</strong>、<strong>概念為本探究教學策略</strong> 與 <strong>八大思考素養</strong> 三種 AI 小幫手，以及把課本、教案轉成文字的 <strong>VLM 轉譯工具</strong>。依照下面的共備路線，從準備素材、設計提問、規劃探究，到深化思考素養，一步一步完成國小數學單元的提問設計。個人備課或社群共備都適用。</p>
-    <ul class="hero-tools" aria-label="整合的工具">
-      <li class="fv"><i></i>VLM 轉譯工具</li>
-      <li class="f6"><i></i>有效提問小幫手</li>
-      <li class="f8"><i></i>概念為本探究教學策略小幫手</li>
-      <li class="f3"><i></i>八大思考素養小幫手</li>
-    </ul>
-    <div class="hero-actions">
-      <button type="button" class="btn btn-copy" data-go="gen">✍️ 先填備課資料，一次產生提示詞</button>
-      <button type="button" class="btn btn-soft" data-go="vlm">從 ① 準備素材開始 →</button>
+    <div class="eyebrow">引言 · 國小數學提問共備入口</div>
+    <h2 class="sec-title" id="home-title"><span class="sec-icon">🗺️</span>好的提問，讓學生用數學的眼光看世界</h2>
+    <p class="lede">這是國小數學老師與共備社群的<strong>備課起點</strong>：不替你寫教案，而是帶你一步步進入和 AI 共備，把一個單元的提問想得更清楚。依「為什麼 → 是什麼 → 怎麼走」三段說明。</p>
+    <div class="gc">
+      <button type="button" class="gc-i gw" data-scroll="why-title"><span class="gk">WHY</span><b>為什麼</b><span>從提問開始共備</span><em>↓</em></button>
+      <button type="button" class="gc-i gwh" data-scroll="what-title"><span class="gk">WHAT</span><b>是什麼</b><span>3 位小幫手 ＋ 3 個工具</span><em>↓</em></button>
+      <button type="button" class="gc-i gh2" data-scroll="how-title"><span class="gk">HOW</span><b>怎麼走</b><span>四階段共備歷程</span><em>↓</em></button>
     </div>
   </section>
 
-  <section class="card" aria-labelledby="route-title">
-    <div class="eyebrow">共備路線 · 5 Steps</div>
-    <h2 class="sec-title" id="route-title"><span class="sec-icon">🧭</span>五個步驟，從素材走到課堂</h2>
-    <p class="sec-note">不一定每一步都要走：可以從任何一步進入，也可以只用其中一種小幫手。</p>
-    <ol class="route">
-      <li class="fv"><span class="rn">1</span><div class="rb"><b>🧩 準備素材</b><p>把課本、習作、教案或學生作答拍照或截圖，轉成乾淨的 md 文字，方便貼進小幫手。</p><small>VLM 轉譯工具</small></div><button type="button" class="rgo" data-go="vlm">前往 ① →</button></li>
-      <li class="f6"><span class="rn">2</span><div class="rb"><b>❓ 設計好提問</b><p>輸入單元主題或概念，得到四個層次的提問；輸入一個問題，看看四位不同利害關係人會怎麼回答。</p><small>有效提問 AI 小幫手</small></div><button type="button" class="rgo" data-go="ask">前往 ② →</button></li>
-      <li class="f8"><span class="rn">3</span><div class="rb"><b>🔍 規劃探究策略</b><p>依年級、領域和學生特色，找出適合的概念為本探究教學策略，安排學生探究概念的歷程。</p><small>概念為本探究教學策略小幫手</small></div><button type="button" class="rgo" data-go="inq">前往 ③ →</button></li>
-      <li class="f3"><span class="rn">4</span><div class="rb"><b>🌱 深化思考素養</b><p>挑 1～2 項思考素養，用三個階段把提問與任務做得更細，也更貼近自己的班級。</p><small>八大思考素養小幫手</small></div><button type="button" class="rgo" data-go="intro">前往 ④ →</button></li>
-      <li class="f5"><span class="rn">5</span><div class="rb"><b>🤝 社群共備、回到課堂</b><p>一起觀課或看教學影片，討論設計中可刪、可改、可補、可接之處；實際試教後，再帶著課堂觀察回來和小幫手對話。</p><small>教師社群</small></div><button type="button" class="rgo ghost" data-go="gen">✍️ 提示詞產生器</button></li>
-    </ol>
+  <section class="card gsec gw" aria-labelledby="why-title">
+    <div class="eyebrow"><span class="gtag">WHY</span>為什麼</div>
+    <h2 class="sec-title" id="why-title"><span class="sec-icon">💡</span>從「提問」開始共備</h2>
+    <div class="why3">
+      <div><span class="wi">🎯</span><b>提問是最省力的槓桿</b><p>精進教師的提問，用最少的調整，帶出學生的素養表現。</p></div>
+      <div><span class="wi">🧠</span><b>思考素養靠提問引發</b><p>批判、創造、探究、反思……都要靠有層次的提問一步步帶出來。</p></div>
+      <div><span class="wi">🤝</span><b>AI 給靈感，老師做判斷</b><p>AI 不認識你的學生；選哪些提問、怎麼調整，判斷權留在老師手上。</p></div>
+    </div>
   </section>
 
-  <section class="card" aria-labelledby="who-title">
-    <div class="eyebrow">怎麼分工 · Which Helper</div>
-    <h2 class="sec-title" id="who-title"><span class="sec-icon">🤖</span>三種小幫手，各自擅長什麼</h2>
+  <section class="card gsec gwh" aria-labelledby="what-title">
+    <div class="eyebrow"><span class="gtag">WHAT</span>是什麼</div>
+    <h2 class="sec-title" id="what-title"><span class="sec-icon">🧭</span>三位 AI 小幫手 ＋ 三個備課工具</h2>
+    <div class="what2">
+      <div>
+        <h3>🤖 AI 小幫手 <small>在 NotebookLM 上對話</small></h3>
+        <ul class="rl">
+          <li class="f6"><button type="button" data-go="create-ask"><b>❓ 有效提問</b><span>設計四個層次的提問</span><i class="pt pc">CREATE</i></button></li>
+          <li class="f8"><button type="button" data-go="create-inq"><b>🔍 概念為本探究</b><span>建議探究教學策略</span><i class="pt pc">CREATE</i></button></li>
+          <li class="f3"><button type="button" data-go="create-skill"><b>🌱 八大思考素養</b><span>朝素養深化提問與任務</span><i class="pt pc">CREATE</i></button></li>
+        </ul>
+      </div>
+      <div>
+        <h3>🧰 備課工具 <small>在這個網頁直接用</small></h3>
+        <ul class="rl">
+          <li class="fg"><button type="button" data-go="engage-try"><b>✍️ 提示詞產生器</b><span>一次備好給小幫手的輸入</span><i class="pt pe">ENGAGE</i></button></li>
+          <li class="fv"><button type="button" data-go="create-vlm"><b>🧩 素材轉譯</b><span>課本照片轉成 md 文字</span><i class="pt pc">CREATE</i></button></li>
+          <li class="fx"><button type="button" data-go="manage-html"><b>🧪 HTML 試板</b><span>預覽、修改 AI 做的網頁</span><i class="pt pm">MANAGE</i></button></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card gsec gh2" aria-labelledby="how-title">
+    <div class="eyebrow"><span class="gtag">HOW</span>怎麼走</div>
+    <h2 class="sec-title" id="how-title"><span class="sec-icon">🛤️</span>四階段共備歷程：上方分頁就是這條路</h2>
+    <p class="sec-note">參考 OECD 與歐盟執委會的 AI 素養架構（AILit Framework, 2026）：由認識、共創、判斷，走到共同形塑。</p>
+    <ol class="journey">
+      <li class="pe"><button type="button" data-go="engage"><span class="pk">ENGAGE</span><b>認識與體驗</b><small>說明・示範・引導體驗</small></button></li>
+      <li class="pc"><button type="button" data-go="create"><span class="pk">CREATE</span><b>共創與發想</b><small>和小幫手創課・靈感卡</small></button></li>
+      <li class="pm"><button type="button" data-go="manage"><span class="pk">MANAGE</span><b>判斷與取捨</b><small>分工・檢核 AI 產出</small></button></li>
+      <li class="ps"><button type="button" data-go="shape"><span class="pk">SHAPE</span><b>共備與形塑</b><small>共備討論・回饋</small></button></li>
+    </ol>
+  </section>
+    <nav class="pager"><button type="button" class="next" data-go="engage">開始：ENGAGE 認識與體驗 →</button></nav>
+  </div>
+
+  <!-- ================= ENGAGE ================= -->
+  <div class="panel" id="p-engage" role="tabpanel" aria-labelledby="t-engage">
+  <section class="card phead pe" aria-labelledby="engage-title">
+    <ol class="pbar" aria-hidden="true"><li class="on">ENGAGE</li><li>CREATE</li><li>MANAGE</li><li>SHAPE</li></ol>
+    <div class="eyebrow"><span class="ptag">ENGAGE</span>階段一 · 認識與體驗</div>
+    <h2 class="sec-title" id="engage-title"><span class="sec-icon">👀</span>先認識，再看一次，然後自己試</h2>
+    <div class="subnav" role="tablist">
+      <button type="button" role="tab" data-sub="engage-explain">📖 說明</button>
+      <button type="button" role="tab" data-sub="engage-demo">🎬 示範</button>
+      <button type="button" role="tab" data-sub="engage-try">🧭 引導體驗</button>
+    </div>
+  </section>
+
+  <div class="ssec" id="x-engage-explain">
+  <section class="card" aria-labelledby="ex-title">
+    <h2 class="sec-title" id="ex-title"><span class="sec-icon">🤖</span>三位 AI 小幫手，各自擅長什麼</h2>
     <div class="tbl who" style="margin-top:20px">
       <table>
         <thead><tr><th>小幫手</th><th>什麼時候用</th><th>你要輸入</th><th>你會得到</th></tr></thead>
         <tbody>
-          <tr class="f6"><td><span></span>② 有效提問</td><td data-l="什麼時候用">想替一個概念設計有層次的提問；或想看一個問題能從哪些角度回答</td><td data-l="你要輸入">科目、學生年級、想探究的主題或概念（或直接輸入一個問題）</td><td data-l="你會得到">🅰️ 主題或概念 → 四個層次的提問<br>🅱️ 問題 → 先回答，再模擬四位利害關係人的觀點與回答</td></tr>
-          <tr class="f8"><td><span></span>③ 概念為本探究</td><td data-l="什麼時候用">想讓學生透過探究理解概念，需要可用的教學策略</td><td data-l="你要輸入">學生年級、探究的領域／科目、學生特色</td><td data-l="你會得到">適合這個單元與學生的概念為本探究策略建議</td></tr>
-          <tr class="f3"><td><span></span>④ 八大思考素養</td><td data-l="什麼時候用">想朝某項思考素養設計提問、任務與評量</td><td data-l="你要輸入">年級、單元、學生特性、特定方向；再加上一個問題、一段意見或一份教材</td><td data-l="你會得到">三個階段的提問靈感與步驟化建議，每段回覆都附「下一步提示詞」</td></tr>
+          <tr class="f6"><td><span></span>❓ 有效提問<br><button type="button" class="linkbtn" data-go="create-ask">前往 →</button></td><td data-l="什麼時候用">想替一個概念設計有層次的提問；或想看一個問題能從哪些角度回答</td><td data-l="你要輸入">科目、學生年級、想探究的主題或概念（或直接輸入一個問題）</td><td data-l="你會得到">🅰️ 主題或概念 → 四個層次的提問<br>🅱️ 問題 → 先回答，再模擬四位利害關係人的觀點與回答</td></tr>
+          <tr class="f8"><td><span></span>🔍 概念為本探究<br><button type="button" class="linkbtn" data-go="create-inq">前往 →</button></td><td data-l="什麼時候用">想讓學生透過探究理解概念，需要可用的教學策略</td><td data-l="你要輸入">學生年級、探究的領域／科目、學生特色</td><td data-l="你會得到">適合這個單元與學生的概念為本探究策略建議</td></tr>
+          <tr class="f3"><td><span></span>🌱 八大思考素養<br><button type="button" class="linkbtn" data-go="create-skill">前往 →</button></td><td data-l="什麼時候用">想朝某項思考素養設計提問、任務與評量</td><td data-l="你要輸入">年級、單元、學生特性、特定方向；再加上一個問題、一段意見或一份教材</td><td data-l="你會得到">三個階段的提問靈感與步驟化建議，每段回覆都附「下一步提示詞」</td></tr>
         </tbody>
       </table>
     </div>
+
     <div class="callout">
       <span class="ci">❤️</span>
-      <div><b>三種小幫手都在 NotebookLM 上，用法一樣：先勾選左側「來源」，再到中間對話區輸入。</b>
-      <p>AI 不認識你的學生。哪些提問適合這個班、要怎麼依學生程度調整，判斷權始終留在老師手上。</p>
-      <button type="button" class="btn btn-ghost" data-go="gen">✍️ 用提示詞產生器，一次備好三種開場輸入</button></div>
+      <div><b>用法都一樣：先勾選左側「來源」，再在中間對話框輸入。</b>
+      <p>小幫手不直接給標準答案，而是一步步提供線索；你負責評估與選擇，思考不外包。</p></div>
     </div>
   </section>
-
-  <section class="card" aria-labelledby="demo-title">
-    <div class="eyebrow">走一遍 · Example</div>
-    <h2 class="sec-title" id="demo-title"><span class="sec-icon">📒</span>以五年級「分數的加減」為例</h2>
-    <ol class="plan five" style="margin-top:20px">
-      <li><span class="n">1</span><div><b>準備素材</b><span>拍下課本頁面，用 VLM 轉譯提示詞轉成 md。</span></div></li>
-      <li><span class="n">2</span><div><b>設計好提問</b><span>對有效提問小幫手輸入「數學、國小五年級、異分母分數的加減」，從四個層次的提問中挑出 2～3 題。</span></div></li>
-      <li><span class="n">3</span><div><b>規劃探究</b><span>對探究策略小幫手輸入「國小五年級、數學、通分概念不穩固、喜歡動手操作」，選一個策略安排活動。</span></div></li>
-      <li><span class="n">4</span><div><b>深化素養</b><span>把挑好的提問貼給「研究與探究」小幫手，往「提想法、做試驗、下結論」發展。</span></div></li>
-      <li><span class="n">5</span><div><b>回到課堂</b><span>社群一起看設計、觀課，討論可刪、可改、可補、可接之處，再修一次。</span></div></li>
-    </ol>
-  </section>
-    <nav class="pager"><button type="button" class="next" data-go="gen">下一頁：✍️ 提示詞產生器 →</button></nav>
   </div>
 
-  <div class="panel" id="p-gen" role="tabpanel" aria-labelledby="t-gen">
+  <div class="ssec" id="x-engage-demo">
+  <section class="card" aria-labelledby="demo-title">
+    <h2 class="sec-title" id="demo-title"><span class="sec-icon">🎬</span>看一次完整的對話怎麼走</h2>
+    <p class="sec-note">以「有效提問」小幫手、五年級「分數的加減」為例。</p>
+    <ol class="demo">
+      <li><em>老師</em>勾選「分數的加減」單元與 🔴數學提問知識庫，輸入：<q>數學，國小五年級，想探究「異分母分數的加減」。</q></li>
+      <li><em class="ai">小幫手</em>依內容設計<b>四個層次的提問</b>。</li>
+      <li><em>老師</em>挑出 2～3 題，追問：<q>這題學生最可能卡在哪裡？</q></li>
+      <li><em>老師</em>把選好的提問帶到下一位小幫手，繼續深化。</li>
+    </ol>
+    <p class="related">📌 想看小幫手真實回覆的樣子：<button type="button" class="linkbtn" data-go="create-skill-guide">八大思考素養 › 使用說明 › 三個階段</button> 有創造力小幫手的實際回覆範例。</p>
+  </section>
+  </div>
+
+  <div class="ssec" id="x-engage-try">
+  <section class="card" aria-labelledby="try-title">
+    <h2 class="sec-title" id="try-title"><span class="sec-icon">🧭</span>10 分鐘引導體驗</h2>
+    <p class="sec-note">用下方的提示詞產生器，照著做一次（邊做邊勾）。</p>
+    <ol class="chk tick" data-chk data-done="🎉 完成第一次體驗！帶著你圈出的那一題，進入 CREATE。">
+      <li><label><input type="checkbox"><span>在下方按「📋 填入範例」</span></label></li>
+      <li><label><input type="checkbox"><span>在「有效提問」卡片按「複製並開啟小幫手」</span></label></li>
+      <li><label><input type="checkbox"><span>在 NotebookLM 勾選來源，按 Ctrl+V 貼上送出</span></label></li>
+      <li><label><input type="checkbox"><span>從回覆中圈出一題你會用在課堂的提問，寫下它好在哪裡</span></label></li>
+    </ol>
+    <p class="chk-done" role="status"></p>
+  </section>
   <!-- 提示詞產生器 -->
   <section class="card gen" aria-labelledby="gen-title">
-    <div class="eyebrow">提示詞產生器 · Prompt Builder</div>
+    <div class="eyebrow">ENGAGE › 提示詞產生器</div>
     <h2 class="sec-title" id="gen-title"><span class="sec-icon">✍️</span>填一次備課資料，三種小幫手的開場輸入一次備好</h2>
     <p class="sec-note">資料只在你的瀏覽器裡組成文字，不會上傳到任何地方。</p>
     <ol class="stepper" aria-label="使用步驟">
@@ -869,15 +1044,33 @@ footer .wrap{max-width:1080px}
     </div>
   </div>
   <p class="gen-note">💡 修改上方的備課資料，三段提示詞會重新產生；在框內直接修改的文字，複製時也會一起帶走。【 】表示還沒填寫的地方。</p>
-    <nav class="pager"><button type="button" data-go="home">← 🏠 共備路線</button><button type="button" class="next" data-go="vlm">下一頁：① 素材轉譯 →</button></nav>
+
+  </div>
+    <nav class="pager"><button type="button" data-go="home">← 引言</button><button type="button" class="next" data-go="create">下一階段：CREATE 共創與發想 →</button></nav>
   </div>
 
-  <div class="panel" id="p-ask" role="tabpanel" aria-labelledby="t-ask">
+  <!-- ================= CREATE ================= -->
+  <div class="panel" id="p-create" role="tabpanel" aria-labelledby="t-create">
+  <section class="card phead pc" aria-labelledby="create-title">
+    <ol class="pbar" aria-hidden="true"><li class="done">ENGAGE</li><li class="on">CREATE</li><li>MANAGE</li><li>SHAPE</li></ol>
+    <div class="eyebrow"><span class="ptag">CREATE</span>階段二 · 共創與發想</div>
+    <h2 class="sec-title" id="create-title"><span class="sec-icon">💡</span>用自己的單元，和小幫手一起創課</h2>
+    <p class="sec-note">換成你這次要備的單元，一次聚焦一個概念。開場輸入可先用 <button type="button" class="linkbtn" data-go="engage-try">提示詞產生器</button> 備好；拿到回覆後，抽一張靈感卡繼續追問。</p>
+    <div class="subnav" role="tablist">
+      <button type="button" role="tab" data-sub="create-ask">❓ 有效提問</button>
+      <button type="button" role="tab" data-sub="create-inq">🔍 概念為本探究</button>
+      <button type="button" role="tab" data-sub="create-skill">🌱 八大思考素養</button>
+      <button type="button" role="tab" data-sub="create-vlm">🧩 素材轉譯</button>
+      <button type="button" role="tab" data-sub="create-idea">🃏 創課靈感卡</button>
+    </div>
+  </section>
+
+  <div class="ssec" id="x-create-ask">
   <!-- 有效提問 -->
   <section class="card tool f6" aria-labelledby="ask-title">
     <div class="tool-head">
       <div>
-        <div class="eyebrow">② 設計好提問 · Good Questioner</div>
+        <div class="eyebrow">CREATE › 有效提問 AI 小幫手 · Good Questioner</div>
         <h2 class="sec-title" id="ask-title"><span class="sec-icon">❓</span>有效提問 AI 小幫手</h2>
         <p class="credit">由 <strong>臺師大教創中心陳佩英教授</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
       </div>
@@ -905,33 +1098,17 @@ footer .wrap{max-width:1080px}
         <p class="say">異分母分數加法，為什麼一定要先通分？</p>
         <span class="arr">➡️ 小幫手會<b>先回答問題</b>，再<b>模擬四位不同利害關係人</b>的觀點與回答。</span></div>
     </div>
-    <div class="callout">
-      <span class="ci">✍️</span>
-      <div><b>不想自己組句子？</b><p>在提示詞產生器填一次年級、單元和學生特色，就能複製兩種類型的輸入。</p>
-      <button type="button" class="btn btn-ghost" data-go="gen">前往提示詞產生器</button></div>
-    </div>
-    <div class="callout">
-      <span class="ci">➡️</span>
-      <div><b>挑好提問之後</b><p>帶到 ③ 規劃探究策略，安排學生探究的活動；或貼給 ④ 思考素養小幫手，往特定素養發展得更深。</p></div>
-    </div>
+    <p class="related">✍️ 輸入可用 <button type="button" class="linkbtn" data-go="gen">提示詞產生器</button> 備好　·　挑好提問後，可以到 <button type="button" class="linkbtn" data-go="inq">概念為本探究</button> 或 <button type="button" class="linkbtn" data-go="skill">八大思考素養</button></p>
+    <p class="cite1">📌 引用請註明：臺師大教創中心與優履團隊設計 AI 機器人小幫手 good questioner。本機器人由教師團隊開發，免費提供教育使用，請共同維護創作者的智慧財產。</p>
   </section>
-  <section class="cite" aria-labelledby="ask-cite">
-    <h3 id="ask-cite"><span>😄</span>公開介紹本機器人或發表使用成果時，請註明來源。</h3>
-    <div class="cite-grid">
-      <div><div class="eyebrow">Reference</div><b>📌 引用來源</b><p>臺師大教創中心與優履團隊設計 AI 機器人小幫手 good questioner</p></div>
-      <div><div class="eyebrow">Educational</div><b>🌸 教育使用</b><p>本機器人由熱忱教育的教師團隊開發，免費提供教育使用者使用。</p></div>
-      <div><div class="eyebrow">Copyright</div><b>🤝 智慧財產</b><p>請共同維護創作者的智慧財產。</p></div>
-    </div>
-  </section>
-    <nav class="pager"><button type="button" data-go="vlm">← ① 素材轉譯</button><button type="button" class="next" data-go="inq">下一頁：③ 探究策略 →</button></nav>
-  </div>
 
-  <div class="panel" id="p-inq" role="tabpanel" aria-labelledby="t-inq">
+  </div>
+  <div class="ssec" id="x-create-inq">
   <!-- 概念為本探究教學策略 -->
   <section class="card tool f8" aria-labelledby="inq-title">
     <div class="tool-head">
       <div>
-        <div class="eyebrow">③ 規劃探究策略 · Inquiry Strategy</div>
+        <div class="eyebrow">CREATE › 概念為本探究教學策略小幫手 · Inquiry Strategy</div>
         <h2 class="sec-title" id="inq-title"><span class="sec-icon">🔍</span>概念為本探究教學策略小幫手</h2>
         <p class="credit">由 <strong>臺師大教創中心陳佩英教授</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
       </div>
@@ -960,84 +1137,129 @@ footer .wrap{max-width:1080px}
         <p class="say">學生年級：國小五年級<br>探究的領域／科目：數學（單元：分數的加減）<br>學生特色：通分概念不穩固，喜歡動手操作</p>
         <span class="arr">➡️ 小幫手會依這些條件，<b>建議概念為本的探究策略</b>。</span></div>
       <div><div class="dh">💡 讓建議更貼近班級</div>
-        <p class="say">學生特色寫得越具體越好，例如先備能力、常見迷思、喜歡的學習方式、分組情況。</p>
-        <span class="arr">➡️ 也可以先在 ② 挑好提問，再請小幫手<b>用策略把提問串成探究活動</b>。</span></div>
+        <p class="say">學生特色寫得越具體越好：先備能力、常見迷思、喜歡的學習方式、分組情況。</p></div>
     </div>
-    <div class="callout">
-      <span class="ci">✍️</span>
-      <div><b>不想自己組句子？</b><p>在提示詞產生器填一次備課資料，就能直接複製給這個小幫手的輸入。</p>
-      <button type="button" class="btn btn-ghost" data-go="gen">前往提示詞產生器</button></div>
-    </div>
+    <p class="related">✍️ 輸入可用 <button type="button" class="linkbtn" data-go="gen">提示詞產生器</button> 備好　·　有了策略後，可到 <button type="button" class="linkbtn" data-go="skill">八大思考素養</button> 深化</p>
+    <p class="cite1">📌 引用請註明：臺師大教創中心與優履設計 AI 機器人小幫手 inquiry Strategy。教師團隊開發，免費提供教育使用，請一起維護創作者的智慧財產。</p>
   </section>
-  <section class="cite" aria-labelledby="inq-cite">
-    <h3 id="inq-cite"><span>😄</span>公開介紹或發表成果時，請註明下方引用來源。</h3>
-    <div class="cite-grid">
-      <div><div class="eyebrow">Reference</div><b>📌 引用來源</b><p>臺師大教創中心與優履設計 AI 機器人小幫手 inquiry Strategy</p></div>
-      <div><div class="eyebrow">Educational</div><b>🌸🤖 教育使用</b><p>教師團隊開發，免費提供教育使用者使用。</p></div>
-      <div><div class="eyebrow">Copyright</div><b>🤝 智慧財產</b><p>請一起維護創作者的智慧財產。</p></div>
-    </div>
-  </section>
-    <nav class="pager"><button type="button" data-go="ask">← ② 有效提問</button><button type="button" class="next" data-go="intro">下一頁：④ 素養・引言 →</button></nav>
+
   </div>
-
-
-
-  <div class="panel" id="p-intro" role="tabpanel" aria-labelledby="t-intro">
-  <!-- 引言 -->
-  <section class="card intro" aria-labelledby="intro-title">
-    <div class="eyebrow">④ 深化思考素養 · 引言 · 21st Century Skills</div>
-    <h2 class="big" id="intro-title">以 21 世紀八大思考素養，帶動數學單元備課</h2>
-    <p class="lede">數學領域中央輔導團與「就是要學好數學（JDM）」計畫，將 <strong>21 世紀技能</strong>定調為數學素養教學與評量的指標。這個網頁協助國中小數學老師在單元或主題備課時，朝八大思考素養的方向設計提問、任務與評量，並借助 AI 小幫手提供的靈感，讓個人或共備社群持續精進。</p>
-
-    <h3 class="sub">為什麼是八大思考素養</h3>
-    <div class="why">
-      <div><b>🇹🇼 臺灣公民的核心素養</b><p>科技研發需要研究與探究、創造力、系統性思維、資訊使用與自主堅毅；自由民主社會需要理性溝通、批判性思考與反思。</p></div>
-      <div><b>🌐 PISA 2022 的評量指標</b><p>PISA 2022 主測數學素養，評量設計就以 21 世紀技能為指標，有成熟的評量方法論可以參考。</p></div>
-      <div><b>📘 完備 108 課綱「五觀、六標」</b><p>能帶出課綱倡導的素養教學，還補上課綱沒有明示的<strong>創造力</strong>與<strong>反思</strong>。</p></div>
+  <div class="ssec" id="x-create-skill">
+  <section class="card tool f3" aria-labelledby="skill-title">
+    <div class="eyebrow">CREATE › 八大思考素養小幫手</div>
+    <h2 class="sec-title" id="skill-title"><span class="sec-icon">🌱</span>八大思考素養小幫手</h2>
+    <p class="credit">優履工作室研發「促進○○思考素養共備」應用指南（Aibot），使用請引註。</p>
+    <p class="purpose">🎯 每位小幫手聚焦一項 <b>21 世紀思考素養</b>（目前開放 5 項）。挑 1～2 項適合本單元的素養，小幫手會用<b>三個階段</b>提供提問靈感與步驟化建議。</p>
+    <div class="secnav" role="tablist">
+      <button type="button" role="tab" data-sub="create-skill-helpers"><span>🚀</span>開啟小幫手</button>
+      <button type="button" role="tab" data-sub="create-skill-guide"><span>📚</span>使用說明</button>
+      <button type="button" role="tab" data-sub="create-skill-intro"><span>📖</span>背景：八大思考素養</button>
     </div>
-
-    <h3 class="sub">和數學老師的關係</h3>
-    <div class="rel">
-      <div>
-        <b>「五觀、六標」的素養教學啟示</b>
-        <ul class="chips"><li>引導數學語言的演化</li><li>認同探究式學習</li><li>跨領域問題解決為本的統整教學</li><li>隱性提倡反思的學習歷程</li><li>重視情意</li></ul>
-        <p>數學是日常生活、學習其他領域，以及思考問題的工具。素養就是「以數學觀點看世界，與世界互動」。</p>
-      </div>
-      <div>
-        <b>JDM 進階奠基式素養教學原則</b>
-        <ul class="chips"><li>激發思考</li><li>診斷學習</li><li>情緒分享</li><li>語言演化</li></ul>
-        <p>關鍵策略是<strong>精進教師的提問</strong>（遠近 × 閉開的 2×2 提問架構），用最少的調整，更有效地促進學生的素養表現。</p>
+  </section>
+  <div class="ssec2" id="y-skill-helpers">
+  <!-- 小幫手連結 -->
+  <section aria-labelledby="helpers-title">
+    <div class="center-title">
+      <p id="helpers-title">點選標籤或卡片開啟 NotebookLM 小幫手；虛線的小幫手正在整理中。</p>
+    </div>
+    <div class="quick" aria-label="快速開啟小幫手">
+      <span class="quick-h">⚡ 快速開啟</span>
+      <div class="qchips">
+        <a class="qchip f2" href="https://notebook.google.com/notebook/2fd7d20a-ca0c-4f11-8e36-6b0dfa325dec" target="_blank" rel="noopener">🔍 批判性思考 <span aria-hidden="true">↗</span></a>
+        <a class="qchip f3" href="https://notebook.google.com/notebook/383b9153-71fa-41ff-8f28-9260fbddd1f8" target="_blank" rel="noopener">💡 創造力 <span aria-hidden="true">↗</span></a>
+        <a class="qchip f5" href="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" target="_blank" rel="noopener">🔬 研究與探究 <span aria-hidden="true">↗</span></a>
+        <span class="qchip off" aria-disabled="true">🧗 自主與堅持 <small>整理中</small></span>
+        <span class="qchip off" aria-disabled="true">💻 資訊使用 <small>整理中</small></span>
+        <a class="qchip f1" href="https://notebook.google.com/notebook/4548f6b1-6681-4281-8e8d-4f2b8308f9de" target="_blank" rel="noopener">🧭 系統性思維 <span aria-hidden="true">↗</span></a>
+        <span class="qchip off" aria-disabled="true">💬 溝通 <small>整理中</small></span>
+        <a class="qchip f4" href="https://notebook.google.com/notebook/af062042-58d7-4944-bcf0-1dfa4ee52266" target="_blank" rel="noopener">🪞 反思 <span aria-hidden="true">↗</span></a>
       </div>
     </div>
-
-    <h3 class="sub">八大思考素養與思考技能元素</h3>
-    <div class="skills">
-      <div class="skill f2"><div class="hd">🔍 批判性思考</div><div class="by">楊凱琳 教授</div><p>在情境中形成數學問題、運用知識與詮釋結果時，察覺、說理並判斷數學資訊的邏輯性與有效性。</p><ul class="chips"><li>察覺矛盾</li><li>說理反駁</li><li>判斷有效性</li></ul></div>
-      <div class="skill f3"><div class="hd">💡 創造力</div><div class="by">謝豐瑞 教授</div><p>產生新數學思考、過程、結果的能力，例如新解法、新定義。「新」是針對學生個人而言。</p><ul class="chips"><li>流暢性</li><li>變通性</li><li>獨創性</li></ul></div>
-      <div class="skill f5"><div class="hd">🔬 研究與探究</div><div class="by">陳建誠 教授</div><p>形成問題與解決問題的歷程，也是追求知識的歷程：提出臆測、找正例反例，再用數學證據說服他人。</p><ul class="chips"><li>提想法</li><li>做試驗</li><li>下結論</li></ul></div>
-      <div class="skill f7"><div class="hd">🧗 自主與堅持</div><div class="by">鄭英豪 教授、許慧玉 教授</div><p>自己做決定、主動採取行動，遇到困難時能調整做法並持續下去。</p><ul class="chips"><li>自主導向</li><li>自動自發</li><li>堅持不懈</li></ul></div>
-      <div class="skill f6"><div class="hd">💻 資訊使用</div><div class="by">左台益 教授（科技融入數學學習）</div><p>善用科技工具的計算、儲存與表徵功能，把它當成數學學習的認知工具。</p><ul class="chips"><li>模擬操作</li><li>探究實驗</li><li>反思溝通</li></ul></div>
-      <div class="skill f1"><div class="hd">🧭 系統性思維</div><div class="by">王婷瑩 教授</div><p>以任務目標為導向，辨識元素與元素間的關係，再整合成一個整體。</p><ul class="chips"><li>找元素</li><li>找關係</li><li>建系統</li></ul></div>
-      <div class="skill f8"><div class="hd">💬 溝通</div><div class="by">謝佳叡 教授</div><p>聚焦「想法」的理解與表達：說出想法、受他人啟發而調整，最後統整形成共識。</p><ul class="chips"><li>表徵想法</li><li>調適想法</li><li>統整想法</li></ul></div>
-      <div class="skill f4"><div class="hd">🪞 反思</div><div class="by">李源順 教授</div><p>見證並評估自己的認知、情感與行為歷程，可用「你有想過……嗎？」來引發。</p><ul class="chips"><li>事件描述</li><li>詮釋了解</li><li>批判評鑑</li></ul></div>
+    <div class="howto" role="note" aria-labelledby="howto-title">
+      <h3 id="howto-title"><span class="tag">提示</span>進入小幫手後，請依畫面中間的引導語開始</h3>
+      <div class="mock" aria-hidden="true">
+        <div class="mock-top"><i></i><i></i><i></i>&nbsp;🤖 促進『○○』思考素養的共備</div>
+        <div class="mock-body">
+          <div class="pane hot">
+            <span class="badge heart">❤️</span>
+            <span class="ph">來源</span>
+            <div class="src"><span class="bar"></span><span class="ck"></span></div>
+            <div class="src"><span class="bar"></span><span class="ck"></span></div>
+            <div class="src"><span class="bar"></span><span class="ck"></span></div>
+          </div>
+          <div class="pane">
+            <span class="ph">對話</span>
+            <div class="msg w1"></div><div class="msg w2"></div><div class="msg w3"></div>
+            <div class="badges"><span class="badge">1</span><span class="badge">2</span><span class="badge">3</span><span class="pick">任選</span></div>
+            <div class="chatbox">提問或創作內容<span class="send"></span></div>
+          </div>
+          <div class="pane studio"><span class="ph">工作室</span><span class="fold-ic"></span><div class="msg w2"></div><span class="fold-tip">按這裡收合</span></div>
+        </div>
+      </div>
+      <div class="hsteps">
+        <div class="hitem"><span class="m heart">❤️</span><div><b>先勾選來源區資料（至少 1 項）</b><span>接著使用中間對話區互動。</span></div></div>
+        <div class="opts">
+          <div class="opts-h">接著依需要<strong>任選</strong>一種方式互動（不分先後，可交替使用）</div>
+          <div class="hitem"><span class="m">1</span><div><b>上傳「問題」</b><span>以問號為結尾的句構。</span></div></div>
+          <div class="or">或</div>
+          <div class="hitem"><span class="m">2</span><div><b>發表「直述意見」</b><span>以第一人稱發言的句構。</span></div></div>
+          <div class="or">或</div>
+          <div class="hitem"><span class="m">3</span><div><b>輸入／貼上（文字）資料</b><span>使用 <kbd>Ctrl</kbd>+<kbd>V</kbd>（Mac 為 <kbd>⌘</kbd>+<kbd>V</kbd>）貼上，例如 <mark class="hl">VLM 轉譯工具產出的 md 內容</mark>。</span></div></div>
+        </div>
+        <div class="hitem note"><span class="m">💡</span><div><b>本場不會使用到右方「工作室」</b><span>可按「工作室」右上角的 <span class="ic-fold" aria-hidden="true"></span> 圖示（收合「工作室」面板），讓可視畫面更大。</span></div></div>
+      </div>
     </div>
-
-    <h3 class="sub">備課方向：個人與社群怎麼做</h3>
-    <ol class="plan">
-      <li><span class="n">1</span><div><b>定目標</b><span>確認單元學習目標與子目標，分析現行教材與可能的教學進路。</span></div></li>
-      <li><span class="n">2</span><div><b>選素養</b><span>挑 1～2 項最適合本單元的思考素養，對照它的元素安排學習機會。</span></div></li>
-      <li><span class="n">3</span><div><b>精進提問</b><span>請小幫手發想能引出素養表現的提問、任務與課堂形成性評量。</span></div></li>
-      <li><span class="n">4</span><div><b>社群共備</b><span>一起觀課或看教學影片，討論可刪、可改、可補、可接之處，再帶回自己的課堂。</span></div></li>
-    </ol>
-    <p class="goal">讓學生「有趣，有感，有自己想法，有機會表達，遇到問題習慣用數學角度去看，用數學跟世界互動」。<small>—— 林福來〈二十一世紀技能：數學素養教學與評量的指標〉</small></p>
+    <div class="helpers">
+      <a class="helper f2" href="https://notebook.google.com/notebook/2fd7d20a-ca0c-4f11-8e36-6b0dfa325dec" target="_blank" rel="noopener">
+        <span class="ic">🔍</span><span class="t">促進思考素養</span><span class="name">批判性思考</span>
+        <span class="d">引導學生察覺矛盾、說理反駁、判斷推論是否有效。</span>
+        <span class="go">開啟小幫手 →</span>
+      </a>
+      <a class="helper f3" href="https://notebook.google.com/notebook/383b9153-71fa-41ff-8f28-9260fbddd1f8" target="_blank" rel="noopener">
+        <span class="ic">💡</span><span class="t">促進思考素養</span><span class="name">創造力</span>
+        <span class="d">設計開放任務，鼓勵流暢、變通又獨創的數學想法。</span>
+        <span class="go">開啟小幫手 →</span>
+      </a>
+      <a class="helper f5" href="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" target="_blank" rel="noopener">
+        <span class="ic">🔬</span><span class="t">促進思考素養</span><span class="name">研究與探究</span>
+        <span class="d">從提想法、做試驗到下結論，帶出完整的探究循環。</span>
+        <span class="go">開啟小幫手 →</span>
+      </a>
+      <div class="helper pending f7" aria-disabled="true">
+        <span class="ic">🧗</span><span class="t">促進思考素養</span><span class="name">自主與堅持</span>
+        <span class="d">讓學生自己規劃解題，遇到困難時能調整並堅持。</span>
+        <span class="go">⏳ 小幫手整理中</span>
+      </div>
+      <div class="helper pending f6" aria-disabled="true">
+        <span class="ic">💻</span><span class="t">促進思考素養</span><span class="name">資訊使用</span>
+        <span class="d">善用科技工具模擬操作、探究實驗與反思溝通。</span>
+        <span class="go">⏳ 小幫手整理中</span>
+      </div>
+      <a class="helper f1" href="https://notebook.google.com/notebook/4548f6b1-6681-4281-8e8d-4f2b8308f9de" target="_blank" rel="noopener">
+        <span class="ic">🧭</span><span class="t">促進思考素養</span><span class="name">系統性思維</span>
+        <span class="d">把零散知識串成脈絡，找元素、找關係、建系統。</span>
+        <span class="go">開啟小幫手 →</span>
+      </a>
+      <div class="helper pending f8" aria-disabled="true">
+        <span class="ic">💬</span><span class="t">促進思考素養</span><span class="name">溝通</span>
+        <span class="d">讓學生表徵、調適並統整彼此的數學想法。</span>
+        <span class="go">⏳ 小幫手整理中</span>
+      </div>
+      <a class="helper f4" href="https://notebook.google.com/notebook/af062042-58d7-4944-bcf0-1dfa4ee52266" target="_blank" rel="noopener">
+        <span class="ic">🪞</span><span class="t">促進思考素養</span><span class="name">反思</span>
+        <span class="d">用「你有想過……嗎？」帶學生回看自己的學習歷程。</span>
+        <span class="go">開啟小幫手 →</span>
+      </a>
+    </div>
   </section>
-    <nav class="pager"><button type="button" data-go="inq">← ③ 探究策略</button><button type="button" class="next" data-go="guide">下一頁：④ 素養・說明 →</button></nav>
-  </div>
 
-  <div class="panel" id="p-guide" role="tabpanel" aria-labelledby="t-guide">
+  <p class="cite1">📌 公開介紹或發表使用成果時，請註明引用來源（見頁尾「資料來源與引述」）。</p>
+
+  </div>
+  <div class="ssec2" id="y-skill-guide">
   <!-- 使用說明 -->
   <section class="card guide" aria-labelledby="guide-title">
-    <div class="eyebrow">④ 深化思考素養 · 使用說明</div>
+    <div class="eyebrow">使用說明 · 小幫手怎麼陪你備課</div>
     <h2 class="sec-title" id="guide-title"><span class="sec-icon">📚</span>小幫手不給標準答案，給你下一步的線索</h2>
     <details class="gfold" open>
       <summary><span class="gf-t">🧭 小幫手的陪伴方式與三個原則</span><span class="fold-btn" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
@@ -1232,16 +1454,67 @@ footer .wrap{max-width:1080px}
     </div>
     </div>
   </section>
-    <nav class="pager"><button type="button" data-go="intro">← ④ 素養・引言</button><button type="button" class="next" data-go="helpers">下一頁：④ 素養・小幫手 →</button></nav>
-  </div>
 
-  <div class="panel" id="p-vlm" role="tabpanel" aria-labelledby="t-vlm">
+  </div>
+  <div class="ssec2" id="y-skill-intro">
+  <!-- 引言 -->
+  <section class="card intro" aria-labelledby="intro-title">
+    <div class="eyebrow">背景 · 為什麼是八大思考素養</div>
+    <h2 class="big" id="intro-title">以 21 世紀八大思考素養，帶動數學單元備課</h2>
+    <p class="lede">數學領域中央輔導團與「就是要學好數學（JDM）」計畫，將 <strong>21 世紀技能</strong>定調為數學素養教學與評量的指標。這個網頁協助國中小數學老師在單元或主題備課時，朝八大思考素養的方向設計提問、任務與評量，並借助 AI 小幫手提供的靈感，讓個人或共備社群持續精進。</p>
+
+    <h3 class="sub">為什麼是八大思考素養</h3>
+    <div class="why">
+      <div><b>🇹🇼 臺灣公民的核心素養</b><p>科技研發需要研究與探究、創造力、系統性思維、資訊使用與自主堅毅；自由民主社會需要理性溝通、批判性思考與反思。</p></div>
+      <div><b>🌐 PISA 2022 的評量指標</b><p>PISA 2022 主測數學素養，評量設計就以 21 世紀技能為指標，有成熟的評量方法論可以參考。</p></div>
+      <div><b>📘 完備 108 課綱「五觀、六標」</b><p>能帶出課綱倡導的素養教學，還補上課綱沒有明示的<strong>創造力</strong>與<strong>反思</strong>。</p></div>
+    </div>
+
+    <h3 class="sub">和數學老師的關係</h3>
+    <div class="rel">
+      <div>
+        <b>「五觀、六標」的素養教學啟示</b>
+        <ul class="chips"><li>引導數學語言的演化</li><li>認同探究式學習</li><li>跨領域問題解決為本的統整教學</li><li>隱性提倡反思的學習歷程</li><li>重視情意</li></ul>
+        <p>數學是日常生活、學習其他領域，以及思考問題的工具。素養就是「以數學觀點看世界，與世界互動」。</p>
+      </div>
+      <div>
+        <b>JDM 進階奠基式素養教學原則</b>
+        <ul class="chips"><li>激發思考</li><li>診斷學習</li><li>情緒分享</li><li>語言演化</li></ul>
+        <p>關鍵策略是<strong>精進教師的提問</strong>（遠近 × 閉開的 2×2 提問架構），用最少的調整，更有效地促進學生的素養表現。</p>
+      </div>
+    </div>
+
+    <h3 class="sub">八大思考素養與思考技能元素</h3>
+    <div class="skills">
+      <div class="skill f2"><div class="hd">🔍 批判性思考</div><div class="by">楊凱琳 教授</div><p>在情境中形成數學問題、運用知識與詮釋結果時，察覺、說理並判斷數學資訊的邏輯性與有效性。</p><ul class="chips"><li>察覺矛盾</li><li>說理反駁</li><li>判斷有效性</li></ul></div>
+      <div class="skill f3"><div class="hd">💡 創造力</div><div class="by">謝豐瑞 教授</div><p>產生新數學思考、過程、結果的能力，例如新解法、新定義。「新」是針對學生個人而言。</p><ul class="chips"><li>流暢性</li><li>變通性</li><li>獨創性</li></ul></div>
+      <div class="skill f5"><div class="hd">🔬 研究與探究</div><div class="by">陳建誠 教授</div><p>形成問題與解決問題的歷程，也是追求知識的歷程：提出臆測、找正例反例，再用數學證據說服他人。</p><ul class="chips"><li>提想法</li><li>做試驗</li><li>下結論</li></ul></div>
+      <div class="skill f7"><div class="hd">🧗 自主與堅持</div><div class="by">鄭英豪 教授、許慧玉 教授</div><p>自己做決定、主動採取行動，遇到困難時能調整做法並持續下去。</p><ul class="chips"><li>自主導向</li><li>自動自發</li><li>堅持不懈</li></ul></div>
+      <div class="skill f6"><div class="hd">💻 資訊使用</div><div class="by">左台益 教授（科技融入數學學習）</div><p>善用科技工具的計算、儲存與表徵功能，把它當成數學學習的認知工具。</p><ul class="chips"><li>模擬操作</li><li>探究實驗</li><li>反思溝通</li></ul></div>
+      <div class="skill f1"><div class="hd">🧭 系統性思維</div><div class="by">王婷瑩 教授</div><p>以任務目標為導向，辨識元素與元素間的關係，再整合成一個整體。</p><ul class="chips"><li>找元素</li><li>找關係</li><li>建系統</li></ul></div>
+      <div class="skill f8"><div class="hd">💬 溝通</div><div class="by">謝佳叡 教授</div><p>聚焦「想法」的理解與表達：說出想法、受他人啟發而調整，最後統整形成共識。</p><ul class="chips"><li>表徵想法</li><li>調適想法</li><li>統整想法</li></ul></div>
+      <div class="skill f4"><div class="hd">🪞 反思</div><div class="by">李源順 教授</div><p>見證並評估自己的認知、情感與行為歷程，可用「你有想過……嗎？」來引發。</p><ul class="chips"><li>事件描述</li><li>詮釋了解</li><li>批判評鑑</li></ul></div>
+    </div>
+
+    <h3 class="sub">備課方向：個人與社群怎麼做</h3>
+    <ol class="plan">
+      <li><span class="n">1</span><div><b>定目標</b><span>確認單元學習目標與子目標，分析現行教材與可能的教學進路。</span></div></li>
+      <li><span class="n">2</span><div><b>選素養</b><span>挑 1～2 項最適合本單元的思考素養，對照它的元素安排學習機會。</span></div></li>
+      <li><span class="n">3</span><div><b>精進提問</b><span>請小幫手發想能引出素養表現的提問、任務與課堂形成性評量。</span></div></li>
+      <li><span class="n">4</span><div><b>社群共備</b><span>一起觀課或看教學影片，討論可刪、可改、可補、可接之處，再帶回自己的課堂。</span></div></li>
+    </ol>
+    <p class="goal">讓學生「有趣，有感，有自己想法，有機會表達，遇到問題習慣用數學角度去看，用數學跟世界互動」。<small>—— 林福來〈二十一世紀技能：數學素養教學與評量的指標〉</small></p>
+  </section>
+
+  </div>
+  </div>
+  <div class="ssec" id="x-create-vlm">
   <!-- 一鍵複製：VLM 轉譯工具 -->
-  <section class="card vlm" aria-labelledby="vlm-title">
+  <section class="card vlm tool fv" aria-labelledby="vlm-title">
     <div class="vlm-head">
       <div>
-        <div class="eyebrow">① 準備素材 · VLM 轉譯工具</div>
-        <h2 class="sec-title" id="vlm-title"><span class="sec-icon">🧩</span>VLM 轉譯工具</h2>
+        <div class="eyebrow">CREATE › 素材轉譯（VLM 轉譯工具）</div>
+        <h2 class="sec-title" id="vlm-title"><span class="sec-icon">🧩</span>素材轉譯：把課本、教案轉成文字</h2>
         <p class="credit">提示詞內容引自 <strong>臺師大教創中心</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
       </div>
     </div>
@@ -1250,7 +1523,7 @@ footer .wrap{max-width:1080px}
     <ol class="steps">
       <li><span class="n">1</span><div><b>複製提示詞</b><span>按下「一鍵複製 Prompt」。</span></div></li>
       <li><span class="n">2</span><div><b>開啟任一款 AI</b><span>在對話框貼上提示詞，並附上要轉化的素材（文件、照片、截圖…）。</span></div></li>
-      <li><span class="n">3</span><div><b>帶入小幫手</b><span>將 AI 產出的 md 內容，貼到 ② 有效提問、③ 探究策略或 ④ 思考素養任一位小幫手的對話框，當作對話輸入來源。</span></div></li>
+      <li><span class="n">3</span><div><b>帶入小幫手</b><span>將 AI 產出的 md 內容，貼到任一位 AI 小幫手的對話框，當作對話輸入來源。</span></div></li>
     </ol>
 
     <div id="prompt-wrap">
@@ -1293,118 +1566,113 @@ footer .wrap{max-width:1080px}
       <p class="toast" id="toast" role="status" aria-live="polite"></p>
     </div>
   </section>
-    <nav class="pager"><button type="button" data-go="gen">← ✍️ 提示詞產生器</button><button type="button" class="next" data-go="ask">下一頁：② 有效提問 →</button></nav>
+
+  </div>
+  <div class="ssec" id="x-create-idea">
+  <section class="card" aria-labelledby="idea-title">
+    <h2 class="sec-title" id="idea-title"><span class="sec-icon">🃏</span>創課靈感卡：貼給小幫手，追問下一步</h2>
+    <p class="sec-note">拿到第一輪回覆後，複製一張卡貼進同一個對話，讓提問更貼近你的課堂。</p>
+    <div class="cards6">
+      <div><b>🏠 換情境</b><p id="ic1">請把這幾題提問改成學生熟悉的生活情境，並說明情境如何幫助學生理解概念。</p><button type="button" class="btn btn-ghost" data-copy="ic1">複製</button></div>
+      <div><b>🩺 找迷思</b><p id="ic2">這個概念學生最可能出現哪 2 個迷思？請各設計一個能讓學生自己發現矛盾的提問。</p><button type="button" class="btn btn-ghost" data-copy="ic2">複製</button></div>
+      <div><b>🔓 變開放</b><p id="ic3">請把其中一題封閉題，改成有多種答案或多種解法的開放題，並說明可能的學生回答。</p><button type="button" class="btn btn-ghost" data-copy="ic3">複製</button></div>
+      <div><b>🔄 轉表徵</b><p id="ic4">請設計一組提問，引導學生在實物、操作、圖像、語言、符號之間轉換。</p><button type="button" class="btn btn-ghost" data-copy="ic4">複製</button></div>
+      <div><b>🧩 串任務</b><p id="ic5">請把我挑出的 3 個提問串成一個 20 分鐘的小組探究任務，寫出各階段的引導語。</p><button type="button" class="btn btn-ghost" data-copy="ic5">複製</button></div>
+      <div><b>🪜 分層次</b><p id="ic6">請為同一個提問設計鷹架版與挑戰版，照顧不同程度的學生。</p><button type="button" class="btn btn-ghost" data-copy="ic6">複製</button></div>
+    </div>
+  </section>
+  </div>
+    <nav class="pager"><button type="button" data-go="engage">← ENGAGE</button><button type="button" class="next" data-go="manage">下一階段：MANAGE 判斷與取捨 →</button></nav>
   </div>
 
-  <div class="panel" id="p-helpers" role="tabpanel" aria-labelledby="t-helpers">
-  <!-- 小幫手連結 -->
-  <section aria-labelledby="helpers-title">
-    <div class="center-title">
-      <h2 id="helpers-title">啟動您的八大思考素養小幫手</h2>
-      <p>點選標籤或卡片開啟 NotebookLM 小幫手。虛線的小幫手正在整理中。</p>
-    </div>
-    <div class="quick" aria-label="快速開啟小幫手">
-      <span class="quick-h">⚡ 快速開啟</span>
-      <div class="qchips">
-        <a class="qchip f2" href="https://notebook.google.com/notebook/2fd7d20a-ca0c-4f11-8e36-6b0dfa325dec" target="_blank" rel="noopener">🔍 批判性思考 <span aria-hidden="true">↗</span></a>
-        <a class="qchip f3" href="https://notebook.google.com/notebook/383b9153-71fa-41ff-8f28-9260fbddd1f8" target="_blank" rel="noopener">💡 創造力 <span aria-hidden="true">↗</span></a>
-        <a class="qchip f5" href="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" target="_blank" rel="noopener">🔬 研究與探究 <span aria-hidden="true">↗</span></a>
-        <span class="qchip off" aria-disabled="true">🧗 自主與堅持 <small>整理中</small></span>
-        <span class="qchip off" aria-disabled="true">💻 資訊使用 <small>整理中</small></span>
-        <a class="qchip f1" href="https://notebook.google.com/notebook/4548f6b1-6681-4281-8e8d-4f2b8308f9de" target="_blank" rel="noopener">🧭 系統性思維 <span aria-hidden="true">↗</span></a>
-        <span class="qchip off" aria-disabled="true">💬 溝通 <small>整理中</small></span>
-        <a class="qchip f4" href="https://notebook.google.com/notebook/af062042-58d7-4944-bcf0-1dfa4ee52266" target="_blank" rel="noopener">🪞 反思 <span aria-hidden="true">↗</span></a>
-      </div>
-    </div>
-    <div class="howto" role="note" aria-labelledby="howto-title">
-      <h3 id="howto-title"><span class="tag">提示</span>進入小幫手後，請依畫面中間的引導語開始</h3>
-      <div class="mock" aria-hidden="true">
-        <div class="mock-top"><i></i><i></i><i></i>&nbsp;🤖 促進『○○』思考素養的共備</div>
-        <div class="mock-body">
-          <div class="pane hot">
-            <span class="badge heart">❤️</span>
-            <span class="ph">來源</span>
-            <div class="src"><span class="bar"></span><span class="ck"></span></div>
-            <div class="src"><span class="bar"></span><span class="ck"></span></div>
-            <div class="src"><span class="bar"></span><span class="ck"></span></div>
-          </div>
-          <div class="pane">
-            <span class="ph">對話</span>
-            <div class="msg w1"></div><div class="msg w2"></div><div class="msg w3"></div>
-            <div class="badges"><span class="badge">1</span><span class="badge">2</span><span class="badge">3</span><span class="pick">任選</span></div>
-            <div class="chatbox">提問或創作內容<span class="send"></span></div>
-          </div>
-          <div class="pane studio"><span class="ph">工作室</span><span class="fold-ic"></span><div class="msg w2"></div><span class="fold-tip">按這裡收合</span></div>
-        </div>
-      </div>
-      <div class="hsteps">
-        <div class="hitem"><span class="m heart">❤️</span><div><b>先勾選來源區資料（至少 1 項）</b><span>接著使用中間對話區互動。</span></div></div>
-        <div class="opts">
-          <div class="opts-h">接著依需要<strong>任選</strong>一種方式互動（不分先後，可交替使用）</div>
-          <div class="hitem"><span class="m">1</span><div><b>上傳「問題」</b><span>以問號為結尾的句構。</span></div></div>
-          <div class="or">或</div>
-          <div class="hitem"><span class="m">2</span><div><b>發表「直述意見」</b><span>以第一人稱發言的句構。</span></div></div>
-          <div class="or">或</div>
-          <div class="hitem"><span class="m">3</span><div><b>輸入／貼上（文字）資料</b><span>使用 <kbd>Ctrl</kbd>+<kbd>V</kbd>（Mac 為 <kbd>⌘</kbd>+<kbd>V</kbd>）貼上，例如 <mark class="hl">VLM 轉譯工具產出的 md 內容</mark>。</span></div></div>
-        </div>
-        <div class="hitem note"><span class="m">💡</span><div><b>本場不會使用到右方「工作室」</b><span>可按「工作室」右上角的 <span class="ic-fold" aria-hidden="true"></span> 圖示（收合「工作室」面板），讓可視畫面更大。</span></div></div>
-      </div>
-    </div>
-    <div class="helpers">
-      <a class="helper f2" href="https://notebook.google.com/notebook/2fd7d20a-ca0c-4f11-8e36-6b0dfa325dec" target="_blank" rel="noopener">
-        <span class="ic">🔍</span><span class="t">促進思考素養</span><span class="name">批判性思考</span>
-        <span class="d">引導學生察覺矛盾、說理反駁、判斷推論是否有效。</span>
-        <span class="go">開啟小幫手 →</span>
-      </a>
-      <a class="helper f3" href="https://notebook.google.com/notebook/383b9153-71fa-41ff-8f28-9260fbddd1f8" target="_blank" rel="noopener">
-        <span class="ic">💡</span><span class="t">促進思考素養</span><span class="name">創造力</span>
-        <span class="d">設計開放任務，鼓勵流暢、變通又獨創的數學想法。</span>
-        <span class="go">開啟小幫手 →</span>
-      </a>
-      <a class="helper f5" href="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" target="_blank" rel="noopener">
-        <span class="ic">🔬</span><span class="t">促進思考素養</span><span class="name">研究與探究</span>
-        <span class="d">從提想法、做試驗到下結論，帶出完整的探究循環。</span>
-        <span class="go">開啟小幫手 →</span>
-      </a>
-      <div class="helper pending f7" aria-disabled="true">
-        <span class="ic">🧗</span><span class="t">促進思考素養</span><span class="name">自主與堅持</span>
-        <span class="d">讓學生自己規劃解題，遇到困難時能調整並堅持。</span>
-        <span class="go">⏳ 小幫手整理中</span>
-      </div>
-      <div class="helper pending f6" aria-disabled="true">
-        <span class="ic">💻</span><span class="t">促進思考素養</span><span class="name">資訊使用</span>
-        <span class="d">善用科技工具模擬操作、探究實驗與反思溝通。</span>
-        <span class="go">⏳ 小幫手整理中</span>
-      </div>
-      <a class="helper f1" href="https://notebook.google.com/notebook/4548f6b1-6681-4281-8e8d-4f2b8308f9de" target="_blank" rel="noopener">
-        <span class="ic">🧭</span><span class="t">促進思考素養</span><span class="name">系統性思維</span>
-        <span class="d">把零散知識串成脈絡，找元素、找關係、建系統。</span>
-        <span class="go">開啟小幫手 →</span>
-      </a>
-      <div class="helper pending f8" aria-disabled="true">
-        <span class="ic">💬</span><span class="t">促進思考素養</span><span class="name">溝通</span>
-        <span class="d">讓學生表徵、調適並統整彼此的數學想法。</span>
-        <span class="go">⏳ 小幫手整理中</span>
-      </div>
-      <a class="helper f4" href="https://notebook.google.com/notebook/af062042-58d7-4944-bcf0-1dfa4ee52266" target="_blank" rel="noopener">
-        <span class="ic">🪞</span><span class="t">促進思考素養</span><span class="name">反思</span>
-        <span class="d">用「你有想過……嗎？」帶學生回看自己的學習歷程。</span>
-        <span class="go">開啟小幫手 →</span>
-      </a>
+  <!-- ================= MANAGE ================= -->
+  <div class="panel" id="p-manage" role="tabpanel" aria-labelledby="t-manage">
+  <section class="card phead pm" aria-labelledby="manage-title">
+    <ol class="pbar" aria-hidden="true"><li class="done">ENGAGE</li><li class="done">CREATE</li><li class="on">MANAGE</li><li>SHAPE</li></ol>
+    <div class="eyebrow"><span class="ptag">MANAGE</span>階段三 · 判斷與取捨</div>
+    <h2 class="sec-title" id="manage-title"><span class="sec-icon">⚖️</span>AI 是助手，老師是作者</h2>
+    <div class="subnav" role="tablist">
+      <button type="button" role="tab" data-sub="manage-judge">✅ 分工與檢核</button>
+      <button type="button" role="tab" data-sub="manage-html">🧪 HTML 試板</button>
     </div>
   </section>
+  <div class="ssec" id="x-manage-judge">
+  <section class="card" aria-labelledby="judge-title">
+    <h2 class="sec-title" id="judge-title"><span class="sec-icon">⚖️</span>哪些交給 AI，哪些留給自己</h2>
+    <p class="sec-note">每一份 AI 產出，都要經過老師檢核才進教室。不使用 AI，也是一種專業選擇。</p>
+    <div class="split">
+      <div><h3>🤖 適合交給 AI</h3><ul><li>大量發想提問與情境</li><li>整理知識節點與學習脈絡</li><li>轉譯素材、排出學習單版面</li></ul></div>
+      <div><h3>👩‍🏫 留給老師</h3><ul><li>判斷學生程度與學習差異</li><li>決定學習目標與取捨</li><li>課堂即時回應與評量判斷</li></ul></div>
+    </div>
+    <h3 class="gsub">✅ AI 產出檢核表（邊看邊勾）</h3>
+    <ol class="chk tick" data-chk data-done="👍 檢核完成，可以帶進 SHAPE 共備討論了。">
+      <li><label><input type="checkbox"><span><b>數學正確</b>：概念、數字、用詞都沒有錯</span></label></li>
+      <li><label><input type="checkbox"><span><b>對準目標</b>：扣合本單元的學習目標</span></label></li>
+      <li><label><input type="checkbox"><span><b>合乎年級</b>：用語與情境是這個年級學生聽得懂的</span></label></li>
+      <li><label><input type="checkbox"><span><b>照顧差異</b>：不同程度的學生都有進入點</span></label></li>
+      <li><label><input type="checkbox"><span><b>保護隱私</b>：沒有輸入學生姓名、照片等個人資料</span></label></li>
+      <li><label><input type="checkbox"><span><b>註明來源</b>：公開分享時註明小幫手與工具的引用來源</span></label></li>
+    </ol>
+    <p class="chk-done" role="status"></p>
+    <p class="related">🧪 AI 做出學習單或活動頁的 HTML？到 <button type="button" class="linkbtn" data-go="manage-html">HTML 試板</button> 預覽、直接改字再帶走。</p>
+  </section>
+  </div>
+  <div class="ssec" id="x-manage-html">
+  <!-- HTML 試板 -->
+  <section class="card tool fx" aria-labelledby="html-title">
+    <div class="tool-head">
+      <div>
+        <div class="eyebrow">MANAGE › HTML 試板</div>
+        <h2 class="sec-title" id="html-title"><span class="sec-icon">🧪</span>HTML 試板：把 AI 做好的網頁貼進來看</h2>
+        <p class="credit"><strong>優履團隊</strong>研發設計 2026 ©，使用請引註。</p>
+      </div>
+      <button type="button" class="btn btn-open" id="ht-newtab">在新分頁全畫面開啟 ↗</button>
+    </div>
+    <p class="purpose">🎯 小幫手或其他 AI 幫你做出<b>學習單、提問卡、課堂活動頁</b>的 HTML 程式碼時，貼到左邊就能<b>即時預覽</b>，也能<b>直接在預覽裡改字</b>、切換<b>手機版預覽</b>、<b>下載預覽圖</b>。所有內容只在你的瀏覽器中處理，不會上傳。</p>
+    <ol class="steps">
+      <li><span class="n">1</span><div><b>貼上程式碼</b><span>把 AI 產出的 HTML 貼到左側「原始碼」區；想先試試看，可按「載入範例」。</span></div></li>
+      <li><span class="n">2</span><div><b>檢視與修改</b><span>右側即時預覽。可直接在預覽裡編輯，點預覽中的元素，左側會跳到對應程式碼。</span></div></li>
+      <li><span class="n">3</span><div><b>帶走成果</b><span>複製程式碼、下載預覽圖，或在新分頁開啟，給學生或社群夥伴看。</span></div></li>
+    </ol>
+  </section>
+  <div class="ht-frame-wrap">
+    <iframe id="ht-frame" title="HTML 試板" allow="clipboard-read; clipboard-write; fullscreen" loading="lazy"></iframe>
+    <p class="ht-loading" id="ht-loading">HTML 試板載入中…</p>
+  </div>
 
-  <!-- 引用聲明 -->
-  <section class="cite" aria-labelledby="cite-title">
-    <h3 id="cite-title"><span>😄</span>公開介紹本工具，或發表使用成果時，請註明引用來源。</h3>
-    <div class="cite-grid">
-      <div><div class="eyebrow">Reference</div><b>📌 引用來源</b><p>VLM 轉譯工具提示詞：臺師大教創中心與優履團隊（UNI）設計</p></div>
-      <div><div class="eyebrow">Introduction</div><b>📖 引言整理自</b><p>林福來〈二十一世紀技能：數學素養教學與評量的指標〉；〈21 世紀技能的說明與操作型定義〉</p></div>
-      <div><div class="eyebrow">Educational</div><b>🌸 教育使用</b><p>免費提供所有教育使用者，智慧財產需要您一起共同維護喔～</p></div>
-      <div><div class="eyebrow">Purpose</div><b>🤖 設計目的</b><p>優雅建構高質量、低 Token 消耗的 AI 結構化知識庫，支援八大思考素養教學。</p></div>
+  </div>
+    <nav class="pager"><button type="button" data-go="create">← CREATE</button><button type="button" class="next" data-go="shape">下一階段：SHAPE 共備與形塑 →</button></nav>
+  </div>
+
+  <!-- ================= SHAPE ================= -->
+  <div class="panel" id="p-shape" role="tabpanel" aria-labelledby="t-shape">
+  <section class="card phead ps" aria-labelledby="shape-title">
+    <ol class="pbar" aria-hidden="true"><li class="done">ENGAGE</li><li class="done">CREATE</li><li class="done">MANAGE</li><li class="on">SHAPE</li></ol>
+    <div class="eyebrow"><span class="ptag">SHAPE</span>階段四 · 共備與形塑</div>
+    <h2 class="sec-title" id="shape-title"><span class="sec-icon">🤝</span>一起討論、試教，讓設計越來越貼近學生</h2>
+    <h3 class="gsub">🗣️ 共備討論四問</h3>
+    <div class="four">
+      <div><b>✂️ 可刪</b><p>哪些提問離學生太遠、或彼此重複？</p></div>
+      <div><b>✏️ 可改</b><p>哪些提問換個說法或情境，會更好懂？</p></div>
+      <div><b>➕ 可補</b><p>還缺哪個層次、或哪類學生的提問？</p></div>
+      <div><b>🔗 可接</b><p>怎麼接到前後單元或其他領域？</p></div>
+    </div>
+    <h3 class="gsub">⏱️ 一場 40 分鐘的共備</h3>
+    <ol class="agenda">
+      <li><span>5′</span>設計者說明：目標、選了哪些提問、為什麼</li>
+      <li><span>10′</span>夥伴扮演學生作答，找出卡住的地方</li>
+      <li><span>15′</span>用四問討論：可刪、可改、可補、可接</li>
+      <li><span>5′</span>決定試教版本與觀察重點</li>
+      <li><span>5′</span>分工：誰試教、誰觀課、何時回來分享</li>
+    </ol>
+    <h3 class="gsub">🔁 讓回饋形塑下一輪</h3>
+    <div class="loop">
+      <div><b>帶回課堂觀察</b><p>把學生真實的回答與卡點，帶回小幫手對話，請它重新設計。</p></div>
+      <div><b>分享好用的提示詞</b><p>把社群驗證過的提示詞、靈感卡記錄下來，留給下一位老師。</p></div>
+      <div><b>回饋給開發團隊</b><p>小幫手哪裡好用、哪裡可以更好，寫信告訴我們：<a href="mailto:qekepv@gmail.com">qekepv@gmail.com</a></p></div>
     </div>
   </section>
-    <nav class="pager"><button type="button" data-go="guide">← ④ 素養・說明</button><button type="button" class="next" data-go="home">回到 🏠 共備路線</button></nav>
+    <nav class="pager"><button type="button" data-go="manage">← MANAGE</button><button type="button" class="next" data-go="engage">開始下一輪：ENGAGE ↺</button></nav>
   </div>
 
 </main>
@@ -1423,6 +1691,8 @@ footer .wrap{max-width:1080px}
     <div><dt>VLM 轉譯工具提示詞</dt><dd>© 臺師大教創中心與優履團隊（UNI）。</dd></div>
     <div><dt>有效提問 AI 小幫手</dt><dd>臺師大教創中心陳佩英教授與優履團隊（UNI）設計。引用請註明：臺師大教創中心與優履團隊設計 AI 機器人小幫手 good questioner。</dd></div>
     <div><dt>概念為本探究教學策略小幫手</dt><dd>臺師大教創中心陳佩英教授與優履團隊（UNI）設計。引用請註明：臺師大教創中心與優履設計 AI 機器人小幫手 inquiry Strategy。</dd></div>
+    <div><dt>HTML 試板</dt><dd>優履團隊研發設計 2026 ©，使用請引註。</dd></div>
+    <div><dt>共備四階段（Engage／Create／Manage／Shape）</dt><dd>參考 OECD / European Union (2026). <i>Empowering learners for the age of AI: An AI literacy framework for primary and secondary education.</i> OECD Publishing, Paris.</dd></div>
   </dl>
   <p class="ft-note">🌸 本網頁供教育使用。公開介紹或發表使用成果時，請註明以上引用來源。</p>
 </div></footer>
@@ -1551,27 +1821,47 @@ footer .wrap{max-width:1080px}
 </script>
 <script>
 (function(){
-  var names=['home','gen','vlm','ask','inq','intro','guide','helpers'];
-  function show(n,scroll){
-    if(names.indexOf(n)<0) n='home';
-    names.forEach(function(k){
-      document.getElementById('p-'+k).hidden=(k!==n);
-      var t=document.getElementById('t-'+k);
-      t.setAttribute('aria-selected',String(k===n)); t.tabIndex=(k===n)?0:-1;
+  var $=function(id){return document.getElementById(id);};
+  var pages=['home','engage','create','manage','shape'];
+  var defSub={engage:'explain',create:'ask',manage:'judge'};
+  var alias={ask:'create-ask',inq:'create-inq',skill:'create-skill',vlm:'create-vlm',gen:'engage-try',html:'manage-html',
+    intro:'create-skill-intro',guide:'create-skill-guide',helpers:'create-skill-helpers',
+    'skill-intro':'create-skill-intro','skill-guide':'create-skill-guide','skill-helpers':'create-skill-helpers'};
+  function parse(h){ if(alias[h]) h=alias[h]; var p=h.split('-'); return {page:p[0],sub:p[1],sub2:p[2]}; }
+  function show(h,scroll){
+    var r=parse(h); if(pages.indexOf(r.page)<0) r={page:'home'};
+    pages.forEach(function(k){
+      $('p-'+k).hidden=(k!==r.page);
+      var t=$('t-'+k); t.setAttribute('aria-selected',String(k===r.page)); t.tabIndex=(k===r.page)?0:-1;
     });
-    var cur=document.getElementById('t-'+n);
-    var bar=cur.parentNode; var l=cur.offsetLeft-bar.offsetLeft;
+    var panel=$('p-'+r.page);
+    var secs=panel.querySelectorAll(':scope > .ssec');
+    if(secs.length){
+      var sub=r.sub; if(!sub||!$('x-'+r.page+'-'+sub)) sub=defSub[r.page];
+      secs.forEach(function(e){ e.hidden=(e.id!=='x-'+r.page+'-'+sub); });
+      panel.querySelectorAll('.subnav [data-sub]').forEach(function(b){ var on=b.dataset.sub===r.page+'-'+sub; b.setAttribute('aria-selected',String(on)); });
+      if(sub==='skill'){
+        var s2=['helpers','guide','intro'].indexOf(r.sub2)<0?'helpers':r.sub2;
+        ['helpers','guide','intro'].forEach(function(x){ $('y-skill-'+x).hidden=(x!==s2); });
+        panel.querySelectorAll('.secnav [data-sub]').forEach(function(b){ b.setAttribute('aria-selected',String(b.dataset.sub==='create-skill-'+s2)); });
+      }
+    }
+    var cur=$('t-'+r.page), bar=cur.parentNode, l=cur.offsetLeft-bar.offsetLeft;
     if(l<bar.scrollLeft||l+cur.offsetWidth>bar.scrollLeft+bar.clientWidth) bar.scrollLeft=l-16;
-    var sb=document.getElementById('statbar'); if(sb) sb.hidden=(n!=='home'&&n!=='helpers');
+    var sb=$('statbar'); if(sb) sb.hidden=(r.page!=='home');
     if(scroll) window.scrollTo(0,0);
   }
   function go(n){ if(location.hash!=='#'+n){ location.hash=n; } else { show(n,true); } }
   document.querySelectorAll('[data-tab]').forEach(function(b){ b.addEventListener('click',function(){ go(b.dataset.tab); }); });
   document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ go(b.dataset.go); }); });
+  document.querySelectorAll('[data-sub]').forEach(function(b){ b.addEventListener('click',function(){ go(b.dataset.sub); }); });
+  document.querySelectorAll('[data-scroll]').forEach(function(b){ b.addEventListener('click',function(){
+    var t=$(b.dataset.scroll), hd=document.querySelector('header');
+    window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-(hd?hd.offsetHeight:0)-20,behavior:'smooth'}); }); });
   document.querySelector('.tabs').addEventListener('keydown',function(e){
-    var i=names.indexOf(location.hash.slice(1)); if(i<0)i=0;
-    var L=names.length; if(e.key==='ArrowRight'){i=(i+1)%L}else if(e.key==='ArrowLeft'){i=(i+L-1)%L}else return;
-    e.preventDefault(); go(names[i]); document.getElementById('t-'+names[i]).focus();
+    var i=pages.indexOf(parse(location.hash.slice(1)).page); if(i<0)i=0;
+    var L=pages.length; if(e.key==='ArrowRight'){i=(i+1)%L}else if(e.key==='ArrowLeft'){i=(i+L-1)%L}else return;
+    e.preventDefault(); go(pages[i]); $('t-'+pages[i]).focus();
   });
   window.addEventListener('hashchange',function(){ show(location.hash.slice(1),true); });
   show(location.hash.slice(1),false);
@@ -1619,6 +1909,7 @@ footer .wrap{max-width:1080px}
   });
 })();
 </script>
+<script>window.HT_B64="PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InpoLUhhbnQiPgo8aGVhZD4KPG1ldGEgY2hhcnNldD0idXRmLTgiPgo8bWV0YSBuYW1lPSJ2aWV3cG9ydCIgY29udGVudD0id2lkdGg9ZGV2aWNlLXdpZHRoLCBpbml0aWFsLXNjYWxlPTEsIHZpZXdwb3J0LWZpdD1jb3ZlciI+CjxzdHlsZT5ib2R5e21hcmdpbjowfVtoaWRkZW5de2Rpc3BsYXk6bm9uZSFpbXBvcnRhbnR9aW1ne21heC13aWR0aDoxMDAlfTwvc3R5bGU+Cjx0aXRsZT5IVE1MIOippuadvzwvdGl0bGU+CjxtZXRhIG5hbWU9ImNsYXVkZTp2aWV3cG9ydC1maXQtc2lkZXMiIGNvbnRlbnQ9ImNvdmVyIj4KPGxpbmsgcmVsPSJpY29uIiB0eXBlPSJpbWFnZS9wbmciIGhyZWY9ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBRUFBQUFCQUNBWUFBQUNxYVhIZUFBQVJpMGxFUVZSNDJ1MmJlWFRWMWJYSFArZjhmbmZJemMxMGs1Q0V3U1NNU1FqZ0FLaUlpRnFuVXFWWWErdjBwTXA3Mm9IWDlsbGRyYTZIRmtYZjg5V1JWcnRxcWI3V0VhcWdWUlJGb1lvS0NDZ0VaRTZZUXNpY205emM4ZmM3Ky8xeEE1THFldW9qVGsvMldyKzFzdkxINzNmMjkrejlQZnQ4OTc1dzFJN2FVZnM2bXhJUmZSU0dyM2tFTFB1NkF5QmZad0Jzd1AyNkEyQjk0YXM0R0lQcWl3SGc4M2RXRHZOWkFVclMzc3MvZ0NDZlBTaWZDd2VJT2Vqb1lRZ2N0dTJTMEFpQzlxbVBCa3g5RlFINDBNSUZjUldxRTZRWjNFWklOa0IwUDdUdlMrSFA4akRnQmtIN0ZTZ3dNUkFSckFCZ0ZPaXZVZ29ZRGkxWWt0RHl2Q0QxaW1pVDBOVFV4UDdXUGV6cHJHTjNkRHY3RTd2WUdYK2ZmeXEranFzckw4Ui9zWXZDSXRrTVRYOVFGTThBYjVrQm85T0FxaTh6QUFkM1hSc1NCOENicjhFMnlCYkZIMS84STRzN0h5UHFSZ2k3YmFRa2lTRFl5Z01DOHhwdloremZKbkQ4NkNLOEZRYWQwRFRVdHRKeGg1ZUtLN093Sjdob3JENVBDZDJudTY0RUk0YllFazNEelpydUxZTFNRdWcwUlhZd2p4M3hUY1FsaGs5bGtHM2xrV09GQ09nZ1FTdUgxa1FqRCs2WVEvdmpDdGQxOFNaaFUyUU5QM3JuQXQ2OGJ6dnh4eTJjcEpzbVRQTmxBdUFnbjJsRHFrSFJmWi9taWJsTG1MZjFmaExMRllKQ1Y4S2s4ck1wOVEzSE5RNEFycmk0NG1MRTRFaUtiRHZFOG81bldiVHllWkpMUGJnR2tva0UyeUkxL0d6ejkzajBMOC9SZWJkRnNpSDlyYjRDUVIvNXJvT3JYQkovMSt5YUUyZjJ3dHU1dGZaYTVqYy93T1pWZTNGM0tuVEk0WmlSV1l3T25FeE11dEhxdzU5MUpJVVhQdzgxM01hbVp4dEpyQkRDdW9VTWxVbktTVEpuMTB6bUxMNk4rdjl3U2E3Vm9PVkxBSUFHcHhXaUQxcThjdCs3L09qdDcvTEVnZDhSMURuRTNHNmUyZlZub3E4b0JFTndMRXdzT0JldDBrZGVMeHpGa0drRkNkbzVIRWpzNVlHTmQrQnNVWFJLRzY1eHNaUkZVR2Z6Vk9PRC9PenRLM2pucmoyMC94WGMyR0VGeGVjS2dJQkpRZGRLdzY3YjR0eXo0SGY4MjlidnM3TjdFM2wyQWE1eHlOQkJYZzAvemFhM0d6SDdQVmlqaGJGbEoxUGlLU05wRXFnZUp0TktrM0JqRE02cVpIeithZGpLdzlMR1oxamFzZ3FOeHVBaXBMa2x6eTVnWFhnRk4yeTVrdDJMSXJpTkhERW42UDhyMDhkcURTMFBLdTVjKysvY3QvY212UGpKc0RKeHhFRVFQTXBMYTZxUjUrb2VKZmFTZ293VWcwWUhPQ0U0aVlURWVxWEJ3VTJjT21nNnR2TGlVVjUrdStVV05vWFg0ZGNaaHlMR1lQQm9tMUo3T1AyUHk4UmJLaUJIVmlQb1QrVzQrZUR2d0FoRjRYVDRYc2tNS3JLT0krWkdEdTFxT3F4ZEFpcUxsenZtcytXTk5reTdUZWFFZEJwWXl1NlZCbHBwdXAwdWpzMnI1b1Q4VTNERnBTRzJtNDBkNytDM0FoZ3hoOUdPTUtYb012SW5hbERwdDdneCtZd0JPSFMrOXh4REFrb1V3ZE5oNG93UjNEYjBqK1Q2Q29pNVVTeGxIYXo3OEdvZlRZbDlQRi8zSkltWE5hcktjTnpnc1F6eURpRmg0cjBBZ3pTdlRSMHdIY0ZnS1J0YmVRNEJwZERFVFl3aC9pcE9xamdaTlVwQUxKd09vZUV1aFJ1UjNoVjJud0hRNDd3VE1YUThhSkdzVStsalNBQlg0VG5MNWFRcmgzRDdzSWNKZXJPSm14aTZCd1FqTG40ZDVLWDJ4OW41YWdTSndjQVRmWXpObkV5S0JCN3R4VklXdHJhd1hBL0pQSmc0ZENJamcyT0p1aEdVVXIyaUpDa3h6c2lkeG9DVFBLaUFBUVVkTHlvT3JPbWlZMG02aEpZK0JhREhlVGRoYVArOVp1R2lWOWg0UndlcDF6Vkd1MkNCY2l4OFUxd21YVjdGbkNFUDQvY0VTSmxFRDlzYmZOcFBmV0lYQzdZK1FueUp4ajhXSmhhZlMwb1N0RHZOZExydGhFMGJrV1FZcXhDS1Q3ZVlVbkE1RHFsREVhSlFPSklrejlPUE0wclB4M05pT2lEZFdtSDdTdzNjdFA4eWRpMXV4NjFQRjE2ZkpncjB4OTNSWGRjaE9rL3o1Q3QvNWFZOVYzRDkya3Q1OWY0YW9nOWJwTHBkbEMxcEVMN3RjTVlsWTVoZDloQmFXeVRjT0ZwWmlCaTAwb1E4aFNUYlFCMGpWQThhd3c5Q056STFkQlZUODY3bXd0Qy9NQ2s0RmJjTjdKT0ViMVNjUjZsL09Ba1RSeXVOVnBxb2lUQSs4d3dxVGloR0R6QVlGOEpQS3g2ci9SMHIyMTVsL282SGlDeFVHTXluU3dQNUtETWk0b280SmlWZEQ0djg2YndsVWw1WkxsV1YxVEo0eEJBWk1iSlM3djdHbzlJNFN5U3hROFNJSytLSU9NYVJ5T01pVDN4bnVZd1pkWUpVVlZiTHdCRURaTmJwYzZYOVAwV2NxQ3NpSXVFM1JDS1BpVVFYaUhRL21YN0MveTNTdk5DSWlDUGRDMFIrTS9reEtSNVJLRldWMVRLeWFyU1VWNVRKL0trckpiVkdSQ1FwOGIrTFBEMTFqUXl1SENKVmxkVXlvcXBDWHJwb2l5VFhpWWk0WWx6NVJHYmRjc3N0dDN6a09hOWRFdk50WG5qcUxXYnZ2Z2JiZUZCSzRkRWVSSVRYT3hlemEvOCtobTg3bVp4TVAycUlrMmIzL2lrR2Joak1odFlOckF1djRNS2lmK2I2VTM5Rjdrd1hPeXQ5bWZHVmduZVVpNmRLOEZTbkg5OFlJVkNoTVVhaCtndURHMGFUR1M3a25jaHlvazZFcXNCWXJqbnBwK1JkRENhbXFQKzljR3ZOdjlLY2FNQnZaUkJ4dW1pSzEzTmE2dHNFSmhpMHJUK1J5cVEveW5uUkJ1ZDVpK1ZQYldUMnJtdkJCVXZiaHdvU2pTWkg1L0Z5NjN4K3ZQWWlsdjcyWFdKL3NvbnZkWWpPOHpCMy9WeGVPUEFFay9LL3hYV2pieUh2R29PZHF3K1Z6aGdRWTMzb01hNmd0Y0tUcCtoM3ZlSGFDNmR6MjVCNStMMStUZ3RkUVBISkZ2Z2M0czlaek4vd09Cc2lLOG0wc2tpWkZGbDJEaXU3bHZMQ21wY3dyMW1nM0U5RWlMMEZFUUZSaHU2bGl0ZCsveTYvMmpxZGxKUEFid1ZJbWRTSHpoaEwyY1RjQ0pibDRlb0JOM0JWMVZVOHNmTXA1bXo1Q1VPenFwbGJ2WUNSMXhYZ0c5TnpuLzlmS05jMUJrdHJYbjF1S1NkT0hFY3dsSU5ySEpLTGJONStzbzZzUUJZbjNCUENSR0R0alMxY3UvNmJkS2NpMkQwMVJab29IUXA5eGN3OWFRRmpiaTdBS2lGZEtLbFBvZ2YwTUg3MGZXaCtIUFpFYWluUVJleFh1MmxQdFpDaE0vRnE3NkVvU04vb0hQeFdKcTQ0UExEbjE2eU52TTdHOEJwQ3ZrSm1EWDZBcXVrRmVNY1ljRFdpRE9JWXRHWDNXcEF4QmlOZ1c1b2xDNWR5NjYxL1l2bWJFMEJBWStHLzBEQSt1NXp1V2xCNWhzNkhOSS9VM2tOTG9wRWNPNFFyVHM4eGFlR2FPQzF1STd2MzdHWG9HNFZrWDJ3UVVTajFLU1F4U1VKOHYrQ3VWYlN1RmQ3WnZKSmxqYyt4cW1zWmphbDZMR3d5ZEFCTFdSZ3hoOURYU2hOMUlvaGwrSFg1UEM2NjRreXNiN2FpRXg0OGhkbWtEblRnTkhmaXJ4NkVFVUFFcFJXNlozVnZMMS9GeFpmTVFpdll1UEVKc2tJaFJOTHZOa29RWTBpK2J2SDhQYXY0NWZaTDhSRkFlbkxLVWhaaHA0MGhtWlhjT1BoZXhsOVFSWENhd1E3cWorV0FEeWxDeWdzWlpRcktESUVwbWdHYlQrYXMxU2RUKzI0TEsycGZaVm5iMzNnL3RwYXdHOGFuTXZEcGpFUGlwcXNkcnVsL00xUFBQaFBmeFM3dVhrTnkwMTcwNlVOeDkzV2l4S0NVd2xJZnNOT2F0OWJ4WDNjOXlrdlB2a1ZaWGdIRnVUbXNlM01Eazg2ZmpDdGdLZEJpUUJsaXF6U1A3cjBmMTdnb0sxMGRpZ2dkYmd0bjVrL2orcEczTS9TeWJIeVREZW9URnJrZkxZcEt1cUpLMzFmU3V5ek5GczY3MExvYWFqYTl6MnYxei9OV2VBbDdranRRYUJKdW5DbUZsekhuak44UXVzSEJ6cklRRlBFMXV4RU00cmo0aHhSUjM5SE1uTm56eU0vUFkxdmRQcGErdUlyQldmbE1QUFU0c283SlI3SURGRVVjWnM2K0JKMmRCNmtZcjI1dVkyOHN4YkVtbnovZmZ3c0xWdjJWdk13UU1hY2JvMXltbDF6UGpCT3ZKZjhINEJsbVVKOUNQL3hvVFZEMXlOZ0NpRVlwVUlXQzkyeEQwVGMwL2JaWGNjbzdWZXhiTzVQVk8xYXcrTUFDSWlyTXowZk9KbStHWUdVSjBmWDdVRkVITWl5TVl6Qjd1MGhrZXVrM3RJUng0MGZ5azUvZVM3N2w1NG96SjFOU2ZReE9Xd0tuTUlkY1Y3RnlkUTNXaTFzcHJ4aENjM3VNY0pkaWRKRm1sVTV3L0tpeFBMTnlFZDF1bUZ4dkliODQ1azZtbkhNYUdaY2JQTG5xWThuMjA0bWloNk1vQ2hFTHJZRVJoc0FJWWRnRkdRemRlQmJucmo2TDFocVhBVmRZZUVwQlVoYWVma0ZNU3hTUkh2bXF0aHRYS2J6VkpjeVllU241ZVVIZWZPWTlQS2VVWVNLR1pRdVdJMTZiYURUS3puQUxGMlgvZ0pJY0x5YVZvQ05zU0NRVnJpUVpGaGhGU2lVWmxUV0JtNGJkelpqdkRzQjd2b09sN1Y1cWROK3J3Z2VqQXNEb05EYlpBaE1NQlJNVXVZMFdkbEg2ZnE0OEdrOUpIcFRrQVpEcWpKRDBXS1NXN1NaUjE0b3E2NGNMck51OG5XOFBIOGg3SzJ0NHY2T0poT3ZnT0liaDVTVk1HVHNBZjJHQTQwdDlyQTEyc3FmTDRleGlIM3BGS2RjZU00dUxSMTlKK1hRdjl2RXVXdXdlWGZMemJvd2M1SXFQeWpmcERaNUJTQjFvUndYOGVBSmVwcDQzazVlWHJxRTBsRTlUTElMWDY4RzJiQkt4T1AwSGx6THpyanRJdUliSnd3TlVEODN0K1lETnZ2dkJib1Q4bjRDblJJNjRhWEprZllIRG8rSWY5WG9sNlROVkFYalJLSHpGSVFCYTl0VlRzN0dXN093ZzdXNlNESjhQSTRLSXdSVWh3elo4NTlnQTdVbk5NK3ZDTkhjYi9Ga0JSdmF6NkRjMUEwSUdUNWJ1azQ1UjN6VkdWTzlkVDBhaTFDeEpZRkFNSFI5UHA0VnRvejJHRzY2ZlMydHJGMW5CUUU4aDFEdGN4RWtSeXRLRUFubGM3VmZjK1dJakJUVUwyVFIyTEpkK1p4UUIyNWZ1TitvdlZXZElRS1Y2Y3NLbXUxVm8zV21UY0tGMWY0cXNmaFpkM1YzY2RzOHMxbTE2bDd4UUNOZjk4R2lDVWtKSytYbDJWWUorT1UyTUx2Y1FzZ3lobG5yMk5WWFNHWGJ4aDNxaTc4dlVHb3UzZGxQM2lrTzhTekZ3QWhSV0NjTk9jUkNsR0RqR2oyVVp2ai8xZGdZNjVSU05MT0wxdXRkUmx1NkZuMVkyVHNvd3NIOHVGUU85ZUVpU21aM0J0Rk9LZVNIMFE2WU44MUdjNyszVGx2RVJBNUFtUVVQN1ZvWFZXUThWc0g3K1lQcFh4bkdWSnFQUXhSdjBjKy90ajdEb2xiZTQ3Znpacks5Ymo0Z2hPNnNRZzBtN294Uk9Lb0dSTG14ZkRtMmRGaDJkaHV5Y0pNUEtndnlzTEFER1pjTzJkdloxdW93czlsSTZJQWVVOWNVQ2NGQzA4dWNhV2lLRm1DMkdmdVVPUmNkWnVBNDBiZkx4OHYxN3VIZnVFMlFvVFgxclBhMlJKc3BMUjZOc203Z1RCY3ZDVVNtQ29YekNxOThtSjJoVDB0K0g0OFI0N0xWT1JwWEh5Y215YUF5bjJOS1VaRVEveGJNMWNYNWNrSUhsei9pQ1U2Q25yczhaNWdXdGNDS0t2RXFEbFdFaFFMK1JBWmJjK0FaV09KZHhnMGV6WXR2ZmlSS2xNRmpPanIzcktTNFpRbWRIQ3laczRmSDZRSHVwSGxGSVdZbWZzcElDcXN1NldMYzlTa3VieS82d3dVSlRGQlMyTm9PWUkyK1A5VmwzV0h0ODVGVmtVampXVDZJVDF2L1dwZWFSRkc0a3hmczdheGhYTVptckx2d0YwVlNLdG1RN2tuSVlXREtjd3V3U0JnMnNJdFMvRkJzYjI5THNyRzBnMFIwbEZVdlMzT2JpSkRYakJudVpjVTR1RllVMk5RMmFTWU16c1AzZUkrMk05ZkY4Z0ZHZ1hQWXVGdktIdVhRMmFkbzNPTFIzZHBEanEyVGp0clZFblM1c254Y2xnZ2Jpc1M0c3J4L3hkaUdPSWpQRHg2TG5WakZrekZZR2xRMml0akdKTDZDSXBCd3VQTWZIT1JQOGgwMWdXRWRNaFgwN2VLSUFaVk15U1lqVVdjUjJXOFFhRlk2cmVHL0hXL3p0emNlSXBicVJwQ0hvemVSQTIxNjI3VmxQN2U0Tk5PM2ZqU1VLUzl2WXR1S0c2MzVJdkhFWjB5Wm5VeFEwSER2WVJxRnh4Y0xnUWZwb3VNM3Vjd0RRNUF6THdwc2J3MGlLcm5mOFdFMUZiTzFhVElHM21QUE8vU20xZGUvUkZtNWdTUDR3NHFra2VEU2lGYUJKSldQRVluRm1YSFk2azg4YVMrblFUQ3FHMjJCNUFkMmpKWHdaSjBSNmowUGhMN0R3aHJ3VVQ5R2NkOGxJVWdraGxEZUFnRCtmY0ZNSGRjMDdhRW9KcVdBaDlTMzdxS3ZmeE81OU5iUzNkM0xldWVQNXc2TjNVRHEwSENNS3NmeklaelFsMVhkdkZjRk5KQUdIYUcyQ1hROUMzUU11NGMxUkxwOTVPc2VPTHFlcHRZSE1MRCtGL1Vzd0NjM0ljODVrM0tYblkrSWVVT204enNzTE11dm1xekVDcm12UTZqT1pqZXA3QU1RWTltemZ3OTRkOVRUWGJTZjMxTytSTi82WDdQcExnSTdGMmZ6OHJKOFRpYmV4Y09GOTdHK3V3Zlo2RU1jRkkzZzhIankyVFVON0crZWVQWTRSWTZwQURKYWx2MExEMGlLa29uRWNrc1MySm9tOXV4RTNwZkgwSDBmbXNRa0N2bXlXclZ6QkwyNjRtODNiMHVKcWZ0NHcvTUZjV2c1c0p1bDBNbjVjQmZNZW5rVjU1WkFlcFZkOU5hZkZUVEpGYkkrTmlDR2pMSW5seVRpa0hrZmEybGowOUd1c1h2MCtqUWRhU2NhVGhBcHptRGJ0ZE03OTFxbllHUUg0L3pFdWJ6N0lNdmxnRmtoci9YRzl5bDV0OGM4REFPZXo5ci9YdjQzQkdPa1JVMVNQdEoxV25yVlNId3ZRMFI5TTBQZWpzc3M1YWh6OTJkeFJPMnBIN2FoOUhlMS9BRC9QbDBmNFByak5BQUFBQUVsRlRrU3VRbUNDIj4KPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL2ZvbnRzLmdvb2dsZWFwaXMuY29tL2NzczI/ZmFtaWx5PUpldEJyYWlucytNb25vOndnaHRANDAwOzUwMCZmYW1pbHk9Tm90bytTYW5zK1RDOndnaHRANDAwOzUwMDs3MDA7OTAwJmRpc3BsYXk9c3dhcCI+CjxzdHlsZT4KLyogTGF5b3V0OiBkYXJrLW5hdnkgd29ya2JlbmNoIOKAlCByb3VuZGVkIGJyYW5kIGhlYWRlciwgbnVtYmVyZWQgdGFiIHJhaWwgd2l0aCBvbmUgZ3JlZW4gYWN0aXZlIHRhYiwgc3BsaXQgZWRpdG9yL3ByZXZpZXcgYmVsb3cgKi8KOnJvb3R7CiAgLS1iZzojZjFmM2Y4OyAtLWhlYWQ6I2ZmZmZmZjsgLS1yYWlsOiNlNmU5ZjE7IC0tcGFuZWw6I2ZmZmZmZjsgLS1wYW5lbC0yOiNmNmY3ZmI7CiAgLS1pbms6IzFkMjQzMzsgLS1tdXRlZDojNWY2ODgwOyAtLWxpbmU6I2Q2ZGJlNjsKICAtLWdyZWVuOiM0NmE5NTc7IC0tZ3JlZW4taW5rOiNmZmZmZmY7IC0taW5kaWdvOiM0ZjU1Yzk7IC0tYmFkZ2U6I2UzZTRmYjsgLS1iYWRnZS1pbms6IzNhM2ZhODsKICAtLW51bTojZDlkZGU4OyAtLWNvZGU6IkpldEJyYWlucyBNb25vIix1aS1tb25vc3BhY2UsTWVubG8sQ29uc29sYXMsbW9ub3NwYWNlOwogIC0tdWk6Ik5vdG8gU2FucyBUQyIsIlBpbmdGYW5nIFRDIiwiTWljcm9zb2Z0IEpoZW5nSGVpIixzeXN0ZW0tdWksc2Fucy1zZXJpZjsKfQpAbWVkaWEgKHByZWZlcnMtY29sb3Itc2NoZW1lOmRhcmspezpyb290Om5vdChbZGF0YS10aGVtZT0ibGlnaHQiXSl7CiAgLS1iZzojMTQxODI0OyAtLWhlYWQ6IzFmMjUzNTsgLS1yYWlsOiMyODMwNDM7IC0tcGFuZWw6IzIyMmEzYjsgLS1wYW5lbC0yOiMxYjIxMzE7CiAgLS1pbms6I2U0ZThmMjsgLS1tdXRlZDojOWFhM2I4OyAtLWxpbmU6IzM0NDA1NzsKICAtLWdyZWVuOiM0Y2FmNTU7IC0tZ3JlZW4taW5rOiNmZmZmZmY7IC0taW5kaWdvOiM2YzcyZjA7IC0tYmFkZ2U6IzJmMzU2NjsgLS1iYWRnZS1pbms6I2MzYzZmZjsgLS1udW06IzMyM2I1MTsgY29sb3Itc2NoZW1lOmRhcmt9fQo6cm9vdFtkYXRhLXRoZW1lPSJkYXJrIl17CiAgLS1iZzojMTQxODI0OyAtLWhlYWQ6IzFmMjUzNTsgLS1yYWlsOiMyODMwNDM7IC0tcGFuZWw6IzIyMmEzYjsgLS1wYW5lbC0yOiMxYjIxMzE7CiAgLS1pbms6I2U0ZThmMjsgLS1tdXRlZDojOWFhM2I4OyAtLWxpbmU6IzM0NDA1NzsKICAtLWdyZWVuOiM0Y2FmNTU7IC0tZ3JlZW4taW5rOiNmZmZmZmY7IC0taW5kaWdvOiM2YzcyZjA7IC0tYmFkZ2U6IzJmMzU2NjsgLS1iYWRnZS1pbms6I2MzYzZmZjsgLS1udW06IzMyM2I1MTsgY29sb3Itc2NoZW1lOmRhcmt9CgpodG1sLGJvZHl7aGVpZ2h0OjEwMCV9CmJvZHl7YmFja2dyb3VuZDp2YXIoLS1iZyk7Y29sb3I6dmFyKC0taW5rKTtmb250LWZhbWlseTp2YXIoLS11aSk7ZGlzcGxheTpmbGV4O2ZsZXgtZGlyZWN0aW9uOmNvbHVtbn0KKntib3gtc2l6aW5nOmJvcmRlci1ib3h9Ci53cmFwe3BhZGRpbmctbGVmdDptYXgoMTZweCxlbnYoc2FmZS1hcmVhLWluc2V0LWxlZnQsMHB4KSk7cGFkZGluZy1yaWdodDptYXgoMTZweCxlbnYoc2FmZS1hcmVhLWluc2V0LXJpZ2h0LDBweCkpfQoKLyogaGVhZGVyIGJhbmQ6IG9uZSBjb21wYWN0IHJvdyAqLwoudG9we2JhY2tncm91bmQ6dmFyKC0taGVhZCk7Ym9yZGVyLWJvdHRvbToxcHggc29saWQgdmFyKC0tbGluZSl9Ci50b3AgLndyYXB7cGFkZGluZy1ibG9jazo1cHg7ZGlzcGxheTpmbGV4O2FsaWduLWl0ZW1zOmNlbnRlcjtnYXA6OHB4IDEycHg7ZmxleC13cmFwOndyYXB9Ci5icmFuZHtkaXNwbGF5OmZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2dhcDo4cHg7bWluLXdpZHRoOjA7ZmxleC1zaHJpbms6MH0KLmxvZ297d2lkdGg6MjZweDtoZWlnaHQ6MjZweDtib3JkZXItcmFkaXVzOjdweDtiYWNrZ3JvdW5kOiNmZmY7cGFkZGluZzoycHg7ZmxleC1zaHJpbms6MH0KLmxvZ28gaW1ne3dpZHRoOjEwMCU7aGVpZ2h0OjEwMCU7ZGlzcGxheTpibG9ja30KLmJyYW5kIGgxe21hcmdpbjowO2ZvbnQtc2l6ZToxNXB4O2ZvbnQtd2VpZ2h0OjkwMDtsZXR0ZXItc3BhY2luZzouMDRlbTt3aGl0ZS1zcGFjZTpub3dyYXB9Ci5icmFuZCBwe21hcmdpbjowO2ZvbnQtc2l6ZToxMXB4O2NvbG9yOnZhcigtLW11dGVkKTt3aGl0ZS1zcGFjZTpub3dyYXB9Ci5yaWdodHtkaXNwbGF5OmZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2dhcDo2cHg7bWFyZ2luLWxlZnQ6YXV0b30KLnNlZ3tkaXNwbGF5OmZsZXg7cGFkZGluZzoycHg7Ym9yZGVyOjFweCBzb2xpZCB2YXIoLS1saW5lKTtib3JkZXItcmFkaXVzOjk5cHg7YmFja2dyb3VuZDp2YXIoLS1wYW5lbC0yKX0KLnNlZyBidXR0b257Ym9yZGVyOjA7YmFja2dyb3VuZDp0cmFuc3BhcmVudDtjb2xvcjp2YXIoLS1tdXRlZCk7Zm9udDo1MDAgMTJweCB2YXIoLS11aSk7cGFkZGluZzozcHggOXB4O2JvcmRlci1yYWRpdXM6OTlweDtkaXNwbGF5OmZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2dhcDo0cHg7Y3Vyc29yOnBvaW50ZXJ9Ci5zZWcgYnV0dG9uW2FyaWEtcHJlc3NlZD0idHJ1ZSJde2JhY2tncm91bmQ6dmFyKC0tcmFpbCk7Y29sb3I6dmFyKC0taW5rKTtmb250LXdlaWdodDo3MDB9Ci5zZWcgc3Zne3dpZHRoOjEzcHg7aGVpZ2h0OjEzcHh9Ci5iYWRnZXtkaXNwbGF5OmZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2dhcDo2cHg7YmFja2dyb3VuZDp2YXIoLS1iYWRnZSk7Y29sb3I6dmFyKC0tYmFkZ2UtaW5rKTtmb250LXdlaWdodDo3MDA7Zm9udC1zaXplOjExcHg7cGFkZGluZzo0cHggMTBweDtib3JkZXItcmFkaXVzOjk5cHg7d2hpdGUtc3BhY2U6bm93cmFwfQouYmFkZ2U6OmJlZm9yZXtjb250ZW50OiIiO3dpZHRoOjZweDtoZWlnaHQ6NnB4O2JvcmRlci1yYWRpdXM6NTAlO2JhY2tncm91bmQ6dmFyKC0taW5kaWdvKX0KCi8qIHRhYiByYWlsICovCi5yYWlse2Rpc3BsYXk6ZmxleDtnYXA6M3B4O2JhY2tncm91bmQ6dmFyKC0tcmFpbCk7cGFkZGluZzozcHg7Ym9yZGVyLXJhZGl1czoxMHB4O2ZsZXg6MSAxIGF1dG87bWluLXdpZHRoOjA7b3ZlcmZsb3cteDphdXRvO21heC13aWR0aDo1NjBweH0KLnJhaWwgYnV0dG9ue2JvcmRlcjowO2JhY2tncm91bmQ6dHJhbnNwYXJlbnQ7Y29sb3I6dmFyKC0tbXV0ZWQpO2ZvbnQ6NzAwIDEyLjVweCB2YXIoLS11aSk7cGFkZGluZzo0cHggMTBweDtib3JkZXItcmFkaXVzOjdweDtjdXJzb3I6cG9pbnRlcjsKICBkaXNwbGF5OmZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2p1c3RpZnktY29udGVudDpjZW50ZXI7Z2FwOjZweDt3aGl0ZS1zcGFjZTpub3dyYXA7ZmxleDoxIDAgYXV0b30KLnJhaWwgYnV0dG9uIC5ue3dpZHRoOjE3cHg7aGVpZ2h0OjE3cHg7Ym9yZGVyLXJhZGl1czo1MCU7YmFja2dyb3VuZDp2YXIoLS1udW0pO2Rpc3BsYXk6Z3JpZDtwbGFjZS1pdGVtczpjZW50ZXI7Zm9udDo1MDAgMTBweCB2YXIoLS1jb2RlKTtjb2xvcjp2YXIoLS1pbmspO2ZsZXgtc2hyaW5rOjB9Ci5yYWlsIGJ1dHRvbjpob3Zlcntjb2xvcjp2YXIoLS1pbmspfQoucmFpbCBidXR0b25bYXJpYS1zZWxlY3RlZD0idHJ1ZSJde2JhY2tncm91bmQ6dmFyKC0tZ3JlZW4pO2NvbG9yOnZhcigtLWdyZWVuLWluayl9Ci5yYWlsIGJ1dHRvblthcmlhLXNlbGVjdGVkPSJ0cnVlIl0gLm57YmFja2dyb3VuZDpyZ2JhKDAsMCwwLC4xOCk7Y29sb3I6I2ZmZn0KQG1lZGlhIChtYXgtd2lkdGg6MTAwMHB4KXsuYnJhbmQgcHtkaXNwbGF5Om5vbmV9fQpAbWVkaWEgKG1heC13aWR0aDo2NDBweCl7LnJhaWx7b3JkZXI6MztmbGV4LWJhc2lzOjEwMCU7bWF4LXdpZHRoOm5vbmV9LmJhZGdle2Rpc3BsYXk6bm9uZX19CgpidXR0b246Zm9jdXMtdmlzaWJsZSx0ZXh0YXJlYTpmb2N1cy12aXNpYmxle291dGxpbmU6MnB4IHNvbGlkIHZhcigtLWluZGlnbyk7b3V0bGluZS1vZmZzZXQ6MnB4fQoKLyogd29yayBhcmVhICovCm1haW57ZmxleDoxO21pbi1oZWlnaHQ6MDtkaXNwbGF5OmdyaWQ7Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOm1pbm1heCgwLDFmcikgbWlubWF4KDAsMWZyKTtnYXA6MTBweDtwYWRkaW5nLWJsb2NrOjEwcHh9Cm1haW4ub25seS1jb2Rle2dyaWQtdGVtcGxhdGUtY29sdW1uczptaW5tYXgoMCwxZnIpfSBtYWluLm9ubHktY29kZSAucHZ7ZGlzcGxheTpub25lfQptYWluLm9ubHktdmlld3tncmlkLXRlbXBsYXRlLWNvbHVtbnM6bWlubWF4KDAsMWZyKX0gbWFpbi5vbmx5LXZpZXcgLmVke2Rpc3BsYXk6bm9uZX0KQG1lZGlhIChtYXgtd2lkdGg6NzYwcHgpe21haW57Z3JpZC10ZW1wbGF0ZS1jb2x1bW5zOm1pbm1heCgwLDFmcik7Z3JpZC10ZW1wbGF0ZS1yb3dzOm1pbm1heCgyNjBweCwxZnIpIG1pbm1heCgzNDBweCwxZnIpfQogIG1haW4ub25seS1jb2RlLG1haW4ub25seS12aWV3e2dyaWQtdGVtcGxhdGUtcm93czptaW5tYXgoNDIwcHgsMWZyKX0gYm9keXtoZWlnaHQ6YXV0bzttaW4taGVpZ2h0OjEwMCV9fQoucGFuZXtiYWNrZ3JvdW5kOnZhcigtLXBhbmVsKTtib3JkZXI6MXB4IHNvbGlkIHZhcigtLWxpbmUpO2JvcmRlci1yYWRpdXM6MThweDtkaXNwbGF5OmZsZXg7ZmxleC1kaXJlY3Rpb246Y29sdW1uO21pbi1oZWlnaHQ6MDttaW4td2lkdGg6MDtvdmVyZmxvdzpoaWRkZW59Ci5wYW5lLWhlYWR7ZGlzcGxheTpmbGV4O2ZsZXgtd3JhcDp3cmFwO2p1c3RpZnktY29udGVudDpzcGFjZS1iZXR3ZWVuO2FsaWduLWl0ZW1zOmNlbnRlcjtnYXA6NnB4O3BhZGRpbmc6NnB4IDEycHg7Ym9yZGVyLWJvdHRvbToxcHggc29saWQgdmFyKC0tbGluZSl9Ci5wYW5lLWhlYWQgaDJ7bWFyZ2luOjA7Zm9udC1zaXplOjE1cHg7Zm9udC13ZWlnaHQ6NzAwO2xldHRlci1zcGFjaW5nOi4wNWVtfQoucGFuZS1oZWFkIHNtYWxse2NvbG9yOnZhcigtLW11dGVkKTtmb250OjEycHggdmFyKC0tY29kZSk7Zm9udC12YXJpYW50LW51bWVyaWM6dGFidWxhci1udW1zfQouYWN0c3tkaXNwbGF5OmZsZXg7ZmxleC13cmFwOndyYXA7Z2FwOjZweH0KLmJ0bntmb250OjUwMCAxM3B4IHZhcigtLXVpKTtjb2xvcjp2YXIoLS1pbmspO2JhY2tncm91bmQ6dmFyKC0tcGFuZWwtMik7Ym9yZGVyOjFweCBzb2xpZCB2YXIoLS1saW5lKTtib3JkZXItcmFkaXVzOjEwcHg7cGFkZGluZzo3cHggMTJweDtjdXJzb3I6cG9pbnRlcjtkaXNwbGF5OmlubGluZS1mbGV4O2FsaWduLWl0ZW1zOmNlbnRlcjtnYXA6NnB4fQouYnRuOmhvdmVye2JvcmRlci1jb2xvcjp2YXIoLS1tdXRlZCl9Ci5idG5bYXJpYS1wcmVzc2VkPSJ0cnVlIl17YmFja2dyb3VuZDp2YXIoLS1ncmVlbik7Ym9yZGVyLWNvbG9yOnZhcigtLWdyZWVuKTtjb2xvcjp2YXIoLS1ncmVlbi1pbmspfQprYmR7Zm9udDoxMXB4IHZhcigtLWNvZGUpO2JvcmRlcjoxcHggc29saWQgY3VycmVudENvbG9yO2JvcmRlci1yYWRpdXM6NHB4O3BhZGRpbmc6MCA0cHg7b3BhY2l0eTouNzV9CgouZWRpdG9ye2ZsZXg6MTttaW4taGVpZ2h0OjA7ZGlzcGxheTpmbGV4fQouZ3V0dGVye2JhY2tncm91bmQ6dmFyKC0tcGFuZWwtMik7Y29sb3I6dmFyKC0tbXV0ZWQpO2ZvbnQ6MTNweC8xLjcgdmFyKC0tY29kZSk7dGV4dC1hbGlnbjpyaWdodDtwYWRkaW5nOjE0cHggMTBweDt1c2VyLXNlbGVjdDpub25lO292ZXJmbG93OmhpZGRlbjt3aGl0ZS1zcGFjZTpwcmU7Ym9yZGVyLXJpZ2h0OjFweCBzb2xpZCB2YXIoLS1saW5lKTttaW4td2lkdGg6My40ZW07Zm9udC12YXJpYW50LW51bWVyaWM6dGFidWxhci1udW1zfQp0ZXh0YXJlYXtmbGV4OjE7bWluLXdpZHRoOjA7Ym9yZGVyOjA7cmVzaXplOm5vbmU7YmFja2dyb3VuZDp0cmFuc3BhcmVudDtjb2xvcjp2YXIoLS1pbmspO2ZvbnQ6MTNweC8xLjcgdmFyKC0tY29kZSk7cGFkZGluZzoxNHB4O3doaXRlLXNwYWNlOnByZTtvdmVyZmxvdzphdXRvO3RhYi1zaXplOjJ9CnRleHRhcmVhOjpzZWxlY3Rpb257YmFja2dyb3VuZDp2YXIoLS1ncmVlbik7Y29sb3I6I2ZmZn0KCi5oaW50e3BhZGRpbmc6OHB4IDE0cHg7Zm9udC1zaXplOjEycHg7Y29sb3I6dmFyKC0tbXV0ZWQpO2JvcmRlci10b3A6MXB4IHNvbGlkIHZhcigtLWxpbmUpO2JhY2tncm91bmQ6dmFyKC0tcGFuZWwtMil9Ci5zdGFnZXtmbGV4OjE7bWluLWhlaWdodDowO2Rpc3BsYXk6ZmxleDtqdXN0aWZ5LWNvbnRlbnQ6Y2VudGVyO2JhY2tncm91bmQ6dmFyKC0tcGFuZWwtMik7b3ZlcmZsb3c6YXV0b30KLmRldmljZXt3aWR0aDoxMDAlO2hlaWdodDoxMDAlfQouc3RhZ2UgaWZyYW1le2JvcmRlcjowO3dpZHRoOjEwMCU7aGVpZ2h0OjEwMCU7YmFja2dyb3VuZDojZmZmO2Rpc3BsYXk6YmxvY2t9Ci5zdGFnZS5waG9uZXtwYWRkaW5nLWJsb2NrOjE4cHh9Ci5zdGFnZS5waG9uZSAuZGV2aWNle3dpZHRoOjM5MHB4O21heC13aWR0aDoxMDAlO2hlaWdodDo3NjBweDttYXgtaGVpZ2h0OjEwMCU7Ym9yZGVyOjEwcHggc29saWQgIzBkMTAxODtib3JkZXItcmFkaXVzOjMwcHg7b3ZlcmZsb3c6aGlkZGVufQouc3RhZ2UuZnVsbHtwb3NpdGlvbjpmaXhlZDtpbnNldDowO3otaW5kZXg6MjA7cGFkZGluZzplbnYoc2FmZS1hcmVhLWluc2V0LXRvcCwwcHgpIGVudihzYWZlLWFyZWEtaW5zZXQtcmlnaHQsMHB4KSBlbnYoc2FmZS1hcmVhLWluc2V0LWJvdHRvbSwwcHgpIGVudihzYWZlLWFyZWEtaW5zZXQtbGVmdCwwcHgpfQouZXhpdGZ1bGx7cG9zaXRpb246Zml4ZWQ7dG9wOmNhbGMoMTJweCArIGVudihzYWZlLWFyZWEtaW5zZXQtdG9wLDBweCkpO3JpZ2h0OmNhbGMoMTJweCArIGVudihzYWZlLWFyZWEtaW5zZXQtcmlnaHQsMHB4KSk7ei1pbmRleDoyMX0KCmZvb3RlciAud3JhcHtwYWRkaW5nLWJsb2NrOjAgMTRweDtmb250LXNpemU6MTJweDtjb2xvcjp2YXIoLS1tdXRlZCl9CgovKiB0b2FzdCBzbGlkZXMgZG93biBmcm9tIHRoZSB0b3AgKi8KLnRvYXN0e3Bvc2l0aW9uOmZpeGVkO2xlZnQ6NTAlO3RvcDpjYWxjKDE2cHggKyBlbnYoc2FmZS1hcmVhLWluc2V0LXRvcCwwcHgpKTt0cmFuc2Zvcm06dHJhbnNsYXRlKC01MCUsLTE0MCUpO2JhY2tncm91bmQ6dmFyKC0taGVhZCk7Y29sb3I6dmFyKC0taW5rKTsKICBib3JkZXI6MXB4IHNvbGlkIHZhcigtLWxpbmUpO2JvcmRlci1sZWZ0OjRweCBzb2xpZCB2YXIoLS1ncmVlbik7cGFkZGluZzoxMHB4IDE2cHg7Ym9yZGVyLXJhZGl1czoxMnB4O2ZvbnQtc2l6ZToxNHB4O2JveC1zaGFkb3c6MCA4cHggMjRweCByZ2JhKDAsMCwwLC4zKTsKICB0cmFuc2l0aW9uOnRyYW5zZm9ybSAuM3MgY3ViaWMtYmV6aWVyKC4yLC45LC4zLDEuMik7ei1pbmRleDozMDttYXgtd2lkdGg6Y2FsYygxMDAlIC0gMzJweCl9Ci50b2FzdC5vbnt0cmFuc2Zvcm06dHJhbnNsYXRlKC01MCUsMCl9CkBtZWRpYSAocHJlZmVycy1yZWR1Y2VkLW1vdGlvbjpyZWR1Y2Upey50b2FzdHt0cmFuc2l0aW9uOm5vbmV9fQouc2hvdHtwb3NpdGlvbjpmaXhlZDtpbnNldDowO3otaW5kZXg6MjU7YmFja2dyb3VuZDpyZ2JhKDEwLDEyLDIwLC42KTtkaXNwbGF5OmZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2p1c3RpZnktY29udGVudDpjZW50ZXI7CiAgcGFkZGluZzpjYWxjKDE2cHggKyBlbnYoc2FmZS1hcmVhLWluc2V0LXRvcCwwcHgpKSBtYXgoMTZweCxlbnYoc2FmZS1hcmVhLWluc2V0LXJpZ2h0LDBweCkpIGNhbGMoMTZweCArIGVudihzYWZlLWFyZWEtaW5zZXQtYm90dG9tLDBweCkpIG1heCgxNnB4LGVudihzYWZlLWFyZWEtaW5zZXQtbGVmdCwwcHgpKX0KLnNob3QtY2FyZHtiYWNrZ3JvdW5kOnZhcigtLXBhbmVsKTtib3JkZXI6MXB4IHNvbGlkIHZhcigtLWxpbmUpO2JvcmRlci1yYWRpdXM6MThweDt3aWR0aDptaW4oOTAwcHgsMTAwJSk7bWF4LWhlaWdodDoxMDAlO2Rpc3BsYXk6ZmxleDtmbGV4LWRpcmVjdGlvbjpjb2x1bW47b3ZlcmZsb3c6aGlkZGVufQouc2hvdC1ib2R5e292ZXJmbG93OmF1dG87cGFkZGluZzoxNHB4O2JhY2tncm91bmQ6dmFyKC0tcGFuZWwtMik7bWluLWhlaWdodDowfQouc2hvdC1ib2R5IGltZ3tkaXNwbGF5OmJsb2NrO21heC13aWR0aDoxMDAlO21hcmdpbjphdXRvO2JvcmRlcjoxcHggc29saWQgdmFyKC0tbGluZSk7Ym9yZGVyLXJhZGl1czo4cHh9Cjwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CgoKPGRpdiBjbGFzcz0idG9wIj48ZGl2IGNsYXNzPSJ3cmFwIj4KICA8ZGl2IGNsYXNzPSJicmFuZCI+CiAgICAgIDxkaXYgY2xhc3M9ImxvZ28iPjxpbWcgc3JjPSJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQUtBQUFBQ2dDQVlBQUFDTHoyY3RBQUJEVlVsRVFWUjQydTJkZDVnY3hiWDJmMVhWM1pObk5rc3JhWVVFQ0FtaFFNWmdnZzNZZ0hFMk5oampqSEc2OXIzK3JuUE9GeHZuaERQTzJJQU5KdWNjSlNFUVFTaG5hWE9hbmRqZFZmWDkwYk5CSUxCRWxHQU96enk3ajVqZDdhbCsrOFQzbkFOMXFVdGQ2bEtYdXRTbExuV3BTMTNxVXBlNjFLVXVkYWxMWGVwU2w3clVwUzUxcVV0ZDZsS1h1dFNsTHMraUNHdXRVeitHdXRTbExpOVpEZmorK2pIVTVZVUVvSzBmUTExZUtIR0FzSDRNZGFscndMcThKRVhXajZBdWRRRFdwUTdBdXRTbERzQzYxQUZZbDdyVUFWaVhPZ0RyVXBjNkFPdkNTNkVTVXBkblV5YW05VVg5T09vQWZLNkJacU52eFNqZzZxQ3JBL0E1QVpzRmEwR0l4d0ZOYkk4NVV3QmRBWlVCR2R1RjN5L3F0ZUM2MkhHTkJoUEF0Z014WmRCNXFIYUMzMldwYnJYNGZaYWd6NkR6aXNSZWdvNVBDb1M3aytiNEpRckNseTRBYXhydFB3SE5oaEFPUXRBSC9qWkx0Y3RTN1l6QUZnNVpDQ1NFRXM4UktBVXhEeW9DU2tPR1NXK1dOTDhKTUU4UjdsbW9ib1BZMUpjbUVGKzZKbGpVZ0RjQkNPRUFoSG1vYkxRRXZWRFpZZ2dHSTdEaFN3Z0VycEk0Q2hJZXFCajRIdmpXMGxYZXdrQ2xqK1ZkU3ptOCtaWHMzVENUdm1zMTZZTVVzUmxQQXF6YXYvWDgxUktmTG1nOW8vWWU4OUxKVDd4a0FSajBRSGsxK0QxRTVyTmZFL1JIcHBWQW9SQjRyc0p6SU9WQzRFQUFkSmM3R2ZUNzJEaXdoZzNGbFd3dXJxVzMzRWwzWlJzbFhXRElIK0NvMWhQNThlRi93NGFXN3I5YU9qNGpFSElIcGxqVU5MR0d2bjliL0I2WTlDNkIwd0RXTVA0emRRQytDS0xWMm8wZnZiRkR0MEx2UHkweUNZNFV4RjJIdUFzMkNSVURoYkRBdXRJR09vZTNzQ3Evak41S0QxdEs2K2d1YjJFNEdDQTBJYUVOY0tXSEZBcFhlTGpDb3oweG5mdjc3K0NpOVgvaTNmdStoNzZWSVlQWE9UU2RXdE5zWW52dFo2cWdSOEJwZ0pFSEROV3RndmIzU1JLem4zanRkUjl3VDVNZG1iTGF2MVUzd3NiL016aWVZS2c2eU1yOFE2d2ZXY25XMGdiV0ZSNWp5QitncjlwRllId0M0Nk9FZ3lOY1hPbWloSXNRQW9IQVlpSThXWXZGSWhBWWExQlM4ZlBETDJQdjFENlVRODJNTHloaUhST3VxUWJBY0FnMmZ0V2lLeENMQ2Z3eWFBeVQzaXBwZk5WVGZJNDZBUGNNcmVkdklkSnlqWS9USmhZMmZ0dGdOMHBXKzZzNDU1NlRDRXlBRUFKWGVDaWhjS1ZYQTVyRTFrTGtVYUE5bFNpaEdBbUdPYXpsT0g1dzZCOG9GUXlwMllxT1Q0bngrbE1OZ0VFL2JQaUt3YkdTTlNNcm1KcWFRY2FKa3g4T2FUckdZZEpaSUJNdlhoQys2RDZTTmVONXV1RmJZY05YTElQWFd4RGpVZS9vZTlJTEpPV3FZWFp1UHc1cU9vcVlpdFBvdFpCd2tyalN3Mkl4MXFCdGlMRWFZODEvQkIrQXRwcU0yOEM5dlRmeHo0MFgwcGh6eUQrcUdid2hPbkZySHBmT0NRMEpCeTdmOG1jK3NlUnQ5Rlo3YUdweUdMZ3pZTlAvV2FxYkp2eWNyUU53dDg3aENRbGhQMno3cVdYckgwS3NzdVR2alZJcG91YjBqMGEvbVVOQkpBeWVoV1BhVHNZM2xWMEMybE5hZjZ0Sk9WbitzUFo3ck0xdklaVlI5RnltOGJkRjF6Z0t3ckFmQ0FTQmhlRmdrS1VEZC9HUlJXL2g3cDY3YUdsMnFXd3piRHpYa0wrakZwU0lGeGNJNVl2RzE2dHB2Znc5c09HYmh1R2xobHlEZzVlUStJT1JOaHpUZ3JXYjZMVkRhbTlKdVF5SHR4NVBnOXRDYUFMRXMrRDFXeXl1ZEJuMEIvajV5bS9nT0FKVHRmUmNhR0dDQmd5TGdCWm9vTS92SXVjMk1WRHQ1Vk5MMzhYdlZwMVBPcVZ3a0d6NVhValBYOEQ2dGM5aDZnRGNQYlJlelRmU2VlajZyV1hMcjBKRVJkTFVvUGozcGt0NFpPQkIwbWtZdUYyajh6VXRNaUVKblQ1UVV2RU4wMU5UbWR0d01CVlRSanhMK1E5dE5WbTNnZHQ3cnVMZm15NmhNZWN3L0tCbTZGWVFxdllSQWd0V1lDeFlZOUJXRTFNeFlqTEJMMVo5aXk4cy9TaGxteWViYytpOVBtVHplUmEvYzNzdFdnZmdDNm4xSkJTWHdjWnZXUWJ1MERRME9KVHNFTjk0NkhOOFpkazVYTEg1enloWEVQVEQ4SjIyRnJHT20rSDBnU0RUQnNmQ1VhMnZRdHZ3V2MxNkdLdEpxRFMvVzNNdUcwYzZTV1lsdlpkcWdxN29RVEFsa0VKUTBpVkt1b2dTQ20wMEFBMXVNN2QwWDg1SDduc0xqdzR1bzZYWm9ialdzUEgvRElVbDR3L1RubXlTNVI0YmFNam81dlg4eGJMcHh4bzlKR2hxY3JpOTYyWStkTjhiK2ZmbXY5QVduOG9kUGRmdzJOQnFVbW5KNEMwR1U1eFFBYkhndGtGeVgwbXBCRWUwdnBLVzJPUW9HbjZXWUdpeGVESkdYN1diWDZ6OEpwNHJDUXZRL2Jjb01Bb0dMRXBDTWN3ekVnNmhoRFAyazlxR1pOMG10cFRXOGQ5THp1U2k5UmVTeXlxRUw5ajhDMDNmSlJNcUxLWU93T2RINnhFOSthWGxVUnFsOTNwTk5xTXdxc3g1ajN5ZHp6LzRBYnJMVzhtNVRRZ0VoVERQWlp2K1FDd21xSFpEL3U1eFgzRFVER2NQa3ZpQnBpTTFtYm01ZzZqbzByTm1oaU5USEpKMUc3bWwrd3F1M253bGpRMks0UWMwaGNWUnJWbGFxT29LRlYxQkNMR2RRdE0ySks1U2dPVzd5ei9OdHg3NkhFWlZTYWNWM1plSGJQbUJqUUlaQ2VnNkFKOXpyV2RENkxzRU52MVFFM1FMV2xvY0h1aS9uNC9jOXhiK3Z1SFhKR1NTbUlxamJZaTJocFNUNWVidXkxazF2SkZrU2pKd2s4WlVJaTA0cXVOU0MwQmxMVUxEc1pOZVcwc29QeHZsWmpIQkZCc1NLc2t2Vm4yRlRZVXVraWxKOTBXYThocVFjYWlHRlVMakkzY1E1aHFya1VoeWJpUC8zdnhuUHI3b0ROYU9yS0c1T1VydmJQeTJvZmdJb1BZOGt5ejNsS1N5a0ZEWkFKdlB0WFJmSHBKTUtGVE1jUDVqUCtZVDk3K2Q5Y1dWTkhyTkdBeG16RHUzT01JbDd3OXk1WmEvRW84TEtwMldrVVUxTFZqNy9VNFRwR1pKeWlVNHBQbmxOTWZhQ0l6L2pNeXd4UkxhY094M1JGR3hSMSsxaDkrc09vK1lKd2xHTE5WdWkzS2hHSXpVcmxzODZlL1RWdFBnTmJNaXY0eVBMMzRyVjIrK2dzWUdCMU9BelQvU0RGdzFnYXRvNndCODlnSU5DNE5Yd2Naek5lWDFscFlXaHpYNUZmelA0alA0N1pyemNJUkxRaVhSTm55U2ZGeUc2N1pkd3ZxUlRoSnh4Y0FOQnV0SFduQVVxNW5ESk5WUU15WFp3aUZOeDFCK0JtWllXMDNHeVRFenZSKytxU0pydnllS2lodTV2dXNTYnVpOGpsek13Y2dRQ2ZSV3V3aHRWSW41VCtZODdXU282akpmZStpLytOR2ozMGE1bGtSYzBYMlJZZHN2UUJmMkhCREszVG1wakFSL0cydzV6N0x0SHlGeFI1RklTZjY4NXZkOGRQRnBQREswaEFhdmVjekVQWm5tY0tSTGY3V0hLN2Y4aldSU1VONWtHTGwvZTJXVG1ndE9rNFVRam00NzZSbVpYWXRGQ1ljM1RuczNqblMzdTdiUm9PVDgxZCtrdXp5RUt4MEVNQkQwMUhLUWNxY0Fyb1JEMnMzeTEvVy80Qk5MM2tGblpUT3BCc253SXNPbWIxdXFXL1lNRU1yZE9hazhkRE5zK0xaaFpJV2h1ZGxoYzNrZC83dmtYZnhveFpleDFwQjBNanZVZWsrOFlZYVVrK2FhYmY5Z2M3R1BXS3ltQmNQeGZKcktRV2FPb2xpQ2cxdU9ZbXB5QnI2dVBpMHpySkFVd2p5SE5CL0RRWTFIVVFvTHlGcml6MXBEVENiWVd0ckFiOVo4aDdoU2tYazE0UzVWWDBiTGhBMWVNdzhPM3NOSEY3MlY5Zm0xSkxNQ3Y5ZU1CeVIxQU82aTVwTVIrM2piVDZEclQ0YVlsV1F5aWtzMlhNaEg3bnNMaS9wdW84RnRSaUl4VnUvMEwzWmxqSjd5VnE3ZThuZlNLVUZwbmFINDBQWXBqUFJCZ3RDRXRNYXlMR3c4NHVrbnBVVk44d3FQMTAwNzZ3bkFHbzJLcjl6Nk4yN3R2b0dNSXlpRmhacjJzMDhqejVoRUNVbmFheUFvQ3RJSENtSjdqWjluSFlDNzBKZ3pjZzlzL0xwbDVFR0RteEZzcVd6Z1N3OThqSE1mL1JSVlhTSGo1dEEyM09WYXJiR2FwSlBtNnEwWDBsa2V3bk1VQTljWm1FRDhUQjBBYm90QUIvQ0tTYS9ERVdvOFY3TXJIOFdDSzF3cXBzVExXMS9CN094OEtycjRPUE5xY1lYSEwxZC9pNTVxaGY1S3p4TlNNRHQxQTRXaUVPUTVjZkliNlVnMjQ1dVFocVBrMkhYVWZjQ25jVVc2Q01RdGNTbTRhT01GWExyNUR6UjdiVkdWd09wbmtCQ09zNlcwZ1d1M1hrSTZJeWlzTXBRZUhVL3Z5QlNrNTByS0pjdjhwa09abHR5YnFxbjh4OEJnaDBwUWlGb0FCSytkOW83dGdwRlJueld1a213b3JPTDhWZDluTU94N1docFEyNUNNbStPRTlqZFJMa044bWlCNXdEZ3hvdzdBWFRCYldNZ2NBVlAvUzBBZ0tBZUdqODcrTEtkT1BaUCthcytFS3NFektZdWx1SExMWCttdkZIQ2xvdjg2czEyL1J1WVFRWWlteVV0eWFQT3hWRTBGK1RTUFNhSW9hVGgrMHV1Wm5wcEZSWmUzOHlsSFRmSFYyeTVrK2ZCU2trN3lTWU9wSFdzL1NVa1hPYkR4U1BiTHphSlVOalFjb1JEZWsyaS8zVEJIS0hlM1JpR3JJWDBRVERsYkVsYkFKY0hYRnY2RUkxdFBZQ2pvZjBZZ3RGaGlLczdHNG1wdTdMeUNURVpRV0c0b3I2eVJBeXdrOWdPM0ZiUVBSN1dkaUNNY25nbG5OekRRRWt0enlwUzNVZEdsN2JUZ3VNbTIrR0YxcHlMZ0hYMnFVNmFlZ1RLZ3NvYnNrUk02L1hiVTlpbnFBSHhxREtvSWhKa2pZT3Jaa2twWm8wU01ieXc4bjRNYWp5SWZET0k4UXhCNk1zNi9ObC9BVUZCR0NVWC90WGFzMmlJVGtGbWdLSllzQ3hvUFkyWjZEaFZUM2lGd2R2YUFTOXB5OHBTM01Ta3g5VWtUM0x0cTVnV1NxcTR3SXpXTHcxcVBvVkN3Wk9aTG5PWWRkT0JOOEsvMThPNmxDZVVMT2p2bHFVQm9JSE1VVERsTFVTbG80azZTYngvMEcrYmxEaVVmREQxdFRSaVZ4RktzRzNtTVd6dXZKWk1SakR5aXFhd2JwMGhsRGhJWXFjbTVIb2UxSEVkVlY1Nm1kb28wa1c5Q3BpYWFlZVdrMTFFTUMwOGJ6STgzdnhWZDVoV1RYa2VqR3ljVW10elI4b2xuWFBzKzZJTnR2N0lNM2JwNzVRZmxDeEhwN2d3UWhZdzBZZTU0bUh5R29wVFhaTDBzM3p6b2wreWRua014ekQ5dEVGb01ydlM0ZFBNRkZFTWZxU1VEMTQxZlVHSVd4Tm9GUVRXaWFNVlZZaGRTUGp0T1R2c0czakR0WFRSNFRUWEsxek96aGFFTmFQQ2FPSEhLbXltWElEbERrSnk5ZzlSTDdjejdMb255Qm9NM1dmenVDWDBwTHhrQTFoTE00Y0NFWkxQWk9VM1llREpNZXFOaVpGRFRrbWpqdXdkZndKVGtqS2NOUW1NTlNaWGlzZUVIdWFQN1pqSVpTZjRCSGZWZUFNS0R6QUpKc1d5WjEzQVFNOVA3VWRHN1pvWW51bzFLU2NxaFpwL01kRjdlK21xSzRjZ3owb0pTS01waGdVT2JqMlh2VEFmbHFpYjNNZ1dQenhyVkNCekZoeUMvR0dUV0VJNVkraSsxdTAyYVJqNmY3WkgrdGlqSHQvVm5sbkQ0aVEwNlQ2WUpNZEQ4SnBqMEJzWElZRWg3ZWdyZk9lajN0TWJiS1lVRjFLanQzRVZmVUFtSGYyMzZIUlViZ2k4WnZHSDhqbVFPRVZoSGszUWtMMnM1Z2NBK0RYS0NBT05IWlQ2dkdjSUEzdGp4SHVKcTE2TGRIVjI5RUpLVHA1d09JVGdObHN3Ump3cythcHJQK3RCN2ljVktTeHlGbTVMa0YwSHg0Zkd6ZlhFRHNHWVN3bjdZK2hOTFVEVGtIekJzK3JhaHRHSW5XYjIxZzJvNURkcE9kaGp1RDVtWm5jbjNEL2tMVGJGV3lycTB5eUEwdGZMY3NzSDd1S3ZuTnJKWnlkQmlqZDhaL2YvWWpDaW41bGZncUVrbjFjeXcyV1gvei9yZ1RZV0dveFdGZ21aKzB6d09iVDZXb2g1NVdnK09SRklPUyt5WG5jOGhMUytqVUxSa0QxUTR1UW45TG94L1AzaTlwYlRCa0U1S3J0cnlMd2FxdmJnTzlQN0xZSU1YM2grVXo0ZlBaNHF3OWFlV2FvOGhrVlJrYzRwd1VMTHBCNXFCS3lha0I4eC9CbUhybWRENmFvZkIvb0I5Y250ejdrRVhrSEZ6dFVoVjdiSVdsRUp4MmFiZkUyQ2hJaG04S2JvYndvSE1Ra201YkppZDNaODUyUVdVbnlTTnNqTmFNSGMwcUV6VWtQVDZhZTlHanZVYTcycFFJL0ZOaFJNbXY0R000MkpVU01PeG90YmtQWDd1UWtialIvcXVOYVN5a3ZVakcvajJJeC9ucXExL0k1VVNGTmNhaG01bXUzYlZGeGNBUjAxQU5RSmZZVU5JYzRQaThvMS81NGVQZmhNdmJrakVGSjBYaFd6OXFTVWMyZ21UWE5PV2JlK0VsdU5jQnZ0QzVqYnR6N2tIL1lHRVN1R2J5aTZCY0ZRTExoMjhoMFc5OTVKT1M0YnZNUVI5MGY5UEx4QllUNU5Va2tOYmppTXdQbElveEU3K041YmJyRWJ6QW5PSEtnb2poaU5hajJSdXc4R1V3dUl1QXpxd0FVMnhWbzZkOUJwS0pVak9WTVJuYmg5OGpBS3E3MThXWGJBb0JiOWMvWCtBNEorYkxtRFY4Q1pTR1VYZlZacHdZTHhkOWNVRFFEcysybXpiK1piODhwQ1dKcGVydDF6RGoxZDhrUXMzL0lKUExINEhXMHNiYUc1eEdMNi94dXA5ZUNkTnNvWEo3NGVtb3hXRC9RRUxtK2Z6ellXL3hwV3hHa2prTHBtMFFQdGN1dmtDcEFOaDBUSnd0UjB6dzRrWmtrb0pqbTQ3bVlTVHBCd1dDV3hBWUgwQzZ4UGFZTUlyUk50dzdPdmpyN254QkFFeFExd3EzakR0WFdpN2E3MG5xaFo4SE5uNkttYWtwMUNwaGpRY0xhTUgxMjQvKzZhNERBYnZpNXEwYnRoMkxiZDNYMFdqMThxd1A4QUZhNytINXdxQ1BQUmY5c0thWWZtY2Nma0VkUDBPaHBacW1wdGRidSs4ZzI4OC9IR1VjR21PdGJGMDRCNCtzdWcwcnR0eURVMk5EbnBJc1BuSG12N0xKMVJGekpPVTdHb3krZjJDaGtNY0JnWUNqbWc3bks4ditDVUNDRzI0VXlDTXpKbFAxbXZncmRQZlQyQkJHSUh3eEZnVW5qMVFVcWxhOXM3TTR1aldrMmp5V21tTFRhRTFOb1VXcjUyYzIwek9iYWJCYlNick5wQjJjMlRjSENrbk93NnVXa041YkMvSUxsRGs4NWJqSnAvTVB1bTV1MlRXalRVNDB1WFY3YWVoZzRnNGtUbDBRdkJSNi9ZelZlaTl4T0M1a29GcWdkK3QrUzR4bVNBMEFSazN4eTFkVjNCbjE1M2tjb3FCdTBMS3E4WmRuRDE3TnN3RUltbnZYNkhudXBER0pvZGwvUS94cWFWbjRac3FydlF3TlVLbGIzeXFwc0laZTMyUWMvYjdKSzV3R1JrT3lTMVVUSHFQd0cxK2lqRmxFMDM4enl6REQ0VTBON3RjdC9rNnZ2N3dSL0ZrYkl3YytsVDlHaVZkNUtzTHp1YzFIU2ZUMTY5cFBFclIvc0h4djF2ZEFwdSthUkV1YUtPcG1zcFlhUzdpNU9udGZNclJ2eWVBak5jQUpVbkRpWUsydDBmdkthK0FEZWVGTkdZYy9ycnVqL3hveFJmSXVVMy9rV1FoUlJSOHpNNHQ0R2RIWEVJd0ltbDZGYlM5UTR5ZlVTM2JNSEFsZEY0VTB0enM4TFBIdnM4ZjF2NkFCcThGYmNNb2hhTUx6TXJNNCtkSC9CTmRrU1JtU2pvK0o1NXlVT2Nlb1FGdERYejlsMFhneXpVNnJNdHY1RXZMUGtoRmwvRmtiS3p2UVZ1TkkxelNUb2EvYnZnNS83M29UTllYVnRIUzdKQi9STFBwMjViaWd4UEFaM2RNWGhBeG1QSVJRV1oycEFsUG5uWVNuNXYzUTBxNk9EYXQ2c25ZS2lQaE1CK2YvVFZPbVhZeWZRTUJtYm1TeWUrYk1MN0RScE5MWTlQQTd3UEtEb2xLbW1RMVE3S2FJVlhOa3ZVYngxNDV2NG1Hb0ptR29KbWMzd3hGUlppUEhwSlI4NWlZQStrNWtrTEJjdUtVTjlLZW1MNVRiYUFDaVcrcm5OUitHaW1wd05Qa2poSGpSbUdVUzlrTGZkZHFNbG1IeDRiVzhzOU52NnRSMlBRNExVMWxXRDYwbE1zMlhVZ3VveGhacWNuZi9zSzBkNnF2ZnZXclgzMjJ1dGFFaE1Gcm9lc2lUYWJCb2J2Y3hhZVd2b3VlNmxZU0tyV0RwenpTR0VtVlpuTnBIVGQzWDBtTDE4SDhTWE9vRm1Id0hvTUlCY2s1WWl4QUVUc1k4Q2pjaUV4YVdTRVoyaFp5ME9UOWFYU25jR3YzVlNqaFBNSEVLZUV3N1BmejdyMC93UWRtZjVpQmZFaGlpc08wL3hiSTVPTk12UUN2WFJDZkpralB0eVRtUXZJQVNNNkZ4R3hJN0IrOTRyTWh2bC8wTlRZTDR2dEFjajlCWXBZZ3VYOXRCSytPemtqRkJBUDNhbG96U1liOUlyZjNYRVhXYlh4S2JSM2FnS1pZQ3grZDh4V1VueVF4QjVwT0VlUEJSODBpZFAvSlVsNXZpU2NrMzN2MEM2d3BMQ2V1a21OajVNYWF0YVREeXZ5REhOdjJSbkx4TklYMWx0eFJZbnl3dXRpREFHaDE1QzhOM3c2ZGY5WWtzNHBoZjVCUDN2OXVOaFJYa1hJeVQybGlMSWE0U3VDYktqZDIvNXVCeWhDSHR4MUZNdTR5c0V4VFhTdEl6aEtvOU9PR1BETCsxTW9ZcEJjS3Ftc2wrVDdOd1MzemFZeE40ZjcrMjdlN3JVbzREUGw5bkRMMWRQNTMzdGNZS1lXNFdVbkgvOVlLK1JQSG9OWCtqdHNjbGVjUyswYUFHbjBsWjA5NHpSRWs5NDllcWJtQzFBR0M1TnlvNVhOMC92Tm9nT1ZPZ3RLRGdsSy9ZV0hiUVJnaldESndPMTV0Mk9YamdhaUVvaERtZVZYN216bDEydXNvRkVQYTNxeUlUYXROZWFpQnNQQWc5UHh6TlBDNG5qK3MvVDRadDJHSFpVUkhlZ3o0UFpUREVxK2NlaUxGQVkwSUpha0YyMCtPMk8xTjhDajRDdmRENXg4TnNaU2txc3Q4L3NFUHNucmtFVEpPYnFkSXBHT05OazZXaXpmK2pvOHRQb1BWK2Nkb2FYWVlXYTdaK0MzRHlKSUpWMnkzL3hRMmpLYU1OcDRRY1FsTDJuQnkrMm0wVFdDZ0tPRXdFZzV4U05PeGZQYUE3MUFOREVqSjFJOUkzRWxQTVlQUFJ0cjM2YjRtWHF1MVVZNng1WTBDYXlYV2ovSC9Edmc4bjVwN0x0b2FmRk45UW9JNklxOG1PR1hxR1FRK3hDWUwwZ2R1UDJEZFZLSDNZb1ByU1FhckJYNjc1bHc4R1h2U0pKKzJJUm1ua1dzNi84R2kzc1ZrY3c0RHQ0WlVOMHpJUk96dUFMUW1BbDlwT1d6OXRjR0pBY0x3bFdVZjQ2SEJlOG02allRNzBUVDArRWFiUnErWkZjTVA4bCtMMzhZL04xeEVVODZCcW1ETHp6VzlmNC9BdGwyVWJLS2JXbGtQM1g4enVIRVFhTDZ3N0FOc0dGbEZUTVVSUWxMV1Jkb1QwL255Z2gvaFNKZWdZcGw2amlTKzczamorNU1PTkpkUC96VlJZNC9lM1BUQjBQRy9BcG15REF5SG5MSDNPemp2NEQrVGRSc3BoaU5qTlc1WnUrNTVEWWN5dDJFZXhhSWhkNWhDeG1zQXI1bmVvUnNzcGMyR2RFcHk0ZnJmc0tHNEtxcmVQSVZUSjJwSjZOK3QrUzZCMVFndDZMbkVQcTkrb0h5bVBsOWxMV3o1dVVFSVM5eVJuUHZJWjdpejl4cXlidU5PZGF5eFE2WkhTTXJKWUV6SXVZOStpbTg5L0htMExKUE9LSHF1RHRseW5zWHZxakZtd3ByejNSTkZ3N3BpU0hxSzd5My9DbmYyWEVmYXpXS3RKVFFCTVJYbmF3dk9aM0pxRW9XaGtNbHZWYVFQZmdFR2d0ZmNodVJjbVA1WlNXcW1vcmN2NUxEV3cvajVZWmV3Zis1Z2h2eSt5SDlGRXRpQUV5ZS9tUmdDa1Jnbm5XNVg4YmpHa01rb2xnK3U1dUpOdnlIalpQOWo2WEEwRWYvQTREMWN1ZmtTY2puRnlNTjZ2SEhmN0s0QXJOMHdmeXRzK1luQkJvWlVUUEc5UjcvTVZWdi9Sb1BiOHJUQk45RWtTNkhJdURrdTNmd25QcnJvYmF3YWZveVdGb2ZDNmloeFBYSlBwUG4wU0ZSdDhRYzFqV21IWDYzNk1mL2U4a2NhdlJaMExlcXVtQ0tmM3Y4OEZqYlBZMmdncE9WNGg4WlRuai93V1dNSUtsVjBFRVRXclpZMmNkdWc0OU9DNXFNZEJnZEMycE1kL1BEUXYzTHkxTGVTRHdhb21BcDdwZmJsMk1rblVTaGFNbk1WM3RUdEIyMzJYbXpSSlJDTzRGZXJ2MDA1TEtLRXMxT2x2bEZtMEovVy9aRE9Vait4aEtUM1VvTXBQVDhWRXZsMG1TMWhQMno1cVNVc0dySkpoL05YZkorTE4vMkdScS8xR1lOdmU1T3NhWENiV1R1eW5JOHZPWjJMMWwxSU51c2dBOG5tWDRiMC9qMmFDMWpjcEduS09meHQ3Wi81L2RyemFybTFFQ1VrSStFZ0g1cjFKVTdwT0lXQm9ZRHNQSWUyZDI1L0U1OXo4SlZLdUNiRWxNdFkzOSt1dENoak1Qa2NhRC9Ob1ZUVUtCdmphd3QveEVkbmY1a2h2NCtqV2w1Rld6eERvRFc1bzhXWTd6MGFlQXd0MFRUa0ZOZHR2Wko3K200aTdlWjJ1bmxybENIZVdkN0NuOWY5bkZSQ1V1bTBERnhqbjVjNjhhNGxvbXYraGk1RTB3cEttNk9iZnNIcTMvTHpWVi9kcVlUcU0rSEFhUk5RMUFWT21mSTJQckgvMThpNGFmTDVFQnhMVTlybGhtMDM4cFZsNTlUU0R1QUl4WURmeCt1bm5jV1hGbnlIZkRFazFxYVkvaG1CeWoxUFc0bXN4UzhXOFpUZzBrdXY1NUNERHFCam43M0E4UkJTUEdHbytzZ2k2UHlEeHZqUW1GVmNzK2thcHFWbU1pcytHOTFpbVBGbGhmUnFzd1ZEMlBoMWcrNkJxaXJ4b1h0ZlQyZDVNekVWMzBYbWpxaFpuWUFmSC9aUDV1WG1VUW8wTTcrczhLWTh0K2NrZDVuWlVvRnRQNFhTSmtORHp1SFNqWmZ5NnpYL1I5WnRmSVljdC8vYzBTYUZJdWMyY3MzV2YvQ1JSYWZ4OE9BeUdob2NHbE11Uy9xVzh1MUgvaHUzbHNoU1FwRVBoam04K1RnK2VjQTNLRlUxTWlhWjh1RWErSFkwQitnNWVOeXI1UXFlNTNETHpmZHl6b2Qvd05CZ1BrcGZUanlyQ1d5Z3pPR3cxMmNVc1RaQi80RG14R21uc0U5MkRxV0tKWGU0Uk1iRy9kN0JHNkw3a0U1TC9yNysxNnd2ckhxYVhFT0xGSktxcWZMYk5kK0pzZ3BWUWU4bHozMG9MSGVKWE9CRDV5OHRoVldhVEU1eVo5ZWRmUDNoanhBWXYrYXp5V2VsMytHcHpJVzJtcHpYek1iaWFqNis1RzFjdHZGaVZneXY0c3ZMUGtoZ2ZCenBJSVNncEF1MEp6djQwb0lmb2ZBSUE1aDZ0aURXWVorWWJyR2pHd3JGZURueFdUajdzT3FqcktGN3l6WSs5ajgvUVFlTTVlVHNrOXdOYTZLYThmVFBTSElMSmZsQlRXQTBia2FRUFNxNlB1R0EzdzM5VjBjVmorVURhN2g0MDIvSnVGbk0wM1Ivak5YazNFYnU2cm1leXpaZVREWW55Uy9URk81L2JnTVN1U3RhdXZzdmx1Rzdva3grTllCOWMzUDQzaUYvNGVRcGJ5V2hrZ3dIZzVUQ1lpM25wcDYxS2FNN3ltRWxWQktKNEllUGZaSC9YbklHSStFd01SVWZpM2lUS3MzWEYvNkt0a1FicFh6SXBOTVZxWU1FVm92dDJSODE0RmxqTVdHSUNYeXNNYzlZSTVwUW82dFYwRDcvODc4L1p1MmFMbklOS1pLSkpOZ25uejg0V3ROVk9aajZQNEtXa3hXNlg1SThJR29YSFUyNzlGNVVDendVL0hiTnVaVDFhT0R4OUhwV2xGQU0rcjNNYnp5Q09ibTUrTlppcTRMQm0rMXo2aXM3dTlJMDNuU3l3SnNTK1NtVlRaRFJMUnpYY2dLdm1Id0NXNHFkM05WekF6ZDNYYzZLL01PVWd5SUpsY1JUOGJFbjdOazF5UVlsSEpRQVg1ZHhoWWV4QmlFRXZxN3dwZmsvWTBIelhQcjdBbHBmN2RENGFvT3BhSVFTRXlhRWkxcTkyR0tEZ0xCWWpoZ244Umdxa1VCSStiVEtBam9JOElzbEVnbUh6MzNtVjF4NjJUMDBOV1lKZ25BTStaYi96SHNFYUhzN3VFMWl6QmNURWdwTFlmaCtUV09EdzlWYnJ1Yk9udXZKdWcxUHkvK1dRbUtzWVRnWTRPUXBwL1BKdWQ4ZzVTWVpHVFJrRDVaTWVyZllEZGt3SmxyME4zeWZaV1JadE9RdjVqZ2tVMUN4OE5qUVVtN3J1cFk3ZXE1bFMya2pRZ2lTS29VU0NvUGQzdjk1bGlhUlJqMGVpbnd3eEgvdDl6WGV2ZDk3NmVzUHlNMTNtUG9KaXk1WDBOVXFRa3FjZUFMcE9ST3FISWF3VkNaWTM0Zk5Cemh6Vy9CeUdZVGoxUHd6c1pQQUN3bjlLcDRBa2ZUNCsrOHY0LzNuZkk5Y05vTVFnc0hoUEwvNitmL3d6clBmUWhDQ0cvTjJ1WlBRQkxEcEc0YXdPd284UG56dkc5aFczb1FuWTd2TXNGYkNxWTBqRnB3ejY3T2NPZk45bEgwSUtwclcxeWhhM3JKOW5mbUZYMVk0dWpWYzFncnhzd1d0ZVlmaU1oaSt6ekM4eGtCWk1TOTFNQWZQUFppejl2a1lpM3R2NWNhdXkzaHc0RDZHL0FGaUtrNWNKY1oycWozVGhUQVRHNHdHL1Y3ZTNQRSszcm52ZXhuSWh5UTdITnJQaVhJV3Vsd2xYTmtIS1JmYllmRklJWnphRUovUW9LcytiQ3dnbU9BTDdtUlYzb1FoUWFWS1RFbVVJMWo5MkJyTy8vVy91ZkR2dDVCSnA4QmFsSlJJSzdubnZ1V2M5WjQzUks3QUxpU3RyWTBVOTlCMVVOcG9hR2x4K05HajU3TzJzS0tXN3d4M0dYd2p3UkNURXRQNC9MenZjV1Ria1F6bU5Tb3BtUFpoUmVidzdibWQ3QmJiTWlmdTJLMHBNWldGN0RHUVBVWlMzU1FaV1dJWlhxSXBkRm5pWkRpNS9YVzhldXJyV0R1eW10dTdyK08yN3F0Wk83Sml6SStidUJMcjZjcm9ZUjdaOGlyKzM5eXZVcWhvbkxoazZvY0VLbXN4RlFGU0lLb2FzWElJblhUUVFxR1NjWkFDRzRTWUVSOEdxN0J2RHVtby81eWR0aFlkYWtMZng1T0NXRXl4WnZrYWZ2N0xmM0h4UDI5bm9HK0VYRGFOSXdYbE1HQkUreFJObGE2KzRXaHdVUmhpcmRtNThXOWluSnZZZDYwbW5YVlkydmNvLzlwOFFjMzBocnRrTFlRUURBVjlITkY4UEorYi96Mm1KQ2ZSMXgrUzJsc3g1WnpJM0Q5ZkNYcm5HWWN2ZHR4TmlrMkgySFJCODJzVnhVY2dmNitsc0NKYW9iQlhiQllmbURXTDAyZDhpSWNHNytYR3prdFozSDhIUGVWT0hPa1FWOG5JUk8raVZvd0lsa1dtcFdieXhRVS9RT0NnUTAzSGh5WGV0TnJVSzFmaXVCNTYzd1pzZHhrZTZzYy96Q1dtSk5MMUlqQU1WcERhWUJ2akNCVkYwbFpyZ2xDUER5Mlh0UkhpMW1KMVNNeVJLRSt3ZHNWNkx2akRsZno1cnpmUTA1T25NWnVtcVRGTDNxK2dROHMrbVFaZTF0UkJxRU1XTDE3RmJiZmR4M0hIdm95ZzR1TW00ayt1V1kzQkdodU5EUEdnc2dWMG9ISFRpc3MzLzVsaU1FS3UxdWkrczJjVm1vQ0tMbkhXekkveG9mMCtEVll5TkJqU2NxeEQ2MW1NMVppZnI5S2s4Nnh1SGg4Rm94Y1YyOU1IQzRKZWg4SURNTHhZTTdqZUlyWER5eHFQNXVWdFI3TzExTVc5dlRkelUrZVZQRHE4bEVJNFRGeE9ERnpNVTdyckFrRm9BdUl5d2RjV25FOXJvcG1oZ1pDcDczSklMUVJDT3haVlNzL0RUU2J3NXpVaDcrN0VyQnNpbk9QZ3BDSnRSSDhaRzNjZzR5R1ZSSWNCNkFBdkdRT2phMlAxSnlhT0xZODgrQmdYL1BGcS9uWFpIWFIxRHRLUVRaTnRTREhrVjhqZzhmS1dhUnczYVFhdHpZMzBaaXd0KzgvZ1RVT0NIM3p5QXRyKzJzcnNmZmRHaHlIS2NaNVFPZEZCZ0F3RDFPZ1phRUZ1SDBINWVJM2I1ZEd4Y1MvWXV2TWpVSlZ3S0lZanBKd01uem5nUEY3VDhWcnl4V2lnKzVTekhCcGV0WDJabFQxK1hhdDU0alNtOGlySUw0cUdUL3A5bHBpS0FwY3FzSEw0VVc3dXZKemJlNjloVzJrVFdFdkNTZUVJNTBrRGwyZzQ0eEJmbVBjelhyL1g2K252RDJnOTJhWHR6QnBOVE5peGhTRFdnUFVEL0h5UmNHVXZjc1V3OXFqSnFKWWtOalNZdTdaQjFzTTVZZ3B1S29XMW12N3VMdjV4OFkwVUNoVTh6NldoSVlPVWdtS3B3dElIVm5EdGRVc1lHQ2pRbUUyRGtnd0hGV1ltY3h6WDBzRmhlODNFdGliWmxMSDBaQ3lCMXBpWVlycEtrTGw2TGRWWFQrRnpYLzBndm0veGtvbnRUSHRRcVNBclpicEdxbXd1YU96b2JqdGxtV3dVcmNPTjNIM1RZM3o4b3ZmV0l1dW5OcmxTS0lhQ2Z2YlBIc2puNTMyZi9SdG5NekFZRW10VlRIbWZJTEgvanUvWGkyTmY4SVRBWlN4YUxFRHhRY2d2TVJSV0dHeFpra3hJWW5IbzgvTXM2YjJEbTd1dVlPbkEzUXdGQThSa25KaE1JTVY0NE9JSWh3Ry9qOVAzK2hDZm52OGxCb1pDTW5NVTB6NHB4aHRrclFWdGlCYXhSWVZOVS9YeGgwZXdTN29oc05qRFdzRm94T0orN0p3RzNMMGFVZWtrNkpDK3JpNU9PUG5qUExwbUhVbVZpeDRDYXpFV2xGUmtNMGtjUjlKZktkTWNpM042eDF3T21iazNBM3RuMk9LV0dZa3JyTEhFZkkxMEZKNFI1Tk9LWXl2dDNIVHo5WHpqb2svVG1Ha0UxeDJMTjdReE9INkYxUU5sZnZGd21VcEpVWFZETkJhRXBzR1JmR3p2REMyYlk3ei9SK2Z3eUthSDhKUzN3eEZ5b3ltV2tYQ1lrOXZmeGlmbmZwT1VteVEvRkpCYjZERDV2UUtuNlFWZ0F6MnJKdmpwQkM1cHlCNE4yYU1sL2xaSi9qNUxmcWxtY0pzbFJwWlhUVHFWRTZlZXlvYkNSdTdvdXBhYnV2N04rc0lxZkZNbG9WTEVWWUxoWUlCRG00L2xZM00rVDc2a2lUVksyajhnRU1waU5WZ2Rva3NWak5FMVBNcG9DWXdBNlRxRWN4cGhvQnl0S2ZJTnBqMkJTRWkwQ0JHQkQxTFNPcW1OVzI3NE9WLzQ4aS81eDBXM2tZaWxjRDBIWXd4U0NQS1ZDZzZLMDZiTjVxUjk1NURmTzhQMWRwQytGZXRvUDNBV3NVQ1R0b0l3N3VFYVN5a204WVFrdHJXWFcxYXRwSGR6TjIzenNvU2w4Ymt6d2xxVU1OeTZQbUM0WkRsdXFxUTVHY05nNmFvWWJ0dFc1WjcrTXUrWjFNUytrMmJ6ME1hbENHSTdaRkZYZFJrTGZHejJWM25uUG1kVHJrSmhSTk4ycWt2clc4Y1pPUy9rSkZXSEY2SUZha0xnNGsyRmxqZEhnVXZwTWNqZlp4bDVWQk1PQ3FiRzl1STkrM3lRdDg1NFA4c0c3K1hteml0WTFIYzdXMHNiYUU5TzV3dnp2bzhRRXFNTjA5NHZjWnBHMTFWWnRPOFQ5QXpEMm54a3doSU9JdWxDWEVMTWliN095R0Q3SzVnSCttSEVoMGZCSE5hS21OT0NveEpvNWREVTJzS3ZmL1VGVGpqK1lMN3d4ZDh6UEZ3bTVqb01CeFVPblRTRnQwMDdBREV0eCtLOUhQeTRaWVp1NHMzTHM5aHdLbmYzcldGd1dwSmtRcUlDT0REZFRNZUE0c2FINzJUVFFEOS91cXVML2MwTUtvVWlRdFltSlVpQkZGRHNkNW1pSlM5clZLaStHS21zb2F1MXlqM2RJYUV4NEVobU44M0hjdUVPL2IxQ09FUnJmQXFmTytEN3ZIelNVUXptTlRJdW1IYU9JblBrOW1OVFhraHhlSUVtb2U0b2NFa3RoTlJDUWV1Z1EyR3BaWGlSWVdpZFFRWU9oK2VPNXFqV28rbXU5SFBUdHF1WW1aN050UFNVaUVOM2hoUE5SZFpFNlpaUmN5Umw5TGNHcTlCYmhrb1VUQWhIWXBzODJEK0hYVmRFYUFFeEovSVQ3K3ZEdEtleHJURWNMNEhSbWxLcHpPbnZPWTEwS3NucGIvODZKZVB5dHIxbWM5eU0yZHcvUlZPYUpHZ1FFbFVKY2VOTkxOR1BjTkV2TCtPakM0OWgvc3o1VU1qVDJGM2drVlVQOEpzVkQ3TzhNa2phOFhoNGM1SEI2UnEvcUJIU1lrUnRnYUV3N09zSWxCQUVHaHJiZllTMEJBVkJVaW1FTWxnVE1Dc3piN3VaTmFNVEdZYjhQZzV2ZVNWZm1QYzkybE9UNlJzSVNjMVV0Sjh0aUUyYjBIcXdHMHhMZGRnTnh2SSsza1E3amRCd2dxRGhCRUZsalNTL3lKSi8wRERTWTBtclpzNmM4UzRDQmNPRGhxWWpIWnBlTTk0ZUVMbCtBdVY1MEpiRk5DU2pQRjhsaEhJQVZZMHRoZUNLNk84Wk8zWWpoQ2V4Zm9nWnJHRGJzbUJCdVM2SmpLSThQTUtwcnoyT3IzMzFQWHo5Ly83RUVYTVBaUG04QkRvbzBTUmNqSklFUUdGdEYxNFlzTEthNTB2TGJ1U1FkUTh4TmQzRWZUMGIyVkRKRTNjOE1wN0hZRkRsZFRNTnB4MlhZSGdvUUVxRkZsRk5XZ01YUDFhbFcxdU1pU05GU0R6aDRJU1dZaEJHN1FSaGxhbnhHVXlPVDJOVGFTMUpsU0t3UHVXd3hGa3ovNHNQenY0TW9wWmlhVDdhb2Uyc2FQcXJOYnZYOEhJSGRzT0J3Uk1DbC9pK0VOOVgwUEpHUmZHaHFPS1NYMlhRL1lMa0RNbWtkejJSV0NvRUNNZEJwQlRFb2x3YXhtQ053VnFEdFJZVEJ1aWdDaTdnbTNHTllBRlhSZS9WR3FFa1FrcGlxU1Rsa1FMLys5bjM4dWl5VlNnVkk5bVNKZHhjeGNZbG9SL2lxNENEWG5FVTF6MTBJVW1sU0tzWWkvTTkzRDNVU1ZLNU5NZFN0YVUwRnFFRXMyZTAwTnJnME9pbFVZNUVJTkJhb3dpWjNSdncyS0RQclk4S1ZNS2prZ3pacGlzRXh0S1NVUGdsVGNZMnNsOTJBUnVLcTZub0VwNks4K1g1UCtYVTZhOG5YeklZbzJrLzA2SHhwQmNteGJMbkFmQkpURFFXWkJJeUw0UE15eVIrcHlSL2R6VE1YS1oyVUM0U0V4cTJYUlVGSWRhT3Y4MWFqSGFoS3JEem16QitMellmSWtJTHJrTGYwNG1jbkVJS0IrRTZZL09idlpqSHBwVWJ1T2J1UjlESmZ0NHkrL1ZjMnVTUktRWTBOS1I0alo1SzUyVzNjOE9tNVNTZEdLSFJwSlNMVUJGUlF0ZklFdFdLeit6WlUxbHc0R3g4M3lLU2FVd3R6MmlOd1MrWE9IbUdwcmRzNlJud0tZaVFvQUt1RkJ3ejJlV29kby9DM1FwUmhQMGJEdUx2bTM3SjRjMnY0RE56djhPOHBya01ESVhFbWhVZDc1TWs1azVJRmU2R2F4dDJUd0ErdmhZcUhoZTR0Qk1WeW5tS1dxV1lVTWNWVVJwR1RNeU9LUS9IV21nVm1CTmkyRXFJMlZZaS9NY3F3dHUzSU9jMDRoeWVCR05BS1FMZkorWXBMcm5zRmdhM0RYTjVwc0pCUzlmenVvUDNvWndKbWJ6UjU4SWJyK2FTemN0eEhSZW50blFtU28rTVI2aFNDcXJWZ0RuN1RhZWxPVWZWcjZKcWhBY2paSlNVanNkSkNmalFRa1YvSmNUaW9SQTRVcEJ4SlNMdDBUWGtvZk13citFUVR1dDRILzl2N2pmSmVSbjYrd095OHgzYTN4K2xXREM3OTdhazNSK0FUeFc0L0tmRTZYYlRRc1YyM0hjQnFIZ000VHFZTUlhTkJlaHNISHZLWGhCVHlOWWt3bGh3SXEya3NPUjcrL25IeGJlU2pNZnhISmR2M1hvRmIxZzdoMm1OVFh4bCtSSzIrR1dhdkVSazVwKzBoR3h4SEVWUDd5RERJMlcwa2RoS2lDTWdFNWRZNldLOU9ES2V3RGd1clFtekhYMUxXNFViZDRpM0tucExsdW5wZmZuS3doOFRoakNTajFJc0xhZlYvR0d6KzYvcTJuTUErR1JnM05sUnBUdGt0Z2lrNHlBZEI2czlSTFdDT0tvRDc1Z09SQUJTZWdncENhcytqdWR5NDAyTGVQU1JqZVJ5R1l6V0tPVnc0YWJsbUEyR3RCdWoyVXZVdXZDZWNyZ3VqdEQwNlFhK2Vac2txSlpBU2x3RmM5c0VyOWt2WkZMTzREdnhpSzRsNVhaWHJtb0Uyc1FzRU1vaWxZb2FtV0tDcWVlbzdWbzI5NFIxNUhzbUFKK1QvU1FTbFVnZ2d4QnJEQ0tta0xVYXJURWFhd3pYWEh0dmpTUTludlp0Y0dOUW81YnBuV1QwYUcyWVBLV1pqa2FYVXQ2Z0hFRXhnSnZXYVZZTldONXpvR1YybTZacURHNDhoaFVDYTBFS0VaRmtnZmpNYUdTSTMyV0p6NVMwdjE4UW16NGh5aFY3eHJuWEFmaTRpVm5DYzU5Z01vVXhCTlV5cTlac3czRzIzNXlrN2E0MWtFZ0IxUkJtWktwOC9EaVh3bUFTMTFHRW9lSGZqd1ZjdnpiZ1o0c3RaODIzSE5FQjFVS0k1NERBb2xFRWpvZmp1c2lreEcyQldEdTBmMGdnRTd0bmxGc0hJR0MweG9SNnZNZERTS1Nqa0dvbmxrT0hJVW9LMW0zdVpNT0dUbUl4OXhrM3p5a2w2ZTBkd2xRRG5FUVM2YnA0WWNBWkN5WE5TY0UvSHd2NHpkS0F2cExsVlh0cmxuZHB0bzVvRG1oMW1Ocm80ZXNFYmlMTzVIZEwzTFlKWTlYa25uZHZYdlFBMUVHQXFaWVIrQkdyQ3BDT1FBY3Uxa3NnWGVmeDBVcHREVUpFMHdxS1pSSXBseC85NUNKNmUwZG9iTWlndFg1R014U0ZsRlFyVll3eEtDK09rNGhqdEVkWWxwdzBXOUNVRlB4MVdjQmxLMEtXZFdzMmxpWERvYVJscytXOWM2b2NNZ1dxQW1LVEV1UHNiYmxuM3A4WE5RQ05NWmhxaGZKZ2hUWDN1UXoxS1lScnliVm85am1rUWpLbnNhRzMzWjQyTy9hekZoT0VKTkl4Zm56ZUgvblRuMitrSVpkK1J1QjdZcWVyR01PK2NoUXltYVJTRmh3MkhiSXh3UzhYVjFtWGQram9YY25od3h2WW1KakUrWlY1ZkFRNGVLb2dLQ3ZjUkd5UDhmZGVjZ0Mwb1VGS24wM0xIQjY5eGNOTmdwR3dZWm1pTkNJNCtOVStvUitPK1UxQzJOclNhSVByT3NROGw2OTk4UmQ4N3djWGswNG1ucFZtcWlnYkZLVml3S0tERUlRUFFpQ1Z4SEZkdFBZcFZhdFU4R2dmMnNpaFN5N0JqVHRNcXdiY2xranp4NVg3MHBHcDB0VG9Zb3lIbEtJT3dOMFNnTmFBdHBRR0ZiRTR2UHp0WlJDV095K0pzM1dGUys4bWlRV01HQzlGaHlZa0ZrL2dKYXRjY3VPNVhITHBUZVJ5V1N5R1o0czZxYldoTVpmQlNicllrUktPOVJFU2pGWDRWcEVRbGpWOW1sTG9NUzBjaEtFaHF2dlB4Vm03bXRiaUFKc3FrdlZEaHRhbTBjaGIxUUg0Z2dCTWEweFlBOFlvRDFVSWhLT1FTb3ladUloa0lqRmhOQkpZMmhvSHdVcUVNaWhsa1VxZ3RTR1RqdEUvTU1pM2YvSU4xbTE1aEVtTmpZUmFveEdZN1JJd1QvZWhFRGpLMGwzdytPZDlVTW9IdUc2VXVGNDRUVEJyc29NV2dybVRYVzVaNzdNNnV5K3B2UTZnZGR0R0JpYk5aR1BiZnJTN0FYczFlR2dybjlZMjl6b0FuNFdCUDlvUE1FRUZJWU1heWFDV1JwRUNVd3N3b29CWGtHb3c2RExjKzQ4VXhocDhYekRyaUlDRkoxZlJnVVNxaVBMdnVnNkZZcDdUei9naW03YXRwVFhiUU9CcmhBQkhDTUthdG53bUlMUllYQWxWcDRXN1Z4aXFaWTF5b0JBS3NnbkozQTVCV2J2c1A5bndtdjBNLzFxWjVJRWp6bUNtVzJCRktVRVFUL0hldVlKSldZL0E5WENsckFQd2VROHV3aER0bDZnTytuUXU5cWlNUkgwalFvS1hoaW1IVkVnMFdhU2J3QmlYYVFkV0NjTUtwYUZvcVVzaVo1aDVhSUFUOTNCVE1helJoSlVxRnZqSVIzN0EvZmVzNTRESjgya1Y3UWlyNk5mZGJLbXV3MFlMdlo0UkFLV0FTZ2lublRDVk43OVdNakxzNExrS3BRUzVoQ0FRSGw0eVJsZ1ZuRExYWWdtNGZvM0wwbW9UalNsNHp6ekJ3cWt4ZkRlQjYzbnM2ZUxzaWRyUEJDRzZHckQyOGdTOWp5VVJYaGoxaVNBb1ZTekZIc21DdDFjd2ZwUkk5bEtXL1Urb0lDd1lXMnV5bFRGa0xJbDBGTlZDaVVRMnhibGYveTFYWFhVZms5TE5IRGJqU041ejFsdHdQTVgxVjkzTkw2NzdLVEllUHVNSld0YUNWSktaVTFPME5RcXlTcUtVQkNIUXdrRTRIdEoxRVZJUkFxODVRREp2Y2tCZjBkRFJvR2hyY1BHZEJFN013K2hhemJsMlRVSUtwTnl6ekxLekIrSVBwS1k2Q0NQcll6UzNkN0xYcXplaGxXUjVZU2J4V3hQazE3c01iNjZTYktveU9tY29zRkZQTHc3UkRHa3JFVklRVm4zaU1jVzlkeXpsQnorNm1PWmNGaVVGZHkrOWovMW56cUc5dlkzTHI3a09sYXp4RG1zYmxwNXFnOVBqTDNoaThHS01KUjUzeVdaU0VKam8rb1RGV3ZCY2pRMnFoRUxnZUM1T01vbXVPc3lZSERCVFdBd1NyZHlvT2F0U3dlRnhENFNRQk1KQnhXSzFKTHVvQS9BNWE3VXpGb0dEcDFmak5TU0pKNHIwaTIwNDd0N2tERHowdDlSWWVzV0lxQ25PQ0l1S0cvWTlwc3JVaFdXQ29nRUxCYi9DWjcvNFM0TEFJRDJKUVpQWEF4U3FCU3JWTElOaFg5U3NaQVhXR3NyVjRsakNVRHd1Z1NnZWQ1bENLdHhFWWd3b0ZvT3JQSzVabW1McFlFamdXNUFHRFhRMGEwNWVvTW1rUTN5ZHdJdDVPSWs0MXNUUTFpS2xRR2lOTFplb2xLcXM2Z3NwaFpGVzE5YlNHQmZNYlhOQWEwZ21rVXJWQWZpY2laQUlYVVUyVEVWNUJZcmFaMVpUa25XZXhocUJselFJSndvdWJHMGdsbFV3M0tsWWVuR0NmS2ZQM2tlWFNMZW0rZTZYTCtUZWUxZlExdHhJR0dpa1VsajBXQys2eFdDRkpkUWhiaXpPZ2xtSEl4d1ZUYUFYbzRGSnJmTlQyT2dyRnFFa2xjSXdYU3NmUlNnVkVVNjF3VTE2ZUlrMGxZcEdqNjY1OE9IR0xzdjZQczJiRHJic044WGdoeUZpZ3ArbkFlTlgwZVVxRnl5cHNMUlRFNDdPZEpNV0pRMm56bko1eTl5bzBsTUg0SE9tQUFYU3NTaFhVQ2xOWlhEMUVIMmxGTW5VSk5vS0hyNXJtWDlHa1ZpRHhSb3h4c1lTeWpLNFViTDhtamlQM2VoUjZvdVJuYmVaQy81MExabDBCcTB0aW9oSWFqQlJKY1Zhak5BWXEzR1V5NnVQUDV1aFlqL0ZTaDRoSlViYW1vYU5kaEZaQVZaYXJCU0VvYytrMlFmUXVOZmVQSEwxdi9BU1NVSmo4V0tTczEvajB0eWtDTVBJZDZ2Nmhtc2V0TnkreXZDcld6V25MTEFjTjhmZzJPcVlsYlVXWEdWNWRNQ3dyTk15cTFteFlMSkMyK2dodUh0THdOMmJRMDZZb1dtSTZZaElzWnY3Zzg2ZXgxZ0JySVBYQ0EzN0JmVGVIMlBOcGphRW5jd2dHaTJnL2FnS2lWWVFJb255bk5ISkxwaFEwenFyd3VFdFpaWmY3ekR3V0JOL3YrSkIrdnNIeWNZYndSaWtpSG96Zk91REJPVXFmRk9oRXBTWlBtVWVoQ0dYWC9NVDRyRVUxa2J2dDJaOHlORG85NkpHWkVoa0d6ajByUGNnM1ZFV2pZam9YWUNLeFJDSlNFczVNWiszSGVrenJRV3VmTkR3ejhXYWxWMkd4cFFnaUR3RkRCWWxvYnNVSVc3ZkJzWHJEbERZYXRSanNxWmZzemx2b3A2VGVoRHkzQ0ZRZWc1U2UzU2NXaVk3SzhBZmxCZ2Q3WlB6bWtJYTUyaUVqT1BFRTVHcHJsa3A1UW0wN3hKcktISGdtNnQwTHh2aHU5ZmNnU2M4SE1BS2dSSzE5c2FFNGE1bGQvTFFtZ3hCc29RMmRvemNrRWhtU01ReUdLdXBWa3JFa2tuQ3dFZElpZWNtOE1NaVFnZzgwcmp4T0taU0hac3phRXlVN0k3RlBGQU95b3NoWkdReWc2cmk2RGxWcGpVRy9Hc0pyTndXdVErakdzNEFJWmFFWi9FaytNWVNoSUp0M1VQMElURW1odHdacG5nZGdNOU1wRktvV0JJaEZhMUhCRmdiVWEwaW4wMWhUUXloSExUdkkyUVlSWmxHSVZVTUZYT0FCRks0bEhJcldkK3prcFNiSXFWYnlJbDJ0QTdKbXk1a3JNRFN6a1VZbzVFeFJWaU53S0NJUUdTTUpneDlqam55clRSUDdzRFhBZmN2dW9yT3poWHNQZms0Z3JEQ3RzSDdjVzBjYVZVdEJ5aW8rZ0g3ejVsQlkxT093Qmk4V3FDa1hBZXBrdmdWUlVkYm1mY2RHekF3RWptaG95T2FRaFBOaDNsd3ErSGF4d3dqR3RZVVFweE1qa25LVWpFQndrWVI5UXUxZ1BvbFFza1hLTTlGT2c1RzY2anQwbzVTOWFQeEhMcGF3ZW95STVzbFFVbVFtZW9UeS9rWW5jUUtjT0l1dDkyOG5PR0JFcTN4U1J5NTRDVGUvUFpUcVZRQ3Jyam9HdTVlZmpVcUhtS05JckFtYWhxM0ZtVUVVaW9xMVNKSEgvWkdHbk50WEgzVkwraVlQcGZqWG5rV2wxejBWUkpPRTYrZC8zbitjczhaVk0wQXlvNTM2V210bVRTNUFWd1hVOVhiTlZXTjV2RkNLOGdtQlEzcEtMb3hSbUNFUXJrT0FrTW1IbkRIMm9DVm15eURReUx5VjRWbDI0aWxQU3RKZWhKRHBNM3JBSHhPQTJHQmtzNFQ2c05CcVl3TlMyeTZJYzYydStNRUdsTHRJYk5lVnlJM28wam9LN3gwakVjZVhSY042QTZUZEV5YlNrLzNNSnRYZEhMaWExL0ovUS9mZzA4ZWJRMWEyckhkd3dLQnRkRmFneWx0ZTNQVkxiOGxYK2puZ1lldlo5YStoekc5WXlHck5sMVBLdGRJTmN3alhHZXM0ZDRDamxKMGRnNGlCQ2hycVpZcUtDY2FMbTVDalF6S2pJejRiT2kyaE5yaU9qQ2xXZENjRlJnUnd3cG95bGpPT05ody9RcEQyZGNnbzI2N3ZYS1NOeHpna293N0dNZDV6b2JFMXdINEZGbnFzRkxGbWpKYmJveXo1WVlrNmVrQjhVbWE3bVVlai8wanpmNW5GRWhORGpCbHk4aHdFVWRGKzRTdGhXSytURi9uSVBzZE9CMHBWTlI5Sng3WFZta25qQVcyZ3FQbnY1YkJmQy9HR2lZMVR1TXhZeEN1SkRzL1JiQzZSRXlra1dhVW1XM0laSkxjZk5PRG5IbjY1L2poZHovTXBLbHRXRi9Yb2xWRHZxVDU0dzJXVFFNV2JRVkN3WlFtd3dkT0NHbUlhWVFYeDVEZzhIMEVDNmFGK0tHTGtsR0pUeW1CNnlpMG04QjEzYm9KNW5tdkVXc1FWUVlmVVhUZGtTQXpMV0RtRzRxa3A0VTQ4UlRibHNSWWYzMkNBODRzNEJ1ZnpxNGVIS1VBZ1Y4TldIak1QdXd6YnhxM1hINFhGWVlqOEpudFNjZWo1dFFDeWtxU3FUUmxVOFpnY0IwdmlvS1JKTWxFK3RMYVdpY2JZMlV6MS9PNDhOSWJXWERJcXpuaW1Da1VSc3BJNWFBVTlPWUYzVU93ZDV0ZzlqUlkwd1VydTJEckFMUTBhelFTSng1SEt3ZlBDNG1OVmVKcTgvNlZnK3U1ejkvQzN6b0FKMDRXalpJVnhVME9waUtZZEZpVjNONEJ1aXpvZUdXSm9UVXV4VTZGbjVkNERTR2xzZy9DWW5TSWxJTE5LN3U0NUhkWHNLNy9FWUpFSHExckE0TW1WRGJraEFZbXF3TnVYblF4dllPZGhHR1Y1bXc3cnVPQnRjVEM4VlpRYWNSMmpVL1ZTcG5ERnJ3Y20zZ1pkejhnQ0UyR2ZMRUdZdGNpWFVGN0k1eDhIRnh4czJERk5qdGhib2hGU0lVVDg3QjRUNmhONzJuMExPZkYxbHFKVmpRY0VOQy94TkIxV3dLdnlaQ1pFYkQrMzJuOFFVbnpBVDZKWmtPMURINFFOWWxVZFFuSFU0d01sWGw0NDJKczB5Q2hEcDZ3TUVtTTl1V09EVk95cEJNNXluNkZNS3lpVUJIUmtJZ3dJUjVudGllQ0pKRnl1UDI2bjFNdWx6aisrSU41KzBsSDQ3cVNiZjF3MnpMWTJHWDUrNVdTelgwV1Z4aGNWV3VvRitKeHd4L3FmTURkS0Qwak1jVEl6QXpvZUUyUkRmOUtzK25mS2J3bVEzNjlneEFXNDRPdVNvUWI0Z2NhWXkzYUsvUEltZ2ZaM0wySklERU1KaGpiM0NYSGttcHliQUNhdFJEMzRseTM2QitVL0dnemxPUEV1SFh4SlZTRENsSklicm4xTDFIWUlpVmlnZ2EwMXVLNkhvODgrQ0NoRG5DVTRyNDdyaUhybmMzL2ZPYmR6T29kb1dkUXNub2I5STlZbElMNTB5VWR6WklRQnlYRmkrbVd2Y2lDRUNGUThSaW1aR2crdklSd0MyeTVOa2x4azZKeGZ4OXJvZS9oR0krVkhQWjYzUkFxYmdtTkpaNjAzTGY2QmpBQ0ZTT3FKRWdnbEFoTWJYSVZ1TUxCR2szSkwrSXFsOTZSVHVTRWxXUURJOTIxS29pZ1VpMk5yVVJRRTVxUFJrSG94ZUlrVkFyUGN4a3FkN04rMHlBMmRMRFM0YTNIdzhDd1JWdUw2d2dhTXhJbjVpRmNiNDluUUwvb2UwS0VsTGpKQkdGSjBIUndpV1RIQ01Hd0pEa3RqQ2hQalliT08rTnN2TGlaUnRuQ0d0RkZZRDF3RGRJS1FnTlNPaWkvbWZibWZiRllldnBXa1hBQ2V2S2RUTTFONWNDT3d5aUZaWlFjWFNzaHhtYkVSUW1ieU16NlFZWHBVK2JnR3Bjd0NJaDU0ejNGUWtDeFdLYW5mNERaZTAvbXZlODhHV01NYmpxRHdOS2VDbXNOVW1CRU5ENUU3U0dSN1V1K0tVbElpWk9NbzMxRllwSlBzdDFpd3hoV2EyYSt2b0tiQ3hpK281a21wcUhsL1ZpUmlQWnhqQ1p2S3lubUgzZ0NyejM3OVNqbGNNWHZMdVgrSlpmUlhlamtpb2N2NWFTNXAxSXlsWWhFV3FONzZZZ3pNMFpNME1KaUpXaHJ1UFBPUzFES0hYTW9wWlNVSzFVT1BIQW1aNXgrQWllOTZuQm03TDBYQVFJdkVZOTh6OXJnVElIQUZkdHIwRG9BOXhRUXhtTlk0MFg5SWpHdzJoQ1dGZTJ2S05BNnBjcmNsZnR4MVhKUkd5d1FMUzJVUWlIQ05JZWNlQmdQM3Y0bytiNWg5cG85ZzBYM1NCTEpCQTlzdVo5RkcrL0JFUXFGd2xxQkVBYUxpU2JaVHdoZFJJMTQ0SGx4SE9XT3NWTjhQNlNsTmNOZi8vUmxwc3lhaVNsVkNaQzQ4VmpVVkFYUlVzV1hnRGd2NHA3TTJwWWhXOU1va2RsekVuRnNTWkNaWCtXMFQ4N21WM2RrQ0xXdXNXQ2k3amxIeFRBRy9GS0pKVGZmZ2tqNHVDbE5HRUxTVFNMZE5DNXRDSmxCU1VNUUdCQkZBbnJSNk8wWERvdmFacVdhN1pWU1VDcVhPZS9UWnpObFpnZWw0U0t4ZEFwWEtWNktJbCtVMk5PYXNGd2hySTZnd3p3bUhNYUV3K2dnVDFpdG9tSXUxYXBnN3VFemVlVUpDeGdwbEZBVEFDQnFtMkdVSXdtMVQ3a3lpSlU2Q2phc3dWWVROTzh6anhNL2VTWXkxY0tyUDNVV2srY2NpS2w0RVpQUVRuaVo4WDVpcFNUNWZJbmpqMS9JV2U5OERkVnlRQ0tUM3U1djF3RzR4eWVqRFVHNVRGQXVVRndUTXJUWTBuK1hvZThPeStCU1MxZ29Zdnd5S0lVUU1UN3l3VGNSaXpsb1k4YTNzcU5SanFKY0RHaWJQSk1ERHowZVc0MW9VeEtGSUVXcUpVZnJ2cE5vMkxlRE9VZnZSN1VVNEtoNERiemlTVWFGV055WTRuT2ZlZ2R1UEluMDNMRnhheTlWMmVNYjAzVVFSRStTNDRJVW1HcUFwY0x3dllxQjY5S0V2b2V1a1U2TUU1QTdxTXEwTjVXUW5xQlVydkx5bHgvTVdlODRrZC84OWxyYW1ocXdScU50a2E3MVhSeHh5aUVjZWVwaExGLzBHUGZkYlhIaWdGVzFnQ0tpM0I5eTJ1RnNmblF6K2M1K2xPdWdyZGdoRjBvcHljREFDTzk5NzZ0NStTc09vK3ByWXFra0wzVng5bVJORjFZcVdMOWEreVJPMUFNUmhnZ0xsVWVhRUFMYVRsNEx6cjFBTzBQTGppTy9MRWI1c0FycDJXWFFFQnJORjc1d0pqZmN1b2oremdvSjEwRWs4dHgyeFpYVXR0NXd5K1ZYNHFTcUdGMmp1QXRKcUEydFUzSjB6R3JqdWwvZWhEQzZsbzRaWForOVBZdGJoNGFtNWhRZitzRHJzVWFnWXQ0ZVg4VjRTUU5RaHhwSEdHNjVieDFZeThJRHBsQXFWWEZjQlRxZzFMcUl0bU91SjdYZ0xyQzl5TGdsS0p4UGVkc3BkTjhVbzIrSkFTc3dhSEs1ZmZqd3NSL21zMy82T3ZGWUU5cFdHVEVydU94djZ5TmZNRlZGaTdBR0xvMDFJYTZqMkx5NmgxVkxObkR3Y2Z2ejhLVjNJMHJqcElEdEI1TkxoZ3NsWG5YaVFoWXNuSU1mR3J5WW9pNTdzQThvWlZRYW05YWVwYkVod2VCZ2lhMWRlZnI2U3d6bmh3bW1YVWRxN3FYWXNCTlRTV1BESWlxeEFpa0VmcWRENFpFRUk4dmpGQjVKc3ZFT24rUGJYc2NIanoyYjNzRUJ0TFVZSjBSa1I1RFpBbG9FRS9KOEljYjRXR05KcFdOc1dieWFWRXVHNWhtVENIMi9SdDk2NHJVR1ljQ2IzM2dNdUc3RUVheHJ2ejFiQTBvbENhWExQbnRQcnJHaURSMVRHNUV5NGdQMDNQaGp1cGQ5bktZMy93M3Aza0pZblVmUWVScENhOXBPTEpQY1A4QlV4VmhUdURWNXZ2T2hNNWw1b2VMcjMvd1RZY1dTelNRait2MTRmUU5yd1lnUytXMjlyTDU5T1NNYnRuSC9wWXV4Z1krMmxkcjd4cU5lRUd6cjYrUE0wMTdCNmFlZmpGOE5jWk4xMysvNVc5ZjZYSS9wcUlIUEdnUEdZRUtERVNVRy9wV2djR2NHbVFOVUVXTVNCRVdKMjF4bHlqbDV2Q2FGbE82RXhRM1JLRi9QaTNIN3pZdjQvSmQrdzVJbHEwZ21FaVFTM3RqT0QyRkJXb2t5RFZpZHdJdEovSW9HVmNhb1lZeXdTQWxCcUNrV3l3Z0piM3JqVWZ6MFIvK1BWRGFIaU1WZWxDVzFseVlBZDVSODFwcWdYTVR2OXluZUZjZnZsMWlyUUJwRVVwTTVyRXBpaGtDNWFWVE1qYlRhS052T0dQeHltYmluS09iei9PNzMvK1kzdjcrYWRXdTdzQWJpTVJmbE9Eakt3VkVDZ2F4TlA0akFHUnBEMWZjcGxzbzBOcVU1OXVqNW5QMitVM25WQ1VjUVdnbWVoeE9MMVZIM29nWGc2T2kySUVEN1pTdytWdGNXRWlwUlc3bmhJRlVDcDFiMjJ0SFBCMVVmd2dBMzd0SzN0WXRiYmwzQ3RkY3ZadGxEYXhrY0tqSThWS0JTQ1JFaVdxUTB1alFuRnBOTW5kckMyMDU3Qlc5OHc3SE1uejhMSEEvZkQxRXhyNjc1WGhJQUhEUE5CaHZxQ1dOMXhkZ1lYT21vL3hnRVdHTUlLbFVVTm1ybERBS0dCNFlwRkVxc1c3K0ZvZUVTUW9EdmE3UzJPSTZnc1RISjNEbjcwTll4R1hSRWVCV3VpK081THpvYVZSMkFQSCtEem5VUVlyWEdrYlgrY3NjQkpjYll6MlBKUGd2R0R3bU14WWw1VVltdERydzZBSjg5eFJxUkNxd2VqNHV4NHh4OVdkT3dML1h5V2gyQWRha25vdXRTbHpvQTYxSUhZRjNxVWdkZ1hkaWRhOEZoL1JqcVVvK0M2L0tTMVlCbjE0K2hMbldweTB2V0JEdjFZNmhMWGVwU2w3clVwUzUxcVV0ZDZsS1h1dFNsTG5XcFMxM3FVcGU2MUtVdWRhbExYZXBTbDdyVXBTNTFxY3VMUXY0L1BXL1dSdlo0YUZ3QUFBQUFTVVZPUks1Q1lJST0iIGFsdD0iVU5JIOaomeiqjCI+PC9kaXY+CiAgICAgIDxoMT5IVE1MIOippuadvzwvaDE+PHA+5YSq5bGl5ZyY6ZqK56CU55m86Kit6KiIIDIwMjYgwqkg5L2/55So6KuL5byV6Ki7PC9wPgogICAgPC9kaXY+CiAgPG5hdiBjbGFzcz0icmFpbCIgcm9sZT0idGFibGlzdCIgYXJpYS1sYWJlbD0i5qqi6KaW5pa55byPIj4KICAgIDxidXR0b24gcm9sZT0idGFiIiBpZD0idGFiU3BsaXQiIGFyaWEtc2VsZWN0ZWQ9InRydWUiPjxzcGFuIGNsYXNzPSJuIj4xPC9zcGFuPuS4puaOkuaqouimljwvYnV0dG9uPgogICAgPGJ1dHRvbiByb2xlPSJ0YWIiIGlkPSJ0YWJDb2RlIiBhcmlhLXNlbGVjdGVkPSJmYWxzZSI+PHNwYW4gY2xhc3M9Im4iPjI8L3NwYW4+5Y+q55yL56iL5byP56K8PC9idXR0b24+CiAgICA8YnV0dG9uIHJvbGU9InRhYiIgaWQ9InRhYlZpZXciIGFyaWEtc2VsZWN0ZWQ9ImZhbHNlIj48c3BhbiBjbGFzcz0ibiI+Mzwvc3Bhbj7lj6rnnIvpoJDopr08L2J1dHRvbj4KICAgIDxidXR0b24gcm9sZT0idGFiIiBpZD0idGFiUGhvbmUiIGFyaWEtc2VsZWN0ZWQ9ImZhbHNlIj48c3BhbiBjbGFzcz0ibiI+NDwvc3Bhbj7miYvmqZ/niYjpoJDopr08L2J1dHRvbj4KICA8L25hdj4KICA8ZGl2IGNsYXNzPSJyaWdodCI+CiAgICAgIDxkaXYgY2xhc3M9InNlZyIgcm9sZT0iZ3JvdXAiIGFyaWEtbGFiZWw9IuS9iOaZr+S4u+mhjCI+CiAgICAgICAgPGJ1dHRvbiBpZD0idGhMaWdodCIgdHlwZT0iYnV0dG9uIiBhcmlhLXByZXNzZWQ9ImZhbHNlIj48c3ZnIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSI0Ii8+PHBhdGggZD0iTTEyIDJ2Mk0xMiAyMHYyTTQuOSA0LjlsMS40IDEuNE0xNy43IDE3LjdsMS40IDEuNE0yIDEyaDJNMjAgMTJoMk00LjkgMTkuMWwxLjQtMS40TTE3LjcgNi4zbDEuNC0xLjQiLz48L3N2Zz7mt6HoibI8L2J1dHRvbj4KICAgICAgICA8YnV0dG9uIGlkPSJ0aERhcmsiIHR5cGU9ImJ1dHRvbiIgYXJpYS1wcmVzc2VkPSJmYWxzZSI+PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0iTTIxIDEyLjhBOSA5IDAgMSAxIDExLjIgM2E3IDcgMCAwIDAgOS44IDkuOHoiLz48L3N2Zz7mt7HoibI8L2J1dHRvbj4KICAgICAgPC9kaXY+CiAgICAgIDxzcGFuIGNsYXNzPSJiYWRnZSI+MjAyNiDmlZnlrbjniYg8L3NwYW4+CiAgICA8L2Rpdj4KPC9kaXY+PC9kaXY+Cgo8bWFpbiBjbGFzcz0id3JhcCIgaWQ9IndvcmsiPgogIDxzZWN0aW9uIGNsYXNzPSJwYW5lIGVkIiBhcmlhLWxhYmVsPSLljp/lp4vnorwiPgogICAgPGRpdiBjbGFzcz0icGFuZS1oZWFkIj4KICAgICAgPGgyPuWOn+Wni+eivCA8c21hbGwgaWQ9InN0YXQiPjAg6KGMIMK3IDAg5a2X5YWDPC9zbWFsbD48L2gyPgogICAgICA8ZGl2IGNsYXNzPSJhY3RzIj4KICAgICAgICA8YnV0dG9uIGNsYXNzPSJidG4iIGlkPSJidG5Db3B5IiB0eXBlPSJidXR0b24iPuikh+ijveeoi+W8j+eivDwvYnV0dG9uPgogICAgICAgIDxidXR0b24gY2xhc3M9ImJ0biIgaWQ9ImJ0blNhbXBsZSIgdHlwZT0iYnV0dG9uIj7ovInlhaXnr4Tkvos8L2J1dHRvbj4KICAgICAgICA8YnV0dG9uIGNsYXNzPSJidG4iIGlkPSJidG5DbGVhciIgdHlwZT0iYnV0dG9uIj7muIXpmaTlhaflrrk8L2J1dHRvbj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9ImVkaXRvciI+CiAgICAgIDxkaXYgY2xhc3M9Imd1dHRlciIgaWQ9Imd1dHRlciIgYXJpYS1oaWRkZW49InRydWUiPjE8L2Rpdj4KICAgICAgPHRleHRhcmVhIGlkPSJzcmMiIHNwZWxsY2hlY2s9ImZhbHNlIiBhdXRvY2FwaXRhbGl6ZT0ib2ZmIiBhdXRvY29tcGxldGU9Im9mZiIgYXJpYS1sYWJlbD0iSFRNTCDljp/lp4vnorwiPjwvdGV4dGFyZWE+CiAgICA8L2Rpdj4KICA8L3NlY3Rpb24+CiAgPHNlY3Rpb24gY2xhc3M9InBhbmUgcHYiIGFyaWEtbGFiZWw9IuWNs+aZgumgkOimvSI+CiAgICA8ZGl2IGNsYXNzPSJwYW5lLWhlYWQiPgogICAgICA8aDI+5Y2z5pmC6aCQ6Ka9PC9oMj4KICAgICAgPGRpdiBjbGFzcz0iYWN0cyI+CiAgICAgICAgPGJ1dHRvbiBjbGFzcz0iYnRuIiBpZD0iYnRuRWRpdCIgdHlwZT0iYnV0dG9uIiBhcmlhLXByZXNzZWQ9ImZhbHNlIj7poJDopr3lhafnm7TmjqXnt6jovK88L2J1dHRvbj4KICAgICAgICA8YnV0dG9uIGNsYXNzPSJidG4iIGlkPSJidG5NYXJrIiB0eXBlPSJidXR0b24iPuieouWFieethiA8a2JkPuKMmC9DdHJsIEg8L2tiZD48L2J1dHRvbj4KICAgICAgICA8YnV0dG9uIGNsYXNzPSJidG4iIGlkPSJidG5GdWxsIiB0eXBlPSJidXR0b24iPuWFqOieouW5lTwvYnV0dG9uPgogICAgICAgIDxidXR0b24gY2xhc3M9ImJ0biIgaWQ9ImJ0bk9wZW4iIHR5cGU9ImJ1dHRvbiI+5Zyo5paw5YiG6aCB6ZaL5ZWfPC9idXR0b24+CiAgICAgICAgPGJ1dHRvbiBjbGFzcz0iYnRuIiBpZD0iYnRuU2hvdCIgdHlwZT0iYnV0dG9uIj7kuIvovInpoJDopr3lnJY8L2J1dHRvbj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9InN0YWdlIiBpZD0ic3RhZ2UiPjxkaXYgY2xhc3M9ImRldmljZSI+PGlmcmFtZSBpZD0idmlldyIgdGl0bGU9IumgkOimvSI+PC9pZnJhbWU+PC9kaXY+PC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJoaW50IiBpZD0iaGludCI+6bue6aCQ6Ka95Lit55qE5YWD57Sg77yM5bem5YG05pyD6Lez5Yiw5bCN5oeJ56iL5byP56K8PC9kaXY+CiAgPC9zZWN0aW9uPgo8L21haW4+Cgo8Zm9vdGVyPjxkaXYgY2xhc3M9IndyYXAiPuaJgOacieWFp+WuueWPquWcqOS9oOeahOeAj+imveWZqOS4reiZleeQhu+8jOS4jeacg+S4iuWCs++8m+iNieeov+aaq+WtmOWcqOmAmeWPsOijnee9ruOAgjwvZGl2PjwvZm9vdGVyPgo8YnV0dG9uIGNsYXNzPSJidG4gZXhpdGZ1bGwiIGlkPSJidG5FeGl0IiB0eXBlPSJidXR0b24iIGhpZGRlbj7pm6LplovlhajonqLluZU8L2J1dHRvbj4KPGRpdiBjbGFzcz0idG9hc3QiIGlkPSJ0b2FzdCIgcm9sZT0ic3RhdHVzIiBhcmlhLWxpdmU9InBvbGl0ZSI+PC9kaXY+CjxkaXYgY2xhc3M9InNob3QiIGlkPSJzaG90Qm94IiBoaWRkZW4+CiAgPGRpdiBjbGFzcz0ic2hvdC1jYXJkIj4KICAgIDxkaXYgY2xhc3M9InBhbmUtaGVhZCI+PGgyPumgkOimveWcljwvaDI+PGRpdiBjbGFzcz0iYWN0cyI+CiAgICAgIDxidXR0b24gY2xhc3M9ImJ0biIgaWQ9InNob3RTYXZlIiB0eXBlPSJidXR0b24iIGFyaWEtcHJlc3NlZD0idHJ1ZSI+5LiL6LyJIFBORzwvYnV0dG9uPgogICAgICA8YnV0dG9uIGNsYXNzPSJidG4iIGlkPSJzaG90Q2xvc2UiIHR5cGU9ImJ1dHRvbiI+6Zec6ZaJPC9idXR0b24+PC9kaXY+PC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJzaG90LWJvZHkiPjxpbWcgaWQ9InNob3RJbWciIGFsdD0i6aCQ6Ka955Wr6Z2i5oiq5ZyWIj48L2Rpdj4KICAgIDxkaXYgY2xhc3M9ImhpbnQiPuWmguaenOS4i+i8ieaykuacieWPjeaHie+8jOWPr+S7peWcqOWclueJh+S4iuaMieWPs+mNtemBuOOAjOWPpuWtmOWclueJh+OAjeOAgjwvZGl2PgogIDwvZGl2Pgo8L2Rpdj4KCjxzY3JpcHQ+CmNvbnN0IFNBTVBMRSA9IGA8IURPQ1RZUEUgaHRtbD4KPGh0bWwgbGFuZz0iemgtSGFudCI+CjxoZWFkPgo8bWV0YSBjaGFyc2V0PSJ1dGYtOCI+CjxzdHlsZT4KICBib2R5IHsgZm9udC1mYW1pbHk6IHN5c3RlbS11aSwgc2Fucy1zZXJpZjsgbWFyZ2luOiAwOyBwYWRkaW5nOiAyNHB4OyBjb2xvcjogIzFkMjQzMzsgbGluZS1oZWlnaHQ6IDEuNzsgfQogIC5jYXJkIHsgbWF4LXdpZHRoOiA1MjBweDsgYm9yZGVyOiAxcHggc29saWQgI2Q2ZGJlNjsgYm9yZGVyLXJhZGl1czogMTRweDsgcGFkZGluZzogMjBweCAyNHB4OyB9CiAgaDIgeyBtYXJnaW46IDAgMCA4cHg7IH0KICAudGFnIHsgZGlzcGxheTogaW5saW5lLWJsb2NrOyBiYWNrZ3JvdW5kOiAjZTVmNGU3OyBjb2xvcjogIzJmOGEzZTsgZm9udC1zaXplOiAxM3B4OyBwYWRkaW5nOiAycHggMTBweDsgYm9yZGVyLXJhZGl1czogOTlweDsgfQogIGJ1dHRvbiB7IG1hcmdpbi10b3A6IDEycHg7IHBhZGRpbmc6IDhweCAxNnB4OyBib3JkZXI6IDA7IGJvcmRlci1yYWRpdXM6IDhweDsgYmFja2dyb3VuZDogIzQ2YTk1NzsgY29sb3I6ICNmZmY7IH0KPC9zdHlsZT4KPC9oZWFkPgo8Ym9keT4KICA8ZGl2IGNsYXNzPSJjYXJkIj4KICAgIDxzcGFuIGNsYXNzPSJ0YWciPuevhOS+izwvc3Bhbj4KICAgIDxoMj7pgLHkupTnpL7lnJjmiJDmnpznmbzooag8L2gyPgogICAgPHA+5pmC6ZaT77yaMTEg5pyIIDE0IOaXpSDkuIvljYggMjowMDxicj7lnLDpu57vvJrlrbjmoKHmtLvli5XkuK3lv4PkuozmqJM8L3A+CiAgICA8cD7mraHov47lrrbplbfkuIDlkIzlj4PliqDvvIznj77loLTmnInlrbjnlJ/kvZzlk4HlsZXnpLroiIflsI/lnovmvJTlh7rjgII8L3A+CiAgICA8YnV0dG9uIG9uY2xpY2s9InRoaXMudGV4dENvbnRlbnQ9J+W3sueZu+iomO+8jOisneisne+8gSciPuaIkeimgeWPg+WKoDwvYnV0dG9uPgogIDwvZGl2Pgo8L2JvZHk+CjwvaHRtbD5gOwoKY29uc3QgJCA9IGlkID0+IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGlkKTsKY29uc3Qgc3JjPSQoJ3NyYycpLCB2aWV3PSQoJ3ZpZXcnKSwgZ3V0dGVyPSQoJ2d1dHRlcicpLCBzdGFnZT0kKCdzdGFnZScpLCB3b3JrPSQoJ3dvcmsnKTsKbGV0IGVkaXRNb2RlPWZhbHNlLCBzeW5jaW5nPWZhbHNlLCB0aW1lcj1udWxsOwoKZnVuY3Rpb24gdG9hc3QobSl7Y29uc3QgdD0kKCd0b2FzdCcpO3QudGV4dENvbnRlbnQ9bTt0LmNsYXNzTGlzdC5hZGQoJ29uJyk7Y2xlYXJUaW1lb3V0KHRvYXN0Ll90KTt0b2FzdC5fdD1zZXRUaW1lb3V0KCgpPT50LmNsYXNzTGlzdC5yZW1vdmUoJ29uJyksMTgwMCk7fQpjb25zdCBzdG9yZT17Z2V0KGspe3RyeXtyZXR1cm4gbG9jYWxTdG9yYWdlLmdldEl0ZW0oayl9Y2F0Y2goZSl7cmV0dXJuIG51bGx9fSxzZXQoayx2KXt0cnl7bG9jYWxTdG9yYWdlLnNldEl0ZW0oayx2KX1jYXRjaChlKXt9fX07CgovKiB0aGVtZSAqLwpmdW5jdGlvbiBhcHBseVRoZW1lKHQpewogIGNvbnN0IHN5cyA9IG1hdGNoTWVkaWEoJyhwcmVmZXJzLWNvbG9yLXNjaGVtZTogZGFyayknKS5tYXRjaGVzID8gJ2RhcmsnOidsaWdodCc7CiAgY29uc3QgY3VyID0gdCB8fCBkb2N1bWVudC5kb2N1bWVudEVsZW1lbnQuZGF0YXNldC50aGVtZSB8fCBzeXM7CiAgaWYodCkgZG9jdW1lbnQuZG9jdW1lbnRFbGVtZW50LmRhdGFzZXQudGhlbWUgPSB0OwogICQoJ3RoTGlnaHQnKS5zZXRBdHRyaWJ1dGUoJ2FyaWEtcHJlc3NlZCcsIGN1cj09PSdsaWdodCcpOwogICQoJ3RoRGFyaycpLnNldEF0dHJpYnV0ZSgnYXJpYS1wcmVzc2VkJywgY3VyPT09J2RhcmsnKTsKfQokKCd0aExpZ2h0Jykub25jbGljaz0oKT0+e2FwcGx5VGhlbWUoJ2xpZ2h0Jyk7c3RvcmUuc2V0KCdodC10aGVtZScsJ2xpZ2h0Jyl9OwokKCd0aERhcmsnKS5vbmNsaWNrPSgpPT57YXBwbHlUaGVtZSgnZGFyaycpO3N0b3JlLnNldCgnaHQtdGhlbWUnLCdkYXJrJyl9OwphcHBseVRoZW1lKHN0b3JlLmdldCgnaHQtdGhlbWUnKSk7CgovKiB0YWJzICovCmNvbnN0IHRhYnM9e3RhYlNwbGl0OicnLHRhYkNvZGU6J29ubHktY29kZScsdGFiVmlldzonb25seS12aWV3Jyx0YWJQaG9uZToncGhvbmUnfTsKT2JqZWN0LmtleXModGFicykuZm9yRWFjaChpZD0+JChpZCkub25jbGljaz0oKT0+ewogIE9iamVjdC5rZXlzKHRhYnMpLmZvckVhY2gobz0+JChvKS5zZXRBdHRyaWJ1dGUoJ2FyaWEtc2VsZWN0ZWQnLG89PT1pZCkpOwogIHdvcmsuY2xhc3NMaXN0LnJlbW92ZSgnb25seS1jb2RlJywnb25seS12aWV3Jyk7CiAgc3RhZ2UuY2xhc3NMaXN0LnRvZ2dsZSgncGhvbmUnLCBpZD09PSd0YWJQaG9uZScpOwogIGlmKHRhYnNbaWRdPT09J29ubHktY29kZSd8fHRhYnNbaWRdPT09J29ubHktdmlldycpIHdvcmsuY2xhc3NMaXN0LmFkZCh0YWJzW2lkXSk7CiAgaWYoaWQ9PT0ndGFiUGhvbmUnICYmIGlubmVyV2lkdGg+NzYwKSB3b3JrLmNsYXNzTGlzdC5yZW1vdmUoJ29ubHktdmlldycpOwp9KTsKCmZ1bmN0aW9uIHVwZGF0ZUd1dHRlcigpewogIGNvbnN0IG49c3JjLnZhbHVlLnNwbGl0KCdcbicpLmxlbmd0aDsgbGV0IHM9Jyc7IGZvcihsZXQgaT0xO2k8PW47aSsrKSBzKz1pKydcbic7CiAgZ3V0dGVyLnRleHRDb250ZW50PXM7ICQoJ3N0YXQnKS50ZXh0Q29udGVudD1gJHtufSDooYwgwrcgJHtzcmMudmFsdWUubGVuZ3RofSDlrZflhYNgOyBndXR0ZXIuc2Nyb2xsVG9wPXNyYy5zY3JvbGxUb3A7Cn0Kc3JjLmFkZEV2ZW50TGlzdGVuZXIoJ3Njcm9sbCcsKCk9PntndXR0ZXIuc2Nyb2xsVG9wPXNyYy5zY3JvbGxUb3B9KTsKZnVuY3Rpb24gcmVuZGVyKCl7IHZpZXcuc3JjZG9jPXNyYy52YWx1ZTsgfQp2aWV3LmFkZEV2ZW50TGlzdGVuZXIoJ2xvYWQnLCgpPT57CiAgY29uc3QgZD12aWV3LmNvbnRlbnREb2N1bWVudDsgaWYoIWQpIHJldHVybjsKICBpZihlZGl0TW9kZSYmZC5ib2R5KSBkLmJvZHkuY29udGVudEVkaXRhYmxlPSd0cnVlJzsKICBkLmFkZEV2ZW50TGlzdGVuZXIoJ2lucHV0JywoKT0+e2lmKGVkaXRNb2RlKSBwdWxsKCl9KTsKICBkLmFkZEV2ZW50TGlzdGVuZXIoJ2tleWRvd24nLG9uS2V5KTsKICBkLmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJyxlPT57aWYoIWVkaXRNb2RlKSBsb2NhdGUoZS50YXJnZXQpfSk7Cn0pOwpjb25zdCBpc0Z1bGw9KCk9Pi88aHRtbFtccz5dfDxib2R5W1xzPl0vaS50ZXN0KHNyYy52YWx1ZSk7CmZ1bmN0aW9uIHB1bGwoKXsKICBjb25zdCBkPXZpZXcuY29udGVudERvY3VtZW50OyBpZighZCkgcmV0dXJuOyBsZXQgaHRtbDsKICBpZihpc0Z1bGwoKSl7Y29uc3QgYz1kLmRvY3VtZW50RWxlbWVudC5jbG9uZU5vZGUodHJ1ZSk7Y29uc3QgYj1jLnF1ZXJ5U2VsZWN0b3IoJ2JvZHknKTtpZihiKWIucmVtb3ZlQXR0cmlidXRlKCdjb250ZW50ZWRpdGFibGUnKTsKICAgIGh0bWw9KC9eXHMqPCFkb2N0eXBlIGh0bWw+L2kudGVzdChzcmMudmFsdWUpPyc8IURPQ1RZUEUgaHRtbD5cbic6JycpK2Mub3V0ZXJIVE1MO30KICBlbHNle2NvbnN0IGI9ZC5ib2R5LmNsb25lTm9kZSh0cnVlKTtiLnJlbW92ZUF0dHJpYnV0ZSgnY29udGVudGVkaXRhYmxlJyk7aHRtbD1iLmlubmVySFRNTC50cmltKCk7fQogIHN5bmNpbmc9dHJ1ZTsgc3JjLnZhbHVlPWh0bWw7IHVwZGF0ZUd1dHRlcigpOyBzdG9yZS5zZXQoJ2h0LWRyYWZ0JyxzcmMudmFsdWUpOyBzeW5jaW5nPWZhbHNlOwp9CmZ1bmN0aW9uIGxvY2F0ZShlbCl7CiAgY29uc3QgZD12aWV3LmNvbnRlbnREb2N1bWVudDsgaWYoIWR8fCFlbHx8ZWw9PT1kLmJvZHl8fGVsPT09ZC5kb2N1bWVudEVsZW1lbnQpIHJldHVybjsKICBjb25zdCB0YWc9ZWwudGFnTmFtZS50b0xvd2VyQ2FzZSgpLCBpZHg9QXJyYXkuZnJvbShkLnF1ZXJ5U2VsZWN0b3JBbGwodGFnKSkuaW5kZXhPZihlbCk7CiAgY29uc3QgcmU9bmV3IFJlZ0V4cCgnPCcrdGFnKycoPz1bXFxzPi9dKScsJ2dpJyk7IGxldCBtLGk9MCxzdGFydD0tMTsKICB3aGlsZSgobT1yZS5leGVjKHNyYy52YWx1ZSkpKXtpZihpPT09aWR4KXtzdGFydD1tLmluZGV4O2JyZWFrfWkrK30KICBpZihzdGFydDwwKSByZXR1cm47CiAgaWYod29yay5jbGFzc0xpc3QuY29udGFpbnMoJ29ubHktdmlldycpKSAkKCd0YWJTcGxpdCcpLmNsaWNrKCk7CiAgc3JjLmZvY3VzKHtwcmV2ZW50U2Nyb2xsOnRydWV9KTsgc3JjLnNldFNlbGVjdGlvblJhbmdlKHN0YXJ0LHNyYy52YWx1ZS5pbmRleE9mKCc+JyxzdGFydCkrMSk7CiAgY29uc3QgbGluZT1zcmMudmFsdWUuc2xpY2UoMCxzdGFydCkuc3BsaXQoJ1xuJykubGVuZ3RoOwogIHNyYy5zY3JvbGxUb3A9TWF0aC5tYXgoMCwobGluZS00KSpwYXJzZUZsb2F0KGdldENvbXB1dGVkU3R5bGUoc3JjKS5saW5lSGVpZ2h0KSk7CiAgJCgnaGludCcpLnRleHRDb250ZW50PWDlt7LlrprkvY3vvJo8JHt0YWd9Pu+8jOesrCAke2xpbmV9IOihjGA7Cn0KZnVuY3Rpb24gaGlnaGxpZ2h0KCl7CiAgY29uc3QgZD12aWV3LmNvbnRlbnREb2N1bWVudDsgaWYoIWQpIHJldHVybjsgY29uc3Qgc2VsPWQuZ2V0U2VsZWN0aW9uKCk7CiAgaWYoIXNlbHx8c2VsLmlzQ29sbGFwc2VkKXt0b2FzdCgn5YWI5Zyo6aCQ6Ka95Lit6YG45Y+W5paH5a2X77yM5YaN5oyJ6J6i5YWJ562GJyk7cmV0dXJufQogIGNvbnN0IHI9c2VsLmdldFJhbmdlQXQoMCksIG1rPWQuY3JlYXRlRWxlbWVudCgnbWFyaycpOyBtay5zdHlsZS5iYWNrZ3JvdW5kPScjZjJkMjJlJzsKICB0cnl7ci5zdXJyb3VuZENvbnRlbnRzKG1rKX1jYXRjaChlKXttay5hcHBlbmRDaGlsZChyLmV4dHJhY3RDb250ZW50cygpKTtyLmluc2VydE5vZGUobWspfQogIHNlbC5yZW1vdmVBbGxSYW5nZXMoKTsgcHVsbCgpOyB0b2FzdCgn5bey5Yqg5LiK6J6i5YWJ5qiZ6KiYJyk7Cn0KZnVuY3Rpb24gb25LZXkoZSl7IGlmKChlLm1ldGFLZXl8fGUuY3RybEtleSkmJmUua2V5LnRvTG93ZXJDYXNlKCk9PT0naCcpe2UucHJldmVudERlZmF1bHQoKTtoaWdobGlnaHQoKX0gfQpkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdrZXlkb3duJyxlPT57b25LZXkoZSk7IGlmKGUua2V5PT09J0VzY2FwZScmJnN0YWdlLmNsYXNzTGlzdC5jb250YWlucygnZnVsbCcpKSBzZXRGdWxsKGZhbHNlKX0pOwoKc3JjLmFkZEV2ZW50TGlzdGVuZXIoJ2lucHV0JywoKT0+eyBpZihzeW5jaW5nKSByZXR1cm47IHVwZGF0ZUd1dHRlcigpOyBzdG9yZS5zZXQoJ2h0LWRyYWZ0JyxzcmMudmFsdWUpOyBjbGVhclRpbWVvdXQodGltZXIpOyB0aW1lcj1zZXRUaW1lb3V0KHJlbmRlciwyNTApOyB9KTsKc3JjLmFkZEV2ZW50TGlzdGVuZXIoJ2tleWRvd24nLGU9PnsgaWYoZS5rZXk9PT0nVGFiJyl7ZS5wcmV2ZW50RGVmYXVsdCgpO3NyYy5zZXRSYW5nZVRleHQoJyAgJyxzcmMuc2VsZWN0aW9uU3RhcnQsc3JjLnNlbGVjdGlvbkVuZCwnZW5kJyk7c3JjLmRpc3BhdGNoRXZlbnQobmV3IEV2ZW50KCdpbnB1dCcpKX0gfSk7CgokKCdidG5Db3B5Jykub25jbGljaz0oKT0+e2NvbnN0IGZiPSgpPT57c3JjLmZvY3VzKCk7c3JjLnNlbGVjdCgpO3RvYXN0KCflt7LlhajpgbjvvIzoq4vmjIkg4oyYL0N0cmwgQyDopIfoo70nKX07CiAgdHJ5e25hdmlnYXRvci5jbGlwYm9hcmQud3JpdGVUZXh0KHNyYy52YWx1ZSkudGhlbigoKT0+dG9hc3QoJ+W3suikh+ijveeoi+W8j+eivCcpLGZiKX1jYXRjaChlKXtmYigpfX07CiQoJ2J0bkVkaXQnKS5vbmNsaWNrPWZ1bmN0aW9uKCl7ZWRpdE1vZGU9IWVkaXRNb2RlO3RoaXMuc2V0QXR0cmlidXRlKCdhcmlhLXByZXNzZWQnLGVkaXRNb2RlKTsKICBjb25zdCBiPXZpZXcuY29udGVudERvY3VtZW50JiZ2aWV3LmNvbnRlbnREb2N1bWVudC5ib2R5OyBpZihiKXsgaWYoZWRpdE1vZGUpIGIuY29udGVudEVkaXRhYmxlPSd0cnVlJzsgZWxzZSBiLnJlbW92ZUF0dHJpYnV0ZSgnY29udGVudGVkaXRhYmxlJyk7IH0KICAkKCdoaW50JykudGV4dENvbnRlbnQ9ZWRpdE1vZGU/J+ebtOaOpeWcqOmgkOimveS4reS/ruaUueaWh+Wtl++8jOW3puWBtOWQjOatpeabtOaWsCc6J+m7numgkOimveS4reeahOWFg+e0oO+8jOW3puWBtOacg+i3s+WIsOWwjeaHieeoi+W8j+eivCc7IHRvYXN0KGVkaXRNb2RlPyflt7LplovllZ/poJDopr3lhafnt6jovK8nOiflt7Lpl5zplonpoJDopr3lhafnt6jovK8nKTt9OwokKCdidG5NYXJrJykub25jbGljaz1oaWdobGlnaHQ7CmZ1bmN0aW9uIHNldEZ1bGwob24pe3N0YWdlLmNsYXNzTGlzdC50b2dnbGUoJ2Z1bGwnLG9uKTskKCdidG5FeGl0JykuaGlkZGVuPSFvbn0KJCgnYnRuRnVsbCcpLm9uY2xpY2s9KCk9PnNldEZ1bGwodHJ1ZSk7ICQoJ2J0bkV4aXQnKS5vbmNsaWNrPSgpPT5zZXRGdWxsKGZhbHNlKTsKJCgnYnRuU2FtcGxlJykub25jbGljaz0oKT0+e3NyYy52YWx1ZT1TQU1QTEU7dXBkYXRlR3V0dGVyKCk7c3RvcmUuc2V0KCdodC1kcmFmdCcsc3JjLnZhbHVlKTtyZW5kZXIoKTt0b2FzdCgn5bey6LyJ5YWl56+E5L6LJyl9OwpsZXQgYXJtZWQ9ZmFsc2U7CiQoJ2J0bkNsZWFyJykub25jbGljaz1mdW5jdGlvbigpewogIGlmKCFhcm1lZCl7YXJtZWQ9dHJ1ZTt0aGlzLnRleHRDb250ZW50PSflho3mjInkuIDmrKHnorroqo0nO3NldFRpbWVvdXQoKCk9Pnthcm1lZD1mYWxzZTt0aGlzLnRleHRDb250ZW50PSfmuIXpmaTlhaflrrknfSwyNTAwKTtyZXR1cm59CiAgYXJtZWQ9ZmFsc2U7dGhpcy50ZXh0Q29udGVudD0n5riF6Zmk5YWn5a65JztzcmMudmFsdWU9Jyc7dXBkYXRlR3V0dGVyKCk7c3RvcmUuc2V0KCdodC1kcmFmdCcsJycpO3JlbmRlcigpO3RvYXN0KCflt7LmuIXpmaTlhaflrrknKTtzcmMuZm9jdXMoKTsKfTsKLyogb3BlbiBpbiBuZXcgdGFiICovCiQoJ2J0bk9wZW4nKS5vbmNsaWNrPSgpPT57CiAgY29uc3QgdXJsPVVSTC5jcmVhdGVPYmplY3RVUkwobmV3IEJsb2IoW3NyYy52YWx1ZV0se3R5cGU6J3RleHQvaHRtbDtjaGFyc2V0PXV0Zi04J30pKTsKICBsZXQgdz1udWxsOyB0cnl7dz13aW5kb3cub3Blbih1cmwsJ19ibGFuaycpfWNhdGNoKGUpe30KICBpZighdyl7IFVSTC5yZXZva2VPYmplY3RVUkwodXJsKTsgc2V0RnVsbCh0cnVlKTsgdG9hc3QoJ+mAmeWAi+mggemdouS4jeWFgeiosemWi+aWsOWIhumgge+8jOW3suaUueeUqOWFqOieouW5lemgkOimvScpOyByZXR1cm47IH0KICBzZXRUaW1lb3V0KCgpPT5VUkwucmV2b2tlT2JqZWN0VVJMKHVybCksNjAwMDApOwp9OwoKLyogc2NyZWVuc2hvdCBkb3dubG9hZCAqLwpjb25zdCBIMkM9J2h0dHBzOi8vY2RuanMuY2xvdWRmbGFyZS5jb20vYWpheC9saWJzL2h0bWwyY2FudmFzLzEuNC4xL2h0bWwyY2FudmFzLm1pbi5qcyc7CmxldCBzaG90VVJMPW51bGw7CmZ1bmN0aW9uIHN0YW1wKCl7Y29uc3QgZD1uZXcgRGF0ZSgpLHA9bj0+U3RyaW5nKG4pLnBhZFN0YXJ0KDIsJzAnKTtyZXR1cm4gYCR7ZC5nZXRGdWxsWWVhcigpfSR7cChkLmdldE1vbnRoKCkrMSl9JHtwKGQuZ2V0RGF0ZSgpKX0tJHtwKGQuZ2V0SG91cnMoKSl9JHtwKGQuZ2V0TWludXRlcygpKX1gfQpmdW5jdGlvbiBzYXZlU2hvdCgpeyBpZighc2hvdFVSTCkgcmV0dXJuOyBjb25zdCBhPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2EnKTsgYS5ocmVmPXNob3RVUkw7IGEuZG93bmxvYWQ9YOmgkOimveWcli0ke3N0YW1wKCl9LnBuZ2A7IGRvY3VtZW50LmJvZHkuYXBwZW5kQ2hpbGQoYSk7IGEuY2xpY2soKTsgYS5yZW1vdmUoKTsgfQpmdW5jdGlvbiBsb2FkSDJDKHdpbil7CiAgaWYod2luLmh0bWwyY2FudmFzKSByZXR1cm4gUHJvbWlzZS5yZXNvbHZlKCk7CiAgcmV0dXJuIG5ldyBQcm9taXNlKChvayxubyk9Pntjb25zdCBzPXdpbi5kb2N1bWVudC5jcmVhdGVFbGVtZW50KCdzY3JpcHQnKTtzLnNyYz1IMkM7cy5vbmxvYWQ9b2s7cy5vbmVycm9yPSgpPT5ubyhuZXcgRXJyb3IoJ2xvYWQnKSk7d2luLmRvY3VtZW50LmhlYWQuYXBwZW5kQ2hpbGQocyk7fSk7Cn0KJCgnYnRuU2hvdCcpLm9uY2xpY2s9YXN5bmMgZnVuY3Rpb24oKXsKICBjb25zdCB3aW49dmlldy5jb250ZW50V2luZG93LCBkPXZpZXcuY29udGVudERvY3VtZW50OyBpZighZHx8IWQuYm9keSl7dG9hc3QoJ+mgkOimvemChOaykui8ieWFpeWujOaIkCcpO3JldHVybn0KICB0aGlzLmRpc2FibGVkPXRydWU7IGNvbnN0IGxhYmVsPXRoaXMudGV4dENvbnRlbnQ7IHRoaXMudGV4dENvbnRlbnQ9J+eUoueUn+S4reKApic7CiAgdHJ5ewogICAgYXdhaXQgbG9hZEgyQyh3aW4pOwogICAgY29uc3QgZWw9ZC5kb2N1bWVudEVsZW1lbnQ7CiAgICBjb25zdCBiZz13aW4uZ2V0Q29tcHV0ZWRTdHlsZShkLmJvZHkpLmJhY2tncm91bmRDb2xvcjsKICAgIGNvbnN0IGNhbnZhcz1hd2FpdCB3aW4uaHRtbDJjYW52YXMoZWwse3NjYWxlOjIsdXNlQ09SUzp0cnVlLAogICAgICBiYWNrZ3JvdW5kQ29sb3I6KGJnJiZiZyE9PSdyZ2JhKDAsIDAsIDAsIDApJyk/Ymc6JyNmZmZmZmYnLAogICAgICB3aWR0aDplbC5zY3JvbGxXaWR0aCxoZWlnaHQ6ZWwuc2Nyb2xsSGVpZ2h0LHdpbmRvd1dpZHRoOmVsLnNjcm9sbFdpZHRoLHdpbmRvd0hlaWdodDplbC5zY3JvbGxIZWlnaHQsc2Nyb2xsWDowLHNjcm9sbFk6MH0pOwogICAgY29uc3QgYmxvYj1hd2FpdCBuZXcgUHJvbWlzZShyPT5jYW52YXMudG9CbG9iKHIsJ2ltYWdlL3BuZycpKTsKICAgIGlmKHNob3RVUkwpIFVSTC5yZXZva2VPYmplY3RVUkwoc2hvdFVSTCk7CiAgICBzaG90VVJMPVVSTC5jcmVhdGVPYmplY3RVUkwoYmxvYik7CiAgICAkKCdzaG90SW1nJykuc3JjPXNob3RVUkw7ICQoJ3Nob3RCb3gnKS5oaWRkZW49ZmFsc2U7CiAgICBzYXZlU2hvdCgpOyB0b2FzdCgn6aCQ6Ka95ZyW5bey55Si55SfJyk7CiAgfWNhdGNoKGUpeyB0b2FzdCgn5oiq5ZyW5bel5YW36LyJ5YWl5aSx5pWX77yM6KuL56K66KqN57ay6Lev6YCj57ea5b6M5YaN6Kmm5LiA5qyhJyk7IH0KICBmaW5hbGx5eyB0aGlzLmRpc2FibGVkPWZhbHNlOyB0aGlzLnRleHRDb250ZW50PWxhYmVsOyB9Cn07CiQoJ3Nob3RTYXZlJykub25jbGljaz1zYXZlU2hvdDsKJCgnc2hvdENsb3NlJykub25jbGljaz0oKT0+eyQoJ3Nob3RCb3gnKS5oaWRkZW49dHJ1ZX07CiQoJ3Nob3RCb3gnKS5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsZT0+e2lmKGUudGFyZ2V0LmlkPT09J3Nob3RCb3gnKSAkKCdzaG90Qm94JykuaGlkZGVuPXRydWV9KTsKCnNyYy52YWx1ZT1zdG9yZS5nZXQoJ2h0LWRyYWZ0Jyl8fFNBTVBMRTsgdXBkYXRlR3V0dGVyKCk7IHJlbmRlcigpOwo8L3NjcmlwdD4KCjwvYm9keT4KPC9odG1sPgo=";</script>
 <script>
 /* 提示詞產生器 */
 (function(){
@@ -1691,7 +1982,7 @@ footer .wrap{max-width:1080px}
   }
   function selectCopy(ta){ ta.focus(); ta.select(); var d=false; try{d=document.execCommand('copy')}catch(e){} return d; }
   function okMsg(el,opened){
-    var card=el.closest('.gcard'), m=card.querySelector('.g-ok');
+    var card=el.closest('.gcard'); if(!card) return; var m=card.querySelector('.g-ok');
     m.textContent = opened
       ? '✅ 已複製，小幫手已在新分頁開啟。到那裡先勾選來源，再在對話框按 Ctrl+V（Mac ⌘+V）貼上送出。'
       : '✅ 已複製。開啟小幫手後先勾選來源，再在對話框按 Ctrl+V（Mac ⌘+V）貼上送出。';
@@ -1699,9 +1990,10 @@ footer .wrap{max-width:1080px}
   document.querySelectorAll('[data-copy]').forEach(function(btn){
     var label=btn.textContent;
     btn.addEventListener('click',function(){
-      var ta=$(btn.dataset.copy);
+      var ta=$(btn.dataset.copy), isField=('value' in ta)&&ta.tagName!=='P';
       function ok(){ btn.textContent='已複製！'; okMsg(btn,false); setTimeout(function(){btn.textContent=label;},1800); }
-      copyText(ta.value,ok,function(){ if(selectCopy(ta)) ok(); else btn.textContent='已選取，請按 Ctrl+C'; });
+      function sel(){ if(isField) return selectCopy(ta); var r=document.createRange(); r.selectNodeContents(ta); var s=getSelection(); s.removeAllRanges(); s.addRange(r); var d=false; try{d=document.execCommand('copy')}catch(e){} return d; }
+      copyText(isField?ta.value:ta.textContent,ok,function(){ if(sel()) ok(); else btn.textContent='已選取，請按 Ctrl+C'; });
     });
   });
   // 複製並開啟：連結本身照常在新分頁開啟，點擊時同步複製
@@ -1731,9 +2023,23 @@ footer .wrap{max-width:1080px}
     var boxes=list.querySelectorAll('input[type=checkbox]'), out=list.nextElementSibling;
     function upd(){
       var n=0; boxes.forEach(function(b){ if(b.checked) n++; });
-      out.textContent = n===boxes.length ? '🎉 都準備好了！可以開始和小幫手對話。' : '';
+      out.textContent = n===boxes.length ? (list.dataset.done||'🎉 都準備好了！可以開始和小幫手對話。') : '';
     }
     boxes.forEach(function(b){ b.addEventListener('change',upd); });
+  });
+})();
+</script>
+<script>
+/* HTML 試板：切到分頁時才載入 */
+(function(){
+  var f=document.getElementById('ht-frame'), ld=document.getElementById('ht-loading'), html=null;
+  function src(){ if(html===null){ var b=atob(window.HT_B64||''), u=new Uint8Array(b.length); for(var i=0;i<b.length;i++) u[i]=b.charCodeAt(i); html=new TextDecoder().decode(u); } return html; }
+  function load(){ var box=document.getElementById('x-manage-html'); if(!box||box.hidden||f.dataset.on) return; f.dataset.on='1'; f.addEventListener('load',function(){ ld.hidden=true; }); f.srcdoc=src(); }
+  window.addEventListener('hashchange',load); load();
+  document.getElementById('ht-newtab').addEventListener('click',function(){
+    var url=URL.createObjectURL(new Blob([src()],{type:'text/html'}));
+    var w=null; try{ w=window.open(url,'_blank'); }catch(e){}
+    if(!w){ location.href=url; }
   });
 })();
 </script>
