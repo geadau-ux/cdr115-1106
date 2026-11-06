@@ -952,6 +952,21 @@ footer .wrap{max-width:1080px}
 .pick-note{margin:0;font-size:12px;color:var(--muted)}
 .cd-3 button.chip{display:inline-block}
 .cd-3 button.chip small{display:block}
+/* 快速開啟列 */
+.qbar{border-top:1px solid var(--line);background:color-mix(in srgb,var(--surface) 92%,transparent)}
+.qb-in{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-block:14px}
+.qb-h{font-weight:900;font-size:14px;color:var(--primary);margin-right:4px}
+.qb{appearance:none;font:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:6px;padding:6px 12px 6px 6px;border-radius:999px;
+  border:1.5px solid color-mix(in srgb,var(--fill) 40%,var(--line));background:var(--surface);color:var(--text);font-size:14px;font-weight:700;text-decoration:none;list-style:none;transition:transform .15s,box-shadow .15s}
+.qb::-webkit-details-marker{display:none}
+.qb:hover{transform:translateY(-2px);box-shadow:0 6px 14px -8px var(--fill)}
+.qb .qi{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-size:15px;background:color-mix(in srgb,var(--fill) 16%,var(--surface))}
+.qb-sep{width:1.5px;height:24px;background:var(--line);margin:0 4px}
+.qb-dd{position:relative}
+.qb-menu{position:absolute;bottom:calc(100% + 6px);left:0;z-index:40;min-width:180px;display:flex;flex-direction:column;padding:6px;border-radius:14px;border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow)}
+.qb-menu a{padding:8px 12px;border-radius:10px;text-decoration:none;color:var(--text);font-size:14px;font-weight:700}
+.qb-menu a:hover{background:var(--surface-2);color:var(--primary)}
+@media (max-width:560px){.qb-sep{display:none}.qb{font-size:13px}}
 
 </style>
 </head>
@@ -1833,6 +1848,22 @@ footer .wrap{max-width:1080px}
 
 </main>
 
+<nav class="qbar" aria-label="快速開啟"><div class="wrap qb-in">
+  <span class="qb-h">⚡ 快速開啟</span>
+  <a class="qb f8" href="https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e" target="_blank" rel="noopener"><span class="qi">🔍</span><span>概念為本探究</span></a>
+  <a class="qb f6" href="https://notebook.google.com/notebook/6a68de13-1286-40a3-99a9-56ffe67b7eda" target="_blank" rel="noopener"><span class="qi">❓</span><span>有效提問</span></a>
+  <details class="qb-dd" id="qb-skill"><summary class="qb f3"><span class="qi">🌱</span><span>八大思考素養 ▾</span></summary>
+    <div class="qb-menu">
+      <a href="https://notebook.google.com/notebook/2fd7d20a-ca0c-4f11-8e36-6b0dfa325dec" target="_blank" rel="noopener">🔍 批判性思考</a>
+      <a href="https://notebook.google.com/notebook/383b9153-71fa-41ff-8f28-9260fbddd1f8" target="_blank" rel="noopener">💡 創造力</a>
+      <a href="https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05" target="_blank" rel="noopener">🔬 研究與探究</a>
+      <a href="https://notebook.google.com/notebook/4548f6b1-6681-4281-8e8d-4f2b8308f9de" target="_blank" rel="noopener">🧭 系統性思維</a>
+      <a href="https://notebook.google.com/notebook/af062042-58d7-4944-bcf0-1dfa4ee52266" target="_blank" rel="noopener">🪞 反思</a>
+    </div></details>
+  <span class="qb-sep" aria-hidden="true"></span>
+  <a class="qb fv" href="#engage-vlm" target="_blank" rel="noopener"><span class="qi">🧩</span><span>素材轉譯</span></a>
+  <button type="button" class="qb fx" id="qb-html"><span class="qi">🧪</span><span>HTML 試板</span></button>
+</div></nav>
 <footer><div class="wrap">
   <div class="statbar" id="statbar" hidden>
     <span class="sb-item">✉️ 問題反應信箱：<a href="mailto:qekepv@gmail.com" id="mail-addr">qekepv@gmail.com</a><button type="button" class="sb-copy" id="mail-copy">複製</button></span>
@@ -2201,11 +2232,13 @@ footer .wrap{max-width:1080px}
   function src(){ if(html===null){ var b=atob(window.HT_B64||''), u=new Uint8Array(b.length); for(var i=0;i<b.length;i++) u[i]=b.charCodeAt(i); html=new TextDecoder().decode(u); } return html; }
   function load(){ var box=document.getElementById('x-manage-html'); if(!box||box.hidden||f.dataset.on) return; f.dataset.on='1'; f.addEventListener('load',function(){ ld.hidden=true; }); f.srcdoc=src(); }
   window.addEventListener('hashchange',load); load();
-  document.getElementById('ht-newtab').addEventListener('click',function(){
+  window.htOpen=function(){
     var url=URL.createObjectURL(new Blob([src()],{type:'text/html'}));
     var w=null; try{ w=window.open(url,'_blank'); }catch(e){}
     if(!w){ location.href=url; }
-  });
+  };
+  document.getElementById('ht-newtab').addEventListener('click',window.htOpen);
+  var qb=document.getElementById('qb-html'); if(qb) qb.addEventListener('click',window.htOpen);
 })();
 </script>
 <script>
@@ -2300,6 +2333,10 @@ footer .wrap{max-width:1080px}
 </script>
 <script>
 document.querySelectorAll('.flips .flip').forEach(function(b){ b.addEventListener('click',function(){ var on=!b.classList.contains('on'); b.classList.remove('anim'); void b.offsetWidth; b.classList.add('anim'); setTimeout(function(){ b.classList.toggle('on',on); b.setAttribute('aria-pressed',String(on)); },200); }); b.addEventListener('animationend',function(){ b.classList.remove('anim'); }); });
+</script>
+<script>
+/* 快速開啟：點外面收合素養選單 */
+document.addEventListener('click',function(e){ var d=document.getElementById('qb-skill'); if(d&&d.open&&!d.contains(e.target)) d.open=false; });
 </script>
 
 </body>
