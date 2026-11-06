@@ -936,6 +936,22 @@ footer .wrap{max-width:1080px}
 .journey.flips .face.front{justify-content:center}
 .journey.flips .back .pk{font-size:12px;margin:0}
 .sb-demo{font-size:11px;font-weight:700;color:var(--muted);padding:1px 8px;border-radius:999px;border:1px dashed var(--line)}
+.cd-3 .muted2{margin:0;font-size:var(--fs-body);color:var(--text)}
+.cd-3 .focus{font-weight:700;color:var(--lc)}
+.cmap thead th.corner{vertical-align:bottom}
+.pick-tip{display:block;font-size:11px;font-weight:500;color:var(--muted);text-align:left;line-height:1.4;padding:0 4px 4px}
+/* 可選取的策略、元素、追問 */
+.cd-3 button.chip{appearance:none;font:inherit;font-size:13.5px;cursor:pointer;text-align:left;color:var(--text);transition:background .15s,border-color .15s}
+.cd-3 button.chip:hover{border-color:var(--lc)}
+.cd-3 button.chip.on{background:var(--lc);border-color:var(--lc);color:#fff}
+.cd-3 button.chip.on small{color:#fff;opacity:.85}
+.cd-3 button.chip.on::before{content:"✓ "}
+.cd-3 button.chip:disabled{cursor:default;opacity:.6}
+.cd-3 .grp .cat{appearance:none;font:inherit;font-size:13.5px;font-weight:700;color:var(--lc);background:none;border:0;padding:2px 0;cursor:pointer;width:100%;text-align:left}
+.cd-3 .grp .cat:hover{text-decoration:underline}
+.pick-note{margin:0;font-size:12px;color:var(--muted)}
+.cd-3 button.chip{display:inline-block}
+.cd-3 button.chip small{display:block}
 
 </style>
 </head>
@@ -2209,36 +2225,61 @@ footer .wrap{max-width:1080px}
    {k:'通則',goal:'梳理概念間的相互關係，搭設思考鷹架，歸納出可跨情境遷移的通則。',ex:'概念銀行、模式獵人',q:'概念性：A 與 B 有何關係',qd:'引導學生說出概念之間關係、形成通則的概念性提問',sk:'研究與探究',
     g:[['提問搭思考鷹架',['概念性問題 Conceptual Questions','快速連結 Speed Connections','連結四方 Connect 4']],['概念庫搭思考鷹架',['概念銀行 Concept Bank','句子架構 Sentence Frames','概念接龍 Concept Roles']],['探究模式和關聯搭思考鷹架',['概念製圖 Concept Mapping',"顏色連結 What's the Connection?",'模式獵人 Pattern Hunters','微通則 Micro-generalizing']]]},
    {k:'遷移',goal:'將歸納出的通則應用於新情境，進行測試、驗證與採取行動。',ex:'壓力測試、要是…會怎樣',q:'可辯論、新情境提問',qd:'把通則放進新情境測試、可辯論的提問',sk:'創造力',
-    g:[['測試驗證通則',['壓力測試 Stress-testing Generalizations','線上討論 On the Line','證明 Prove It!']],['了解新的事件情境',['如何連結 How Does It Connect?']],['測試假設',['「要是……又會怎樣？」的問題 What if...?']],['應用與行動',['實作評量 Performance Assessment','創造！Create It!','學生主導行動 Student-led Action']]]},
+    g:[['測試驗證通則',['壓力測試 Stress-testing Generalizations','線上討論 On the Line','證明 Prove It!']],['了解新的事件情境',['如何連結 How Does It Connect?']],['測試假設',['「要是……又會怎樣？」的問題 What if...?']],['應用與行動',['實作評量 Performance Assessment','創造！ Create It!','學生主導行動 Student-led Action']]]},
    {k:'反思',goal:'貫穿探究全歷程，培養後設認知，計畫、監控與評估自己的學習。',ex:'出場反思、放聲思考',q:'後設：你怎麼知道',qd:'讓學生回看、監控與評估自己想法的後設提問',sk:'反思',
     g:[['全觀',['談話提示 Talk Prompts','問題銀行 Question Bank']],['計劃',['學習日誌與反思部落格 Learning Journals','任務分析 Task Analysis']],['監控',['放聲思考 Think Aloud','出場反思 Exit Reflections']],['評估',['單元前／後的反思 Pre-/Post-reflections']]]}
   ];
-  var cur=1;
+  var EL={'溝通':['表徵想法','調適想法','統整想法'],'批判性思考':['察覺矛盾','說理反駁','判斷有效性'],'系統性思維':['找元素','找關係','建系統'],
+    '研究與探究':['提想法','做試驗','下結論'],'創造力':['流暢性','變通性','獨創性'],'反思':['事件描述','詮釋了解','批判評鑑']};
+  var QT=['開放提問','事實性提問','關係提問','概念性提問','可辯論提問','後設提問'];
+  var sel=[1,1,1], pS={}, pE={}, pF={}, last=[-1,-1,-1];
+  var FU=['具體操作與圖像表徵','素養能力','6C 能力','議題','人物觀點'];
+  function nm(s){ var i=s.search(/ [A-Za-z"“]/); return i>0?s.slice(0,i):s; }
+  function on(m,v){ return m[v]?' on':''; }
   function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
   function ctx(){ var g='國小五年級',u='【你的單元】'; try{var o=JSON.parse(localStorage.getItem('gen-fields')||'null'); if(o){ if(o['g-grade'])g=o['g-grade']; if((o['g-unit']||'').trim())u=o['g-unit'].trim(); }}catch(e){} return {g:g,u:u}; }
+
   function head(){
-    var h='<thead><tr><th class="corner"></th>';
-    P.forEach(function(p,i){ h+='<th><button type="button" data-ph="'+i+'"'+(i===cur?' aria-pressed="true"':' aria-pressed="false"')+'>'+(i===5?'反思<small>貫穿全程</small>':p.k+'<small>'+(i<4?'→':'')+'</small>')+'</button></th>'; });
+    var same=(sel[0]===sel[1]&&sel[1]===sel[2])?sel[0]:-1;
+    var h='<thead><tr><th class="corner"><small class="pick-tip">點格子分開選，點階段一次選整欄</small></th>';
+    P.forEach(function(p,i){ h+='<th><button type="button" data-col="'+i+'" aria-pressed="'+(i===same)+'">'+(i===5?'反思<small>貫穿全程</small>':p.k+'<small>'+(i<4?'→':'')+'</small>')+'</button></th>'; });
     h+='</tr></thead><tbody>';
     var rows=[['① 活動骨架','概念為本探究','l1',function(p){return p.ex;}],['② 放入提問','有效提問','l2',function(p){return p.q;}],['③ 深化素養','八大思考素養','l3',function(p){return p.sk==='溝通'?'溝通（整理中）':p.sk;}]];
-    rows.forEach(function(r){ h+='<tr class="'+r[2]+'"><th scope="row">'+r[0]+'<small>'+r[1]+'</small></th>';
-      P.forEach(function(p,i){ h+='<td data-ph="'+i+'" class="'+(i===cur?'on':'')+(r[2]==='l3'&&p.sk==='溝通'?' off':'')+'">'+esc(r[3](p))+'</td>'; }); h+='</tr>'; });
+    rows.forEach(function(r,ri){ h+='<tr class="'+r[2]+'"><th scope="row">'+r[0]+'<small>'+r[1]+'</small></th>';
+      P.forEach(function(p,i){ h+='<td data-row="'+ri+'" data-ph="'+i+'" class="'+(i===sel[ri]?'on':'')+(r[2]==='l3'&&p.sk==='溝通'?' off':'')+'" tabindex="0" role="button" aria-pressed="'+(i===sel[ri])+'">'+esc(r[3](p))+'</td>'; }); h+='</tr>'; });
     table.innerHTML=h+'</tbody>';
   }
   function detail(){
-    var p=P[cur], c=ctx(), list=p.g.map(function(x){return x[1].map(function(s){return s.split(' ')[0];}).join('、');}).join('；');
-    var t1='我教'+c.g+'，單元是'+c.u+'。請根據策略55，在學生探究的「'+p.k+'」階段（目的：'+p.goal+'），推薦 1～2 個最適合我學生的策略，並說明課堂操作步驟。';
-    var t2='科目：數學\n學生年級：'+c.g+'\n想探究的主題或概念：'+c.u+'\n請為學生探究的「'+p.k+'」階段設計提問，重點是：'+p.qd+'。';
-    var t3=p.sk==='溝通'?'':'我教'+c.g+'，單元是'+c.u+'。我想在學生探究的「'+p.k+'」階段培養'+p.sk+'，請提供提問靈感。';
-    var h='<div class="cd-h"><b>'+p.k+'</b><span>'+esc(p.goal)+'</span></div><div class="cd-3">';
-    h+='<div class="l1"><div class="cd-t">① 活動骨架<small>概念為本探究 · '+p.g.reduce(function(n,x){return n+x[1].length;},0)+' 個策略</small></div>';
-    p.g.forEach(function(x){ h+='<p class="grp"><em>'+esc(x[0])+'</em>'+x[1].map(function(s){var i=s.search(/ [A-Za-z"“]/);return '<span class="chip">'+esc(i>0?s.slice(0,i):s)+(i>0?'<small>'+esc(s.slice(i+1))+'</small>':'')+'</span>';}).join('')+'</p>'; });
+    var c=ctx(), p1=P[sel[0]], p2=P[sel[1]], p3=P[sel[2]];
+    if(last[0]!==sel[0]) pS={}; if(last[1]!==sel[1]) pF={}; if(last[2]!==sel[2]) pE={}; last=sel.slice();
+    var sS=Object.keys(pS), sE=Object.keys(pE), sF=Object.keys(pF);
+    var t1=sS.length
+      ? '我教'+c.g+'，單元是'+c.u+'。在學生探究的「'+p1.k+'」階段，我想使用這些策略：'+sS.join('、')+'。請說明課堂操作步驟，並依我的學生調整做法。'
+      : '我教'+c.g+'，單元是'+c.u+'。請根據策略55，在學生探究的「'+p1.k+'」階段（目的：'+p1.goal+'），推薦 1～2 個最適合我學生的策略，並說明課堂操作步驟。';
+    var t2='科目：數學\n學生年級：'+c.g+'\n想探究的主題或概念：'+c.u+'\n請為學生探究的「'+p2.k+'」階段設計提問，重點是：'+p2.qd+'。'+(sF.length?'\n並請在提問中加入：'+sF.join('、')+'。':'');
+    var t3=p3.sk==='溝通'?'':'我教'+c.g+'，單元是'+c.u+'。我想在學生探究的「'+p3.k+'」階段培養'+p3.sk+'，特別是「'+(sE.length?sE:EL[p3.sk]).join('、')+'」，請提供提問靈感。';
+    var h=(sel[0]===sel[1]&&sel[1]===sel[2])
+      ? '<div class="cd-h"><b>'+p1.k+'</b><span>'+esc(p1.goal)+'</span></div>'
+      : '<div class="cd-h"><b>自選組合</b><span>① '+p1.k+'　② '+p2.k+'　③ '+p3.k+'</span></div>';
+    h+='<div class="cd-3">';
+    h+='<div class="l1"><div class="cd-t">① 活動骨架<small>概念為本探究・'+p1.k+'・'+p1.g.reduce(function(n,x){return n+x[1].length;},0)+' 個策略</small></div>';
+    h+='<p class="pick-note">點策略可單選或複選；點類別名稱可整類選取。</p>';
+    p1.g.forEach(function(x,gi){ var all=x[1].every(function(s){return pS[nm(s)];});
+      h+='<p class="grp"><button type="button" class="cat'+(all?' on':'')+'" data-cat="'+gi+'">'+esc(x[0])+(all?' ✓':'')+'</button>'+x[1].map(function(s){var i=s.search(/ [A-Za-z"“]/);return '<button type="button" class="chip pk1'+on(pS,nm(s))+'" data-s="'+esc(nm(s))+'">'+esc(nm(s))+(i>0?'<small>'+esc(s.slice(i+1))+'</small>':'')+'</button>';}).join('')+'</p>'; });
     h+='<textarea id="cd1">'+esc(t1)+'</textarea><div class="cd-a"><a class="btn btn-go" data-cg="cd1" href="'+INQ+'" target="_blank" rel="noopener">複製並開啟 ↗</a></div></div>';
-    h+='<div class="l2"><div class="cd-t">② 放入提問<small>有效提問</small></div><p class="focus">提問焦點：<b>'+esc(p.q)+'</b></p><textarea id="cd2">'+esc(t2)+'</textarea><div class="cd-a"><a class="btn btn-go" data-cg="cd2" href="'+ASK+'" target="_blank" rel="noopener">複製並開啟 ↗</a></div></div>';
-    h+='<div class="l3"><div class="cd-t">③ 深化素養<small>八大思考素養</small></div>';
-    if(p.sk==='溝通'){ h+='<p class="focus">對應素養：<b>溝通</b>（小幫手整理中）</p><p class="muted">可先用「研究與探究」或「批判性思考」小幫手發想投入階段的提問。</p></div>'; }
-    else { h+='<p class="focus">對應素養：<b>'+p.sk+'</b></p><textarea id="cd3">'+esc(t3)+'</textarea><div class="cd-a"><a class="btn btn-go" data-cg="cd3" href="'+SK[p.sk]+'" target="_blank" rel="noopener">複製並開啟 ↗</a></div></div>'; }
+    h+='<div class="l2"><div class="cd-t">② 放入提問<small>有效提問・'+p2.k+'・'+QT[sel[1]]+'</small></div><p class="focus">提問重點：</p><p class="muted2">'+esc(p2.qd)+'</p><p class="focus">追問方向（可複選）：</p><p class="grp">'+FU.map(function(f){return '<button type="button" class="chip pk2'+on(pF,f)+'" data-f="'+f+'">'+f+'</button>';}).join('')+'</p><textarea id="cd2">'+esc(t2)+'</textarea><div class="cd-a"><a class="btn btn-go" data-cg="cd2" href="'+ASK+'" target="_blank" rel="noopener">複製並開啟 ↗</a></div></div>';
+    var els='<p class="focus">素養三元素（可複選）：</p><p class="grp">'+EL[p3.sk].map(function(e){return '<button type="button" class="chip pk3'+on(pE,e)+'" data-e="'+e+'"'+(p3.sk==='溝通'?' disabled':'')+'>'+e+'</button>';}).join('')+'</p>';
+    h+='<div class="l3"><div class="cd-t">③ 深化素養<small>八大思考素養・'+p3.k+'・'+(p3.sk==='溝通'?'溝通（整理中）':p3.sk)+'</small></div>'+els;
+    if(p3.sk==='溝通'){ h+='<p class="muted">可先用「研究與探究」或「批判性思考」小幫手發想投入階段的提問。</p></div>'; }
+    else { h+='<textarea id="cd3">'+esc(t3)+'</textarea><div class="cd-a"><a class="btn btn-go" data-cg="cd3" href="'+SK[p3.sk]+'" target="_blank" rel="noopener">複製並開啟 ↗</a></div></div>'; }
     det.innerHTML=h+'</div><p class="cd-ok" role="status"></p>';
+    det.querySelectorAll('[data-s],[data-e],[data-f],[data-cat]').forEach(function(btn){ btn.addEventListener('click',function(){
+      if(btn.dataset.s){ if(pS[btn.dataset.s]) delete pS[btn.dataset.s]; else pS[btn.dataset.s]=1; }
+      else if(btn.dataset.e){ if(pE[btn.dataset.e]) delete pE[btn.dataset.e]; else pE[btn.dataset.e]=1; }
+      else if(btn.dataset.f){ if(pF[btn.dataset.f]) delete pF[btn.dataset.f]; else pF[btn.dataset.f]=1; }
+      else { var g=P[sel[0]].g[+btn.dataset.cat][1].map(nm), all=g.every(function(s){return pS[s];}); g.forEach(function(s){ if(all) delete pS[s]; else pS[s]=1; }); }
+      detail();
+    }); });
     det.querySelectorAll('[data-cg]').forEach(function(a){ a.addEventListener('click',function(){
       var ta=document.getElementById(a.dataset.cg), ok=det.querySelector('.cd-ok');
       function done(){ ok.textContent='✅ 已複製，小幫手已在新分頁開啟：先勾選來源，再按 Ctrl+V（Mac ⌘+V）貼上送出。'; }
@@ -2246,7 +2287,13 @@ footer .wrap{max-width:1080px}
     }); });
   }
   function render(){ head(); detail(); }
-  table.addEventListener('click',function(e){ var el=e.target.closest('[data-ph]'); if(!el) return; cur=+el.dataset.ph; render(); });
+  function pick(el){
+    if(el.dataset.col!==undefined){ var c=+el.dataset.col; sel=[c,c,c]; }
+    else if(el.dataset.row!==undefined){ sel[+el.dataset.row]=+el.dataset.ph; }
+    else return; render();
+  }
+  table.addEventListener('click',function(e){ var el=e.target.closest('[data-col],[data-row]'); if(el) pick(el); });
+  table.addEventListener('keydown',function(e){ if(e.key!=='Enter'&&e.key!==' ') return; var el=e.target.closest('td[data-row]'); if(el){ e.preventDefault(); pick(el); } });
   window.addEventListener('hashchange',function(){ if(location.hash.indexOf('create')>-1) detail(); });
   render();
 })();
