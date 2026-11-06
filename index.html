@@ -808,6 +808,55 @@ footer .wrap{max-width:1080px}
 .agenda span{flex:none;width:44px;text-align:center;font-weight:900;color:#fff;background:var(--c5);border-radius:8px;padding:2px 0}
 .loop{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px;margin-top:14px}
 .phead h3.gsub{margin-top:28px}
+/* CREATE 流程子導覽 */
+.flowsub{align-items:stretch}
+.flowsub button{display:flex;flex-direction:column;align-items:center;gap:2px;flex:1 1 120px}
+.flowsub button b{font-size:15px}
+.flowsub button small{font-size:12px;font-weight:500;color:var(--muted)}
+.flowsub .fa{align-self:center;color:var(--p);font-weight:900}
+@media (max-width:700px){.flowsub .fa{display:none}}
+/* 探究地圖 */
+.cmap-wrap{margin-top:18px;border:0}
+.cmap{border-collapse:separate;border-spacing:5px;table-layout:fixed;min-width:720px;font-size:14px}
+.cmap th,.cmap td{border:0;border-radius:10px;padding:9px 8px;text-align:center;vertical-align:middle;line-height:1.45}
+.cmap thead th{background:none;padding:0}
+.cmap thead th.corner{width:118px}
+.cmap thead button{appearance:none;width:100%;font:inherit;font-weight:900;font-size:16px;cursor:pointer;padding:9px 4px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface-2);color:var(--primary);display:flex;justify-content:center;gap:4px;align-items:baseline}
+.cmap thead button small{font-size:12px;color:var(--muted);font-weight:500}
+.cmap thead button[aria-pressed="true"]{background:var(--primary);color:#fff;border-color:var(--primary)}
+.cmap thead button[aria-pressed="true"] small{color:#fff}
+.cmap tbody th{background:var(--surface);border:1px solid var(--line);color:var(--primary);font-weight:700;text-align:left;font-size:14px}
+.cmap tbody th small{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.cmap td{cursor:pointer;transition:transform .12s}
+.cmap td:hover{transform:translateY(-2px)}
+.l1{--lc:var(--c8)} .l2{--lc:var(--c6)} .l3{--lc:var(--c3)}
+.cmap tr.l1 td,.cmap tr.l2 td,.cmap tr.l3 td{background:color-mix(in srgb,var(--lc) 10%,var(--surface));color:var(--text)}
+.cmap td.on{background:color-mix(in srgb,var(--lc) 26%,var(--surface))!important;box-shadow:inset 0 0 0 2px var(--lc);font-weight:700}
+.cmap td.off{opacity:.55}
+.cdetail{margin-top:14px;padding:18px;border-radius:16px;border:1.5px solid var(--primary);background:var(--surface)}
+.cd-h{display:flex;flex-wrap:wrap;gap:12px;align-items:baseline}
+.cd-h b{font-size:22px;color:var(--primary)}
+.cd-h span{color:var(--muted);font-size:var(--fs-body)}
+.cd-3{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:14px;margin-top:14px}
+@media (max-width:980px){.cd-3{grid-template-columns:1fr}}
+.cd-3 > div{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:14px;border:1px solid var(--line);border-top:5px solid var(--lc);background:color-mix(in srgb,var(--lc) 4%,var(--surface));min-width:0}
+.cd-t{font-weight:900;color:var(--primary)}
+.cd-t small{display:block;font-weight:500;font-size:12px;color:var(--muted)}
+.cd-3 .grp{margin:0;display:flex;flex-wrap:wrap;gap:5px;align-items:center;font-size:13.5px}
+.cd-3 .grp em{font-style:normal;font-weight:700;color:var(--lc);margin-right:2px;width:100%}
+.chip{display:inline-flex;flex-direction:column;padding:3px 9px;border-radius:9px;background:var(--surface);border:1px solid var(--line);line-height:1.3}
+.chip small{font-size:10.5px;color:var(--muted)}
+.cd-3 .focus{margin:0;font-size:var(--fs-body)}
+.cd-3 .focus b{color:var(--lc)}
+.cd-3 .muted{margin:0;color:var(--muted);font-size:var(--fs-meta)}
+.cd-3 textarea{font:inherit;font-family:var(--mono);font-size:13px;line-height:1.7;min-height:120px;resize:vertical;padding:10px;border-radius:10px;border:1.5px solid var(--line);background:var(--code-bg);color:var(--code-text);width:100%}
+.cd-3 .btn-go{background:var(--lc);color:#fff;text-decoration:none;padding:9px 14px;font-size:14.5px}
+.cd-ok{margin:10px 0 0;color:var(--c5);font-weight:700;font-size:14px}
+.cd-ok:empty{display:none}
+.ft-two{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:10px}
+@media (max-width:760px){.ft-two{grid-template-columns:1fr}}
+.ft-two b{color:var(--primary);font-size:15px}
+.ft-two ul{margin:6px 0 0;padding-left:18px;color:var(--muted);font-size:14px;line-height:1.7}
 
 </style>
 </head>
@@ -870,16 +919,16 @@ footer .wrap{max-width:1080px}
       <div>
         <h3>🤖 AI 小幫手 <small>在 NotebookLM 上對話</small></h3>
         <ul class="rl">
-          <li class="f6"><button type="button" data-go="create-ask"><b>❓ 有效提問</b><span>設計四個層次的提問</span><i class="pt pc">CREATE</i></button></li>
-          <li class="f8"><button type="button" data-go="create-inq"><b>🔍 概念為本探究</b><span>建議探究教學策略</span><i class="pt pc">CREATE</i></button></li>
-          <li class="f3"><button type="button" data-go="create-skill"><b>🌱 八大思考素養</b><span>朝素養深化提問與任務</span><i class="pt pc">CREATE</i></button></li>
+          <li class="f8"><button type="button" data-go="create-inq"><b>🔍 概念為本探究</b><span>① 替各探究階段選活動策略</span><i class="pt pc">CREATE</i></button></li>
+          <li class="f6"><button type="button" data-go="create-ask"><b>❓ 有效提問</b><span>② 替各階段放入有層次的提問</span><i class="pt pc">CREATE</i></button></li>
+          <li class="f3"><button type="button" data-go="create-skill"><b>🌱 八大思考素養</b><span>③ 朝思考素養深化</span><i class="pt pc">CREATE</i></button></li>
         </ul>
       </div>
       <div>
         <h3>🧰 備課工具 <small>在這個網頁直接用</small></h3>
         <ul class="rl">
           <li class="fg"><button type="button" data-go="engage-try"><b>✍️ 提示詞產生器</b><span>一次備好給小幫手的輸入</span><i class="pt pe">ENGAGE</i></button></li>
-          <li class="fv"><button type="button" data-go="create-vlm"><b>🧩 素材轉譯</b><span>課本照片轉成 md 文字</span><i class="pt pc">CREATE</i></button></li>
+          <li class="fv"><button type="button" data-go="engage-vlm"><b>🧩 素材轉譯</b><span>課本照片轉成 md 文字</span><i class="pt pe">ENGAGE</i></button></li>
           <li class="fx"><button type="button" data-go="manage-html"><b>🧪 HTML 試板</b><span>預覽、修改 AI 做的網頁</span><i class="pt pm">MANAGE</i></button></li>
         </ul>
       </div>
@@ -889,10 +938,10 @@ footer .wrap{max-width:1080px}
   <section class="card gsec gh2" aria-labelledby="how-title">
     <div class="eyebrow"><span class="gtag">HOW</span>怎麼走</div>
     <h2 class="sec-title" id="how-title"><span class="sec-icon">🛤️</span>四階段共備歷程：上方分頁就是這條路</h2>
-    <p class="sec-note">參考 OECD 與歐盟執委會的 AI 素養架構（AILit Framework, 2026）：由認識、共創、判斷，走到共同形塑。</p>
+    <p class="sec-note">參考 OECD 與歐盟執委會的 AI 素養架構（AILit Framework, 2026）：老師由認識、共創、判斷，走到共同形塑。CREATE 裡再以策略55的學生探究歷程（投入 → 聚焦 → 組織 → 通則 → 遷移・反思）為單元骨架。</p>
     <ol class="journey">
-      <li class="pe"><button type="button" data-go="engage"><span class="pk">ENGAGE</span><b>認識與體驗</b><small>說明・示範・引導體驗</small></button></li>
-      <li class="pc"><button type="button" data-go="create"><span class="pk">CREATE</span><b>共創與發想</b><small>和小幫手創課・靈感卡</small></button></li>
+      <li class="pe"><button type="button" data-go="engage"><span class="pk">ENGAGE</span><b>認識與體驗</b><small>說明・示範・體驗・準備素材</small></button></li>
+      <li class="pc"><button type="button" data-go="create"><span class="pk">CREATE</span><b>共創與發想</b><small>探究地圖：骨架 → 提問 → 素養</small></button></li>
       <li class="pm"><button type="button" data-go="manage"><span class="pk">MANAGE</span><b>判斷與取捨</b><small>分工・檢核 AI 產出</small></button></li>
       <li class="ps"><button type="button" data-go="shape"><span class="pk">SHAPE</span><b>共備與形塑</b><small>共備討論・回饋</small></button></li>
     </ol>
@@ -910,6 +959,7 @@ footer .wrap{max-width:1080px}
       <button type="button" role="tab" data-sub="engage-explain">📖 說明</button>
       <button type="button" role="tab" data-sub="engage-demo">🎬 示範</button>
       <button type="button" role="tab" data-sub="engage-try">🧭 引導體驗</button>
+      <button type="button" role="tab" data-sub="engage-vlm">🧩 準備素材</button>
     </div>
   </section>
 
@@ -920,9 +970,9 @@ footer .wrap{max-width:1080px}
       <table>
         <thead><tr><th>小幫手</th><th>什麼時候用</th><th>你要輸入</th><th>你會得到</th></tr></thead>
         <tbody>
-          <tr class="f6"><td><span></span>❓ 有效提問<br><button type="button" class="linkbtn" data-go="create-ask">前往 →</button></td><td data-l="什麼時候用">想替一個概念設計有層次的提問；或想看一個問題能從哪些角度回答</td><td data-l="你要輸入">科目、學生年級、想探究的主題或概念（或直接輸入一個問題）</td><td data-l="你會得到">🅰️ 主題或概念 → 四個層次的提問<br>🅱️ 問題 → 先回答，再模擬四位利害關係人的觀點與回答</td></tr>
-          <tr class="f8"><td><span></span>🔍 概念為本探究<br><button type="button" class="linkbtn" data-go="create-inq">前往 →</button></td><td data-l="什麼時候用">想讓學生透過探究理解概念，需要可用的教學策略</td><td data-l="你要輸入">學生年級、探究的領域／科目、學生特色</td><td data-l="你會得到">適合這個單元與學生的概念為本探究策略建議</td></tr>
-          <tr class="f3"><td><span></span>🌱 八大思考素養<br><button type="button" class="linkbtn" data-go="create-skill">前往 →</button></td><td data-l="什麼時候用">想朝某項思考素養設計提問、任務與評量</td><td data-l="你要輸入">年級、單元、學生特性、特定方向；再加上一個問題、一段意見或一份教材</td><td data-l="你會得到">三個階段的提問靈感與步驟化建議，每段回覆都附「下一步提示詞」</td></tr>
+          <tr class="f8"><td><span></span>① 🔍 概念為本探究<br><button type="button" class="linkbtn" data-go="create-inq">前往 →</button></td><td data-l="什麼時候用">想讓學生透過探究理解概念，需要可用的教學策略</td><td data-l="你要輸入">學生年級、探究的領域／科目、學生特色</td><td data-l="你會得到">適合這個單元與學生的概念為本探究策略建議</td></tr>
+          <tr class="f6"><td><span></span>② ❓ 有效提問<br><button type="button" class="linkbtn" data-go="create-ask">前往 →</button></td><td data-l="什麼時候用">想替一個概念設計有層次的提問；或想看一個問題能從哪些角度回答</td><td data-l="你要輸入">科目、學生年級、想探究的主題或概念（或直接輸入一個問題）</td><td data-l="你會得到">🅰️ 主題或概念 → 四個層次的提問<br>🅱️ 問題 → 先回答，再模擬四位利害關係人的觀點與回答</td></tr>
+          <tr class="f3"><td><span></span>③ 🌱 八大思考素養<br><button type="button" class="linkbtn" data-go="create-skill">前往 →</button></td><td data-l="什麼時候用">想朝某項思考素養設計提問、任務與評量</td><td data-l="你要輸入">年級、單元、學生特性、特定方向；再加上一個問題、一段意見或一份教材</td><td data-l="你會得到">三個階段的提問靈感與步驟化建議，每段回覆都附「下一步提示詞」</td></tr>
         </tbody>
       </table>
     </div>
@@ -996,6 +1046,14 @@ footer .wrap{max-width:1080px}
     <p>三張卡片的提示詞已依你填的資料自動組好。挑這次要用的小幫手，調整卡片上方的選項；框內的文字也可以直接修改。</p></div>
   </div>
   <div class="gcards" aria-live="polite">
+    <div class="gcard f8">
+      <div class="gh"><span class="rn">🔍</span><b>概念為本探究教學策略小幫手</b></div>
+      <div class="opt"><span class="ol">小幫手會依年級、領域和學生特色，建議概念為本的探究策略。學生特色寫得越具體，建議越貼近班級。</span></div>
+
+      <textarea class="out-p" id="o-inq" aria-label="概念為本探究教學策略小幫手的提示詞"></textarea>
+      <div class="s3"><span class="sn">3</span><ol class="how3"><li><b>按「複製並開啟小幫手」</b></li><li>在 NotebookLM 左側<b>勾選來源</b>：<b>策略55的說明</b>、<b>策略概述.pptx</b>、<b>您要備課的單元</b></li><li>在中間對話框按 <kbd>Ctrl</kbd>+<kbd>V</kbd>（Mac 為 <kbd>⌘</kbd>+<kbd>V</kbd>）<b>貼上並送出</b></li></ol><div class="gact"><a class="btn btn-copy btn-go" data-copygo="o-inq" href="https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e" target="_blank" rel="noopener">📋 複製並開啟小幫手 ↗</a><button type="button" class="btn btn-ghost" data-copy="o-inq">只複製</button></div><p class="g-ok" role="status"></p></div>
+    </div>
+
     <div class="gcard f6">
       <div class="gh"><span class="rn">❓</span><b>有效提問 AI 小幫手</b></div>
       <div class="opt" role="group" aria-label="輸入類型">
@@ -1009,14 +1067,6 @@ footer .wrap{max-width:1080px}
 
       <textarea class="out-p" id="o-ask" aria-label="有效提問小幫手的提示詞"></textarea>
       <div class="s3"><span class="sn">3</span><ol class="how3"><li><b>按「複製並開啟小幫手」</b></li><li>在 NotebookLM 左側<b>勾選來源</b>：<b>您要備課的單元</b>、<b>🔴數學提問知識庫</b></li><li>在中間對話框按 <kbd>Ctrl</kbd>+<kbd>V</kbd>（Mac 為 <kbd>⌘</kbd>+<kbd>V</kbd>）<b>貼上並送出</b></li></ol><div class="gact"><a class="btn btn-copy btn-go" data-copygo="o-ask" href="https://notebook.google.com/notebook/6a68de13-1286-40a3-99a9-56ffe67b7eda" target="_blank" rel="noopener">📋 複製並開啟小幫手 ↗</a><button type="button" class="btn btn-ghost" data-copy="o-ask">只複製</button></div><p class="g-ok" role="status"></p></div>
-    </div>
-
-    <div class="gcard f8">
-      <div class="gh"><span class="rn">🔍</span><b>概念為本探究教學策略小幫手</b></div>
-      <div class="opt"><span class="ol">小幫手會依年級、領域和學生特色，建議概念為本的探究策略。學生特色寫得越具體，建議越貼近班級。</span></div>
-
-      <textarea class="out-p" id="o-inq" aria-label="概念為本探究教學策略小幫手的提示詞"></textarea>
-      <div class="s3"><span class="sn">3</span><ol class="how3"><li><b>按「複製並開啟小幫手」</b></li><li>在 NotebookLM 左側<b>勾選來源</b>：<b>策略55的說明</b>、<b>策略概述.pptx</b>、<b>您要備課的單元</b></li><li>在中間對話框按 <kbd>Ctrl</kbd>+<kbd>V</kbd>（Mac 為 <kbd>⌘</kbd>+<kbd>V</kbd>）<b>貼上並送出</b></li></ol><div class="gact"><a class="btn btn-copy btn-go" data-copygo="o-inq" href="https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e" target="_blank" rel="noopener">📋 複製並開啟小幫手 ↗</a><button type="button" class="btn btn-ghost" data-copy="o-inq">只複製</button></div><p class="g-ok" role="status"></p></div>
     </div>
 
     <div class="gcard f3">
@@ -1046,6 +1096,66 @@ footer .wrap{max-width:1080px}
   <p class="gen-note">💡 修改上方的備課資料，三段提示詞會重新產生；在框內直接修改的文字，複製時也會一起帶走。【 】表示還沒填寫的地方。</p>
 
   </div>
+  <div class="ssec" id="x-engage-vlm">
+  <!-- 一鍵複製：VLM 轉譯工具 -->
+  <section class="card vlm tool fv" aria-labelledby="vlm-title">
+    <div class="vlm-head">
+      <div>
+        <div class="eyebrow">ENGAGE › 準備素材（VLM 轉譯工具）</div>
+        <h2 class="sec-title" id="vlm-title"><span class="sec-icon">🧩</span>素材轉譯：把課本、教案轉成文字</h2>
+        <p class="credit">提示詞內容引自 <strong>臺師大教創中心</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
+      </div>
+    </div>
+    <p class="purpose">🎯 目的：<b>優雅建構高質量、低 Token 消耗的 AI 結構化知識庫。</b>把簡報、教案、講義、課文或照片截圖，轉成乾淨的 Markdown（.md）。當小幫手的「來源」區無法上傳素材時，就把 md 內容貼到中間的對話框。</p>
+
+    <ol class="steps">
+      <li><span class="n">1</span><div><b>複製提示詞</b><span>按下「一鍵複製 Prompt」。</span></div></li>
+      <li><span class="n">2</span><div><b>開啟任一款 AI</b><span>在對話框貼上提示詞，並附上要轉化的素材（文件、照片、截圖…）。</span></div></li>
+      <li><span class="n">3</span><div><b>帶入小幫手</b><span>將 AI 產出的 md 內容，貼到任一位 AI 小幫手的對話框，當作對話輸入來源。</span></div></li>
+    </ol>
+
+    <div id="prompt-wrap">
+      <div class="prompt-bar">
+        <span class="label">📋 VLM 轉譯提示詞</span>
+        <div class="tools">
+          <button class="btn btn-ghost" id="toggle" type="button" aria-expanded="true" aria-controls="prompt-box">
+            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+            <span id="toggle-text">收合內容</span>
+          </button>
+          <button class="btn btn-copy" id="copy" type="button">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+            <span id="copy-text">一鍵複製 Prompt</span>
+          </button>
+        </div>
+      </div>
+      <div class="prompt-box" id="prompt-box">
+<pre id="prompt">請完整閱讀我所上傳的教學檔案（簡報 / 教案 / 講義 / 課文），將所有內容轉換為排版清晰、語義完整且高度結構化的 **Markdown (.md)** 格式。
+
+此轉換目的是建立乾淨、完整且能在後續 AI 處理中最大化節省 Token 的結構化知識庫，請遵循以下轉譯規範：
+
+### 1. 結構與內文原則
+- **保留層次結構**：請精準還原原本的大綱層級（使用 # H1, ## H2, ### H3），並保留講義或投影片的頁次 / 主題標示。
+- **資訊無損**：不要隨意濃縮、概括或刪減教學重點、範例、題目、重要名詞定義與解釋。
+- **條列清晰**：善用無序清單（-）與有序清單（1. 2. 3.），將視覺化重點整理為易讀的條列。
+
+### 2. 數學學科本質圖表與符號解構規範
+- **公式與代數符號**：所有公式、方程式、幾何符號一律使用標準 LaTeX（行內使用 `$f(x) = ax^2 + bx + c$`，獨立行使用 `$$\int_{a}^{b} f(x)dx$$`）。
+- **坐標幾何與函數圖形**：
+  &gt; **【函數 / 幾何圖形解構】**
+  &gt; - **定義域與坐標系**：X 軸、Y 軸範圍，原點與漸近線。
+  &gt; - **幾何條件與特徵點**：頂點、交點、切點、法線、已知線段長度與角度。
+  &gt; - **圖形走勢與凹凸性**：單調區間、極大/極小值點、反曲點。
+  &gt; - **輔助線與幾何標記**：題目繪製的輔助線、虛線、垂直符號、陰影封閉面積。
+- **題目與證明無損**：題幹條件、已知假設、證明步驟（Given / Prove / Steps）完整保留，勿跳步。
+
+### 3. 輸出規範
+- 請直接輸出純 Markdown 程式碼區塊（```markdown ... ```），不要有多餘的寒暄、前言或總結。</pre>
+      </div>
+      <p class="toast" id="toast" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  </div>
     <nav class="pager"><button type="button" data-go="home">← 引言</button><button type="button" class="next" data-go="create">下一階段：CREATE 共創與發想 →</button></nav>
   </div>
 
@@ -1054,61 +1164,34 @@ footer .wrap{max-width:1080px}
   <section class="card phead pc" aria-labelledby="create-title">
     <ol class="pbar" aria-hidden="true"><li class="done">ENGAGE</li><li class="on">CREATE</li><li>MANAGE</li><li>SHAPE</li></ol>
     <div class="eyebrow"><span class="ptag">CREATE</span>階段二 · 共創與發想</div>
-    <h2 class="sec-title" id="create-title"><span class="sec-icon">💡</span>用自己的單元，和小幫手一起創課</h2>
-    <p class="sec-note">換成你這次要備的單元，一次聚焦一個概念。開場輸入可先用 <button type="button" class="linkbtn" data-go="engage-try">提示詞產生器</button> 備好；拿到回覆後，抽一張靈感卡繼續追問。</p>
-    <div class="subnav" role="tablist">
-      <button type="button" role="tab" data-sub="create-ask">❓ 有效提問</button>
-      <button type="button" role="tab" data-sub="create-inq">🔍 概念為本探究</button>
-      <button type="button" role="tab" data-sub="create-skill">🌱 八大思考素養</button>
-      <button type="button" role="tab" data-sub="create-vlm">🧩 素材轉譯</button>
-      <button type="button" role="tab" data-sub="create-idea">🃏 創課靈感卡</button>
+    <h2 class="sec-title" id="create-title"><span class="sec-icon">💡</span>用探究地圖設計單元：先骨架，再提問，後深化</h2>
+    <p class="sec-note">學生的探究歷程是單元的骨架（投入 → 聚焦 → 組織 → 通則 → 遷移，反思貫穿全程）。三位小幫手依序替骨架加上活動、提問與思考素養。</p>
+    <div class="subnav flowsub" role="tablist">
+      <button type="button" role="tab" data-sub="create-map"><b>🗺️ 探究地圖</b><small>總覽與各階段</small></button>
+      <span class="fa" aria-hidden="true">→</span>
+      <button type="button" role="tab" data-sub="create-inq"><b>① 活動骨架</b><small>概念為本探究</small></button>
+      <span class="fa" aria-hidden="true">→</span>
+      <button type="button" role="tab" data-sub="create-ask"><b>② 放入提問</b><small>有效提問</small></button>
+      <span class="fa" aria-hidden="true">→</span>
+      <button type="button" role="tab" data-sub="create-skill"><b>③ 深化素養</b><small>八大思考素養</small></button>
     </div>
   </section>
 
-  <div class="ssec" id="x-create-ask">
-  <!-- 有效提問 -->
-  <section class="card tool f6" aria-labelledby="ask-title">
-    <div class="tool-head">
-      <div>
-        <div class="eyebrow">CREATE › 有效提問 AI 小幫手 · Good Questioner</div>
-        <h2 class="sec-title" id="ask-title"><span class="sec-icon">❓</span>有效提問 AI 小幫手</h2>
-        <p class="credit">由 <strong>臺師大教創中心陳佩英教授</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
-      </div>
-      <a class="btn btn-open" href="https://notebook.google.com/notebook/6a68de13-1286-40a3-99a9-56ffe67b7eda" target="_blank" rel="noopener">開啟有效提問小幫手 ↗</a>
-    </div>
-    <p class="purpose">🎯 輸入<b>主題或概念</b>，小幫手設計<b>四個層次的提問</b>；輸入<b>一個問題</b>，小幫手先回答，再模擬<b>四位不同利害關係人</b>的觀點與回答。</p>
-
-    <h3 class="gsub">三個步驟（可以邊做邊勾）</h3>
-    <ol class="chk" data-chk>
-      <li><div class="ch"><span class="n">1</span><b>選擇備課單元</b></div><span class="where">左側「來源」區</span>
-        <label><input type="checkbox"><span>✅ 勾選您要備課的單元</span></label></li>
-      <li><div class="ch"><span class="n">2</span><b>勾選知識庫</b></div><span class="where">左側「來源」區</span>
-        <label><input type="checkbox"><span>✅ 勾選 🔴數學提問知識庫</span></label></li>
-      <li><div class="ch"><span class="n">3</span><b>說明需求</b></div><span class="where">中間「人機互動」區</span>
-        <label><input type="checkbox"><span>輸入科目、學生年級，以及想探究的主題或概念</span></label></li>
-    </ol>
-    <p class="chk-done" role="status"></p>
-
-    <h3 class="gsub">兩種輸入，兩種回應</h3>
-    <div class="duo">
-      <div><div class="dh">🅰️ 主題或概念</div>
-        <p class="say">數學，國小五年級，想探究「異分母分數的加減」。</p>
-        <span class="arr">➡️ 小幫手會根據內容<b>設計四個層次的提問</b>。</span></div>
-      <div><div class="dh">🅱️ 問題</div>
-        <p class="say">異分母分數加法，為什麼一定要先通分？</p>
-        <span class="arr">➡️ 小幫手會<b>先回答問題</b>，再<b>模擬四位不同利害關係人</b>的觀點與回答。</span></div>
-    </div>
-    <p class="related">✍️ 輸入可用 <button type="button" class="linkbtn" data-go="gen">提示詞產生器</button> 備好　·　挑好提問後，可以到 <button type="button" class="linkbtn" data-go="inq">概念為本探究</button> 或 <button type="button" class="linkbtn" data-go="skill">八大思考素養</button></p>
-    <p class="cite1">📌 引用請註明：臺師大教創中心與優履團隊設計 AI 機器人小幫手 good questioner。本機器人由教師團隊開發，免費提供教育使用，請共同維護創作者的智慧財產。</p>
+  <div class="ssec" id="x-create-map">
+  <section class="card" aria-labelledby="map-title">
+    <h2 class="sec-title" id="map-title"><span class="sec-icon">🗺️</span>探究地圖：點一個階段，看三層怎麼設計</h2>
+    <p class="sec-note">橫向是學生的探究歷程（策略55，共 55 個策略），縱向是老師與小幫手的設計順序。</p>
+    <div class="tbl cmap-wrap"><table class="cmap" id="cmap"></table></div>
+    <div class="cdetail" id="cdetail" aria-live="polite"></div>
+    <p class="gen-note">💡 追問句會帶入你在 <button type="button" class="linkbtn" data-go="engage-try">提示詞產生器</button> 填的年級與單元；也可以直接在框內修改。</p>
   </section>
-
   </div>
   <div class="ssec" id="x-create-inq">
   <!-- 概念為本探究教學策略 -->
   <section class="card tool f8" aria-labelledby="inq-title">
     <div class="tool-head">
       <div>
-        <div class="eyebrow">CREATE › 概念為本探究教學策略小幫手 · Inquiry Strategy</div>
+        <div class="eyebrow">CREATE › ① 活動骨架 · 概念為本探究教學策略小幫手</div>
         <h2 class="sec-title" id="inq-title"><span class="sec-icon">🔍</span>概念為本探究教學策略小幫手</h2>
         <p class="credit">由 <strong>臺師大教創中心陳佩英教授</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
       </div>
@@ -1139,14 +1222,52 @@ footer .wrap{max-width:1080px}
       <div><div class="dh">💡 讓建議更貼近班級</div>
         <p class="say">學生特色寫得越具體越好：先備能力、常見迷思、喜歡的學習方式、分組情況。</p></div>
     </div>
-    <p class="related">✍️ 輸入可用 <button type="button" class="linkbtn" data-go="gen">提示詞產生器</button> 備好　·　有了策略後，可到 <button type="button" class="linkbtn" data-go="skill">八大思考素養</button> 深化</p>
+    <p class="related">✍️ 輸入可用 <button type="button" class="linkbtn" data-go="gen">提示詞產生器</button> 備好　·　選好各階段策略後，接著到 <button type="button" class="linkbtn" data-go="create-ask">② 放入提問</button></p>
     <p class="cite1">📌 引用請註明：臺師大教創中心與優履設計 AI 機器人小幫手 inquiry Strategy。教師團隊開發，免費提供教育使用，請一起維護創作者的智慧財產。</p>
+  </section>
+
+  </div>
+  <div class="ssec" id="x-create-ask">
+  <!-- 有效提問 -->
+  <section class="card tool f6" aria-labelledby="ask-title">
+    <div class="tool-head">
+      <div>
+        <div class="eyebrow">CREATE › ② 放入提問 · 有效提問 AI 小幫手</div>
+        <h2 class="sec-title" id="ask-title"><span class="sec-icon">❓</span>有效提問 AI 小幫手</h2>
+        <p class="credit">由 <strong>臺師大教創中心陳佩英教授</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
+      </div>
+      <a class="btn btn-open" href="https://notebook.google.com/notebook/6a68de13-1286-40a3-99a9-56ffe67b7eda" target="_blank" rel="noopener">開啟有效提問小幫手 ↗</a>
+    </div>
+    <p class="purpose">🎯 輸入<b>主題或概念</b>，小幫手設計<b>四個層次的提問</b>；輸入<b>一個問題</b>，小幫手先回答，再模擬<b>四位不同利害關係人</b>的觀點與回答。</p>
+
+    <h3 class="gsub">三個步驟（可以邊做邊勾）</h3>
+    <ol class="chk" data-chk>
+      <li><div class="ch"><span class="n">1</span><b>選擇備課單元</b></div><span class="where">左側「來源」區</span>
+        <label><input type="checkbox"><span>✅ 勾選您要備課的單元</span></label></li>
+      <li><div class="ch"><span class="n">2</span><b>勾選知識庫</b></div><span class="where">左側「來源」區</span>
+        <label><input type="checkbox"><span>✅ 勾選 🔴數學提問知識庫</span></label></li>
+      <li><div class="ch"><span class="n">3</span><b>說明需求</b></div><span class="where">中間「人機互動」區</span>
+        <label><input type="checkbox"><span>輸入科目、學生年級，以及想探究的主題或概念</span></label></li>
+    </ol>
+    <p class="chk-done" role="status"></p>
+
+    <h3 class="gsub">兩種輸入，兩種回應</h3>
+    <div class="duo">
+      <div><div class="dh">🅰️ 主題或概念</div>
+        <p class="say">數學，國小五年級，想探究「異分母分數的加減」。</p>
+        <span class="arr">➡️ 小幫手會根據內容<b>設計四個層次的提問</b>。</span></div>
+      <div><div class="dh">🅱️ 問題</div>
+        <p class="say">異分母分數加法，為什麼一定要先通分？</p>
+        <span class="arr">➡️ 小幫手會<b>先回答問題</b>，再<b>模擬四位不同利害關係人</b>的觀點與回答。</span></div>
+    </div>
+    <p class="related">✍️ 輸入可用 <button type="button" class="linkbtn" data-go="gen">提示詞產生器</button> 備好　·　提問放好後，接著到 <button type="button" class="linkbtn" data-go="create-skill">③ 深化素養</button></p>
+    <p class="cite1">📌 引用請註明：臺師大教創中心與優履團隊設計 AI 機器人小幫手 good questioner。本機器人由教師團隊開發，免費提供教育使用，請共同維護創作者的智慧財產。</p>
   </section>
 
   </div>
   <div class="ssec" id="x-create-skill">
   <section class="card tool f3" aria-labelledby="skill-title">
-    <div class="eyebrow">CREATE › 八大思考素養小幫手</div>
+    <div class="eyebrow">CREATE › ③ 深化素養 · 八大思考素養小幫手</div>
     <h2 class="sec-title" id="skill-title"><span class="sec-icon">🌱</span>八大思考素養小幫手</h2>
     <p class="credit">優履工作室研發「促進○○思考素養共備」應用指南（Aibot），使用請引註。</p>
     <p class="purpose">🎯 每位小幫手聚焦一項 <b>21 世紀思考素養</b>（目前開放 5 項）。挑 1～2 項適合本單元的素養，小幫手會用<b>三個階段</b>提供提問靈感與步驟化建議。</p>
@@ -1508,80 +1629,6 @@ footer .wrap{max-width:1080px}
 
   </div>
   </div>
-  <div class="ssec" id="x-create-vlm">
-  <!-- 一鍵複製：VLM 轉譯工具 -->
-  <section class="card vlm tool fv" aria-labelledby="vlm-title">
-    <div class="vlm-head">
-      <div>
-        <div class="eyebrow">CREATE › 素材轉譯（VLM 轉譯工具）</div>
-        <h2 class="sec-title" id="vlm-title"><span class="sec-icon">🧩</span>素材轉譯：把課本、教案轉成文字</h2>
-        <p class="credit">提示詞內容引自 <strong>臺師大教創中心</strong> 與 <strong>優履團隊（UNI）</strong> 設計。</p>
-      </div>
-    </div>
-    <p class="purpose">🎯 目的：<b>優雅建構高質量、低 Token 消耗的 AI 結構化知識庫。</b>把簡報、教案、講義、課文或照片截圖，轉成乾淨的 Markdown（.md）。當小幫手的「來源」區無法上傳素材時，就把 md 內容貼到中間的對話框。</p>
-
-    <ol class="steps">
-      <li><span class="n">1</span><div><b>複製提示詞</b><span>按下「一鍵複製 Prompt」。</span></div></li>
-      <li><span class="n">2</span><div><b>開啟任一款 AI</b><span>在對話框貼上提示詞，並附上要轉化的素材（文件、照片、截圖…）。</span></div></li>
-      <li><span class="n">3</span><div><b>帶入小幫手</b><span>將 AI 產出的 md 內容，貼到任一位 AI 小幫手的對話框，當作對話輸入來源。</span></div></li>
-    </ol>
-
-    <div id="prompt-wrap">
-      <div class="prompt-bar">
-        <span class="label">📋 VLM 轉譯提示詞</span>
-        <div class="tools">
-          <button class="btn btn-ghost" id="toggle" type="button" aria-expanded="true" aria-controls="prompt-box">
-            <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-            <span id="toggle-text">收合內容</span>
-          </button>
-          <button class="btn btn-copy" id="copy" type="button">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-            <span id="copy-text">一鍵複製 Prompt</span>
-          </button>
-        </div>
-      </div>
-      <div class="prompt-box" id="prompt-box">
-<pre id="prompt">請完整閱讀我所上傳的教學檔案（簡報 / 教案 / 講義 / 課文），將所有內容轉換為排版清晰、語義完整且高度結構化的 **Markdown (.md)** 格式。
-
-此轉換目的是建立乾淨、完整且能在後續 AI 處理中最大化節省 Token 的結構化知識庫，請遵循以下轉譯規範：
-
-### 1. 結構與內文原則
-- **保留層次結構**：請精準還原原本的大綱層級（使用 # H1, ## H2, ### H3），並保留講義或投影片的頁次 / 主題標示。
-- **資訊無損**：不要隨意濃縮、概括或刪減教學重點、範例、題目、重要名詞定義與解釋。
-- **條列清晰**：善用無序清單（-）與有序清單（1. 2. 3.），將視覺化重點整理為易讀的條列。
-
-### 2. 數學學科本質圖表與符號解構規範
-- **公式與代數符號**：所有公式、方程式、幾何符號一律使用標準 LaTeX（行內使用 `$f(x) = ax^2 + bx + c$`，獨立行使用 `$$\int_{a}^{b} f(x)dx$$`）。
-- **坐標幾何與函數圖形**：
-  &gt; **【函數 / 幾何圖形解構】**
-  &gt; - **定義域與坐標系**：X 軸、Y 軸範圍，原點與漸近線。
-  &gt; - **幾何條件與特徵點**：頂點、交點、切點、法線、已知線段長度與角度。
-  &gt; - **圖形走勢與凹凸性**：單調區間、極大/極小值點、反曲點。
-  &gt; - **輔助線與幾何標記**：題目繪製的輔助線、虛線、垂直符號、陰影封閉面積。
-- **題目與證明無損**：題幹條件、已知假設、證明步驟（Given / Prove / Steps）完整保留，勿跳步。
-
-### 3. 輸出規範
-- 請直接輸出純 Markdown 程式碼區塊（```markdown ... ```），不要有多餘的寒暄、前言或總結。</pre>
-      </div>
-      <p class="toast" id="toast" role="status" aria-live="polite"></p>
-    </div>
-  </section>
-
-  </div>
-  <div class="ssec" id="x-create-idea">
-  <section class="card" aria-labelledby="idea-title">
-    <h2 class="sec-title" id="idea-title"><span class="sec-icon">🃏</span>創課靈感卡：貼給小幫手，追問下一步</h2>
-    <p class="sec-note">拿到第一輪回覆後，複製一張卡貼進同一個對話，讓提問更貼近你的課堂。</p>
-    <div class="cards6">
-      <div><b>🏠 換情境</b><p id="ic1">請把這幾題提問改成學生熟悉的生活情境，並說明情境如何幫助學生理解概念。</p><button type="button" class="btn btn-ghost" data-copy="ic1">複製</button></div>
-      <div><b>🩺 找迷思</b><p id="ic2">這個概念學生最可能出現哪 2 個迷思？請各設計一個能讓學生自己發現矛盾的提問。</p><button type="button" class="btn btn-ghost" data-copy="ic2">複製</button></div>
-      <div><b>🔓 變開放</b><p id="ic3">請把其中一題封閉題，改成有多種答案或多種解法的開放題，並說明可能的學生回答。</p><button type="button" class="btn btn-ghost" data-copy="ic3">複製</button></div>
-      <div><b>🔄 轉表徵</b><p id="ic4">請設計一組提問，引導學生在實物、操作、圖像、語言、符號之間轉換。</p><button type="button" class="btn btn-ghost" data-copy="ic4">複製</button></div>
-      <div><b>🧩 串任務</b><p id="ic5">請把我挑出的 3 個提問串成一個 20 分鐘的小組探究任務，寫出各階段的引導語。</p><button type="button" class="btn btn-ghost" data-copy="ic5">複製</button></div>
-      <div><b>🪜 分層次</b><p id="ic6">請為同一個提問設計鷹架版與挑戰版，照顧不同程度的學生。</p><button type="button" class="btn btn-ghost" data-copy="ic6">複製</button></div>
-    </div>
-  </section>
-  </div>
     <nav class="pager"><button type="button" data-go="engage">← ENGAGE</button><button type="button" class="next" data-go="manage">下一階段：MANAGE 判斷與取捨 →</button></nav>
   </div>
 
@@ -1684,17 +1731,17 @@ footer .wrap{max-width:1080px}
     <span class="sb-item">👁️ 累計 <b id="st-total">—</b> 人次</span>
   </div>
   <div class="ft-h">📖 資料來源與引述</div>
-  <dl class="ft-list">
-    <div><dt>21 世紀八大思考素養</dt><dd>林福來（臺師大名譽教授、中央輔導團數學領域召集人）〈二十一世紀技能：數學素養教學與評量的指標〉。數學領域中央輔導團與「就是要學好數學（JDM）」計畫將 21 世紀技能定為數學素養教學與評量的指標。</dd></div>
-    <div><dt>思考技能元素</dt><dd>〈21 世紀技能的說明與操作型定義〉：批判性思考（楊凱琳）、研究與探究（陳建誠）、自主與堅持（鄭英豪、許慧玉）、資訊使用／科技融入（左台益）、系統性思維（王婷瑩）、溝通（謝佳叡）、反思（李源順）、創造力（謝豐瑞）教授。</dd></div>
-    <div><dt>思考素養共備小幫手</dt><dd>優履工作室研發「促進○○思考素養共備」應用指南（Aibot），使用請引註。</dd></div>
-    <div><dt>VLM 轉譯工具提示詞</dt><dd>© 臺師大教創中心與優履團隊（UNI）。</dd></div>
-    <div><dt>有效提問 AI 小幫手</dt><dd>臺師大教創中心陳佩英教授與優履團隊（UNI）設計。引用請註明：臺師大教創中心與優履團隊設計 AI 機器人小幫手 good questioner。</dd></div>
-    <div><dt>概念為本探究教學策略小幫手</dt><dd>臺師大教創中心陳佩英教授與優履團隊（UNI）設計。引用請註明：臺師大教創中心與優履設計 AI 機器人小幫手 inquiry Strategy。</dd></div>
-    <div><dt>HTML 試板</dt><dd>優履團隊研發設計 2026 ©，使用請引註。</dd></div>
-    <div><dt>共備四階段（Engage／Create／Manage／Shape）</dt><dd>參考 OECD / European Union (2026). <i>Empowering learners for the age of AI: An AI literacy framework for primary and secondary education.</i> OECD Publishing, Paris.</dd></div>
-  </dl>
-  <p class="ft-note">🌸 本網頁供教育使用。公開介紹或發表使用成果時，請註明以上引用來源。</p>
+  <div class="ft-two">
+    <div><b>📚 理論依據</b><ul>
+      <li>林福來〈二十一世紀技能：數學素養教學與評量的指標〉；〈21 世紀技能的說明與操作型定義〉</li>
+      <li>OECD / European Union (2026). <i>Empowering learners for the age of AI: An AI literacy framework</i>.</li>
+    </ul></div>
+    <div><b>🤖 小幫手與工具</b><ul>
+      <li>臺師大教創中心陳佩英教授與優履團隊（UNI）：有效提問（good questioner）、概念為本探究（inquiry Strategy）、VLM 轉譯提示詞</li>
+      <li>優履團隊：八大思考素養共備小幫手（Aibot）、HTML 試板</li>
+    </ul></div>
+  </div>
+  <p class="ft-note">🌸 免費供教育使用；公開介紹或發表成果時，請註明以上來源。</p>
 </div></footer>
 
 <script>
@@ -1823,8 +1870,8 @@ footer .wrap{max-width:1080px}
 (function(){
   var $=function(id){return document.getElementById(id);};
   var pages=['home','engage','create','manage','shape'];
-  var defSub={engage:'explain',create:'ask',manage:'judge'};
-  var alias={ask:'create-ask',inq:'create-inq',skill:'create-skill',vlm:'create-vlm',gen:'engage-try',html:'manage-html',
+  var defSub={engage:'explain',create:'map',manage:'judge'};
+  var alias={ask:'create-ask',inq:'create-inq',skill:'create-skill',vlm:'engage-vlm','create-vlm':'engage-vlm','create-idea':'create-map',gen:'engage-try',html:'manage-html',
     intro:'create-skill-intro',guide:'create-skill-guide',helpers:'create-skill-helpers',
     'skill-intro':'create-skill-intro','skill-guide':'create-skill-guide','skill-helpers':'create-skill-helpers'};
   function parse(h){ if(alias[h]) h=alias[h]; var p=h.split('-'); return {page:p[0],sub:p[1],sub2:p[2]}; }
@@ -2041,6 +2088,65 @@ footer .wrap{max-width:1080px}
     var w=null; try{ w=window.open(url,'_blank'); }catch(e){}
     if(!w){ location.href=url; }
   });
+})();
+</script>
+<script>
+/* 探究地圖（策略55） */
+(function(){
+  var table=document.getElementById('cmap'), det=document.getElementById('cdetail'); if(!table) return;
+  var SK={'批判性思考':'https://notebook.google.com/notebook/2fd7d20a-ca0c-4f11-8e36-6b0dfa325dec','創造力':'https://notebook.google.com/notebook/383b9153-71fa-41ff-8f28-9260fbddd1f8',
+    '研究與探究':'https://notebook.google.com/notebook/062aff9d-f206-4566-b6c3-5be2b6e15c05','系統性思維':'https://notebook.google.com/notebook/4548f6b1-6681-4281-8e8d-4f2b8308f9de','反思':'https://notebook.google.com/notebook/af062042-58d7-4944-bcf0-1dfa4ee52266'};
+  var INQ='https://notebook.google.com/notebook/fe2cfad5-4ba1-45e2-9711-dc863ebaf26e', ASK='https://notebook.google.com/notebook/6a68de13-1286-40a3-99a9-56ffe67b7eda';
+  var P=[
+   {k:'投入',goal:'活化學生的先備知識、喚起學習動機，並收集起始疑問。',ex:'表態光譜、胡搞瞎搞',q:'喚起經驗的開放提問',qd:'喚起學生舊經驗、引發好奇心的開放提問，並收集學生的起始疑問',sk:'溝通',
+    g:[['意見表達型',['四角辯論 Four-corner Debate','表態光譜 Spectrum Statements']],['體驗模擬型',['模擬 Simulation','胡搞瞎搞 Mess About']],['討論型',['問題延伸 Question Stretches','討論協定 Discussion Protocols','關係導圖 Affinity Diagram']]]},
+   {k:'聚焦',goal:'專注於概念形成，區分事例屬性，建立班級對概念的共同理解。',ex:'弗瑞爾模型、全部部分沒有',q:'事實性：例與非例',qd:'辨識例與非例、找出概念屬性的事實性提問',sk:'批判性思考',
+    g:[['分類型',['弗瑞爾模型 Frayer Model','概念象限 Concept Quadrants','全部、部分、沒有 All, Some, None']],['命名型',['找出屬性 Adjectives','分類、描述、命名 Group, Describe, Name','概念謎語 Concept Riddles','創造與合併 Create & Combine']],['排序型',['光譜定位 Spectrum Sort','鑽石分層 Diamond Ranking','概念座標 Concept Graphs','維度排序 Dimensions','關係類比 Analogies']]]},
+   {k:'組織',goal:'將調查與探索後發現的零散知識結構化、視覺化，減輕大腦認知負荷。',ex:'交叉比對表、流程圖',q:'比較、關係的提問',qd:'比較異同、整理概念之間關係的提問',sk:'系統性思維',
+    g:[['對比型組織圖',['交叉比對表 Cross-comparison Chart','交換卡片 Trading Cards','推力、拉力、阻力 Push, Pull, Hold']],['歷程型組織圖',['失落的一角 The Missing Piece','網絡 Networks','流程圖 Flow Diagrams']],['總結型組織圖',['視覺筆記 Visual Note-Taking','註解 Annotate It']],['發表策略',['社會性戲劇 Social-dramatic Play','語言形式 Linguistic Representation','模型 Models']]]},
+   {k:'通則',goal:'梳理概念間的相互關係，搭設思考鷹架，歸納出可跨情境遷移的通則。',ex:'概念銀行、模式獵人',q:'概念性：A 與 B 有何關係',qd:'引導學生說出概念之間關係、形成通則的概念性提問',sk:'研究與探究',
+    g:[['提問搭思考鷹架',['概念性問題 Conceptual Questions','快速連結 Speed Connections','連結四方 Connect 4']],['概念庫搭思考鷹架',['概念銀行 Concept Bank','句子架構 Sentence Frames','概念接龍 Concept Roles']],['探究模式和關聯搭思考鷹架',['概念製圖 Concept Mapping',"顏色連結 What's the Connection?",'模式獵人 Pattern Hunters','微通則 Micro-generalizing']]]},
+   {k:'遷移',goal:'將歸納出的通則應用於新情境，進行測試、驗證與採取行動。',ex:'壓力測試、要是…會怎樣',q:'可辯論、新情境提問',qd:'把通則放進新情境測試、可辯論的提問',sk:'創造力',
+    g:[['測試驗證通則',['壓力測試 Stress-testing Generalizations','線上討論 On the Line','證明 Prove It!']],['了解新的事件情境',['如何連結 How Does It Connect?']],['測試假設',['「要是……又會怎樣？」的問題 What if...?']],['應用與行動',['實作評量 Performance Assessment','創造！Create It!','學生主導行動 Student-led Action']]]},
+   {k:'反思',goal:'貫穿探究全歷程，培養後設認知，計畫、監控與評估自己的學習。',ex:'出場反思、放聲思考',q:'後設：你怎麼知道',qd:'讓學生回看、監控與評估自己想法的後設提問',sk:'反思',
+    g:[['全觀',['談話提示 Talk Prompts','問題銀行 Question Bank']],['計劃',['學習日誌與反思部落格 Learning Journals','任務分析 Task Analysis']],['監控',['放聲思考 Think Aloud','出場反思 Exit Reflections']],['評估',['單元前／後的反思 Pre-/Post-reflections']]]}
+  ];
+  var cur=1;
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function ctx(){ var g='國小五年級',u='【你的單元】'; try{var o=JSON.parse(localStorage.getItem('gen-fields')||'null'); if(o){ if(o['g-grade'])g=o['g-grade']; if((o['g-unit']||'').trim())u=o['g-unit'].trim(); }}catch(e){} return {g:g,u:u}; }
+  function head(){
+    var h='<thead><tr><th class="corner"></th>';
+    P.forEach(function(p,i){ h+='<th><button type="button" data-ph="'+i+'"'+(i===cur?' aria-pressed="true"':' aria-pressed="false"')+'>'+(i===5?'反思<small>貫穿全程</small>':p.k+'<small>'+(i<4?'→':'')+'</small>')+'</button></th>'; });
+    h+='</tr></thead><tbody>';
+    var rows=[['① 活動骨架','概念為本探究','l1',function(p){return p.ex;}],['② 放入提問','有效提問','l2',function(p){return p.q;}],['③ 深化素養','八大思考素養','l3',function(p){return p.sk==='溝通'?'溝通（整理中）':p.sk;}]];
+    rows.forEach(function(r){ h+='<tr class="'+r[2]+'"><th scope="row">'+r[0]+'<small>'+r[1]+'</small></th>';
+      P.forEach(function(p,i){ h+='<td data-ph="'+i+'" class="'+(i===cur?'on':'')+(r[2]==='l3'&&p.sk==='溝通'?' off':'')+'">'+esc(r[3](p))+'</td>'; }); h+='</tr>'; });
+    table.innerHTML=h+'</tbody>';
+  }
+  function detail(){
+    var p=P[cur], c=ctx(), list=p.g.map(function(x){return x[1].map(function(s){return s.split(' ')[0];}).join('、');}).join('；');
+    var t1='我教'+c.g+'，單元是'+c.u+'。請根據策略55，在學生探究的「'+p.k+'」階段（目的：'+p.goal+'），推薦 1～2 個最適合我學生的策略，並說明課堂操作步驟。';
+    var t2='科目：數學\n學生年級：'+c.g+'\n想探究的主題或概念：'+c.u+'\n請為學生探究的「'+p.k+'」階段設計提問，重點是：'+p.qd+'。';
+    var t3=p.sk==='溝通'?'':'我教'+c.g+'，單元是'+c.u+'。我想在學生探究的「'+p.k+'」階段培養'+p.sk+'，請提供提問靈感。';
+    var h='<div class="cd-h"><b>'+p.k+'</b><span>'+esc(p.goal)+'</span></div><div class="cd-3">';
+    h+='<div class="l1"><div class="cd-t">① 活動骨架<small>概念為本探究 · '+p.g.reduce(function(n,x){return n+x[1].length;},0)+' 個策略</small></div>';
+    p.g.forEach(function(x){ h+='<p class="grp"><em>'+esc(x[0])+'</em>'+x[1].map(function(s){var i=s.search(/ [A-Za-z"“]/);return '<span class="chip">'+esc(i>0?s.slice(0,i):s)+(i>0?'<small>'+esc(s.slice(i+1))+'</small>':'')+'</span>';}).join('')+'</p>'; });
+    h+='<textarea id="cd1">'+esc(t1)+'</textarea><div class="cd-a"><a class="btn btn-go" data-cg="cd1" href="'+INQ+'" target="_blank" rel="noopener">複製並開啟 ↗</a></div></div>';
+    h+='<div class="l2"><div class="cd-t">② 放入提問<small>有效提問</small></div><p class="focus">提問焦點：<b>'+esc(p.q)+'</b></p><textarea id="cd2">'+esc(t2)+'</textarea><div class="cd-a"><a class="btn btn-go" data-cg="cd2" href="'+ASK+'" target="_blank" rel="noopener">複製並開啟 ↗</a></div></div>';
+    h+='<div class="l3"><div class="cd-t">③ 深化素養<small>八大思考素養</small></div>';
+    if(p.sk==='溝通'){ h+='<p class="focus">對應素養：<b>溝通</b>（小幫手整理中）</p><p class="muted">可先用「研究與探究」或「批判性思考」小幫手發想投入階段的提問。</p></div>'; }
+    else { h+='<p class="focus">對應素養：<b>'+p.sk+'</b></p><textarea id="cd3">'+esc(t3)+'</textarea><div class="cd-a"><a class="btn btn-go" data-cg="cd3" href="'+SK[p.sk]+'" target="_blank" rel="noopener">複製並開啟 ↗</a></div></div>'; }
+    det.innerHTML=h+'</div><p class="cd-ok" role="status"></p>';
+    det.querySelectorAll('[data-cg]').forEach(function(a){ a.addEventListener('click',function(){
+      var ta=document.getElementById(a.dataset.cg), ok=det.querySelector('.cd-ok');
+      function done(){ ok.textContent='✅ 已複製，小幫手已在新分頁開啟：先勾選來源，再按 Ctrl+V（Mac ⌘+V）貼上送出。'; }
+      if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(done,function(){ta.select();try{document.execCommand('copy');done();}catch(e){}}); else {ta.select();try{document.execCommand('copy');done();}catch(e){}}
+    }); });
+  }
+  function render(){ head(); detail(); }
+  table.addEventListener('click',function(e){ var el=e.target.closest('[data-ph]'); if(!el) return; cur=+el.dataset.ph; render(); });
+  window.addEventListener('hashchange',function(){ if(location.hash.indexOf('create')>-1) detail(); });
+  render();
 })();
 </script>
 
