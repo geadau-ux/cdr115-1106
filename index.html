@@ -1279,6 +1279,72 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
 .cd-3 > div.zoomed .muted2,.cd-3 > div.zoomed .focus{font-size:16px}
 @media (max-width:600px){.cd-3 > div.zoomed{inset:8px;padding:0 14px 16px}.zbar{margin:0 -14px 6px;padding:10px 14px}}
 .cd-3 > div.zoomed{animation:none}
+/* 進階檢核 */
+.adv{margin-top:18px;border-radius:16px;border:1.5px dashed color-mix(in srgb,var(--c4) 50%,var(--line));background:color-mix(in srgb,var(--c4) 4%,var(--surface))}
+.adv > summary{list-style:none;cursor:pointer;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;padding:14px 18px}
+.adv > summary::-webkit-details-marker{display:none}
+.adv-t{font-weight:900;color:var(--c4);font-size:16.5px}
+.adv-s{font-size:13px;color:var(--muted)}
+.adv-btn{margin-left:auto;padding:4px 12px;border-radius:999px;background:var(--c4);color:#fff;font-size:13px;font-weight:800}
+.adv[open] .adv-btn{font-size:0}.adv[open] .adv-btn::after{content:"收合 ▴";font-size:13px}
+.adv[open]{border-style:solid}
+.adv-body{padding:0 18px 18px}
+.adv-h{margin:18px 0 10px;font-size:16px;color:var(--primary)}
+.adv-h small{font-weight:500;font-size:12.5px;color:var(--muted);margin-left:6px}
+.rat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:860px){.rat{grid-template-columns:1fr}}
+.rat-i{--rc:var(--c1);position:relative;display:flex;gap:10px;padding:14px;border-radius:14px;border:1.5px solid color-mix(in srgb,var(--rc) 35%,var(--line));background:var(--surface);cursor:pointer;transition:transform .15s,box-shadow .2s}
+.rat-r{--rc:#8a8f98}.rat-a{--rc:var(--c1)}.rat-t{--rc:var(--c5)}
+.rat-i:hover{transform:translateY(-2px);box-shadow:0 8px 16px -10px var(--rc)}
+.rat-i input{position:absolute;opacity:0}
+.rat-k{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-weight:900;font-size:20px;color:#fff;background:var(--rc)}
+.rat-b{display:flex;flex-direction:column;gap:4px;font-size:13.5px;color:var(--text);line-height:1.6}
+.rat-b b{font-size:16px;color:var(--rc)}
+.rat-b small{font-size:12.5px;color:var(--muted)}
+.rat-b small i{font-style:normal;font-weight:800;color:var(--text);margin-right:4px}
+.rat-i:has(input:checked){border-color:var(--rc);background:color-mix(in srgb,var(--rc) 10%,var(--surface));box-shadow:0 0 0 3px color-mix(in srgb,var(--rc) 25%,transparent)}
+.rat-i:has(input:checked)::after{content:"✓ 我的設計在這層";position:absolute;top:-10px;right:10px;padding:1px 9px;border-radius:999px;background:var(--rc);color:#fff;font-size:11.5px;font-weight:800}
+.rat-tip{margin:10px 0 0;font-size:13.5px;color:var(--muted)}
+.vchk > li{display:flex;flex-direction:column}
+.vk{display:inline-grid;place-items:center;min-width:30px;height:24px;padding:0 6px;margin-right:6px;border-radius:7px;font-style:normal;font-weight:900;font-size:13px;color:#fff;background:var(--c4)}
+.vchk b{color:var(--c4)!important}
+.ven{font-size:11.5px;color:var(--muted);margin-left:6px}
+.vex{margin:2px 0 4px 40px}
+.vex > summary{cursor:pointer;font-size:12.5px;font-weight:800;color:var(--c4);width:max-content}
+.vex-b{margin-top:6px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:700px){.vex-b{grid-template-columns:1fr}}
+.vex-b p{margin:0;padding:8px 10px;border-radius:10px;font-size:13px;line-height:1.6}
+.vex-b .good{background:color-mix(in srgb,var(--c5) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--c5) 35%,var(--line))}
+.vex-b .bad{background:color-mix(in srgb,var(--c2) 8%,var(--surface));border:1px solid color-mix(in srgb,var(--c2) 30%,var(--line))}
+.vex.oecd{margin:16px 0 0}
+.vex.oecd > summary{font-size:14px}
+.vex.oecd .tbl{margin-top:10px}
+/* JDM 例子與作法 */
+#p-manage .four{align-items:start}
+.jex{margin-top:10px}
+.jex > summary{cursor:pointer;width:max-content;padding:3px 12px;border-radius:999px;font-size:12.5px;font-weight:800;color:#fff;background:var(--c4);list-style:none}
+.jex > summary::-webkit-details-marker{display:none}
+.jex > summary::after{content:" ▾"}
+.jex[open] > summary::after{content:" ▴"}
+.jex-b{margin-top:10px;display:flex;flex-direction:column;gap:6px;position:relative;z-index:1}
+.jex-b p{margin:0;padding:8px 10px;border-radius:10px;font-size:13.5px;line-height:1.6;color:var(--text)}
+.jex-b p i{display:block;font-style:normal;font-size:11.5px;font-weight:900;margin-bottom:2px}
+.jex-b .bf{background:color-mix(in srgb,#8a8f98 12%,var(--surface));text-decoration:line-through;text-decoration-color:color-mix(in srgb,var(--c2) 60%,transparent)}
+.jex-b .bf i{color:var(--muted);text-decoration:none;display:block}
+.jex-b .af{background:color-mix(in srgb,var(--c5) 12%,var(--surface));border:1px solid color-mix(in srgb,var(--c5) 40%,var(--line));font-weight:700}
+.jex-b .af i{color:var(--c5)}
+.jex-b ul{margin:4px 0 0;padding-left:18px;font-size:13px;line-height:1.7;color:var(--text)}
+.jex-b ul li::marker{color:var(--c4)}
+/* 通用收合列 */
+.cbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding:12px 16px;border-radius:12px;background:color-mix(in srgb,var(--fill,var(--secondary)) 8%,var(--surface));border:1px solid color-mix(in srgb,var(--fill,var(--secondary)) 30%,var(--line));font-size:var(--fs-body);color:var(--text)}
+.cbar b{color:var(--fill,var(--primary))}
+.ctog .chev{display:inline-block;font-weight:900;transition:transform .2s}
+.ctog.open .chev{transform:rotate(90deg)}
+.cbody[hidden]{display:none}
+.cbar-ws{--fill:var(--c7);margin-top:0;padding:16px 20px;border-radius:18px;box-shadow:var(--shadow)}
+.cbar-ws .btn-copy{background:var(--c7);box-shadow:0 6px 14px -6px var(--c7)}
+#ht-ws{margin-top:-28px}
+.cbar > span{flex:1 1 280px;min-width:0}.cbar .ctog{flex:none!important;width:auto!important;padding:9px 16px}
 
 </style>
 </head>
@@ -2064,12 +2130,44 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
       <li><label><input type="checkbox"><span><b>註明來源</b>：公開分享時註明小幫手與工具的引用來源</span></label></li>
     </ol>
     <p class="chk-done" role="status"></p>
+    <details class="adv">
+      <summary><span class="adv-t">🔬 進階檢核（選用）：R.A.T. 融入深度 × VALUE 教學品質</span><span class="adv-s">想更深入評估這份設計時再點開</span><span class="adv-btn">展開 ▾</span></summary>
+      <div class="adv-body">
+      <h4 class="adv-h">① R.A.T. 模型：這份設計中，AI 融入到哪個深度？<small>（Hughes et al., 2006，單選）</small></h4>
+      <div class="rat" role="radiogroup" aria-label="R.A.T. 層次">
+        <label class="rat-i rat-r"><input type="radio" name="rat"><span class="rat-k">R</span><span class="rat-b"><b>取代</b><span>AI 取代紙本、傳統工具或既有做法，功能相同，無新增教育效益</span><small><i>典型做法</i>用 AI 生成題目後直接發放，取代教師出題</small><small><i>VALUE 品質風險</i>後設認知缺失、鷹架失效、學生完全外包</small></span></label>
+        <label class="rat-i rat-a"><input type="radio" name="rat"><span class="rat-k">A</span><span class="rat-b"><b>擴增</b><span>AI 擴增既有工具的功能與效能，提供過去難以實現的可能性，但未改變學習結構</span><small><i>典型做法</i>AI 提供差異化難度版本，擴增教師無法單獨完成的個別化設計</small><small><i>VALUE 品質風險</i>若無卸除設計，仍有外包風險；需搭配 VALUE 動態鷹架</small></span></label>
+        <label class="rat-i rat-t"><input type="radio" name="rat"><span class="rat-k">T</span><span class="rat-b"><b>轉化</b><span>AI 根本改變了學習結構、師生關係或認知歷程，創造出過去無法想像的學習型態</span><small><i>典型做法</i>學生以 AI 作為「思考夥伴」，共同建構知識，師生角色重新定位</small><small><i>VALUE 品質風險</i>VALUE 全面向均能被強化；社會互動、後設認知、真實情境達最高水準</small></span></label>
+      </div>
+      <p class="rat-tip">💡 不必每次都追求「轉化」。重點是看清楚自己在哪一層，並用下方 VALUE 八面向補強品質。</p>
+      <h4 class="adv-h">② VALUE 模型：逐項檢視教學品質<small>（邊看邊勾，點「看例子」可對照良好與失當設計）</small></h4>
+      <ol class="chk tick vchk" data-chk data-done="🌟 VALUE 八面向都檢視過了，這份設計已經很扎實！">
+        <li><label><input type="checkbox"><span><em class="vk">V</em><b>社會互動</b><small class="ven">Vivifying Social Learning</small><br>AI 的介入是促進同儕辯證，還是導致個人封閉學習？</span></label><details class="vex"><summary>看例子</summary><div class="vex-b"><p class="good">✅ 設計良好：AI 作為小組討論的起點，激發多元觀點交流</p><p class="bad">⚠️ 設計失當：學生各自與 AI 互動，失去協作學習機會</p></div></details></li>
+        <li><label><input type="checkbox"><span><em class="vk">A</em><b>後設認知</b><small class="ven">Activating Metacognition</small><br>學生是在運用 AI 思考，還是單純複製 AI 的輸出？</span></label><details class="vex"><summary>看例子</summary><div class="vex-b"><p class="good">✅ 設計良好：學生能監控自身理解，批判性評估 AI 輸出的合理性</p><p class="bad">⚠️ 設計失當：大腦外包：學生不加思考直接採用 AI 結果</p></div></details></li>
+        <li><label><input type="checkbox"><span><em class="vk">L</em><b>探究歷程</b><small class="ven">Learning through Inquiry & Feedback</small><br>AI 介入是引發提問，還是終結探究？</span></label><details class="vex"><summary>看例子</summary><div class="vex-b"><p class="good">✅ 設計良好：AI 生成反例，引發學生主動追問與再探究</p><p class="bad">⚠️ 設計失當：學生取得答案後停止探究，失去深層學習</p></div></details></li>
+        <li><label><input type="checkbox"><span><em class="vk">U</em><b>動態鷹架</b><small class="ven">Unfolding Guided Scaffolding</small><br>鷹架是否隨學生能力提升而卸除，還是造成永久依賴？</span></label><details class="vex"><summary>看例子</summary><div class="vex-b"><p class="good">✅ 設計良好：設計「鷹架卸除時間軸」，AI 支援逐步退出</p><p class="bad">⚠️ 設計失當：鷹架若固化，學生對 AI 會產生永久依賴</p></div></details></li>
+        <li><label><input type="checkbox"><span><em class="vk">E¹</em><b>迷思釐清</b><small class="ven">Eliciting Conceptual Change</small><br>AI 是否能精準偵測並引發學生對深層迷思的認知衝突？</span></label><details class="vex"><summary>看例子</summary><div class="vex-b"><p class="good">✅ 設計良好：AI 生成「支持迷思的反例」，讓學生主動辯駁</p><p class="bad">⚠️ 設計失當：AI 直接給出正確答案，學生迷思未被觸及</p></div></details></li>
+        <li><label><input type="checkbox"><span><em class="vk">E²</em><b>真實情境</b><small class="ven">Embedding in Real Contexts</small><br>學習任務是否連結真實脈絡，具備遷移的可能性？</span></label><details class="vex"><summary>看例子</summary><div class="vex-b"><p class="good">✅ 設計良好：學生以 AI 協助完成具真實受眾的作品，如科普文章</p><p class="bad">⚠️ 設計失當：去脈絡化的練習題，學生看不見學習意義</p></div></details></li>
+        <li><label><input type="checkbox"><span><em class="vk">E³</em><b>個別化</b><small class="ven">Enabling Adaptive Pathways</small><br>AI 是否提供符合個別學習準備度的差異化路徑？</span></label><details class="vex"><summary>看例子</summary><div class="vex-b"><p class="good">✅ 設計良好：AI 依前測結果推薦個別化學習入口與難度</p><p class="bad">⚠️ 設計失當：所有學生使用相同 AI 輸出，差異化形同虛設</p></div></details></li>
+        <li><label><input type="checkbox"><span><em class="vk">E⁴</em><b>包容設計</b><small class="ven">Embracing Universal Design</small><br>AI 是否真正落實 UDL，服務多元學習需求？</span></label><details class="vex"><summary>看例子</summary><div class="vex-b"><p class="good">✅ 設計良好：AI 提供文字、音訊、視覺化三種表徵，實踐包容設計</p><p class="bad">⚠️ 設計失當：僅提供單一模態輸出，忽略多元學習者需求</p></div></details></li>
+      </ol>
+      <p class="chk-done" role="status"></p>
+      <details class="vex oecd"><summary>📚 對照：OECD AI 素養四面向（本網站四階段的依據）</summary>
+      <div class="tbl"><table><thead><tr><th>面向</th><th>核心概念</th><th>課程對應實踐</th></tr></thead><tbody>
+<tr><td><span class="pp pe">Engage 互動理解</span></td><td>理解 AI 是什麼和如何運作，與 AI 系統進行有意義的互動</td><td>認識生成式 AI 運作邏輯；辨別 AI 生成內容的特徵與限制</td></tr>
+<tr><td><span class="pp pc">Create 創作生成</span></td><td>運用 AI 協助產出教育內容，提升創意與效率</td><td>AI 輔助教案撰寫、教材設計、圖像、腳本、測驗的 AI 生成</td></tr>
+<tr><td><span class="pp pm">Manage 批判管理</span></td><td>批判評估 AI 輸出品質；維護教師專業判斷與倫理責任</td><td>辨別 AI 偏見與錯誤；資料隱私、著作權、學生安全管理</td></tr>
+<tr><td><span class="pp ps">Shape 形塑思維</span></td><td>主動形塑 AI 在學習環境中的角色與定位，重構課程、教學結構與師生關係</td><td>逆向設計（Backward Design）＋ AI 整合；個別化學習路徑設計</td></tr>
+      </tbody></table></div></details>
+      </div>
+    </details>
     <h3 class="gsub">🔍 用 JDM 四原則檢視提問</h3>
+    <p class="sec-note">每張卡片點「看例子與作法」，可看到以五年級<strong>「分數的加減」</strong>為例的<strong>提問改寫</strong>與<strong>課堂作法</strong>。</p>
     <div class="four">
-      <div><b>💭 激發思考</b><p>這個提問能讓學生有自己的想法，而不只是回想答案嗎？</p></div>
-      <div><b>🩺 診斷學習</b><p>從學生的回答，看得出他理解到哪裡、卡在哪裡嗎？</p></div>
-      <div><b>💗 情緒分享</b><p>有沒有留空間，讓學生說出「有趣、有感」的感受？</p></div>
-      <div><b>🗣️ 語言演化</b><p>能不能引導學生從生活語言，逐步走向數學語言？</p></div>
+      <div><b>💭 激發思考</b><p>這個提問能讓學生有自己的想法，而不只是回想答案嗎？</p><details class="jex"><summary>看例子與作法</summary><div class="jex-b"><p class="bf"><i>改寫前</i>1/3 ＋ 1/4 等於多少？</p><p class="af"><i>改寫後</i>小明說 1/3 ＋ 1/4 ＝ 2/7，你同意嗎？請用圖說服他。</p><ul><li>把「算出答案」改成「判斷、說理」</li><li>給一個常見的錯誤說法，請學生評論</li><li>追問「還有別的方法嗎？哪個最好？」</li></ul></div></details></div>
+      <div><b>🩺 診斷學習</b><p>從學生的回答，看得出他理解到哪裡、卡在哪裡嗎？</p><details class="jex"><summary>看例子與作法</summary><div class="jex-b"><p class="bf"><i>改寫前</i>答案對了嗎？</p><p class="af"><i>改寫後</i>你為什麼要先通分？畫圖讓我看看你怎麼想的。</p><ul><li>請學生說出或畫出思考過程，而不只看答案</li><li>設計會暴露迷思的題目（例：分母不同直接相加）</li><li>用小白板同時舉答，一眼看出全班的理解分布</li></ul></div></details></div>
+      <div><b>💗 情緒分享</b><p>有沒有留空間，讓學生說出「有趣、有感」的感受？</p><details class="jex"><summary>看例子與作法</summary><div class="jex-b"><p class="bf"><i>改寫前</i>好，下一題。</p><p class="af"><i>改寫後</i>這題你一開始覺得難還是簡單？哪裡讓你「啊！原來如此」？</p><ul><li>下課前用出場卡：一個表情符號＋一句話</li><li>讓學生安心說「我還不懂」，並感謝他提出</li><li>請學生分享自己「最有感」的解法</li></ul></div></details></div>
+      <div><b>🗣️ 語言演化</b><p>能不能引導學生從生活語言，逐步走向數學語言？</p><details class="jex"><summary>看例子與作法</summary><div class="jex-b"><p class="bf"><i>改寫前</i>請寫出算式。</p><p class="af"><i>改寫後</i>先用自己的話說說披薩怎麼分，再畫出來，最後寫成算式。</p><ul><li>依序走過：生活語言 → 操作 → 圖像 → 數學符號</li><li>把學生說的話寫上黑板，全班一起改成數學用語</li><li>先讓學生描述現象，再引入「通分、公分母」等術語</li></ul></div></details></div>
     </div>
     <p class="related">🧪 AI 做出學習單或活動頁的 HTML？到 <button type="button" class="linkbtn" data-go="manage-html">HTML 試板</button> 預覽、直接改字再帶走。</p>
   </section>
@@ -2085,16 +2183,22 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
       </div>
       <button type="button" class="btn btn-open" id="ht-newtab">在新分頁全畫面開啟 ↗</button>
     </div>
+    <div class="cbar"><span>貼上 AI 做好的 <b>HTML</b>，就能<b>即時預覽、直接改字</b>。</span><button type="button" class="btn btn-ghost ctog" data-ctog="ht-intro" aria-expanded="false"><span class="chev">›</span> <span class="ctl">展開說明</span></button></div>
+    <div id="ht-intro" class="cbody" hidden>
     <p class="purpose">🎯 小幫手或其他 AI 幫你做出<b>學習單、提問卡、課堂活動頁</b>的 HTML 程式碼時，貼到左邊就能<b>即時預覽</b>，也能<b>直接在預覽裡改字</b>、切換<b>手機版預覽</b>、<b>下載預覽圖</b>。所有內容只在你的瀏覽器中處理，不會上傳。</p>
     <ol class="steps">
       <li><span class="n">1</span><div><b>貼上程式碼</b><span>把 AI 產出的 HTML 貼到左側「原始碼」區；想先試試看，可按「載入範例」。</span></div></li>
       <li><span class="n">2</span><div><b>檢視與修改</b><span>右側即時預覽。可直接在預覽裡編輯，點預覽中的元素，左側會跳到對應程式碼。</span></div></li>
       <li><span class="n">3</span><div><b>帶走成果</b><span>複製程式碼、下載預覽圖，或在新分頁開啟，給學生或社群夥伴看。</span></div></li>
     </ol>
+    </div>
   </section>
+  <div class="cbar cbar-ws"><span>🧪 <b>HTML 試板工作區</b>：左邊貼程式碼，右邊看預覽</span><button type="button" class="btn btn-copy ctog" data-ctog="ht-ws" aria-expanded="false"><span class="chev">›</span> <span class="ctl">展開工作區</span></button></div>
+  <div id="ht-ws" class="cbody" hidden>
   <div class="ht-frame-wrap">
     <iframe id="ht-frame" title="HTML 試板" allow="clipboard-read; clipboard-write; fullscreen" loading="lazy"></iframe>
     <p class="ht-loading" id="ht-loading">HTML 試板載入中…</p>
+  </div>
   </div>
 
   </div>
@@ -2160,6 +2264,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
     <div><b>📚 理論依據</b><ul>
       <li>林福來〈二十一世紀技能：數學素養教學與評量的指標〉；〈21 世紀技能的說明與操作型定義〉</li>
       <li>OECD / European Union (2026). <i>Empowering learners for the age of AI: An AI literacy framework</i>.</li>
+      <li>Hughes, J., Thomas, R., &amp; Scharber, C. (2006). R.A.T. 模型：評估科技融入的深度。</li>
     </ul></div>
     <div><b>🤖 小幫手與工具</b><ul>
       <li>臺師大教創中心陳佩英教授與優履團隊（UNI）：有效提問（good questioner）、概念為本探究（inquiry Strategy）、VLM 轉譯提示詞</li>
@@ -2314,6 +2419,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
     intro:'create-skill-intro',guide:'create-skill-guide',helpers:'create-skill-helpers',
     'skill-intro':'create-skill-intro','skill-guide':'create-skill-guide','skill-helpers':'create-skill-helpers'};
   function parse(h){ if(alias[h]) h=alias[h]; var p=h.split('-'); return {page:p[0],sub:p[1],sub2:p[2]}; }
+  var curPage=null, anchor=null;
   function show(h,scroll){
     var r=parse(h); if(pages.indexOf(r.page)<0) r={page:'home'};
     pages.forEach(function(k){
@@ -2337,12 +2443,14 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
     if(l<bar.scrollLeft||l+cur.offsetWidth>bar.scrollLeft+bar.clientWidth) bar.scrollLeft=l-16;
     var sb=$('statbar'); if(sb) sb.hidden=(r.page!=='home');
     if(target){ var hd=document.querySelector('header'); setTimeout(function(){ window.scrollTo({top:target.getBoundingClientRect().top+window.scrollY-(hd?hd.offsetHeight:0)-16}); },0); }
-    else if(scroll) window.scrollTo(0,0);
+    else if(anchor && r.page===curPage){ var a=anchor; anchor=null; var nb=document.querySelector('[data-sub="'+a.key+'"]'); if(nb){ window.scrollBy(0, nb.getBoundingClientRect().top - a.top); } }
+    else if(scroll && r.page!==curPage) window.scrollTo(0,0);
+    anchor=null; curPage=r.page;
   }
   function go(n){ if(location.hash!=='#'+n){ location.hash=n; } else { show(n,true); } }
   document.querySelectorAll('[data-tab]').forEach(function(b){ b.addEventListener('click',function(){ go(b.dataset.tab); }); });
   document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(){ go(b.dataset.go); }); });
-  document.querySelectorAll('[data-sub]').forEach(function(b){ b.addEventListener('click',function(){ go(b.dataset.sub); }); });
+  document.querySelectorAll('[data-sub]').forEach(function(b){ b.addEventListener('click',function(){ anchor={key:b.dataset.sub, top:b.getBoundingClientRect().top}; go(b.dataset.sub); }); });
   document.querySelectorAll('[data-scroll]').forEach(function(b){ b.addEventListener('click',function(){
     var t=$(b.dataset.scroll), hd=document.querySelector('header');
     window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-(hd?hd.offsetHeight:0)-20,behavior:'smooth'}); }); });
@@ -2556,8 +2664,8 @@ window.hlPaint=function(ta,groups){
 (function(){
   var f=document.getElementById('ht-frame'), ld=document.getElementById('ht-loading'), html=null;
   function src(){ if(html===null){ var b=atob(window.HT_B64||''), u=new Uint8Array(b.length); for(var i=0;i<b.length;i++) u[i]=b.charCodeAt(i); html=new TextDecoder().decode(u); } return html; }
-  function load(){ var box=document.getElementById('x-manage-html'); if(!box||box.hidden||f.dataset.on) return; f.dataset.on='1'; f.addEventListener('load',function(){ ld.hidden=true; }); f.srcdoc=src(); }
-  window.addEventListener('hashchange',load); load();
+  function load(){ var box=document.getElementById('x-manage-html'), ws=document.getElementById('ht-ws'); if(!box||box.hidden||(ws&&ws.hidden)||f.dataset.on) return; f.dataset.on='1'; f.addEventListener('load',function(){ ld.hidden=true; }); f.srcdoc=src(); }
+  window.addEventListener('hashchange',load); window.htLoad=load; load();
   window.htOpen=function(){
     var url=URL.createObjectURL(new Blob([src()],{type:'text/html'}));
     var w=null; try{ w=window.open(url,'_blank'); }catch(e){}
@@ -2876,6 +2984,17 @@ document.querySelectorAll('input[name="g-skr"]').forEach(function(r){ r.addEvent
   bd.addEventListener('click',close);
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&zoomed) close(); });
   window.addEventListener('hashchange',function(){ if(zoomed) close(); });
+})();
+</script>
+<script>
+/* 收合區塊 */
+(function(){
+  document.querySelectorAll('[data-ctog]').forEach(function(b){
+    var id=b.dataset.ctog, body=document.getElementById(id), tx=b.querySelector('.ctl'), base=tx.textContent.replace('展開','');
+    function set(open){ body.hidden=!open; b.setAttribute('aria-expanded',String(open)); b.classList.toggle('open',open); tx.textContent=(open?'收合':'展開')+base; try{localStorage.setItem('c-'+id,open?'1':'0');}catch(e){} if(open&&window.htLoad) window.htLoad(); }
+    var o=false; try{ o=localStorage.getItem('c-'+id)==='1'; }catch(e){} set(o);
+    b.addEventListener('click',function(){ set(body.hidden); });
+  });
 })();
 </script>
 
