@@ -980,6 +980,30 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
 .sec-icon.logo-icon{width:64px;height:64px;background:#fff;padding:4px;overflow:hidden}
 .sec-icon.logo-icon img{width:100%;height:100%;object-fit:contain;display:block}
 .sec-icon.logo-icon{width:80px;height:80px;border-radius:18px;padding:6px}
+.sb-me{padding-left:12px;border-left:1.5px solid var(--line)}
+.sb-me{padding-left:0;border-left:0}
+/* 休息提醒 */
+.brk{position:fixed;inset:0;z-index:200;display:grid;place-items:center;padding:20px;background:rgba(10,25,40,.45);backdrop-filter:blur(3px)}
+.brk[hidden]{display:none}
+.brk-card{width:min(440px,100%);text-align:center;padding:26px 24px 22px;border-radius:24px;background:var(--surface);border:1px solid var(--line);box-shadow:0 24px 60px -20px rgba(0,0,0,.45)}
+.brk.show .brk-card{animation:brkIn .5s cubic-bezier(.2,1.4,.4,1)}
+@keyframes brkIn{from{transform:scale(.6) translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.brk-fig{position:relative;height:96px}
+.brk-fig .b1{display:inline-block;font-size:64px;line-height:96px;animation:brkBounce 1.2s ease-in-out infinite}
+@keyframes brkBounce{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(6deg)}}
+.brk-fig .s1,.brk-fig .s2,.brk-fig .s3{position:absolute;font-size:20px;animation:brkTw 1.6s ease-in-out infinite}
+.brk-fig .s1{left:30%;top:6px}.brk-fig .s2{right:28%;top:20px;animation-delay:.4s}.brk-fig .s3{left:36%;bottom:4px;animation-delay:.8s}
+@keyframes brkTw{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.15)}}
+.brk-card h3{font-size:20px;color:var(--primary);margin:6px 0 8px}
+.brk-card h3 b{color:var(--c2)}
+.brk-tip{margin:0;font-size:16px;color:var(--text);font-weight:700}
+.brk-joke{margin-top:16px;padding:14px 16px;border-radius:16px;background:color-mix(in srgb,var(--accent) 14%,var(--surface));border:1px dashed color-mix(in srgb,var(--accent) 60%,var(--line));text-align:left}
+.brk-joke span{font-size:13px;font-weight:900;color:var(--c3)}
+.brk-joke p{margin:6px 0 0;font-size:15.5px;line-height:1.7;color:var(--text)}
+.brk-joke p.pop{animation:brkPop .35s ease}
+@keyframes brkPop{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.brk-act{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+@media (prefers-reduced-motion:reduce){.brk.show .brk-card,.brk-fig .b1,.brk-fig span,.brk-joke p.pop{animation:none}}
 
 </style>
 </head>
@@ -1881,7 +1905,7 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
   <div class="statbar" id="statbar" hidden>
     <span class="sb-item">✉️ 問題反應信箱：<a href="mailto:qekepv@gmail.com" id="mail-addr">qekepv@gmail.com</a><button type="button" class="sb-copy" id="mail-copy">複製</button></span>
     <span class="sb-item"><i class="dot" aria-hidden="true"></i>線上人數 <b id="st-online">—</b> 人</span>
-    <span class="sb-item">👁️ 累計 <b id="st-total">—</b> 人次</span><span class="sb-demo" id="st-demo" hidden>示意數字</span>
+    <span class="sb-item">👁️ 累計 <b id="st-total">—</b> 人次</span><span class="sb-item">⏱️ 使用本網頁累計 <b id="st-hours">—</b> 小時</span><span class="sb-demo" id="st-demo" hidden>模擬數字</span><span class="sb-item sb-me">⏳ 您本次使用 <b id="st-me">00:00</b></span>
   </div>
   <div class="ft-h">📖 資料來源與引述</div>
   <div class="ft-two">
@@ -1926,6 +1950,11 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
     tot.textContent=(total+extra).toLocaleString('en-US');
     function tick(){ on.textContent=String(9+Math.floor(Math.random()*14)); }
     tick(); setInterval(tick,20000);
+    var hr=document.getElementById('st-hours'), secs=0;
+    try{ secs=+(localStorage.getItem('demo-time')||0)||0; }catch(e){}
+    function showH(){ var h=1240+days*18+secs/3600; hr.textContent=Math.floor(h).toLocaleString('en-US'); }
+    showH();
+    setInterval(function(){ if(document.visibilityState==='visible'){ secs+=10; try{localStorage.setItem('demo-time',secs);}catch(e){} } showH(); },10000);
     var tag=document.getElementById('st-demo'); if(tag) tag.hidden=false;
     return;
   }
@@ -2353,6 +2382,63 @@ document.addEventListener('click',function(e){ var d=document.getElementById('qb
 </script>
 <script>
 document.querySelectorAll('.home-link').forEach(function(a){ a.addEventListener('click',function(){ if(location.hash==='#home'||location.hash===''){ window.scrollTo({top:0,behavior:'smooth'}); } }); });
+</script>
+<script>
+/* 本次使用時間（真實，只計算畫面在前景的時間） */
+(function(){
+  var el=document.getElementById('st-me'); if(!el) return; var s=0;
+  function pad(n){return (n<10?'0':'')+n;}
+  setInterval(function(){
+    if(document.visibilityState!=='visible') return; s++;
+    var h=Math.floor(s/3600), m=Math.floor(s%3600/60), x=s%60;
+    el.textContent=(h?h+':'+pad(m):pad(m))+':'+pad(x);
+  },1000);
+})();
+</script>
+<div class="brk" id="brk" hidden>
+  <div class="brk-card" role="dialog" aria-modal="true" aria-labelledby="brk-t">
+    <div class="brk-fig" aria-hidden="true"><span class="b1">🤸</span><span class="s1">✨</span><span class="s2">⭐</span><span class="s3">✨</span></div>
+    <h3 id="brk-t">你已經專注 <b id="brk-min">15</b> 分鐘了！</h3>
+    <p class="brk-tip" id="brk-tip"></p>
+    <div class="brk-joke"><span>😄 數學小笑話</span><p id="brk-joke"></p></div>
+    <div class="brk-act"><button type="button" class="btn btn-ghost" id="brk-more">再來一個笑話</button><button type="button" class="btn btn-copy" id="brk-ok">休息好了，繼續備課</button></div>
+  </div>
+</div>
+<script>
+/* 每 15 分鐘的休息提醒 */
+(function(){
+  var TIPS=['站起來，雙手往上伸直，深呼吸三次。','看看窗外遠方 20 秒，讓眼睛休息一下。','轉轉脖子：左三圈、右三圈，慢慢來。','起身倒杯水，補充一下水分。',
+    '聳聳肩膀十下，把備課的壓力抖掉。','雙手十指交扣往前推，伸展手臂和背部。','閉上眼睛 30 秒，什麼都不想。','起來走一走，到走廊繞一圈再回來。',
+    '轉轉手腕，打字的手也需要休息。','原地踏步 30 下，讓血液循環一下。','挺直腰桿，調整一下坐姿。','和身邊的同事聊兩句，分享你剛想到的好提問。'];
+  var JOKES=['為什麼數學課本看起來總是很累？因為它裝滿了問題。','0 看到 8 說：「哇，你什麼時候開始繫腰帶了？」',
+    '平行線為什麼總是很難過？因為它們有那麼多共同點，卻永遠見不到面。','分母對分子說：「別擔心，我會一直在下面支持你。」',
+    '圓周率為什麼不太交朋友？因為它一開口，話就永遠講不完。','負數為什麼總是很冷靜？因為它們都在零度以下。',
+    '鈍角去看醫生，醫生說：「你沒事，只是想得有點超過。」','等號是最公平的符號，因為它從不偏袒任何一邊。',
+    '提問小幫手說：「我沒有標準答案。」老師說：「巧了，我的學生也沒有。」','小數點對整數說：「別看我小，我一移動，你就差十倍！」',
+    '直尺問量角器：「你怎麼總是彎著腰？」量角器說：「因為我要看清楚每一個角度。」','老師說：「這題畫圖就懂了。」學生畫了一隻貓。老師：「……至少很有創造力。」',
+    '餘數對除數說：「放心，我永遠比你小，不會搶你的風頭。」','為什麼質數不愛參加分組活動？因為除了 1 和自己，誰都分不進來。',
+    '三角形問圓形：「你這麼圓滑不累嗎？」圓形說：「至少我沒有稜角會得罪人。」','時鐘為什麼總是很忙？因為它一整天都在算時間，還要照顧 12 個數字。',
+    '老師問：「一半的一半是多少？」學生：「四分之一。」老師：「那你的專心呢？」學生：「……也剩四分之一。」','為什麼直角很有自信？因為它覺得自己永遠是對的。',
+    '問號為什麼總是彎著腰？因為它背了太多學生的疑問。','備課的老師最怕什麼？怕學生問了一個連 AI 都要想三秒的問題。'];
+  function bag(key,n){ var o; try{o=JSON.parse(localStorage.getItem(key)||'null');}catch(e){}
+    if(!o||!o.q||o.i>=o.q.length||o.q.length!==n){ var q=[]; for(var i=0;i<n;i++)q.push(i); for(i=n-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=q[i];q[i]=q[j];q[j]=t;} o={q:q,i:0}; }
+    var v=o.q[o.i++]; try{localStorage.setItem(key,JSON.stringify(o));}catch(e){} return v; }
+  var box=document.getElementById('brk'), FIG=['🤸','🧘','🚶','💧','🙆','🌿'], last=null;
+  function joke(){ document.getElementById('brk-joke').textContent=JOKES[bag('brk-joke',JOKES.length)]; }
+  window.showBreak=function(min){
+    document.getElementById('brk-min').textContent=min||15;
+    document.getElementById('brk-tip').textContent='🌱 '+TIPS[bag('brk-tip',TIPS.length)];
+    box.querySelector('.b1').textContent=FIG[bag('brk-fig',FIG.length)];
+    joke(); last=document.activeElement; box.hidden=false; box.classList.remove('show'); void box.offsetWidth; box.classList.add('show');
+    document.getElementById('brk-ok').focus();
+  };
+  function close(){ box.hidden=true; if(last&&last.focus) last.focus(); }
+  document.getElementById('brk-ok').addEventListener('click',close);
+  document.getElementById('brk-more').addEventListener('click',function(){ var p=document.getElementById('brk-joke'); p.classList.remove('pop'); void p.offsetWidth; joke(); p.classList.add('pop'); });
+  box.addEventListener('click',function(e){ if(e.target===box) close(); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&!box.hidden) close(); });
+  var s=0; setInterval(function(){ if(document.visibilityState!=='visible'||!box.hidden) return; s++; if(s%900===0) showBreak(s/60); },1000);
+})();
 </script>
 
 </body>
