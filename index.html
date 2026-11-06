@@ -970,6 +970,9 @@ footer .wrap{max-width:1080px}
 .ai-links{display:flex!important;flex-wrap:wrap;align-items:center;gap:6px;margin-top:8px;font-size:13px}
 .ai-links a{padding:3px 10px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--primary);font-weight:700;text-decoration:none}
 .ai-links a:hover{border-color:var(--secondary);background:var(--surface-2)}
+.mark.home-link{text-decoration:none;cursor:pointer}
+h1 a.home-link{color:inherit;text-decoration:none}
+h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
 
 </style>
 </head>
@@ -977,9 +980,9 @@ footer .wrap{max-width:1080px}
 
 <header>
   <div class="wrap top">
-    <div class="mark" aria-hidden="true">數</div>
+    <a class="mark home-link" href="#home" title="回到首頁" aria-label="回到首頁">數</a>
     <div>
-      <h1>國小數學提問共備入口</h1>
+      <h1><a class="home-link" href="#home" title="回到首頁">國小數學提問共備入口</a></h1>
       <p>和 AI 一起，把數學課的提問想得更深</p>
     </div>
     <div class="theme-sw" role="group" aria-label="背景顏色">
@@ -2340,6 +2343,9 @@ document.querySelectorAll('.flips .flip').forEach(function(b){ b.addEventListene
 <script>
 /* 快速開啟：點外面收合素養選單 */
 document.addEventListener('click',function(e){ var d=document.getElementById('qb-skill'); if(d&&d.open&&!d.contains(e.target)) d.open=false; });
+</script>
+<script>
+document.querySelectorAll('.home-link').forEach(function(a){ a.addEventListener('click',function(){ if(location.hash==='#home'||location.hash===''){ window.scrollTo({top:0,behavior:'smooth'}); } }); });
 </script>
 
 </body>
