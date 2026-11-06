@@ -1218,6 +1218,67 @@ h1 a.home-link:hover{text-decoration:underline;text-underline-offset:4px}
 .me-timer b{font-family:var(--mono);font-size:15px;color:var(--c2);min-width:3.2em;text-align:right}
 @media (max-width:560px){.hdr-right{flex-direction:column;align-items:flex-end;gap:4px}.me-timer{padding:2px 8px;font-size:11px}.me-timer b{font-size:12px}}
 @media (max-width:560px){header .wrap.top > div:nth-child(2){min-width:0;flex:1}header p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}header p{font-size:11.5px;line-height:1.45}}
+/* 提示詞放大 */
+.cd-a{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.cd-3 .zt{padding:8px 12px;font-size:14px;color:var(--lc);border-color:color-mix(in srgb,var(--lc) 45%,var(--line))}
+.tz{position:fixed;inset:0;z-index:210;display:grid;place-items:center;padding:20px;background:rgba(10,25,40,.5);backdrop-filter:blur(3px)}
+.tz[hidden]{display:none}
+.tz-card{width:min(860px,100%);max-height:calc(100vh - 40px);display:flex;flex-direction:column;gap:12px;padding:20px 22px;border-radius:20px;background:var(--surface);border:1px solid var(--line);border-top:6px solid var(--lc);box-shadow:0 24px 60px -20px rgba(0,0,0,.45);animation:brkIn .3s ease}
+.tz-h{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tz-h b{font-size:19px;color:var(--primary)}
+.tz-x{appearance:none;border:0;background:var(--surface-2);color:var(--muted);width:36px;height:36px;border-radius:50%;font-size:16px;cursor:pointer}
+.tz-n{margin:0;font-size:13.5px;color:var(--muted)}
+.cd-zoom{overflow:auto;min-height:0;flex:1}
+.cd-zoom .hl-wrap2{min-height:300px}
+.hl-back2,.cd-zoom textarea{font-family:var(--mono)}
+.cd-zoom .hl-back2,.cd-zoom .hl-wrap2 textarea{font-size:18px;line-height:1.9;padding:16px 18px;border:1.5px solid transparent;border-radius:12px;white-space:pre-wrap;overflow-wrap:break-word;word-break:break-word}
+.cd-zoom .hl-wrap2 textarea{position:relative;z-index:1;flex:1;width:100%;background:transparent;border-color:var(--lc);color:var(--code-text);overflow:hidden;resize:none;font:inherit;font-family:var(--mono);font-size:18px;line-height:1.9}
+.cd-zoom .hl-back2 mark.o{background:color-mix(in srgb,var(--lc) 28%,transparent)}
+.tz-a{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;align-items:center}
+.tz-a .btn-copy{background:var(--lc);text-decoration:none}
+.tz-ok{margin-right:auto;font-size:14px;font-weight:700;color:var(--c5)}
+/* 可點選提示 */
+.cd-3 button.chip{position:relative;padding-left:30px;cursor:pointer;box-shadow:0 1px 0 color-mix(in srgb,var(--lc) 25%,transparent);border-color:color-mix(in srgb,var(--lc) 35%,var(--line))}
+.cd-3 button.chip::before{content:"";position:absolute;left:9px;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:4px;border:2px solid color-mix(in srgb,var(--lc) 60%,var(--line));background:var(--surface)}
+.cd-3 button.chip.on::before{content:"✓";display:grid;place-items:center;font-size:11px;font-weight:900;line-height:1;color:var(--lc);background:#fff;border-color:#fff}
+.cd-3 button.chip:hover{transform:translateY(-1px);box-shadow:0 4px 10px -6px var(--lc);border-color:var(--lc)}
+.cd-3 button.chip:hover::before{border-color:var(--lc)}
+.cd-3 .grp .cat-h{width:100%;display:flex;align-items:center;gap:8px;font-weight:700;color:var(--lc);font-size:13.5px}
+.cd-3 .grp .cat{width:auto;padding:1px 10px;border-radius:999px;border:1.5px dashed var(--lc);font-size:12px;font-weight:800;color:var(--lc);background:var(--surface)}
+.cd-3 .grp .cat:hover{text-decoration:none;background:color-mix(in srgb,var(--lc) 10%,var(--surface))}
+.cd-3 .grp .cat.on{border-style:solid;background:var(--lc);color:#fff}
+.pick-note{padding:6px 10px;border-radius:8px;background:color-mix(in srgb,var(--lc) 10%,var(--surface));color:var(--text)!important;font-size:12.5px!important}
+.pick-note b{color:var(--lc)}
+.pick-badge{display:inline-block;margin-left:6px;padding:0 8px;border-radius:999px;font-size:11.5px;font-weight:800;color:#fff;background:var(--lc);vertical-align:1px}
+.cmap td:not(.off){position:relative}
+.cmap td:not(.off):not(.on):hover{box-shadow:inset 0 0 0 2px color-mix(in srgb,var(--lc) 60%,transparent)}
+.pick-tip{color:var(--primary)!important;font-weight:700!important}
+.cd-3 button.chip:disabled{padding-left:10px;box-shadow:none}.cd-3 button.chip:disabled::before{display:none}.cd-3 button.chip:disabled:hover{transform:none}
+/* 追問子選項 */
+.subp{margin:2px 0 4px 10px;padding:8px 10px;border-left:3px solid var(--lc);border-radius:0 10px 10px 0;background:color-mix(in srgb,var(--lc) 6%,var(--surface))}
+.subp-h{font-size:12.5px;color:var(--muted);margin-bottom:6px}
+.subp-h b{color:var(--lc)}
+.cd-3 button.chip.sub{font-size:12.5px;padding-top:3px;padding-bottom:3px}
+.cd-3 button.chip.rec{border-color:color-mix(in srgb,#e0a800 70%,var(--line));background:color-mix(in srgb,var(--accent) 14%,var(--surface))}
+.cd-3 button.chip.rec.on{background:var(--lc);border-color:var(--lc)}
+.subp-tip{font-size:11.5px;color:var(--muted);margin-top:4px}
+.rec-l{margin-left:6px;padding:0 7px;border-radius:999px;font-size:11px;font-weight:800;background:color-mix(in srgb,var(--accent) 30%,var(--surface));color:#7a5a00}
+/* 卡片放大 */
+.cd-bd{position:fixed;inset:0;z-index:215;background:rgba(10,25,40,.5);backdrop-filter:blur(3px)}
+.cd-bd[hidden]{display:none}
+.cd-3 > div.zoomed{position:fixed;z-index:220;inset:24px;margin:0 auto;max-width:980px;overflow:auto;padding:0 26px 24px;border-radius:20px;background:var(--surface);box-shadow:0 30px 70px -20px rgba(0,0,0,.55);animation:brkIn .25s ease;font-size:16px}
+.zbar{position:sticky;top:0;z-index:3;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:0 -26px 6px;padding:12px 26px;background:color-mix(in srgb,var(--lc) 12%,var(--surface));border-bottom:1px solid color-mix(in srgb,var(--lc) 30%,var(--line));backdrop-filter:blur(6px)}
+.zbar span{font-size:14px;font-weight:700;color:var(--lc)}
+.zbar .zback{background:var(--lc);padding:8px 16px;font-size:15px}
+.cd-3 > div.zoomed .cd-t{font-size:22px}
+.cd-3 > div.zoomed .cd-t small{font-size:14px}
+.cd-3 > div.zoomed button.chip{font-size:15px}
+.cd-3 > div.zoomed button.chip.sub{font-size:14px}
+.cd-3 > div.zoomed .hl-back2,.cd-3 > div.zoomed .hl-wrap2 textarea{font-size:17px;line-height:1.85;padding:14px 16px}
+.cd-3 > div.zoomed .hl-wrap2 textarea{min-height:200px}
+.cd-3 > div.zoomed .muted2,.cd-3 > div.zoomed .focus{font-size:16px}
+@media (max-width:600px){.cd-3 > div.zoomed{inset:8px;padding:0 14px 16px}.zbar{margin:0 -14px 6px;padding:10px 14px}}
+.cd-3 > div.zoomed{animation:none}
 
 </style>
 </head>
@@ -2532,7 +2593,37 @@ window.hlPaint=function(ta,groups){
   var QT=['開放提問','事實性提問','關係提問','概念性提問','可辯論提問','後設提問'];
   var sel=[1,1,1], pS={}, pE={}, pF={}, last=[-1,-1,-1];
   var FU=['具體操作與圖像表徵','素養能力','6C 能力','議題','人物觀點','其他（請自填）'], fOther='';
-  function fList(){ return Object.keys(pF).map(function(f){ return f==='其他（請自填）'?(fOther.trim()||'【請填寫其他追問方向】'):f; }); }
+  var pSub={};
+  var SUB={
+    '具體操作與圖像表徵':['實物操作','教具操作','圖像表徵','數線','表格整理','語言轉符號'],
+    '素養能力':['數感','量感','空間概念','推理與論證','數學溝通','數學建模'],
+    '6C 能力':['批判思考','創造力','溝通','協作','品格','公民素養'],
+    '議題':['環境教育','海洋教育','性別平等','人權教育','資訊教育','閱讀素養','生涯規劃','多元文化'],
+    '人物觀點':['學生','家長','老師','店員與顧客','數學家','工程師','設計師','廚師']
+  };
+  /* 依單元關鍵字推薦子選項 */
+  var HINT=[
+    [/分數|小數|比例|百分/,{'具體操作與圖像表徵':['分數板','圓形分割圖','長條分割圖'],'人物觀點':['廚師'],'素養能力':['數感']}],
+    [/加|減|乘|除|整數|運算|餘數|倍/,{'具體操作與圖像表徵':['花片','數棒','陣列圖'],'人物觀點':['店員與顧客'],'素養能力':['數感']}],
+    [/長度|面積|體積|容量|重量|公分|公尺|公升|公斤|周長/,{'具體操作與圖像表徵':['直尺','方格紙','積木'],'素養能力':['量感'],'人物觀點':['工程師']}],
+    [/角|三角|四邊|圓|立體|平面|圖形|對稱|形體|幾何/,{'具體操作與圖像表徵':['積木','方格紙','量角器','摺紙'],'素養能力':['空間概念'],'人物觀點':['設計師']}],
+    [/時間|時刻|鐘|日曆|速率|速度/,{'具體操作與圖像表徵':['時鐘模型','時間線'],'人物觀點':['家長']}],
+    [/錢|元|買|價|折|購物/,{'具體操作與圖像表徵':['錢幣教具'],'人物觀點':['店員與顧客'],'議題':['生涯規劃']}],
+    [/統計|圖表|長條|折線|圓餅|資料|機率/,{'具體操作與圖像表徵':['長條圖','折線圖'],'素養能力':['推理與論證'],'議題':['資訊教育']}],
+    [/規律|代數|方程|未知|式/,{'具體操作與圖像表徵':['表格整理','語言轉符號'],'素養能力':['推理與論證']}]
+  ];
+  function subsFor(dir,unit){ var base=(SUB[dir]||[]).slice(), rec=[];
+    HINT.forEach(function(h){ if(h[0].test(unit||'')&&h[1][dir]) h[1][dir].forEach(function(s){ if(rec.indexOf(s)<0) rec.push(s); }); });
+    rec.forEach(function(s){ var i=base.indexOf(s); if(i>-1) base.splice(i,1); });
+    return {rec:rec,base:base}; }
+  function subPanels(c){ var u=(c.u||'').charAt(0)==='【'?'':c.u, out='';
+    Object.keys(pF).forEach(function(f){ if(!SUB[f]) return; var S=subsFor(f,u), cur=pSub[f]||{};
+      out+='<div class="subp"><div class="subp-h">↳ <b>'+f+'</b> 再細選'+(u?'（配合「'+esc(u)+'」）':'')+(S.rec.length?'<span class="rec-l">⭐ 依單元推薦</span>':'')+'</div><p class="grp">';
+      S.rec.forEach(function(s){ out+='<button type="button" class="chip sub rec'+(cur[s]?' on':'')+'" data-fs="'+f+'|'+s+'">⭐ '+s+'</button>'; });
+      S.base.forEach(function(s){ out+='<button type="button" class="chip sub'+(cur[s]?' on':'')+'" data-fs="'+f+'|'+s+'">'+s+'</button>'; });
+      out+='</p></div>'; });
+    return out; }
+  function fList(){ return Object.keys(pF).map(function(f){ if(f==='其他（請自填）') return fOther.trim()||'【請填寫其他追問方向】'; var s=Object.keys(pSub[f]||{}); return s.length?f+'（'+s.join('、')+'）':f; }); }
   function mk2(c,p2){ var L=fList(); return '科目：數學\n學生年級：'+c.g+'\n想探究的主題或概念：'+c.u+'\n請為學生探究的「'+p2.k+'」階段設計提問，重點是：'+p2.qd+'。'+(L.length?'\n並請在提問中加入：'+L.join('、')+'。':''); }
   function nm(s){ var i=s.search(/ [A-Za-z"“]/); return i>0?s.slice(0,i):s; }
   function on(m,v){ return m[v]?' on':''; }
@@ -2551,7 +2642,7 @@ window.hlPaint=function(ta,groups){
   }
   function detail(){
     var c=ctx(), p1=P[sel[0]], p2=P[sel[1]], p3=P[sel[2]];
-    if(last[0]!==sel[0]) pS={}; if(last[1]!==sel[1]) pF={}; if(last[2]!==sel[2]) pE={}; last=sel.slice();
+    if(last[0]!==sel[0]) pS={}; if(last[1]!==sel[1]){ pF={}; pSub={}; } if(last[2]!==sel[2]) pE={}; last=sel.slice();
     var sS=Object.keys(pS), sE=Object.keys(pE), sF=Object.keys(pF);
     var t1=sS.length
       ? '我教'+c.g+'，單元是'+c.u+'。在學生探究的「'+p1.k+'」階段，我想使用這些策略：'+sS.join('、')+'。請說明課堂操作步驟，並依我的學生調整做法。'
@@ -2564,15 +2655,15 @@ window.hlPaint=function(ta,groups){
     h+='<p class="hl-legend2">提示詞色塊：<i class="k"></i>起手式填的年級、單元　<i class="p"></i>地圖選的階段　<i class="o"></i>卡片上選的項目　<i class="todo"></i>還沒填</p>';
     h+='<div class="cd-3">';
     h+='<div class="l1"><div class="cd-t">活動骨架<small>概念為本探究・'+p1.k+'・'+p1.g.reduce(function(n,x){return n+x[1].length;},0)+' 個策略</small></div>';
-    h+='<p class="pick-note">點策略可單選或複選；點類別名稱可整類選取。</p>';
+    h+='<p class="pick-note">👆 <b>可點選</b>：點策略可單選或複選；點類別旁的「全選」可整類選取。</p>';
     p1.g.forEach(function(x,gi){ var all=x[1].every(function(s){return pS[nm(s)];});
-      h+='<p class="grp"><button type="button" class="cat'+(all?' on':'')+'" data-cat="'+gi+'">'+esc(x[0])+(all?' ✓':'')+'</button>'+x[1].map(function(s){var i=s.search(/ [A-Za-z"“]/);return '<button type="button" class="chip pk1'+on(pS,nm(s))+'" data-s="'+esc(nm(s))+'">'+esc(nm(s))+(i>0?'<small>'+esc(s.slice(i+1))+'</small>':'')+'</button>';}).join('')+'</p>'; });
-    h+='<textarea id="cd1">'+esc(t1)+'</textarea><div class="cd-a"><a class="btn btn-go" data-cg="cd1" href="'+INQ+'" target="_blank" rel="noopener">複製並開啟 ↗</a></div></div>';
-    h+='<div class="l2"><div class="cd-t">放入提問<small>有效提問・'+p2.k+'・'+QT[sel[1]]+'</small></div><p class="focus">提問重點：</p><p class="muted2">'+esc(p2.qd)+'</p><p class="focus">追問方向（可複選）：</p><p class="grp">'+FU.map(function(f){return '<button type="button" class="chip pk2'+on(pF,f)+'" data-f="'+f+'">'+f+'</button>';}).join('')+'</p>'+(pF['其他（請自填）']?'<input type="text" class="f-other" id="f-other" placeholder="例：加入估算策略、連結生活中的購物情境" value="'+esc(fOther)+'">':'')+'<textarea id="cd2">'+esc(t2)+'</textarea><div class="cd-a"><a class="btn btn-go" data-cg="cd2" href="'+ASK+'" target="_blank" rel="noopener">複製並開啟 ↗</a></div></div>';
-    var els='<p class="focus">素養三元素（可複選）：</p><p class="grp">'+EL[p3.sk].map(function(e){return '<button type="button" class="chip pk3'+on(pE,e)+'" data-e="'+e+'"'+(p3.sk==='溝通'?' disabled':'')+'>'+e+'</button>';}).join('')+'</p>';
+      h+='<p class="grp"><span class="cat-h">'+esc(x[0])+'<button type="button" class="cat'+(all?' on':'')+'" data-cat="'+gi+'">'+(all?'✓ 已全選':'＋ 全選')+'</button></span>'+x[1].map(function(s){var i=s.search(/ [A-Za-z"“]/);return '<button type="button" class="chip pk1'+on(pS,nm(s))+'" data-s="'+esc(nm(s))+'">'+esc(nm(s))+(i>0?'<small>'+esc(s.slice(i+1))+'</small>':'')+'</button>';}).join('')+'</p>'; });
+    h+='<textarea id="cd1">'+esc(t1)+'</textarea><div class="cd-a"><button type="button" class="btn btn-ghost zt" data-zt="cd1" title="放大檢視與編輯">⤢ 放大</button><a class="btn btn-go" data-cg="cd1" href="'+INQ+'" target="_blank" rel="noopener">複製並開啟 ↗</a></div></div>';
+    h+='<div class="l2"><div class="cd-t">放入提問<small>有效提問・'+p2.k+'・'+QT[sel[1]]+'</small></div><p class="focus">提問重點：</p><p class="muted2">'+esc(p2.qd)+'</p><p class="focus">追問方向 <span class="pick-badge">👆 可複選</span></p><p class="grp">'+FU.map(function(f){return '<button type="button" class="chip pk2'+on(pF,f)+'" data-f="'+f+'">'+f+'</button>';}).join('')+'</p>'+(pF['其他（請自填）']?'<input type="text" class="f-other" id="f-other" placeholder="例：加入估算策略、連結生活中的購物情境" value="'+esc(fOther)+'">':'')+subPanels(c)+'<textarea id="cd2">'+esc(t2)+'</textarea><div class="cd-a"><button type="button" class="btn btn-ghost zt" data-zt="cd2" title="放大檢視與編輯">⤢ 放大</button><a class="btn btn-go" data-cg="cd2" href="'+ASK+'" target="_blank" rel="noopener">複製並開啟 ↗</a></div></div>';
+    var els='<p class="focus">素養三元素 <span class="pick-badge">👆 可複選</span></p><p class="grp">'+EL[p3.sk].map(function(e){return '<button type="button" class="chip pk3'+on(pE,e)+'" data-e="'+e+'"'+(p3.sk==='溝通'?' disabled':'')+'>'+e+'</button>';}).join('')+'</p>';
     h+='<div class="l3"><div class="cd-t">深化素養<small>八大思考素養・'+p3.k+'・'+(p3.sk==='溝通'?'溝通（整理中）':p3.sk)+'</small></div>'+els;
     if(p3.sk==='溝通'){ h+='<p class="muted">可先用「研究與探究」或「批判性思考」小幫手發想投入階段的提問。</p></div>'; }
-    else { h+='<textarea id="cd3">'+esc(t3)+'</textarea><div class="cd-a"><a class="btn btn-go" data-cg="cd3" href="'+SK[p3.sk]+'" target="_blank" rel="noopener">複製並開啟 ↗</a></div></div>'; }
+    else { h+='<textarea id="cd3">'+esc(t3)+'</textarea><div class="cd-a"><button type="button" class="btn btn-ghost zt" data-zt="cd3" title="放大檢視與編輯">⤢ 放大</button><a class="btn btn-go" data-cg="cd3" href="'+SK[p3.sk]+'" target="_blank" rel="noopener">複製並開啟 ↗</a></div></div>'; }
     det.innerHTML=h+'</div><p class="cd-ok" role="status"></p>';
     var K=[c.g,c.u].filter(function(x){return x&&x.charAt(0)!=='【';});
     window.hlPaint(document.getElementById('cd1'),[[K,'k'],[[p1.k],'p'],[sS,'o']]);
@@ -2581,10 +2672,11 @@ window.hlPaint=function(ta,groups){
     var fo=document.getElementById('f-other');
     if(fo) fo.addEventListener('input',function(){ fOther=fo.value; var t=document.getElementById('cd2'); t.value=mk2(c,p2); window.hlPaint(t,g2()); });
     var c3=document.getElementById('cd3'); if(c3) window.hlPaint(c3,[[K,'k'],[[p3.k],'p'],[[p3.sk].concat(sE.length?sE:EL[p3.sk]),'o']]);
-    det.querySelectorAll('[data-s],[data-e],[data-f],[data-cat]').forEach(function(btn){ btn.addEventListener('click',function(){
+    det.querySelectorAll('[data-s],[data-e],[data-f],[data-fs],[data-cat]').forEach(function(btn){ btn.addEventListener('click',function(){
       if(btn.dataset.s){ if(pS[btn.dataset.s]) delete pS[btn.dataset.s]; else pS[btn.dataset.s]=1; }
       else if(btn.dataset.e){ if(pE[btn.dataset.e]) delete pE[btn.dataset.e]; else pE[btn.dataset.e]=1; }
-      else if(btn.dataset.f){ var nf=btn.dataset.f; if(pF[nf]) delete pF[nf]; else pF[nf]=1; if(nf==='其他（請自填）'&&pF[nf]) setTimeout(function(){ var f=document.getElementById('f-other'); if(f) f.focus(); },0); }
+      else if(btn.dataset.fs){ var sp=btn.dataset.fs.split('|'); pSub[sp[0]]=pSub[sp[0]]||{}; if(pSub[sp[0]][sp[1]]) delete pSub[sp[0]][sp[1]]; else pSub[sp[0]][sp[1]]=1; }
+      else if(btn.dataset.f){ var nf=btn.dataset.f; if(pF[nf]){ delete pF[nf]; delete pSub[nf]; } else pF[nf]=1; if(nf==='其他（請自填）'&&pF[nf]) setTimeout(function(){ var f=document.getElementById('f-other'); if(f) f.focus(); },0); }
       else { var g=P[sel[0]].g[+btn.dataset.cat][1].map(nm), all=g.every(function(s){return pS[s];}); g.forEach(function(s){ if(all) delete pS[s]; else pS[s]=1; }); }
       detail();
     }); });
@@ -2748,6 +2840,42 @@ document.querySelectorAll('input[name="g-skr"]').forEach(function(r){ r.addEvent
     if(lg){ var t=lg.textContent.trim(); el.classList.add('wm','wm-ch'); el.setAttribute('data-wm',t.charAt(t.length-1)); }
     else { var m=el.textContent.match(re); if(m){ el.classList.add('wm'); el.setAttribute('data-wm',m[0]); } }
   });
+})();
+</script>
+<div class="cd-bd" id="cd-bd" hidden></div>
+<script>
+/* 探究地圖：整張卡片放大，可繼續選取與編輯 */
+(function(){
+  var det=document.getElementById('cdetail'), bd=document.getElementById('cd-bd'), zoomed=null, last=null, busy=false;
+  if(!det) return;
+  function apply(){
+    if(busy) return; busy=true;
+    det.querySelectorAll('.cd-3 > div').forEach(function(c){ c.classList.remove('zoomed'); var x=c.querySelector('.zbar'); if(x) x.remove(); });
+    det.querySelectorAll('[data-zt]').forEach(function(z){ z.innerHTML='⤢ 放大'; });
+    var card=zoomed?det.querySelector('.cd-3 > .'+zoomed):null;
+    if(card){
+      card.classList.add('zoomed');
+      var bar=document.createElement('div'); bar.className='zbar';
+      bar.innerHTML='<span>🔍 放大檢視：可直接點選上方選項、修改下方提示詞</span><button type="button" class="btn btn-copy zback">↩ 回到畫面</button>';
+      card.insertBefore(bar,card.firstChild);
+      var z=card.querySelector('[data-zt]'); if(z) z.innerHTML='↩ 回到畫面';
+      bd.hidden=false; document.body.style.overflow='hidden';
+      var ta=card.querySelector('textarea'); if(ta) ta.dispatchEvent(new Event('input'));
+    } else { bd.hidden=true; document.body.style.overflow=''; }
+    busy=false;
+  }
+  function close(){ zoomed=null; apply(); if(last&&document.body.contains(last)) last.focus(); }
+  det.addEventListener('click',function(e){
+    if(e.target.closest('.zback')){ close(); return; }
+    var z=e.target.closest('[data-zt]'); if(!z) return;
+    var card=z.closest('.l1,.l2,.l3'), k=card.classList.contains('l1')?'l1':card.classList.contains('l2')?'l2':'l3';
+    if(zoomed===k){ close(); return; }
+    last=z; zoomed=k; apply(); var sc=card; setTimeout(function(){ var c=det.querySelector('.cd-3 > .'+k); if(c) c.scrollTop=0; },0);
+  });
+  new MutationObserver(function(){ if(zoomed&&!busy) apply(); }).observe(det,{childList:true});
+  bd.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&zoomed) close(); });
+  window.addEventListener('hashchange',function(){ if(zoomed) close(); });
 })();
 </script>
 
